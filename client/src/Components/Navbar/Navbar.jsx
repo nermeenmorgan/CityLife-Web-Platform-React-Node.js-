@@ -73,7 +73,7 @@ export default function Navbar() {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="about">
-                  About
+                  {t("About")}
                 </Link>
               </li>
               <li className="nav-item dropdown">
@@ -84,37 +84,37 @@ export default function Navbar() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Services
+                  {t("Services")}
                 </Link>
                 <ul className="dropdown-menu">
                   <li>
                     <Link className="dropdown-item" to="banks">
-                      Banks
+                      {t("Banks")}
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="markets">
-                      Markets
+                      {t("Markets")}
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="hospitals">
-                      Hospitals
+                      {t("Hospitals")}
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="education">
-                      Education
+                      {t("Education")}
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="cinema">
-                      Cinema
+                      {t("Cinema")}
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="payment">
-                      Payment
+                      {t("Payment")}
                     </Link>
                   </li>
                 </ul>
@@ -127,61 +127,61 @@ export default function Navbar() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Categories
+                  {t("Categories")}
                 </Link>
                 <ul className="dropdown-menu">
                   <li>
                     <Link className="dropdown-item" to="restaurants">
-                      Restaurants
+                      {t("Restaurants")}
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="shopping">
-                      Shopping
+                      {t("Shopping")}
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="fashion">
-                      Fashion
+                      {t("Fashion")}
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="health">
-                      Health
+                      {t("Health")}
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="sports">
-                      Sports
+                      {t("Sports")}
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="maintenance">
-                      Maintenance
+                      {t("Maintenance")}
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="homeServices">
-                      Home Services
+                      {t("Home Services")}
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="transportation">
-                      Transportation
+                      {t("Transportation")}
                     </Link>
                   </li>
                 </ul>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="contactus">
-                  Contact us
+                  {t("Contact us")}
                 </Link>
               </li>
               {userData !== null &&
                 userData.id === "648a002ac64b570033765c4b" && (
                   <li className="nav-item">
                     <Link className="nav-link" to="dashboard">
-                      DashBoard
+                     {t("DashBoard")}
                     </Link>
                   </li>
                 )}
@@ -240,13 +240,13 @@ export default function Navbar() {
                     aria-current="page"
                     to="signin"
                   >
-                    Sign in
+                    {t("Sign in")}
                   </Link>
                   <Link
                     className=" text-white btn btn-success rounded-3 mx-2"
                     to="signup"
                   >
-                    Sign up
+                    {t("Sign up")}
                   </Link>
                 </div>
               ) : (
@@ -257,7 +257,7 @@ export default function Navbar() {
                       DeleteUserData();
                     }}
                   >
-                    Sign out
+                    {t("Sign out")}
                   </button>
                   <Link
                     className=" text-white bg-dark  rounded-circle p-2 ms-2 "

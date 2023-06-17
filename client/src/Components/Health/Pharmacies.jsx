@@ -8,6 +8,8 @@ import { useTranslation } from "react-i18next";
 const Pharmacies = () => {
   const { Pharmacies, encodedToken } = useContext(DataContext);
   const [showModal, setShowModal] = useState(false);
+  const[popup, setpopup] = useState(false);
+  const { t, i18n } = useTranslation();
 
   const handleShowModal = () => {
     setShowModal(!showModal);
@@ -16,13 +18,18 @@ const Pharmacies = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+  const HandleSumit =()=>{
+    handleCloseModal();
+    setpopup(true);
+  }
 
   useEffect(() => {
     $(".single-item").not(".slick-initialized").slick();
   }, []);
+  
   return (
     <div className="">
-      <div className=" container my-5 p-5">
+      <div className=" container my-2 p-5">
         <div className="row justify-content-center mt-4">
           {Pharmacies ? (
             [...Pharmacies].map((res) => (
@@ -60,10 +67,10 @@ const Pharmacies = () => {
                 </div>
                 <div className="row ">
                   <div className="col-md-6 mb-3">
-                    <div className="fs-5  mt-5 fw-bold">Overview</div>
-                    <div className="fs-lg-5 fs-md-6 my-4">{res.overview}</div>
-                    <div className="fs-5  fw-bold">Address</div>
-                    <div className="fs-lg-5 fs-md-6 my-4">{res.address}</div>
+                    <div className="fs-5  mt-5 fw-bold">{t("Overview")}</div>
+                    <div className="fs-lg-5 fs-md-6 my-4">{t(res.overview)}</div>
+                    <div className="fs-5  fw-bold">{t("Address")}</div>
+                    <div className="fs-lg-5 fs-md-6 my-4">{t(res.address)}</div>
                     <div className="d-flex justify-content-evenly ">
                       <div className="d-flex-column flex-wrap">
                         <a href={`https://wa.me/${res.number}`}>
@@ -72,7 +79,7 @@ const Pharmacies = () => {
                             style={{ color: "green" }}
                           ></i>
                           <div className="fs-6 fw-bold text-success">
-                            WhatsApp
+                            {t("WhatsApp")}
                           </div>
                         </a>
                       </div>
@@ -84,7 +91,7 @@ const Pharmacies = () => {
                             style={{ color: "green" }}
                           ></i>
                           <div className="fs-6 fw-bold text-success">
-                            Location
+                            {t("Location")}
                           </div>
                         </a>
                       </div>
@@ -99,7 +106,7 @@ const Pharmacies = () => {
                           onClick={handleShowModal}
                           data-whatever="@mdo"
                         >
-                          Complain
+                          {t("Complain")}
                         </button>
                       ) : null}
                     </div>
@@ -131,79 +138,108 @@ const Pharmacies = () => {
             ))
           ) : (
             <div className="spinner-border text-success" role="status">
-              <span className="visually-hidden">Loading...</span>
+              <span className="visually-hidden">{t("Loading...")}</span>
             </div>
           )}
         </div>
       </div>
       {showModal && (
-        <div
-          className="modal fade show"
-          tabIndex="-1"
-          role="dialog"
-          style={{ display: "block", boxShadow: "0 0 10px rgba(0,0,0,0.5)" }}
-        >
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">
-                  New message
-                </h5>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                  onClick={handleCloseModal}
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                <form>
-                  <div className="form-group">
-                    <label htmlFor="recipient-name" className="col-form-label">
-                      Email:
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="recipient-name"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="message-text" className="col-form-label">
-                      Complaint:
-                    </label>
-                    <textarea
-                      className="form-control"
-                      id="message-text"
-                    ></textarea>
-                  </div>
-                </form>
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  style={{ backgroundColor: "black", color: "white" }}
-                  className="btn "
-                  data-dismiss="modal"
-                  onClick={handleCloseModal}
-                >
-                  Close
-                </button>
-                <button
-                  type="button"
-                  style={{ backgroundColor: "green", color: "white" }}
-                  className="btn "
-                >
-                  Submit complaint
-                </button>
-              </div>
-            </div>
+<div
+className="modal fade show"
+tabIndex="-1"
+role="dialog"
+style={{ display: "block", boxShadow: "0 0 10px rgba(0,0,0,0.5)", backgroundColor: "rgba(0,0,0,0.5)" }}
+>
+<div className="modal-dialog" role="document">
+<div className="modal-content">
+<div className="modal-header">
+<h5 className="modal-title" id="exampleModalLabel">
+{t("Submit your Complaint")}
+</h5>
+<button
+               type="button"
+               style={{borderRadius:10, borderColor:"green"}}
+               className="close"
+               data-dismiss="modal"
+               aria-label="Close"
+               onClick={handleCloseModal}
+             >
+<span aria-hidden="true">×</span>
+</button>
+</div>
+<div className="modal-body">
+<form>
+<div className="form-group">
+<label htmlFor="recipient-name" className="col-form-label">
+{t("Name:")}
+</label>
+<input
+                   type="text"
+                   className="form-control"
+                   id="recipient-name"
+                 />
+</div>
+<div className="form-group">
+<label htmlFor="recipient-name" className="col-form-label">
+{t("Email:")}
+</label>
+<input
+                   type="email"
+                   placeholder="example22@gmail.com"
+                   className="form-control"
+                   id="recipient-name"
+                 />
+</div>
+<div className="form-group">
+<label htmlFor="message-text" className="col-form-label">
+{t("Complaint:")}
+</label>
+<textarea
+                   className="form-control"
+                   id="message-text"
+                 ></textarea>
+</div>
+</form>
+</div>
+<div className="modal-footer">
+<button
+type="button"
+style={{ backgroundColor: "black", color: "white" }}
+className="btn "
+data-dismiss="modal"
+onClick={handleCloseModal}
+>
+{t("Close")}
+</button>
+<button
+type="submit"
+onSubmit={HandleSumit}
+style={{ backgroundColor: "green", color: "white" }}
+className="btn "
+>
+{t("Submit complaint")}
+</button>
+</div>
+</div>
+</div>
+</div>
+)}
+
+{popup && (
+  <div className="container my-5">
+          <div className="row">
+            <i
+              className="fa-sharp fa-regular fa-circle-check text-center"
+              style={{ color: "#14992a", fontSize: 180 }}
+            ></i>
+            <h1 className="text-center" style={{ fontSize: 80 }}>
+              Complaint sumitted successfully!
+            </h1>
           </div>
         </div>
-      )}
+  ) 
+}
+
     </div>
   );
 };

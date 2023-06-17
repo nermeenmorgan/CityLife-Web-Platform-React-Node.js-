@@ -27,7 +27,7 @@ export default function Restaurants() {
         className={
           i18n.language === "en"
             ? "fs-2  fw-bold me-5 mb-5"
-            : "fs-3  fw-bold me-5 mb-5 offset-9"
+            : "fs-4  fw-bold  mb-5 offset-lg-9 offset-md-7"
         }
       >
         {t("All Restaurants")}
@@ -37,7 +37,7 @@ export default function Restaurants() {
           [...AllRestaurants].map((res) => (
             <div className="" key={res.id}>
               <div
-                className="d-flex align-items-center justify-content-around "
+                className="d-flex align-items-center justify-content-between "
                 style={{
                   direction: i18n.language === "ar" ? "rtl" : "ltr",
                   textAlign: i18n.language === "ar" ? "right" : "left",
@@ -63,7 +63,7 @@ export default function Restaurants() {
                       className={
                         i18n.language === "en"
                           ? " fw-bold mb-2 ms-5"
-                          : " fw-bold mb-2"
+                          : " fw-bold mb-2 "
                       }
                       style={{ fontSize: 16 }}
                     >

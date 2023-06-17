@@ -50,15 +50,21 @@
 import React, { useContext } from 'react'
 import { DataContext } from '../../Context/Data'
 import { Link } from 'react-router-dom'
+import { useTranslation } from "react-i18next";
 
 export default function Banks() {
 
     const { fashion } = useContext(DataContext)
+    const { t,i18n } = useTranslation();
 
     return <>
         <div className="container mt-3">
             <div className="row">
-                {fashion.map((ele) => <div key={ele.id} className='d-flex flex-row justify-content-between border shadow rounded-4 my-3 p-4'>
+                {fashion.map((ele) => <div key={ele.id} className='d-flex flex-row justify-content-between border shadow rounded-4 my-3 p-4' style={{
+                  direction: i18n.language === "ar" ? "rtl" : "",
+                  textAlign: i18n.language === "ar" ? "right" : "",
+              
+                }}>
 
                     <div className='col-md-6'>
 
@@ -67,15 +73,15 @@ export default function Banks() {
                         className='rounded-circle shadow'
                         style={{ width: "80px", height: "80px" }} 
                          />
-                        <h2 className='ms-5' >{ele.name}</h2>
+                        <h2 className={i18n.language==='en'?'ms-5':"me-5"} >{t(ele.name)}</h2>
                         </div>
-                        <p className='opacity-75'>{ele.overview}</p>
-                        <p> Call Center: <span className=' fw-bold'>{ele.number}</span></p>
-                      <h6> website : <Link to={ele.website} style={{ textDecoration: 'none' }}>  Visit website </Link></h6> 
+                        <p className='opacity-75'>{t(ele.overview)}</p>
+                        <p> {t("Call Center:")} <span className=' fw-bold'>{ele.number}</span></p>
+                      <h6>{t("website :")} <Link to={ele.website} style={{ textDecoration: 'none' }}>  {t("Visit website")} </Link></h6> 
                         <div className='d-sm-block d-md-flex justify-content-between'>
                             <div className='d-flex'>
-                                <p>{ele.address}</p>
-                            <Link to={ele.location} className='ms-2'><i class="fa-solid fa-location-dot"> </i></Link>
+                                <p>{t(ele.address)}</p>
+                            <Link to={t(ele.location)} className='ms-2'><i class="fa-solid fa-location-dot"> </i></Link>
                             </div>
                         </div>
                     </div>
