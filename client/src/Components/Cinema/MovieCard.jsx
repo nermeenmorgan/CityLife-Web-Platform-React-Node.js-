@@ -7,9 +7,11 @@ export default function MovieCard({movie}) {
   // console.log(userData)
   return (
     <div
-    className="col-lg-4 col-md-6 col-12 my-3 pe-3"
+    className="col-lg-4 col-md-6 col-12 my-3"
   >
-    <div className="card shadow mx-auto" style={{ width: 350 }}>
+    <div className="card shadow mx-auto " 
+    // style={{ width: 350 }}
+    >
       <img
         src={movie.img}
         className="card-img-top"

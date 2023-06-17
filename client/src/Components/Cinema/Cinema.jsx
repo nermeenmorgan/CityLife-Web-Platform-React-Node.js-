@@ -4,7 +4,6 @@ import { v4 as uuid } from "uuid";
 import "./cinema.css";
 import MovieCard from "./MovieCard";
 import PopUp from "./PopUp";
-import { Link } from "react-router-dom";
 
 export default function Cinema() {
   const { movies } = useContext(DataContext);
@@ -26,7 +25,7 @@ export default function Cinema() {
         <div className="container">
           <div className="row justify-content-center">
             <h1 className="my-2">El-Rehab Cinema</h1>
-            <Link
+            <a
               className="ps-md-0 ps-3 ms-md-4 ms-0 nav-link text-muted mb-3 "
               href="https://www.google.com/maps/place/Al+Rehab+Cinema/@30.059036,31.4958799,15z/data=!4m6!3m5!1s0x14581888bcacb1bb:0x417640e69aeaea98!8m2!3d30.059036!4d31.4958799!16s%2Fg%2F1tdhvt25?entry=ttu"
             >
@@ -34,8 +33,8 @@ export default function Cinema() {
                 <i className="fa-solid fa-location-dot"></i> Inside El-Rehab
                 Mall 1
               </h5>
-            </Link>
-            <div className="row justify-content-around my-2">
+            </a>
+            <div className="d-flex justify-content-around my-2">
               <button
                 type="button"
                 onClick={() => handleClickTopNav("All")}

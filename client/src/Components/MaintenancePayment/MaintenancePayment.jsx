@@ -1,25 +1,28 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useMemo, useState } from "react";
 import { DataContext } from "../../Context/Data";
 import { v4 as uuid } from "uuid";
 import Payment from "../PaymentStripe/Payment";
 
 
 export default function MaintenancePayment() {
-  const { userData } = useContext(DataContext);
-  const arr = [
-    { name: "City Maintenance Bills", fees: "10000 EGP" },
-    { name: "El-Rehab club subscription", fees: "2000 EGP" },
-    { name: "Water Bills", fees: "900 EGP" },
-    { name: "Car Washing subscription", fees: "200 EGP" },
-  ];
-  // handele payment and bills
+
+  // const PayArr = useMemo(()=> [
+  //   { name: "City Maintenance Bills", fees: "10000 EGP" },
+  //   { name: "El-Rehab club subscription", fees: "2000 EGP" },
+  //   { name: "Water Bills", fees: "900 EGP" },
+  //   { name: "Car Washing subscription", fees: "200 EGP" },
+  // ],[]);
+
+  const { userData,PayArr } = useContext(DataContext);
+
+  // handle payment and bills
   const [selectedName, setSelectedName] = useState("");
   const [selectedFees, setSelectedFees] = useState("");
 
-  const openModelPay = useCallback((name, fees) => {
+  const openModelPay = (name, fees) => {
     setSelectedName(name);
     setSelectedFees(fees);
-  }, []);
+  }
 
  // handle complain form
   const [errors,setErrors]= useState({
@@ -47,7 +50,7 @@ export default function MaintenancePayment() {
       }else{
         setErrors({...errors,nameError:""})
       }
-  },[newFeedBack]);
+  },[newFeedBack,errors]);
 
   const handleImageUpload = useCallback((e) => {
     // console.log(e.target.files);
@@ -77,8 +80,7 @@ export default function MaintenancePayment() {
           <h2 className="text-center mb-4 fw-bold">
             One place for your all bills and subscriptions
           </h2>
-          {arr.map((type) => (
-            <>
+          {PayArr && PayArr.map((type,index) => (
               <div key={uuid()} className="col-lg-6 col-12">
                 <div
                   className="d-flex flex-column shadow rounded-5 w-100 my-3 p-4"
@@ -132,7 +134,7 @@ export default function MaintenancePayment() {
                     <button
                     key={uuid()} 
                       className="btn btn-success w-50 mx-4 p-2"
-                      data-bs-target="#exampleModalToggleBills"
+                      data-bs-target= "#exampleModalToggleBills"
                       data-bs-toggle="modal"
                       onClick={() => {
                         openModelPay(type.name, type.fees);
@@ -153,7 +155,56 @@ export default function MaintenancePayment() {
                     </button>
                   </div>
                 </div>
+
+
+
+             {/** Bills Popup */}
+              <div
+                key={uuid()} 
+                className="modal fade"
+                id="exampleModalToggleBills"
+                aria-hidden="true"
+                aria-labelledby="exampleModalToggleLabel2"
+                tabIndex="-1"
+              >
+                <div className="modal-dialog modal-dialog-centered">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h1
+                        className="modal-title fs-5"
+                        id="exampleModalToggleLabel2"
+                      >
+                        {selectedName !== "" && selectedName}
+                      </h1>
+                    </div>
+                    <div className="modal-body d-flex flex-column align-items-center">
+                      <p className="fw-bold fs-5 text-center">
+                        {userData ===null ? null : userData.name}, Your {selectedName !== "" && selectedName.toLocaleLowerCase()}
+                        amount is {selectedFees !== "" &&  selectedFees}
+                      </p>
+                    </div>
+                    <div className="modal-footer">
+                      <button
+                        type="button"
+                        className="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-primary"
+                        data-bs-target="#exampleModalTogglePay"
+                        data-bs-toggle="modal"
+                      >
+                        pay
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
+
+
               {/** Payment Popup */}
               <div
                 key={uuid()} 
@@ -185,53 +236,11 @@ export default function MaintenancePayment() {
                   </div>
                 </div>
               </div>
-              {/** Bills Popup */}
-              <div
-                key={uuid()} 
-                className="modal fade"
-                id="exampleModalToggleBills"
-                aria-hidden="true"
-                aria-labelledby="exampleModalToggleLabel2"
-                tabIndex="-1"
-              >
-                <div className="modal-dialog modal-dialog-centered">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h1
-                        className="modal-title fs-5"
-                        id="exampleModalToggleLabel2"
-                      >
-                        {selectedName}
-                      </h1>
-                    </div>
-                    <div className="modal-body d-flex flex-column align-items-center">
-                      <p className="fw-bold fs-5 text-center">
-                        {userData ===null ? null:userData.name}, Your {selectedName.toLocaleLowerCase()}{" "}
-                        amount is {selectedFees}
-                      </p>
-                    </div>
-                    <div className="modal-footer">
-                      <button
-                        type="button"
-                        className="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                      >
-                        Close
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-primary"
-                        data-bs-target="#exampleModalTogglePay"
-                        data-bs-toggle="modal"
-                      >
-                        pay
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </>
+              </div>    
           ))}
+         
+
+          {/*Feedback */}
           <div className="d-flex flex-column align-items-center mt-5">
             <h3 className="text-center">
               If you have any inquiry, feedback or complain, we are glad to hear
@@ -245,9 +254,6 @@ export default function MaintenancePayment() {
               Feedback
             </button>
           </div>
-          
-
-          {/*Feedback */}
           <div
             className="modal fade"
             id="exampleModalToggle"

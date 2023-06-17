@@ -276,25 +276,25 @@ export default function Footer() {
               <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                 <h6 className="text-uppercase fw-bold mb-2">Follow Us</h6>
                 <div className="mb-4">
-                  <a href="" className="me-4 text-reset">
+                  <a href="https://www.facebook.com/AlRehabCityHall" className="me-4 text-reset">
                     <i
                       className="fab fa-facebook-f fa-xl"
                       style={{ color: "#4267B2" }}
                     ></i>
                   </a>
-                  <a href="" className="me-4 text-reset">
+                  <a href="https://twitter.com/ASeifeen" className="me-4 text-reset">
                     <i
                       className="fab fa-twitter fa-xl"
                       style={{ color: "#1DA1F2" }}
                     ></i>
                   </a>
-                  <a href="" className="me-4 text-reset">
+                  <a href="https://www.youtube.com/@alrehabcityhall9255" className="me-4 text-reset">
                     <i
                       className="fab fa-youtube fa-xl"
                       style={{ color: "red" }}
                     ></i>
                   </a>
-                  <a href="" className="me-4 text-reset">
+                  <a href="https://www.instagram.com/rehabcityresidentialnews/" className="me-4 text-reset">
                     <i
                       className="fab fa-instagram fa-xl"
                       style={{ color: "#f56200" }}

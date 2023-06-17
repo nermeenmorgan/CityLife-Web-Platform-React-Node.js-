@@ -33,15 +33,16 @@ import Restaurants from "./Components/Restaurants/allRestaurants";
 import Payment from "./Components/PaymentStripe/Payment";
 import Completion from "./Components/PaymentStripe/Completion";
 import DashBoard from "./Components/DashBoard/DashBoard";
-// import FeedbackComplains from "./Components/Feedback_Complains/Feedback_Complains";
 import AddForm from "./Components/DashBoard/AddForm";
 import DashboardLayout from "./Components/DashBoard/dashboardLayout";
 import UpdateFormBanks from "./Components/DashBoard/UpdateForm";
 import Profile from './Components/Profile/Profile';
-import BankDetails from "./Components/Banks/BankDetails";
 import { I18nextProvider } from 'react-i18next';
 // import i18n from 'i18next';
 import i18n from './i18n';
+import Details from "./Components/Details/Details";
+import ProtectedRoutedb from "./Components/ProtectedRoute/ProtectedRoutedb.jsx";
+
 
 function App() {
   let routers = createBrowserRouter([
@@ -91,12 +92,12 @@ function App() {
           path: "dashboard",
           element: <DashboardLayout></DashboardLayout>,
           children: [
-            { index: true, element: <DashBoard></DashBoard> },
+            { index: true, element: <ProtectedRoutedb><DashBoard></DashBoard></ProtectedRoutedb> },
             { path: "addform/:type", element: <AddForm></AddForm> },
             { path: "updateform/:type/:id", element: <UpdateFormBanks></UpdateFormBanks> },
           ],
         },
-        {path:"details/:id", element:<BankDetails></BankDetails> },
+        {path:"details/:id", element:<Details></Details> },
         { path: "*", element: <NotFound /> },
       ],
     },

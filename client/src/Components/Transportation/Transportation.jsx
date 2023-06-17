@@ -164,7 +164,7 @@ export default function Transportation() {
             <section className="col-lg-8 mt-4 d-flex flex-column justify-content-between h-100">
               {buses !== null ? (
                 buses.map((bus) => (
-                  <div key={bus.id} className="shadow p-5 rounded-4">
+                  <div key={bus.id} className="shadow p-4 rounded-4">
                     <div className="d-flex justify-content-between ">
                       <div>
                         <p className="fw-bolder fs-5">{bus.name}</p>
@@ -221,7 +221,8 @@ export default function Transportation() {
                       <div className="d-flex flex-column align-items-center justify-content-center">
                         <p className="fw-semibold">for Schedule press here</p>
                         <button
-                          className="btn btn-success"
+                          className="btn btn-success px-5"
+                          // style={{width:30}}
                           onClick={() => {
                             openModal(bus);
                           }}
@@ -258,7 +259,7 @@ export default function Transportation() {
             {/* side bar section*/}
             <section className=" col-lg-4 shadow mt-4 ms-md-3 rounded-4 ms-0 h-100  ">
               <div
-                className=" px-4 my-5 d-flex flex-column justify-content-between"
+                className=" px-4 mb-3 mt-4 d-flex flex-column justify-content-between"
                 style={{ height: "88%" }}
               >
                 <h4 className="text-center">Contact us</h4>
@@ -287,7 +288,7 @@ export default function Transportation() {
                 </div>
                 <div className="d-flex justify-content-center">
                   <button
-                    className="btn btn-success mt-4"
+                    className="btn btn-success mt-5 px-5"
                     data-bs-target="#exampleModalToggle"
                     data-bs-toggle="modal"
                   >

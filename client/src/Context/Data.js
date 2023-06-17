@@ -91,21 +91,7 @@ export default function Data(props) {
   const [PizzaRes, setPizzaRes] = useState([]);
   const [FriedRes, setFriedRes] = useState([]);
   const [FastFoodRes, setFastFoodRes] = useState([]);
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:3005/restaurant")
-  //     .then((res) => {
-  //       setShawarmaRes(res.data.shawarma);
-  //       setSeaFoodRes(res.data.seafood);
-  //       setOrientalFoodRes(res.data.orientalfood);
-  //       setPizzaRes(res.data.pizza);
-  //       setFriedRes(res.data.fried);
-  //       setFastFoodRes(res.data.fastfood);
-  //     })
-  // .catch((error) => {
-  //   console.error("Error fetching restaurants:", error);
-  // });
-  // }, []);
+
   useEffect(() => {
     axios.get("http://localhost:3005/shawarma").then((res) => {
       setShawarmaRes(res.data);
@@ -827,7 +813,6 @@ export default function Data(props) {
 
   useEffect(() => {
     if (profileData) {
-      console.log(profileData);
       localStorage.setItem("name", profileData.name);
       localStorage.setItem("email", profileData.email);
       localStorage.setItem("phone", profileData.phone);
@@ -850,15 +835,23 @@ export default function Data(props) {
 
   // End Of Profile
 
+  // payment 
+  const PayArr = useMemo(()=> [
+    { name: "City Maintenance Bills", fees: "10000 EGP" },
+    { name: "El-Rehab club subscription", fees: "2000 EGP" },
+    { name: "Water Bills", fees: "900 EGP" },
+    { name: "Car Washing subscription", fees: "200 EGP" },
+  ],[]);
+
   //transportation feedback
 const [transfeedback,setTransfeedback] = useState(null)
 
+  //Search Bar management
 const [All,setAll] =useState ({})
 const [categoryNames,setCategoryNames] =useState ([])
 const [AllName,setAllName] =useState ([])
 const [AllIDs,setAllIDs] =useState ([])
-
-
+const [AllIDsNames,setAllIDsNames] =useState ([])
 
   useEffect(()=>{
     axios.get('http://localhost:3005/db')
@@ -866,56 +859,32 @@ const [AllIDs,setAllIDs] =useState ([])
       setAll(res.data)
     })
   },[])
-  console.log(Object.values(All))
-  console.log(Object.keys(All))
-
-  console.log(All)
 
 useEffect(()=>{
   let NamesArr = []
   let IDsArr =[]
+  let NamesIDsArr =[]
   setCategoryNames([...Object.keys(All)])
   for (let category of Object.values(All)){
     for(let ele of category){
-      // console.log(obj.id)
       NamesArr.push(ele.name)
       IDsArr.push(ele.id)
+      NamesIDsArr.push({id:ele.id,name:ele.name})
     }
 }
   setAllName(NamesArr)
   setAllIDs(IDsArr)
-
+  setAllIDsNames(NamesIDsArr)
 },[All])
-console.log(AllName)
-
-// useEffect(()=>{
-//   let NamesArr = []
-//   let categoryNames =[]
-//   for (let key in All){
-//     let value = All[key]
-//     categoryNames.push(key)
-//   console.log(value)
-
-//     // for(let obj of category){
-//     //   // console.log(obj.id)
-//     //   NamesArr.push(obj.name)
-//     // }
-// }
-//   setAllName(NamesArr)
-// },[All])
-console.log(AllName)
-
-  
-
 
   const ExchangedData = {
     All,
     categoryNames,
     AllName,
     AllIDs,
+    AllIDsNames,
 
-
-
+    PayArr,
     userData,
     DeleteUserData,
     saveUserData,
