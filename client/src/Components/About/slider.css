@@ -1,0 +1,33 @@
+/* Styles for the slider arrows */
+.slick-prev:before, 
+.slick-next:before {
+    z-index: 5;
+    color: #000;
+    display: block;
+    width: 40px;
+    height: 40px;
+    opacity: 1;
+}
+
+.slick-prev {
+  left: -5px;
+}
+
+.slick-next {
+  right: -5px;
+}
+
+@media screen and (max-width: 768px)  {
+.slick-prev:before, 
+.slick-next:before {
+    display: none;
+}
+
+.slick-prev {
+  display: none;
+}
+
+.slick-next {
+  display: none;
+}
+}

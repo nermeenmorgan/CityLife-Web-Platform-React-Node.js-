@@ -1,0 +1,35 @@
+/* general */
+.lightFont {
+  font-weight: 400 !important;
+  font-size: 18px;
+}
+.alert {
+  background-color: #dc354627 !important;
+}
+.valid {
+  background-color: #e8f0fe !important;
+  border: none;
+}
+/* Inputs */
+.input {
+  background-color: var(--lightGreenColor);
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0px 9px 18px -10px rgba(0, 0, 0, 0.75);
+  border: none;
+}
+.input:focus {
+  box-shadow: none;
+  transition: all 0.5s ease-in-out;
+  border: none;
+  background-color: var(--lightGreenColor);
+}
+
+/* Contact Us Section */
+.contacts_section {
+  box-shadow: 12px 0px 18px -1px rgba(0, 0, 0, 0.29);
+}
+
+.textArea_noResize {
+  resize: none;
+}
+

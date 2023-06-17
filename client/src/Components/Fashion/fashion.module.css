@@ -1,0 +1,32 @@
+/* .fashionImages {
+    height: 300px;
+    width: 113%;
+    border-radius: 10px;
+
+  }
+  .fashionLogo {
+    height: 60px;
+    width: 10%;
+    border-radius: 50%;
+  }
+  .fontStyle{
+    font-size: 1px;
+  }
+ .fontStyle{
+  color:  #c2a800;
+  }
+.backgroundStyle{
+  background-color: #ecf5f0 !important;
+  padding: 40px;
+  margin:auto;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+  @media screen and (max-width: 600px){
+      .fashionImages {
+          height: 200px;
+          width: 100%;
+        }
+        
+  } */

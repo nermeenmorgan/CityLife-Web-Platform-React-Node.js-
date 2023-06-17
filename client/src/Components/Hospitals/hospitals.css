@@ -1,0 +1,29 @@
+datalist {
+    position: absolute;
+    max-height: 20em;
+    border: 0 none;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  datalist option {
+    font-size: 0.8em;
+    padding: 0.3em 1em;
+    background-color: #da1b1b;
+    cursor: pointer;
+  }
+  
+  /* option active styles */
+  datalist option:hover,
+  datalist option:focus {
+    color: #1c129e;
+    background-color: #036;
+    outline: 0 none;
+  }
+  
+  #datalistOptions option {
+    font-size: 1.8em;
+    padding: 0.3em 1em;
+    background-color: #bae61b;
+    cursor: pointer;
+  }
