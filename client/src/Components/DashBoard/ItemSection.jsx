@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 // Component for rendering the item section
@@ -28,4 +28,4 @@ const ItemSection = ({ selectedItem, itemType, addButtonLabel, data, handleDelet
     </>
   );
 };
-export default ItemSection;
+export default memo(ItemSection);

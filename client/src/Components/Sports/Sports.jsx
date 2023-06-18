@@ -1,31 +1,32 @@
 import React, { useCallback, useContext, useState } from "react";
 import { DataContext } from "../../Context/Data";
 import Slider from "react-slick";
-
+import { useTranslation } from "react-i18next";
 
 export default function Sports() {
   const { gyms, userData } = useContext(DataContext);
+  const { t, i18n } = useTranslation();
 
   const [feedbackName, setFeedbackName] = useState("");
   const [feedbackMessage, setFeedbackMessage] = useState("");
 
   const handlefeedbackName = useCallback((event) => {
     setFeedbackName(event.target.value);
-  },[]);
+  }, []);
 
-  const handlefeedbackMessage = useCallback ((event) => {
+  const handlefeedbackMessage = useCallback((event) => {
     setFeedbackMessage(event.target.value);
-  },[]);
+  }, []);
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
     setFeedbackName("");
     setFeedbackMessage("");
-  },[]);
+  }, []);
 
-  const handleCall = useCallback ((number) => {
+  const handleCall = useCallback((number) => {
     window.location.href = `tel:${number}`;
-  },[]);
+  }, []);
 
   const settings = {
     dots: false,
@@ -44,8 +45,16 @@ export default function Sports() {
   return (
     <>
       <div className="container">
-        <div className="row">
-            <h1 className="text-center fw-bold mt-4">Gyms in El-Rehab City</h1>
+        <div
+          className="row"
+          style={{
+            direction: i18n.language === "ar" ? "rtl" : "",
+            // textAlign: i18n.language === "ar" ? "right" : "",
+          }}
+        >
+          <h1 className="text-center fw-bold mt-4">
+            {t("Gyms in El-Rehab City")}
+          </h1>
           {gyms ? (
             gyms.map((res) => (
               <div
@@ -61,8 +70,12 @@ export default function Sports() {
                       alt={res.name}
                     />
 
-                    <div className="d-flex flex-column justify-content-center align-items-center offset-1">
-                      <div className="fs-4 fw-bold mb-1">{res.name}</div>
+                    <div
+                      className={`d-flex flex-column justify-content-center align-items-center offset-1 ${
+                        i18n.language === "ar" && "me-5"
+                      }`}
+                    >
+                      <div className="fs-4 fw-bold mb-1">{t(res.name)}</div>
                       {res.Rating >= 1 && res.Rating <= 5 && (
                         <div className="d-flex align-items-center">
                           {/* <span className="fw-bold me-2">Rating:</span> */}
@@ -94,11 +107,20 @@ export default function Sports() {
                   <div className="row justify-content-center align-items-center ms-1 mb-3">
                     {/* <div className="fs-5 fw-bold">Overview</div>
                     <div className="fs-5 my-4">{res.overview}</div> */}
-                    <div className="fs-5 fw-bold mt-3">Address</div>
-                    <div className="fs-5 ">{res.address}</div>
+                    <div className="fs-5 fw-bold mt-3">{t("Address")}</div>
+                    <div className="fs-5 ">{t(res.address)}</div>
                     <div className="d-flex align-items-center mt-5">
-                      <div className="row align-items-center d-flex-column align-items-center">
-                        <div className="d-flex flex-column align-items-center">
+                      <div
+                        className={`row align-items-center d-flex-column align-items-center ${
+                          i18n.language === "ar" && "ms-5"
+                        }`}
+                      >
+                        <div
+                          className="d-flex flex-column align-items-center"
+                          style={{
+                            cursor: "pointer",
+                          }}
+                        >
                           <i
                             className="fa-solid fa-phone fa-2xl mainColor"
                             onClick={() => handleCall(res.number)}
@@ -130,7 +152,7 @@ export default function Sports() {
                           //   onClick={handleShowModal}
                           disabled={userData ? false : true}
                         >
-                          Feedback
+                          {t("Feedback")}
                         </button>
                       </div>
                     </div>
@@ -138,90 +160,33 @@ export default function Sports() {
                 </div>
 
                 <div className="col-lg-6  col-12 mt-sm-3" style={{}}>
-                  {/*Slider */}
-                  {/* <div
-                    id={`carouselExampleFade${res.id}`}
-                    className="carousel slide"
-                    data-bs-ride="carousel"
-                    data-bs-touch="true"
-                  >
-                    <div className="carousel-inner">
-                      <div className="carousel-item active">
-                        <img
-                          src={res.img1}
-                          className="d-block w-100 rounded-4"
-                          alt="img 1"
-                          style={{ height: 250 }}
-                        />
-                      </div>
-                      <div className="carousel-item">
-                        <img
-                          src={res.img2}
-                          className="d-block w-100 rounded-4"
-                          alt="img 2"
-                          style={{ height: 250 }}
-                        />
-                      </div>
-                      <div className="carousel-item">
-                        <img
-                          src={res.img3}
-                          className="d-block w-100 rounded-4"
-                          alt="img 3"
-                          style={{ height: 250 }}
-                        />
-                      </div>
-                    </div>
-                    <button
-                      className="carousel-control-prev"
-                      type="button"
-                      data-bs-target={`#carouselExampleFade${res.id}`}
-                      data-bs-slide="prev"
-                    >
-                      <span
-                        className="carousel-control-prev-icon"
-                        aria-hidden="true"
-                      ></span>
-                      <span className="visually-hidden">Previous</span>
-                    </button>
-                    <button
-                      className="carousel-control-next"
-                      type="button"
-                      data-bs-target={`#carouselExampleFade${res.id}`}
-                      data-bs-slide="next"
-                    >
-                      <span
-                        className="carousel-control-next-icon"
-                        aria-hidden="true"
-                      ></span>
-                      <span className="visually-hidden">Next</span>
-                    </button>
-                  </div> */}
+                  {/*Slider */}s
                   <Slider {...settings}>
-              <div className="my-3 px-1">
-                <img
-                  height={230}
-                  className="w-100 rounded-4"
-                  src={res.img1}
-                  alt="Photos galley"
-                />
-              </div>
-              <div className="my-3 px-1">
-                <img
-                  height={230}
-                  className="w-100 rounded-4"
-                  src={res.img2}
-                  alt="Photos galley"
-                />
-              </div>
-              <div className="my-3 px-1">
-                <img
-                  height={230}
-                  className="w-100 rounded-4"
-                  src={res.img3}
-                  alt="Photos galley"
-                />
-              </div>
-            </Slider>
+                    <div className="my-3 px-1">
+                      <img
+                        height={230}
+                        className="w-100 rounded-4"
+                        src={res.img1}
+                        alt="Photos galley"
+                      />
+                    </div>
+                    <div className="my-3 px-1">
+                      <img
+                        height={230}
+                        className="w-100 rounded-4"
+                        src={res.img2}
+                        alt="Photos galley"
+                      />
+                    </div>
+                    <div className="my-3 px-1">
+                      <img
+                        height={230}
+                        className="w-100 rounded-4"
+                        src={res.img3}
+                        alt="Photos galley"
+                      />
+                    </div>
+                  </Slider>
                 </div>
               </div>
             ))
@@ -230,7 +195,7 @@ export default function Sports() {
               <span className="visually-hidden">Loading...</span>
             </div>
           )}
-      {/*Feedback */}
+          {/*Feedback */}
           <div
             className="modal fade"
             id="exampleModalToggle"
@@ -240,13 +205,17 @@ export default function Sports() {
           >
             <div className="modal-dialog modal-dialog-centered">
               <div className="modal-content">
-                <div className="modal-header">
+                <div
+                  className={`modal-header ${
+                    i18n.language === "ar" && "d-flex justify-content-between"
+                  }`}
+                >
                   <h1 className="modal-title fs-5" id="exampleModalLabel">
-                    Your feedback
+                    {t("Your feedback")}
                   </h1>
                   <button
                     type="button"
-                    className="btn-close"
+                    className={`btn-close ${i18n.language === "ar" && "ms-0"}`}
                     data-bs-dismiss="modal"
                     aria-label="Close"
                   ></button>
@@ -255,7 +224,7 @@ export default function Sports() {
                   <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                       <label htmlFor="Name" className="col-form-label">
-                        Name:
+                        {t("Name")}
                       </label>
                       <input
                         type="text"
@@ -267,7 +236,8 @@ export default function Sports() {
                     </div>
                     <div className="mb-3">
                       <label htmlFor="message-text" className="col-form-label">
-                        Message:
+                        {/* {t("Message:")} */}
+                        {t("Your feedback")}:
                       </label>
                       <textarea
                         className="form-control"
@@ -285,7 +255,7 @@ export default function Sports() {
                           feedbackName && feedbackMessage ? false : true
                         }
                       >
-                        Send
+                        {t("Send")}
                       </button>
                     </div>
                   </form>
@@ -303,11 +273,15 @@ export default function Sports() {
           >
             <div className="modal-dialog modal-dialog-centered">
               <div className="modal-content">
-                <div className="modal-header">
+                <div
+                  className={`modal-header ${
+                    i18n.language === "ar" && "d-flex justify-content-end"
+                  }`}
+                >
                   {/* <h1 className="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1> */}
                   <button
                     type="button"
-                    className="btn-close"
+                    className={`btn-close ${i18n.language === "ar" && "ms-0"}`}
                     data-bs-dismiss="modal"
                     aria-label="Close"
                   ></button>
@@ -318,7 +292,7 @@ export default function Sports() {
                     style={{ color: "#14992a", fontSize: 80 }}
                   ></i>
                   <p className="my-2 fs-4 fw-bolder">
-                    We received your feedback, Thanks.
+                    {t("We received your feedback, Thanks.")}
                   </p>
                 </div>
                 {/* <div class="modal-footer">

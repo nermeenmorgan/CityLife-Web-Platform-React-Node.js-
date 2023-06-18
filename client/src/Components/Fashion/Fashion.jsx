@@ -60,11 +60,13 @@ export default function Banks() {
     return <>
         <div className="container mt-3">
             <div className="row">
-                {fashion.map((ele) => <div key={ele.id} className='d-flex flex-row justify-content-between border shadow rounded-4 my-3 p-4' style={{
+                {fashion.map((ele) => <div key={ele.id} className='d-flex flex-row justify-content-between border shadow rounded-4 my-3 p-4' 
+                style={{
                   direction: i18n.language === "ar" ? "rtl" : "",
                   textAlign: i18n.language === "ar" ? "right" : "",
               
-                }}>
+                }}
+                >
 
                     <div className='col-md-6'>
 

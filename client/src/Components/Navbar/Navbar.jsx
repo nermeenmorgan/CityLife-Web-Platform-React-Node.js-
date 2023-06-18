@@ -44,7 +44,11 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-main-light">
+      <nav className="navbar navbar-expand-lg bg-main-light"
+              style={{
+                direction: i18n.language === "ar" ? "rtl" : "ltr",
+              }}
+      >
         <div className="container-fluid">
           <Link className="navbar-brand" to="">
             <img
@@ -186,7 +190,7 @@ export default function Navbar() {
                   </li>
                 )}
             </ul>
-            <ul className="d-flex flex-lg-row align-items-lg-center flex-column mt-3 ms-lg-auto ms-0 ps-0">
+            <ul className={`d-flex flex-lg-row align-items-lg-center flex-column mt-3  ms-0 ps-0 ${i18n.language === "ar" ? "me-lg-auto" :"ms-lg-auto"}`}>
               <button
                 style={{
                   fontSize: 13,
@@ -207,7 +211,7 @@ export default function Navbar() {
                 className="d-flex align-items-center me-2"
                 onSubmit={handleSubmit}
               >
-                <div className="input-group">
+                <div className={`input-group ${i18n.language === "ar"&& "d-flex flex-lg-row-reverse"}`}>
                   <div className="form-outline">
                     <input
                       type="text"
@@ -226,7 +230,7 @@ export default function Navbar() {
                 </div>
                 <datalist id="searchList">
                   {AllIDsNames.map((ele, index) => (
-                    <option key={index} value={ele.name}>
+                    <option key={index} value={t(ele.name)}>
                       {/* {ele.name} */}
                     </option>
                   ))}
