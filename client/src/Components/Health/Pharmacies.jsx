@@ -1,16 +1,43 @@
 import React, { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../Context/Data";
-import $ from "jquery";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick.js";
+import Slider from "react-slick";
+
 import { useTranslation } from "react-i18next";
+import { useCallback } from "react";
 
 const Pharmacies = () => {
-  const { Pharmacies, encodedToken } = useContext(DataContext);
+  const { Pharmacies, userData } = useContext(DataContext);
+  const [feedbackName, setFeedbackName] = useState("");
+  const [feedbackMessage, setFeedbackMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const[popup, setpopup] = useState(false);
+ 
   const { t, i18n } = useTranslation();
+  const handlefeedbackName = useCallback((event) => {
+    setFeedbackName(event.target.value);
+  },[]);
+  const settings = {
+    dots: false,
+    fade: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    cssEase: "linear",
+    pauseOnHover: true,
+    arrows: false,
+  };
 
+  const handlefeedbackMessage = useCallback ((event) => {
+    setFeedbackMessage(event.target.value);
+  },[]);
+
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault();
+    setFeedbackName("");
+    setFeedbackMessage("");
+  },[]);
   const handleShowModal = () => {
     setShowModal(!showModal);
   };
@@ -18,121 +45,134 @@ const Pharmacies = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-  const HandleSumit =()=>{
-    handleCloseModal();
-    setpopup(true);
-  }
 
-  useEffect(() => {
-    $(".single-item").not(".slick-initialized").slick();
-  }, []);
+
+
   
   return (
-    <div className="">
-      <div className=" container my-2 p-5">
-        <div className="row justify-content-center mt-4">
+    <>
+       <div className="container">
+        <div className="row">
           {Pharmacies ? (
-            [...Pharmacies].map((res) => (
+            Pharmacies.map((res) => (
               <div
-                className="col-md-8 mb-5 p-3 p-md-5 w-100 mx-md-2"
-                style={{ border: "2px solid lightgrey", borderRadius: 40 }}
+                style={{
+                  direction: i18n.language === "ar" ? "rtl" : "ltr",
+                  textAlign: i18n.language === "ar" ? "right" : "left",
+                }}
+                className="row  mx-md-3  mx-0 shadow my-5 custom-style mb-5 p-2 p-md-4 w-10 rounded-4"
                 key={res.id}
               >
-                <div className="d-flex  flex-nowrap">
-                  <img
-                    className="rounded-circle me-3 mb-3 mb-md-0"
-                    style={{
-                      maxWidth: "100px",
-                      height: "auto",
-                      borderRadius: 40,
-                    }}
-                    src={res.logo}
-                    alt={res.name}
-                  />
+                <div className="col-lg-6  col-12">
+                  <div className="d-flex align-items-center flex-wrap">
+                    <img
+                      className="rounded-circle me-3 mb-3 mb-md-0 shadow"
+                      style={{ maxWidth: "100px", height: "auto" }}
+                      src={res.logo}
+                      alt={res.name}
+                    />
 
-                  <div className="d-flex flex-column">
-                    <div className="mt-3 d-flex flex-column align-content-center ">
-                      <div className="fs-4 fw-bold mb-1 ms-5">{res.name}</div>
-                      <div className="d-flex justify-content-center">
-                        {[...Array(parseInt(res.Rating))].map((_, index) => (
+                    <div className="d-flex flex-column justify-content-center align-items-center offset-1">
+                      <div className={i18n.language==='en'?"fs-4 fw-bold mb-1":"fs-4 fw-bold mb-1 me-3"}>{t(res.name)}</div>
+                      {res.Rating >= 1 && res.Rating <= 5 && (
+                        <div className="d-flex align-items-center">
+                         
                           <i
-                            key={index}
-                            className="fa-solid fa-star fa-2x"
-                            style={{ color: "#ffc107" }}
+                            className="fa-solid fa-star"
+                            style={{ color: "#f5e324" }}
                           ></i>
-                        ))}
+                          <i
+                            className="fa-solid fa-star"
+                            style={{ color: "#f5e324" }}
+                          ></i>
+                          <i
+                            className="fa-solid fa-star"
+                            style={{ color: "#f5e324" }}
+                          ></i>
+                          <i
+                            className="fa-solid fa-star"
+                            style={{ color: "#f5e324" }}
+                          ></i>
+                          <i
+                            className="fa-solid fa-star-half-stroke"
+                            style={{ color: "#f5e324" }}
+                          ></i>
+                          <span className="fw-bold ms-2">{res.Rating}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="row justify-content-center align-items-center ms-1 mb-3">
+                   
+                    <div className="fs-5 fw-bold mt-3">{t("Address")}</div>
+                    <div className="fs-5 ">{t(res.address)}</div>
+                    <div className="fs-5 fw-bold mt-3">{t("Overview")}</div>
+                    <div className="fs-5 ">{t(res.overview)}</div>
+                    <div className="d-flex align-items-center mt-5">
+                      <div className="row align-items-center d-flex-column align-items-center">
+                        <div className="d-flex flex-column align-items-center">
+                          <i
+                            className="fa-solid fa-phone fa-2xl mainColor"
+                            onClick={() => {
+                              const whatsappURL = `https://wa.me/${res.number}`;
+                    window.location.href = whatsappURL;
+                            }}
+                          ></i>
+                        </div>
+
+                  
+                      </div>
+
+                      <div className={i18n.language==='en'?"d-flex justify-content-center ms-5":"d-flex justify-content-center mx-2"}>
+                        <a href={res.location} className="">
+                          <i className="fa-solid fa-location-dot fa-2xl mainColor"></i>
+                        
+                        </a>
+                      </div>
+
+                      <div className="ms-5">
+                        <button
+                          className="btn fs-6 btn-success "
+                          data-bs-target="#exampleModalToggle"
+                          data-bs-toggle="modal"
+                          
+                          disabled={userData ? false : true}
+                        >
+                          {t("Feedback")}
+                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="row ">
-                  <div className="col-md-6 mb-3">
-                    <div className="fs-5  mt-5 fw-bold">{t("Overview")}</div>
-                    <div className="fs-lg-5 fs-md-6 my-4">{t(res.overview)}</div>
-                    <div className="fs-5  fw-bold">{t("Address")}</div>
-                    <div className="fs-lg-5 fs-md-6 my-4">{t(res.address)}</div>
-                    <div className="d-flex justify-content-evenly ">
-                      <div className="d-flex-column flex-wrap">
-                        <a href={`https://wa.me/${res.number}`}>
-                          <i
-                            className="fa-solid fa-phone fa-2x "
-                            style={{ color: "green" }}
-                          ></i>
-                          <div className="fs-6 fw-bold text-success">
-                            {t("WhatsApp")}
-                          </div>
-                        </a>
-                      </div>
 
-                      <div className="d-flex-column flex-wrap">
-                        <a href={res.location}>
-                          <i
-                            className="fa-sharp fa-solid fa-location-dot  fw-bold  fa-2x "
-                            style={{ color: "green" }}
-                          ></i>
-                          <div className="fs-6 fw-bold text-success">
-                            {t("Location")}
-                          </div>
-                        </a>
-                      </div>
-
-                      {!encodedToken ? (
-                        <button
-                          style={{ backgroundColor: "green", color: "white" }}
-                          type="button"
-                          class="btn  text-center"
-                          data-toggle="modal"
-                          data-target="#exampleModal"
-                          onClick={handleShowModal}
-                          data-whatever="@mdo"
-                        >
-                          {t("Complain")}
-                        </button>
-                      ) : null}
-                    </div>
-                  </div>
-                  <div className="col-md-6 " style={{ borderRadius: 20 }}>
-                    <div style={{ borderRadius: 20 }} className="single-item ">
-                      <img
-                        style={{ borderRadius: 20 }}
-                        src={res.img2}
-                        alt="School Image"
-                        className="img-fluid h-auto"
-                      />
-                      <img
-                        style={{ borderRadius: 20 }}
-                        src={res.img1}
-                        alt="School Image"
-                        className="img-fluid"
-                      />
-                      <img
-                        style={{ borderRadius: 20 }}
-                        src={res.img3}
-                        alt="School Image"
-                        className="img-fluid"
-                      />
-                    </div>
-                  </div>
+                <div className="col-lg-6  col-12 mt-sm-3" style={{}}>
+                  
+                  <Slider {...settings}>
+              <div className="my-3 px-1">
+                <img
+                  height={230}
+                  className="w-100 rounded-4"
+                  src={res.img1}
+                  alt="Photos galley"
+                />
+              </div>
+              <div className="my-3 px-1">
+                <img
+                  height={230}
+                  className="w-100 rounded-4"
+                  src={res.img2}
+                  alt="Photos galley"
+                />
+              </div>
+              <div className="my-3 px-1">
+                <img
+                  height={230}
+                  className="w-100 rounded-4"
+                  src={res.img3}
+                  alt="Photos galley"
+                />
+              </div>
+            </Slider>
                 </div>
               </div>
             ))
@@ -141,107 +181,104 @@ const Pharmacies = () => {
               <span className="visually-hidden">{t("Loading...")}</span>
             </div>
           )}
-        </div>
-      </div>
-      {showModal && (
-<div
-className="modal fade show"
-tabIndex="-1"
-role="dialog"
-style={{ display: "block", boxShadow: "0 0 10px rgba(0,0,0,0.5)", backgroundColor: "rgba(0,0,0,0.5)" }}
->
-<div className="modal-dialog" role="document">
-<div className="modal-content">
-<div className="modal-header">
-<h5 className="modal-title" id="exampleModalLabel">
-{t("Submit your Complaint")}
-</h5>
-<button
-               type="button"
-               style={{borderRadius:10, borderColor:"green"}}
-               className="close"
-               data-dismiss="modal"
-               aria-label="Close"
-               onClick={handleCloseModal}
-             >
-<span aria-hidden="true">×</span>
-</button>
-</div>
-<div className="modal-body">
-<form>
-<div className="form-group">
-<label htmlFor="recipient-name" className="col-form-label">
-{t("Name:")}
-</label>
-<input
-                   type="text"
-                   className="form-control"
-                   id="recipient-name"
-                 />
-</div>
-<div className="form-group">
-<label htmlFor="recipient-name" className="col-form-label">
-{t("Email:")}
-</label>
-<input
-                   type="email"
-                   placeholder="example22@gmail.com"
-                   className="form-control"
-                   id="recipient-name"
-                 />
-</div>
-<div className="form-group">
-<label htmlFor="message-text" className="col-form-label">
-{t("Complaint:")}
-</label>
-<textarea
-                   className="form-control"
-                   id="message-text"
-                 ></textarea>
-</div>
-</form>
-</div>
-<div className="modal-footer">
-<button
-type="button"
-style={{ backgroundColor: "black", color: "white" }}
-className="btn "
-data-dismiss="modal"
-onClick={handleCloseModal}
->
-{t("Close")}
-</button>
-<button
-type="submit"
-onSubmit={HandleSumit}
-style={{ backgroundColor: "green", color: "white" }}
-className="btn "
->
-{t("Submit complaint")}
-</button>
-</div>
-</div>
-</div>
-</div>
-)}
 
-{popup && (
-  <div className="container my-5">
-          <div className="row">
-            <i
-              className="fa-sharp fa-regular fa-circle-check text-center"
-              style={{ color: "#14992a", fontSize: 180 }}
-            ></i>
-            <h1 className="text-center" style={{ fontSize: 80 }}>
-              Complaint sumitted successfully!
-            </h1>
+          <div
+            className="modal fade"
+            id="exampleModalToggle"
+            aria-hidden="true"
+            aria-labelledby="exampleModalToggleLabel"
+            tabIndex="-1"
+          >
+            <div className="modal-dialog modal-dialog-centered">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h1 className="modal-title fs-5" id="exampleModalLabel">
+                    {t("Your feedback")}
+                  </h1>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div className="modal-body">
+                  <form onSubmit={handleSubmit}>
+                    <div className="mb-3">
+                      <label htmlFor="Name" className="col-form-label">
+                       {t(" Name:")}
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="Name"
+                        value={feedbackName}
+                        onChange={handlefeedbackName}
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <label htmlFor="message-text" className="col-form-label">
+                        {t("Message:")}
+                      </label>
+                      <textarea
+                        className="form-control"
+                        id="message-text"
+                        value={feedbackMessage}
+                        onChange={handlefeedbackMessage}
+                      ></textarea>
+                    </div>
+                    <div className="d-flex justify-content-center">
+                      <button
+                        className="btn btn-success w-50"
+                        data-bs-target="#exampleModalToggle2"
+                        data-bs-toggle="modal"
+                        disabled={
+                          feedbackName && feedbackMessage ? false : true
+                        }
+                      >
+                        {t("Send")}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            className="modal fade"
+            id="exampleModalToggle2"
+            aria-hidden="true"
+            aria-labelledby="exampleModalToggleLabel2"
+            tabIndex="-1"
+          >
+            <div className="modal-dialog modal-dialog-centered">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div className="modal-body d-flex flex-column align-items-center">
+                  <i
+                    className="fa-sharp fa-regular fa-circle-check text-center"
+                    style={{ color: "#14992a", fontSize: 80 }}
+                  ></i>
+                  <p className="my-2 fs-4 fw-bolder">
+                    {t("We received your feedback, Thanks.")}
+                  </p>
+                </div>
+           
+              </div>
+            </div>
           </div>
         </div>
-  ) 
-}
-
-    </div>
+      </div>
+    </>
   );
-};
+}
 
 export default Pharmacies;

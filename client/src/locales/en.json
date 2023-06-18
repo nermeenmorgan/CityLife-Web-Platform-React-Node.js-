@@ -68,15 +68,16 @@
   "Al Baghl": "Al Baghl",
   "Old but the original": "Old but the original",
   "Shop No. 66, The old commerial market": "Shop No. 66, The old commerial market",
-
+"Discover the best schools in Rehab Egypt and give your child the gift of quality education. Our featured schools are dedicated to providing exceptional learning experiences.  The campuses of the schools in Al Rehab City are well-designed and spacious, with modern facilities.":"Discover the best schools in Rehab Egypt and give your child the gift of quality education. Our featured schools are dedicated to providing exceptional learning experiences.  The campuses of the schools in Al Rehab City are well-designed and spacious, with modern facilities.",
   "The British School - Al Rehab": "The British School - Al Rehab",
-  "Founded in 2001, GEMS British School Al Rehab, Cairo (GEMS TBS) is one of the oldest, most established British schools in Egypt located in the heart of the beautiful city of Rehab. We are committed to providing a respectful, nurturing and creative learning environment, delivering the highest standards of education to each and every one of our students.": "Founded in 2001, GEMS British School Al Rehab, Cairo (GEMS TBS) is one of the oldest, most established British schools in Egypt located in the heart of the beautiful city of Rehab. We are committed to providing a respectful, nurturing and creative learning environment, delivering the highest standards of education to each and every one of our students.",
+  "Education in Rehab":"Education in Rehab",
+  "Discover the best schools in Rehab Egypt and give your child the gift of quality education. Our featured schools are dedicated to providing exceptional learning experiences. The campuses of the schools in Al Rehab City are well-designed and spacious, with modern facilities.":"Discover the best schools in Rehab Egypt and give your child the gift of quality education. Our featured schools are dedicated to providing exceptional learning experiences. The campuses of the schools in Al Rehab City are well-designed and spacious, with modern facilities.",
+  "Founded in 2001, GEMS British School Al Rehab, Cairo (GEMS TBS) is one of the oldest, most established British schools in Egypt located in the heart of the beautiful city of Rehab.": "Founded in 2001, GEMS British School Al Rehab, Cairo (GEMS TBS) is one of the oldest, most established British schools in Egypt located in the heart of the beautiful city of Rehab.",
   "El-Rehab 1, beside Mall 1": "El-Rehab 1, beside Mall 1",
   "Othman Ibn Affan School": "Othman Ibn Affan School",
-  "Commencing in 1992, Futures Language Schools (FLS) is now the largest chain of private schools in Egypt. To ensure maximum geographical outreach, our schools are spread across Egypt with plans for expansion, both nationally and internationally. There are 15 schools within the Greater Cairo Metropolis, and 5 schools in Hurghada, Dahab, Suez, Assiut, and Minya; totaling 20 language and international schools in Egypt.": "Commencing in 1992, Futures Language Schools (FLS) is now the largest chain of private schools in Egypt. To ensure maximum geographical outreach, our schools are spread across Egypt with plans for expansion, both nationally and internationally. There are 15 schools within the Greater Cairo Metropolis, and 5 schools in Hurghada, Dahab, Suez, Assiut, and Minya; totaling 20 language and international schools in Egypt.",
+  "To ensure maximum geographical outreach, our schools are spread across Egypt with plans for expansion, both nationally and internationally.": "To ensure maximum geographical outreach, our schools are spread across Egypt with plans for expansion, both nationally and internationally.",
   "Othman Ibn Affan, Second New Cairo, Cairo Governorate 4750515": "Othman Ibn Affan, Second New Cairo, Cairo Governorate 4750515",
   "Futures Language Schools Al Rehab": "Futures Language Schools Al Rehab",
-  "To ensure maximum geographical outreach, our schools are spread across Egypt with plans for expansion, both nationally and internationally. There are 15 schools within the Greater Cairo Metropolis, and 5 schools in Hurghada, Dahab, Suez, Assiut, and Minya; totaling 20 language and international schools in Egypt.": "To ensure maximum geographical outreach, our schools are spread across Egypt with plans for expansion, both nationally and internationally. There are 15 schools within the Greater Cairo Metropolis, and 5 schools in Hurghada, Dahab, Suez, Assiut, and Minya; totaling 20 language and international schools in Egypt.",
   "Third stage, El-Rehab 1, Cairo Governorate 11841": "Third stage, El-Rehab 1, Cairo Governorate 11841",
   "First Step Nursery": "First Step Nursery",
   "First Step Nursery is one of the best nurseries in Al Rehab City": "First Step Nursery is one of the best nurseries in Al Rehab City",
@@ -199,8 +200,15 @@
 "website :": "website :",
 "About Healthcare Facilities":"About Healthcare Facilities",
 "Pharmacies":"Pharmacies",
-"Rehab City boasts a network of pharmacies that offer a wide range of medications and healthcare products. These pharmacies are staffed with knowledgeable pharmacists who can provide expert advice and guidance on medication usage, dosage, and potential interactions. Whether you're looking for prescription medications, over-the-counter drugs, or health supplements, you can rely on the pharmacies in Rehab City to fulfill your needs.":"Rehab City boasts a network of pharmacies that offer a wide range of medications and healthcare products. These pharmacies are staffed with knowledgeable pharmacists who can provide expert advice and guidance on medication usage, dosage, and potential interactions. Whether you're looking for prescription medications, over-the-counter drugs, or health supplements, you can rely on the pharmacies in Rehab City to fulfill your needs.",
+"Rehab City boasts a network of pharmacies that offer a wide range of medications and healthcare products. These pharmacies are staffed with knowledgeable pharmacists who can provide expert advice and guidance on medication usage, dosage, and potential interactions.":"Rehab City boasts a network of pharmacies that offer a wide range of medications and healthcare products. These pharmacies are staffed with knowledgeable pharmacists who can provide expert advice and guidance on medication usage, dosage, and potential interactions.",
 "Visit website":"Visit website",
+
+
+"Schools":"Schools",
+"Kindergartens":"Kindergartens",
+
+
+
 "Health Centers":"Health Centers",
 "Experience a comprehensive approach to health and wellness in Rehab City, Egypt. Our community is dedicated to providing top-notch healthcare services and facilities to residents. Whether you're in need of medical care, preventive services, or specialized treatments, you'll find a range of options to meet your healthcare needs.":"Experience a comprehensive approach to health and wellness in Rehab City, Egypt. Our community is dedicated to providing top-notch healthcare services and facilities to residents. Whether you're in need of medical care, preventive services, or specialized treatments, you'll find a range of options to meet your healthcare needs.",
 "Submit complaint":"Submit complaint",
@@ -208,6 +216,7 @@
 "Location":"Location",
 "for Schedule press here":"for Schedule press here",
 "Email:":"Email:",
+"Email":"Email",
 "Phone:":"Phone:",
 "show":"show",
 "Buses Inside the City":"Buses Inside the City",
@@ -217,6 +226,31 @@
 "Pharmacies":"Pharmacies",
   "website :":"website",
   "Promoting Health and Wellness in Rehab":"Promoting Health and Wellness in Rehab",
+  "Pharmacies in El-Rehab City":"Pharmacies in El-Rehab City",
+  "Address":"Address",
+  "Overview":"Overview",
+
+
+  "Seafood Restaurants": "Seafood Restaurants",
+"Oriental Food Restaurants": "Oriental Food Restaurants",
+"Shawarma Restaurants": "Shawarma Restaurants",
+"Fried Chicken Restaurants": "Fried Chicken Restaurants",
+"Fast Food Restaurants": "Fast Food Restaurants",
+"Get in touch": "Get in touch",
+"We will answer your questions and problems": "We will answer your questions and problems",
+"Name": "Name",
+"Enter your name": "Enter your name",
+"Phone": "Phone",
+"Enter your email": "Enter your email",
+"Enter your phone number": "Enter your phone number",
+"Message": "Message",
+"Leave your message": "Leave your message",
+"submit": "submit",
+"Submit": "Submit",
+"City Hall Location": "City Hall Location",
+"Telephone": "Telephone",
+
+  "The old commerial market, beside Tom and Basal resturant":"The old commerial market, beside Tom and Basal resturant",
   "RAViN jeanswear is a fashion retail & wholesale brand, we have 50 shops average 250 meters each and are the best sellers wherever we are, so customers sure are satisfied with our products. our brand is very popular that our facebook page has more than 1 million likes.Producing, for him and for her, a wide range of garments, footwear, bags, and accessories. our product is high quality ,most are natural material, and factory prices.":"RAViN jeanswear is a fashion retail & wholesale brand, we have 50 shops average 250 meters each and are the best sellers wherever we are, so customers sure are satisfied with our products. our brand is very popular that our facebook page has more than 1 million likes.Producing, for him and for her, a wide range of garments, footwear, bags, and accessories. our product is high quality ,most are natural material, and factory prices.",
   "Carina Wear, the iconic Egyptian brand has been founded in 1996 in Cairo. The brand was initially established to provide Egyptian women with smart clothing solutions & basic bodywear and has evolved into a brand that provides must-have fashionable wardrobe staples for every woman to confidently carry herself. With Carina diverse product selection, it offers women an interesting array of product lines ranging from basic bodywear and shapewear to trendy fashion wear.":"Carina Wear, the iconic Egyptian brand has been founded in 1996 in Cairo. The brand was initially established to provide Egyptian women with smart clothing solutions & basic bodywear and has evolved into a brand that provides must-have fashionable wardrobe staples for every woman to confidently carry herself. With Carina diverse product selection, it offers women an interesting array of product lines ranging from basic bodywear and shapewear to trendy fashion wear."
 }
