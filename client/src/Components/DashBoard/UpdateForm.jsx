@@ -290,7 +290,7 @@ export default function UpdateForm() {
       alert("Update Successfully")
       navigate(-1)
     },
-    [ExchangedData, id, type, updateObj]
+    [ExchangedData, id, type, updateObj,navigate]
   );
 
   if (updateObj) {

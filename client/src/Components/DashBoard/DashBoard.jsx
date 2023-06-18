@@ -2,11 +2,15 @@ import React, { useCallback, useContext, useState } from "react";
 import { DataContext } from "../../Context/Data";
 // import { useNavigate } from 'react-router-dom'
 import ItemSection from "./ItemSection";
+import { useTranslation } from "react-i18next";
+
 
 export default function DashBoard() {
   // const navigate = useNavigate
   const { ...ExchangedData } = useContext(DataContext);
   const [selectedItem, setSelectedItem] = useState("");
+  const { t, i18n } = useTranslation();
+
   // console.log(ExchangedData)
 
   const handleChange = useCallback((e) => {
@@ -83,8 +87,13 @@ export default function DashBoard() {
 
   return (
     <>
-      <div className="w-50 mx-auto mt-5">
-        <span className="fw-bold fs-5">Choose Service or Category: </span>
+      <div className="w-50 mx-auto mt-5"
+                          style={{
+                            direction: i18n.language === "ar" ? "rtl" : "",
+                            // textAlign: i18n.language === "ar" ? "right" : "",
+                          }}
+      >
+        <span className="fw-bold fs-5">{t("Choose Service or Category")}: </span>
         <select
           className="form-select mt-3"
           aria-label="Default select example2"
@@ -94,27 +103,27 @@ export default function DashBoard() {
           <option value="" disabled>
             choose...
           </option>
-          <option value="Banks">Banks</option>
-          <option value="Markets">Markets</option>
+          <option value="Banks">{t("Banks")}</option>
+          <option value="Markets">{t("Markets")}</option>
           <option value="Medical_Centers">Medical Centers</option>
-          <option value="Pharmacies">Pharmacies</option>
-          <option value="Schools">Schools</option>
-          <option value="Kindergartens">Kindergartens</option>
-          <option value="Cinema">Cinema</option>
+          <option value="Pharmacies">{t("Pharmacies")}</option>
+          <option value="Schools">{t("Schools")}</option>
+          <option value="Kindergartens">{t("Kindergartens")}</option>
+          <option value="Cinema">{t("Cinema")}</option>
           <optgroup label="Restaurants">
-            <option value="shawarma">Shawarma</option>
-            <option value="fried">Fried</option>
-            <option value="pizza">Pizza</option>
-            <option value="seafood">Seafood</option>
+            <option value="shawarma">{t("Shawarma")}</option>
+            <option value="fried">{t("Fried")}</option>
+            <option value="pizza">{t("Pizza")}</option>
+            <option value="seafood">{t("Seafood")}</option>
             <option value="fastfood">Fast Food</option>
             <option value="orientalfood">Oriental Food</option>
           </optgroup>
-          <option value="Shopping">Shopping</option>
-          <option value="Fashion">Fashion</option>
-          <option value="Sports">Sports</option>
-          <option value="Maintenance">Maintenance</option>
+          <option value="Shopping">{t("Shopping")}</option>
+          <option value="Fashion">{t("Fashion")}</option>
+          <option value="Sports">{t("Sports")}</option>
+          <option value="Maintenance">{t("Maintenance")}</option>
           <option value="Home_Services">Home_Services</option>
-          <option value="Transportation">Transportation</option>
+          <option value="Transportation">{t("Transportation")}</option>
         </select>
       </div>
       <ItemSection

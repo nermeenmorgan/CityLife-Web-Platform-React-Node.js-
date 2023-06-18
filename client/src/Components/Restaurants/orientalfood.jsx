@@ -65,6 +65,7 @@ const Orientalfood = () => {
                     className="rounded-circle me-5 mb-3 mb-md-0"
                     style={{ maxWidth: "100px", maxHeight: "100px" }}
                     src={res.logo}
+                    alt="logo"
                   />
 
                   <div
@@ -100,7 +101,7 @@ const Orientalfood = () => {
                 <a
                   href={res.location}
                   className={
-                    i18n.language == "en"
+                    i18n.language === "en"
                       ? "d-none d-sm-block offset-7"
                       : "d-none d-sm-block  offset-1"
                   }
@@ -132,7 +133,6 @@ const Orientalfood = () => {
                     width: "150px",
                     height: "160px",
                     borderRadius: 10,
-                    borderRadius: 10,
                     boxShadow: "0 0 4px rgba(0, 0, 0, 0.2)",
                     transition: "transform 0.3s ease-in-out",
                   }}
@@ -145,7 +145,6 @@ const Orientalfood = () => {
                     width: "150px",
                     height: "160px",
                     borderRadius: 10,
-                    borderRadius: 10,
                     boxShadow: "0 0 4px rgba(0, 0, 0, 0.2)",
                     transition: "transform 0.3s ease-in-out",
                   }}
@@ -157,7 +156,6 @@ const Orientalfood = () => {
                   style={{
                     width: "150px",
                     height: "160px",
-                    borderRadius: 10,
                     borderRadius: 10,
                     boxShadow: "0 0 4px rgba(0, 0, 0, 0.2)",
                     transition: "transform 0.3s ease-in-out",

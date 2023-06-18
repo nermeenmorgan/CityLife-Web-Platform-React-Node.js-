@@ -39,7 +39,7 @@ import UpdateFormBanks from "./Components/DashBoard/UpdateForm";
 import Profile from './Components/Profile/Profile';
 import { I18nextProvider } from 'react-i18next';
 // import i18n from 'i18next';
-import i18n from './i18n';
+// import i18n from './i18n';
 import Details from "./Components/Details/Details";
 import ProtectedRoutedb from "./Components/ProtectedRoute/ProtectedRoutedb.jsx";
 
@@ -104,20 +104,20 @@ function App() {
   ]);
 
 
-  i18n.init({
-    interpolation: { escapeValue: false },
-    lng: 'en',
-    resources: {
-      en: {
+  // i18n.init({
+  //   interpolation: { escapeValue: false },
+  //   lng: 'en',
+  //   resources: {
+  //     en: {
         
-        translation: require('./locales/en.json')
-      },
-      ar: {
-        translation: require('./locales/ar.json')
-      }
-    }
-  });
-  const language = i18n.language;
+  //       translation: require('./locales/en.json')
+  //     },
+  //     ar: {
+  //       translation: require('./locales/ar.json')
+  //     }
+  //   }
+  // });
+  // const language = i18n.language;
   return (
     // <>
     //   <Data>
@@ -127,11 +127,11 @@ function App() {
  <>
       <Data>
         <RouterProvider router={routers}>
-          <I18nextProvider i18n={i18n}>
-          <div dir={language === 'ar' ? 'rtl' : 'ltr'}>
+          {/* <I18nextProvider i18n={i18n}> */}
+          {/* <div dir={language === 'ar' ? 'rtl' : 'ltr'}> */}
             <Layout />
-          </div>
-          </I18nextProvider>
+          {/* </div> */}
+          {/* </I18nextProvider> */}
         </RouterProvider>
       </Data>
     </>

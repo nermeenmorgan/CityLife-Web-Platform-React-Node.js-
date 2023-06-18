@@ -67,6 +67,7 @@ const Seafood = () => {
                     className="rounded-circle me-5 mb-3 mb-md-0"
                     style={{ maxWidth: "100px", maxHeight: "100px" }}
                     src={res.logo}
+                    alt="logo"
                   />
 
                   <div
@@ -102,7 +103,7 @@ const Seafood = () => {
                 <a
                   href={res.location}
                   className={
-                    i18n.language == "en"
+                    i18n.language === "en"
                       ? "d-none d-sm-block offset-7"
                       : "d-none d-sm-block  offset-1"
                   }
@@ -134,7 +135,6 @@ const Seafood = () => {
                     width: "150px",
                     height: "160px",
                     borderRadius: 10,
-                    borderRadius: 10,
                     boxShadow: "0 0 4px rgba(0, 0, 0, 0.2)",
                     transition: "transform 0.3s ease-in-out",
                   }}
@@ -147,12 +147,12 @@ const Seafood = () => {
                     width: "150px",
                     height: "160px",
                     borderRadius: 10,
-                    borderRadius: 10,
                     boxShadow: "0 0 4px rgba(0, 0, 0, 0.2)",
                     transition: "transform 0.3s ease-in-out",
                   }}
                   src={res.img2}
                   alt="img 2"
+                
                 />
                 <img
                   className="my-2 mx-3  itStyle"
@@ -160,12 +160,12 @@ const Seafood = () => {
                     width: "150px",
                     height: "160px",
                     borderRadius: 10,
-                    borderRadius: 10,
                     boxShadow: "0 0 4px rgba(0, 0, 0, 0.2)",
                     transition: "transform 0.3s ease-in-out",
                   }}
                   src={res.img3}
                   alt="img 3"
+          
                 />
               </div>
 

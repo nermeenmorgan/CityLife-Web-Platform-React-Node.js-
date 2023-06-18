@@ -10,8 +10,8 @@ export default function RestaurantsNavbar() {
           <li className="nav-item">
             <NavLink
               className="nav-link"
-              activeClassName="active"
-              exact
+              activeclassname="active"
+              exact='true'
               to="/restaurants"
             >
               <div className="nav-item-wrapper text-center">
@@ -33,7 +33,7 @@ export default function RestaurantsNavbar() {
           <li className="nav-item">
             <NavLink
               className="nav-link"
-              activeClassName="active"
+              activeclassname="active"
               to="/restaurants/seafood"
             >
               <div className="nav-item-wrapper text-center">
@@ -55,7 +55,7 @@ export default function RestaurantsNavbar() {
           <li className="nav-item">
             <NavLink
               className="nav-link"
-              activeClassName="active"
+              activeclassname="active"
               to="/restaurants/fastfood"
             >
               <div className="nav-item-wrapper text-center">
@@ -77,7 +77,7 @@ export default function RestaurantsNavbar() {
           <li className="nav-item">
             <NavLink
               className="nav-link"
-              activeClassName="active"
+              activeclassname="active"
               to="/restaurants/fried"
             >
               <div className="nav-item-wrapper text-center">
@@ -99,7 +99,7 @@ export default function RestaurantsNavbar() {
           <li className="nav-item">
             <NavLink
               className="nav-link"
-              activeClassName="active"
+              activeclassname="active"
               to="/restaurants/shawarma"
             >
               <div className="nav-item-wrapper text-center">
@@ -121,7 +121,7 @@ export default function RestaurantsNavbar() {
           <li className="nav-item">
             <NavLink
               className="nav-link"
-              activeClassName="active"
+              activeclassname="active"
               to="/restaurants/oriental"
             >
               <div className="nav-item-wrapper text-center">
