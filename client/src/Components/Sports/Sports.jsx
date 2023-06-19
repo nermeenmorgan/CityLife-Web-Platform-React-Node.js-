@@ -160,7 +160,7 @@ export default function Sports() {
                 </div>
 
                 <div className="col-lg-6  col-12 mt-sm-3" style={{}}>
-                  {/*Slider */}s
+                  {/*Slider */}
                   <Slider {...settings}>
                     <div className="my-3 px-1">
                       <img

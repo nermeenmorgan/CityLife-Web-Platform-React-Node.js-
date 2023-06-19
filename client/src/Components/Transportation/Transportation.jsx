@@ -2,6 +2,9 @@ import React, { useCallback, useContext, useState } from "react";
 import { DataContext } from "../../Context/Data";
 import "./transportation.css";
 import Slider from "react-slick";
+import { useTranslation } from "react-i18next";
+import { toFormData } from "axios";
+
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -22,6 +25,7 @@ function SamplePrevArrow(props) {
 }
 
 export default function Transportation() {
+  const { t, i18n } = useTranslation();
   const { buses } = useContext(DataContext);
 
   // handle lines select options
@@ -83,63 +87,19 @@ export default function Transportation() {
   return (
     <>
       <div className="container">
-        <div className="row">
+        <div className="row"
+                            style={{
+                              direction: i18n.language === "ar" ? "rtl" : "",
+                              // textAlign: i18n.language === "ar" ? "right" : "",
+                            }}
+        >
           {/* Title and silder */}
           <div className="d-flex flex-column mb-2">
             <div>
               <h1 className="my-4 text-center">
-                Transportation (Inside and Outside City)
+                {t("Transportation (Inside and Outside City)")}
               </h1>
             </div>
-
-            {/* <div
-              id="carouselExampleAutoplaying"
-              className="carousel slide "
-              data-bs-ride="carousel"
-            >
-              <div className="carousel-inner">
-                <div className="carousel-item active">
-                  <img
-                    src={buses !== null ? buses[0].img1 : null}
-                    className="d-block w-100 rounded-5"
-                    alt="outside"
-                    style={{ height: 400 }}
-                  />
-                </div>
-                <div className="carousel-item">
-                  <img
-                    src={buses !== null ? buses[1].img1 : null}
-                    className="d-block w-100 rounded-5"
-                    alt="inside"
-                    style={{ height: 400 }}
-                  />
-                </div>
-              </div>
-              <button
-                className="carousel-control-prev"
-                type="button"
-                data-bs-target="#carouselExampleAutoplaying"
-                data-bs-slide="prev"
-              >
-                <span
-                  className="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Previous</span>
-              </button>
-              <button
-                className="carousel-control-next"
-                type="button"
-                data-bs-target="#carouselExampleAutoplaying"
-                data-bs-slide="next"
-              >
-                <span
-                  className="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Next</span>
-              </button>
-            </div> */}
             <Slider {...settings}>
               <div className="my-3 px-1">
                 <img
@@ -167,7 +127,7 @@ export default function Transportation() {
                   <div key={bus.id} className="shadow p-4 rounded-4">
                     <div className="d-flex justify-content-between ">
                       <div>
-                        <p className="fw-bolder fs-5">{bus.name}</p>
+                        <p className="fw-bolder fs-5">{t(bus.name)}</p>
                       </div>
                       <div>
                         <a href={bus.location} className="">
@@ -176,10 +136,10 @@ export default function Transportation() {
                       </div>
                     </div>
                     <div className="d-flex justify-content-center">
-                      <p className="fw-bold"> {bus.dur} </p>
+                      <p className="fw-bold"> {t(bus.dur)} </p>
                     </div>
                     <div>
-                      <p className="fw-semibold">Choose line:</p>
+                      <p className="fw-semibold">{t("Choose line")}:</p>
                       <select
                         className="form-select form-select-md mb-3"
                         aria-label="Default select example"
@@ -189,37 +149,37 @@ export default function Transportation() {
                         value={selectedLineObj[bus.id] || ""}
                       >
                         <option value="" disabled>
-                          Choose...
+                          {t("Choose")}...
                         </option>
 
                         {bus.line1 ? (
-                          <option value={bus.line1}>First line</option>
+                          <option value={bus.line1}>{t("First line")}</option>
                         ) : null}
                         {bus.line2 ? (
-                          <option value={bus.line2}>Second line</option>
+                          <option value={bus.line2}>{t("Second line")}</option>
                         ) : null}
                         {bus.line3 ? (
-                          <option value={bus.line3}>Third line</option>
+                          <option value={bus.line3}>{("Third line")}</option>
                         ) : null}
                         {bus.line4 ? (
-                          <option value={bus.line4}>Forth line</option>
+                          <option value={bus.line4}>{t("Forth line")}</option>
                         ) : null}
                         {bus.line5 ? (
-                          <option value={bus.line5}>Fifth line</option>
+                          <option value={bus.line5}>{t("Fifth line")}</option>
                         ) : null}
                         {bus.line6 ? (
-                          <option value={bus.line6}>Sixth line</option>
+                          <option value={bus.line6}>{t("Sixth line")}</option>
                         ) : null}
                       </select>
                     </div>
                     <div>
                       <p className="fw-bold fs-5 mainColor">
-                        {selectedLineObj[bus.id]}
+                        {t(selectedLineObj[bus.id])}
                       </p>
                     </div>
                     <div className="cont">
                       <div className="d-flex flex-column align-items-center justify-content-center">
-                        <p className="fw-semibold">for Schedule press here</p>
+                        <p className="fw-semibold">{t("for Schedule press here")}</p>
                         <button
                           className="btn btn-success px-5"
                           // style={{width:30}}
@@ -227,7 +187,7 @@ export default function Transportation() {
                             openModal(bus);
                           }}
                         >
-                          show
+                          {t("show")}
                         </button>
                       </div>
 
@@ -262,18 +222,18 @@ export default function Transportation() {
                 className=" px-4 mb-3 mt-4 d-flex flex-column justify-content-between"
                 style={{ height: "88%" }}
               >
-                <h4 className="text-center">Contact us</h4>
+                <h4 className="text-center">{t("Contact us")}</h4>
 
                 {/* Email */}
                 <div className="Email-Section">
-                  <h4>Email: </h4>
+                  <h4>{t("Email")}: </h4>
                   <h5 className="">Rehab@gmail.com </h5>
                   <h5 className="">city.hall@gmail.com</h5>
                 </div>
 
                 {/* Telephone */}
                 <div className="Telephone-Section">
-                  <h4>Telephone: </h4>
+                  <h4>{t("Telephone")}: </h4>
                   <h5 className="">+20 87 48 121 </h5>
                   <h5 className="">+20 87 48 122</h5>
                   <h5 className="">+20 87 48 123</h5>
@@ -281,7 +241,7 @@ export default function Transportation() {
 
                 {/* Phone */}
                 <div className="Phone-Section">
-                  <h4>Phone: </h4>
+                  <h4>{t("Phone")}: </h4>
                   <h5 className=""> +20 111 28 90765 </h5>
                   <h5 className=""> +20 112 28 90765 </h5>
                   <h5 className=""> +20 101 28 90765 </h5>
@@ -292,7 +252,7 @@ export default function Transportation() {
                     data-bs-target="#exampleModalToggle"
                     data-bs-toggle="modal"
                   >
-                    Feedback
+                    {t("Feedback")}
                   </button>
                 </div>
 
@@ -308,7 +268,7 @@ export default function Transportation() {
                     <div className="modal-content">
                       <div className="modal-header">
                         <h1 className="modal-title fs-5" id="exampleModalLabel">
-                          Your feedback
+                          {t("Your feedback")}
                         </h1>
                         <button
                           type="button"
@@ -321,7 +281,7 @@ export default function Transportation() {
                         <form onSubmit={handleSubmit}>
                           <div className="mb-3">
                             <label htmlFor="Name" className="col-form-label">
-                              Name:
+                              {t("Name")}:
                             </label>
                             <input
                               type="text"
@@ -336,7 +296,7 @@ export default function Transportation() {
                               htmlFor="message-text"
                               className="col-form-label"
                             >
-                              Message:
+                              {t("Message")}:
                             </label>
                             <textarea
                               className="form-control"
@@ -354,7 +314,7 @@ export default function Transportation() {
                                 feedbackName && feedbackMessage ? false : true
                               }
                             >
-                              Send
+                              {t("Send")}
                             </button>
                           </div>
                         </form>
@@ -386,7 +346,7 @@ export default function Transportation() {
                           style={{ color: "#14992a", fontSize: 80 }}
                         ></i>
                         <p className="my-2 fs-4 fw-bolder">
-                          We received your feedback, Thanks.
+                          {t("We received your feedback, Thanks.")}
                         </p>
                       </div>
                     </div>

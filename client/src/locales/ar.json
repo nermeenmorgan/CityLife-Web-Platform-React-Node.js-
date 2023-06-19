@@ -268,7 +268,16 @@
  "Language":"اللغة",
  "Country":"البلد",
  "Cast":"الممثلين",
- "Choose Service or Category":"اختر فئة أو خدمة"
+ "Choose Service or Category":"اختر فئة أو خدمة",
+ "Choose line":"اختار خط سير",
+ "First line":"الخط الاول",
+ "Second line":"الخط الثاني",
+ "Third line":"الخط الثالث",
+ "Forth line":"الخط الرابع",
+ "Fifth line":"الخط الخامس",
+ "Sixth line":"الخط السادس",
+ "Choose":"اختر"
+
 
 
 }

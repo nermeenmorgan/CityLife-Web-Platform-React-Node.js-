@@ -256,7 +256,17 @@
  "Language":"Language",
  "Country":"Country",
  "Cast":"Cast",
- "Choose Service or Category":"Choose Service or Category"
+ "Choose Service or Category":"Choose Service or Category",
+ "Choose line":"Choose line",
+ "First line":"First line",
+ "Second line":"Second line",
+ "Third line":"Third line",
+ "Forth line":"Forth line",
+ "Fifth line":"Fifth line",
+ "Sixth line":"Sixth line",
+ "Choose":"Choose"
+
+
 
 
 
