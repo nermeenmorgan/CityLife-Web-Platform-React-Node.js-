@@ -45,9 +45,9 @@ export default function Navbar() {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-main-light"
-              style={{
-                direction: i18n.language === "ar" ? "rtl" : "ltr",
-              }}
+        style={{
+          direction: i18n.language === "ar" ? "rtl" : "ltr",
+        }}
       >
         <div className="container-fluid">
           <Link className="navbar-brand" to="">
@@ -185,12 +185,12 @@ export default function Navbar() {
                 userData.id === "648a002ac64b570033765c4b" && (
                   <li className="nav-item">
                     <Link className="nav-link" to="dashboard">
-                     {t("DashBoard")}
+                      {t("DashBoard")}
                     </Link>
                   </li>
                 )}
             </ul>
-            <ul className={`d-flex flex-lg-row align-items-lg-center flex-column mt-3  ms-0 ps-0 ${i18n.language === "ar" ? "me-lg-auto" :"ms-lg-auto"}`}>
+            <ul className={`d-flex flex-lg-row align-items-lg-center flex-column mt-3  ms-0 ps-0 ${i18n.language === "ar" ? "me-lg-auto" : "ms-lg-auto"}`}>
               <button
                 style={{
                   fontSize: 13,
@@ -211,7 +211,7 @@ export default function Navbar() {
                 className="d-flex align-items-center me-2"
                 onSubmit={handleSubmit}
               >
-                <div className={`input-group ${i18n.language === "ar"&& "d-flex flex-lg-row-reverse"}`}>
+                <div className={`input-group ${i18n.language === "ar" && "d-flex flex-lg-row-reverse"}`}>
                   <div className="form-outline">
                     <input
                       type="text"
@@ -264,10 +264,10 @@ export default function Navbar() {
                     {t("Sign out")}
                   </button>
                   <Link
-                    className=" text-white bg-dark  rounded-circle p-2 ms-2 "
+                    className=" btn btn-dark"
                     to="profile"
                   >
-                    <i className="fa-solid fa-user"></i>
+                    <i class="fa-solid fa-user"></i>
                   </Link>
                 </div>
               )}

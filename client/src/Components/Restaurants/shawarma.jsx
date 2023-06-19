@@ -178,7 +178,6 @@ const Shawarma = () => {
                 <button
                   className="btn btn-success me-2 "
                   style={{
-                    width: "20%",
                     borderRadius: "10px",
                     boxShadow: "0px 2px 2px 2px rgba(0, 0, 0, 0.3)",
                 
@@ -205,7 +204,6 @@ const Shawarma = () => {
                     // fontSize:15,
                     // fontWeight:"bold",
                     borderRadius: "10px",
-                    width: "20%",
                     boxShadow: "0px 2px 2px 2px rgba(0, 0, 0, 0.3)",
                   }}
                 >

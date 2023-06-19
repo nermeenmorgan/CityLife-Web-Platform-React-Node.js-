@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../Context/Data";
 import Slider from "react-slick";
-
+import FeedBack from '../FeedBack/FeedBack'
+import i18next, { t } from 'i18next'
 import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
 
@@ -10,11 +11,14 @@ const Centers = () => {
   const [feedbackName, setFeedbackName] = useState("");
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
- 
+  const [message, setMessage] = useState('')
+
+
+
   const { t, i18n } = useTranslation();
   const handlefeedbackName = useCallback((event) => {
     setFeedbackName(event.target.value);
-  },[]);
+  }, []);
   const settings = {
     dots: false,
     fade: true,
@@ -29,15 +33,15 @@ const Centers = () => {
     arrows: false,
   };
 
-  const handlefeedbackMessage = useCallback ((event) => {
+  const handlefeedbackMessage = useCallback((event) => {
     setFeedbackMessage(event.target.value);
-  },[]);
+  }, []);
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
     setFeedbackName("");
     setFeedbackMessage("");
-  },[]);
+  }, []);
   const handleShowModal = () => {
     setShowModal(!showModal);
   };
@@ -49,7 +53,7 @@ const Centers = () => {
 
   return (
     <>
-             <div className="container">
+      <div className="container">
         <div className="row">
           {Centers ? (
             Centers.map((res) => (
@@ -74,7 +78,7 @@ const Centers = () => {
                       <div className="fs-4 fw-bold mb-1">{t(res.name)}</div>
                       {res.Rating >= 1 && res.Rating <= 5 && (
                         <div className="d-flex align-items-center">
-                         
+
                           <i
                             className="fa-solid fa-star"
                             style={{ color: "#f5e324" }}
@@ -101,7 +105,7 @@ const Centers = () => {
                     </div>
                   </div>
                   <div className="row justify-content-center align-items-center ms-1 mb-3">
-                   
+
                     <div className="fs-5 fw-bold mt-3">{t("Address")}</div>
                     <div className="fs-5 ">{t(res.address)}</div>
                     <div className="fs-5 fw-bold mt-3">{t("Overview")}</div>
@@ -113,27 +117,29 @@ const Centers = () => {
                             className="fa-solid fa-phone fa-2xl mainColor"
                             onClick={() => {
                               const whatsappURL = `https://wa.me/${res.number}`;
-                    window.location.href = whatsappURL;
+                              window.location.href = whatsappURL;
                             }}
                           ></i>
                         </div>
 
-                  
+
                       </div>
 
-                      <div className={i18n.language==='en'?"d-flex justify-content-center ms-5":"d-flex justify-content-center mx-2"}>
+                      <div className={i18n.language === 'en' ? "d-flex justify-content-center ms-5" : "d-flex justify-content-center mx-2"}>
                         <a href={res.location} className="">
                           <i className="fa-solid fa-location-dot fa-2xl mainColor"></i>
-                        
+
                         </a>
                       </div>
 
                       <div className="ms-5">
                         <button
+                          onClick={() => {
+                            setMessage(res.name)
+                          }}
                           className="btn fs-6 btn-success "
                           data-bs-target="#exampleModalToggle"
                           data-bs-toggle="modal"
-                          
                           disabled={userData ? false : true}
                         >
                           {t("Feedback")}
@@ -144,33 +150,33 @@ const Centers = () => {
                 </div>
 
                 <div className="col-lg-6  col-12 mt-sm-3" style={{}}>
-                  
+
                   <Slider {...settings}>
-              <div className="my-3 px-1">
-                <img
-                  height={230}
-                  className="w-100 rounded-4"
-                  src={res.img1}
-                  alt="Photos galley"
-                />
-              </div>
-              <div className="my-3 px-1">
-                <img
-                  height={230}
-                  className="w-100 rounded-4"
-                  src={res.img2}
-                  alt="Photos galley"
-                />
-              </div>
-              <div className="my-3 px-1">
-                <img
-                  height={230}
-                  className="w-100 rounded-4"
-                  src={res.img3}
-                  alt="Photos galley"
-                />
-              </div>
-            </Slider>
+                    <div className="my-3 px-1">
+                      <img
+                        height={230}
+                        className="w-100 rounded-4"
+                        src={res.img1}
+                        alt="Photos galley"
+                      />
+                    </div>
+                    <div className="my-3 px-1">
+                      <img
+                        height={230}
+                        className="w-100 rounded-4"
+                        src={res.img2}
+                        alt="Photos galley"
+                      />
+                    </div>
+                    <div className="my-3 px-1">
+                      <img
+                        height={230}
+                        className="w-100 rounded-4"
+                        src={res.img3}
+                        alt="Photos galley"
+                      />
+                    </div>
+                  </Slider>
                 </div>
               </div>
             ))
@@ -180,7 +186,26 @@ const Centers = () => {
             </div>
           )}
 
-          <div
+
+          <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
+            <div className="modal-dialog modal-dialog-centered">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h1 className="modal-title fs-5" id="exampleModalLabel">
+                    {t("Leave your message")}
+                  </h1>
+                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+                </div>
+                <div className="modal-body">
+
+                  <FeedBack message={message} ></FeedBack>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          {/* <div
             className="modal fade"
             id="exampleModalToggle"
             aria-hidden="true"
@@ -204,7 +229,7 @@ const Centers = () => {
                   <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                       <label htmlFor="Name" className="col-form-label">
-                       {t(" Name:")}
+                        {t(" Name:")}
                       </label>
                       <input
                         type="text"
@@ -241,9 +266,9 @@ const Centers = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <div
+          {/* <div
             className="modal fade"
             id="exampleModalToggle2"
             aria-hidden="true"
@@ -269,10 +294,13 @@ const Centers = () => {
                     {t("We received your feedback, Thanks.")}
                   </p>
                 </div>
-           
+
               </div>
             </div>
-          </div>
+          </div> */}
+
+
+
         </div>
       </div>
     </>

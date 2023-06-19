@@ -3,25 +3,29 @@ import { DataContext } from "../../Context/Data";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./AllRes.css";
 import { useTranslation } from "react-i18next";
+import FeedBack from "../FeedBack/FeedBack";
 
 export default function Restaurants() {
   const { AllRestaurants } = useContext(DataContext);
   const { t, i18n } = useTranslation();
   const [feedbackName, setFeedbackName] = useState("");
   const [feedbackMessage, setFeedbackMessage] = useState("");
+
+  const [message, setMessage] = useState('')
+
   const handlefeedbackName = useCallback((event) => {
     setFeedbackName(event.target.value);
-  },[]);
-  const handlefeedbackMessage = useCallback ((event) => {
+  }, []);
+  const handlefeedbackMessage = useCallback((event) => {
     setFeedbackMessage(event.target.value);
-  },[]);
+  }, []);
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
     setFeedbackName("");
     setFeedbackMessage("");
-  },[]);
-  
+  }, []);
+
 
   const [showModal, setShowModal] = useState(false);
 
@@ -85,19 +89,19 @@ export default function Restaurants() {
                       {t(res.name)}
                     </div>
                     <div className="d-flex align-items-center">
-                        <div style={{ marginRight:"10px"}} >4.0</div>
-                    <div className="d-flex justify-content-center align-content-center">
-                      {[...Array(parseInt(res.Rating))].map((_, index) => (
-                        <i
-                          style={{ color: "#ffc107" }}
-                          key={index}
-                          className="fa-solid fa-star fa-1x"
-                        ></i>
-                      ))}
-                    </div>
+                      <div style={{ marginRight: "10px" }} >4.0</div>
+                      <div className="d-flex justify-content-center align-content-center">
+                        {[...Array(parseInt(res.Rating))].map((_, index) => (
+                          <i
+                            style={{ color: "#ffc107" }}
+                            key={index}
+                            className="fa-solid fa-star fa-1x"
+                          ></i>
+                        ))}
+                      </div>
 
-                        
-                  </div>
+
+                    </div>
                   </div>
                 </div>
                 <a
@@ -128,7 +132,7 @@ export default function Restaurants() {
                 {t(res.overview)}
               </div>
 
-<div className="d-flex flex-wrap justify-content-evenly mx-sm-0">
+              <div className="d-flex flex-wrap justify-content-evenly mx-sm-0">
                 <img
                   className="my-2 mx-3  itStyle"
                   style={{
@@ -179,10 +183,9 @@ export default function Restaurants() {
                 <button
                   className="btn btn-success me-2 "
                   style={{
-                    width: "20%",
                     borderRadius: "10px",
                     boxShadow: "0px 2px 2px 2px rgba(0, 0, 0, 0.3)",
-                
+
 
                   }}
                   onClick={() => {
@@ -193,24 +196,42 @@ export default function Restaurants() {
                   {t("Contact restaurant")}
                 </button>
 
-                <button
-                 
-                          data-bs-target="#exampleModalToggle"
-                          data-bs-toggle="modal"
 
-                  
-                  onClick={handleShowModal}
+
+
+
+
+
+
+                <button
+
+                  data-bs-target="#exampleModalToggle"
+                  data-bs-toggle="modal"
+
+
+                  onClick={() => {
+                    handleShowModal()
+                    setMessage(res.name)
+                  }}
                   data-whatever="@mdo"
-                  className= {i18n.language==='en'? "btn btn-success me-2 ms-5 text-center":  "btn btn-success me-4 ms-5 text-center"}
+                  className={i18n.language === 'en' ? "btn btn-success me-2 ms-5 text-center" : "btn btn-success me-4 ms-5 text-center"}
                   style={{
                     // fontSize:15,
                     // fontWeight:"bold",
                     borderRadius: "10px",
-                    width: "20%",
                     boxShadow: "0px 2px 2px 2px rgba(0, 0, 0, 0.3)",
                   }}
                 >
                   {t("Feedback")}
+
+
+
+
+
+
+
+
+
                 </button>
                 <div>
                   <div></div>
@@ -238,98 +259,66 @@ export default function Restaurants() {
       </div>
 
       <div
-            className="modal fade"
-            id="exampleModalToggle"
-            aria-hidden="true"
-            aria-labelledby="exampleModalToggleLabel"
-            tabIndex="-1"
-          >
-            <div className="modal-dialog modal-dialog-centered">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h1 className="modal-title fs-5" id="exampleModalLabel">
-                    {t("Leave your message")}
-                  </h1>
-                  <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div className="modal-body">
-                  <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                      <label htmlFor="Name" className="col-form-label">
-                       {t("Name:")}
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="Name"
-                        value={feedbackName}
-                        onChange={handlefeedbackName}
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="message-text" className="col-form-label">
-                        {t("Message:")}
-                      </label>
-                      <textarea
-                        className="form-control"
-                        id="message-text"
-                        value={feedbackMessage}
-                        onChange={handlefeedbackMessage}
-                      ></textarea>
-                    </div>
-                    <div className="d-flex justify-content-center">
-                      <button
-                        className="btn btn-success w-50"
-                        data-bs-target="#exampleModalToggle2"
-                        data-bs-toggle="modal"
-                        disabled={
-                          feedbackName && feedbackMessage ? false : true
-                        }
-                      >
-                        {t("Send")}
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
+        className="modal fade"
+        id="exampleModalToggle"
+        aria-hidden="true"
+        aria-labelledby="exampleModalToggleLabel"
+        tabIndex="-1"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">
+                {t("Leave your message")}
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
-          </div>
+            <div className="modal-body">
 
-          <div
-            className="modal fade"
-            id="exampleModalToggle2"
-            aria-hidden="true"
-            aria-labelledby="exampleModalToggleLabel2"
-            tabIndex="-1"
-          >
-            <div className="modal-dialog modal-dialog-centered">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div className="modal-body d-flex flex-column align-items-center">
-                  <i
-                    className="fa-sharp fa-regular fa-circle-check text-center"
-                    style={{ color: "#14992a", fontSize: 80 }}
-                  ></i>
-                  <p className="my-2 fs-4 fw-bolder">
-                    {t("Thanks, We received your feedback!")}
-                  </p>
-                </div>
-           
-              </div>
+              <FeedBack message={message} ></FeedBack>
+
+
+
             </div>
           </div>
+        </div>
+      </div>
+      {/* 
+      <div
+        className="modal fade"
+        id="exampleModalToggle2"
+        aria-hidden="true"
+        aria-labelledby="exampleModalToggleLabel2"
+        tabIndex="-1"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body d-flex flex-column align-items-center">
+              <i
+                className="fa-sharp fa-regular fa-circle-check text-center"
+                style={{ color: "#14992a", fontSize: 80 }}
+              ></i>
+              <p className="my-2 fs-4 fw-bolder">
+                {t("Thanks, We received your feedback!")}
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div> */}
     </>
   );
 }

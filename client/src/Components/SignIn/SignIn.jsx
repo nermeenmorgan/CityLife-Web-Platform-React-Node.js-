@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useFormik } from 'formik'
 import React, { useContext, useState } from 'react'
-import { useNavigate, Link} from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import * as yup from "yup"
 import { DataContext } from '../../Context/Data'
 
@@ -35,7 +35,7 @@ export default function SignIn() {
 
     let validationSchema = yup.object({
         email: yup.string().required('Email is required').email('Invalid email'),
-        password: yup.string().required('Password is required').matches(/^[A-Z][A-Za-z0-9-_.]{10,16}/, 'Invalid Password'),
+        password: yup.string().required('Password is required').matches(/^[A-Za-z0-9-_.]{5,15}/, 'Invalid Password'),
     })
 
     let formik = useFormik({
@@ -69,15 +69,15 @@ export default function SignIn() {
                             </div>
 
                             {isLoading ? <button type='button' className='btn bg-main w-100 mt-3'><i className='fas fa-spinner fa-spin'></i></button> : <button disabled={!(formik.isValid && formik.dirty)} type="submit" className="btn bg-main text-white w-100 mt-3">Submit</button>}
-                        <div className='mx-auto mt-3'>
-                            <Link to='/signup'>
-                            <p>
-                                Create new account?
-                            </p>
-                            </Link> 
-                        </div>
+                            <div className='mx-auto mt-3'>
+                                <Link to='/signup'>
+                                    <p>
+                                        Create new account?
+                                    </p>
+                                </Link>
+                            </div>
                         </form>
-                           
+
                     </div>
                     <div className='col-sm-12 col-md-6'>
                         <img src="/images/login.jpg" alt="" className='w-100' />

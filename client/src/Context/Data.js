@@ -802,80 +802,98 @@ export default function Data(props) {
     [Kindergarten]
   );
 
+
+  /////////////////////////////////////////////
   // Profile  Component
   const [profileData, setProfileData] = useState(null);
-
   const [allUserData, setAllUserData] = useState(null);
 
-  function handleUserData(uData, dob, userName) {
-    setProfileData({ ...uData, dob: dob, userName: userName });
+
+
+  function handleUserData(uData, dob, userName, image) {
+    setProfileData({ ...uData, 'dob': dob, 'userName': userName, 'image': image });
   }
+
 
   useEffect(() => {
     if (profileData) {
-      localStorage.setItem("name", profileData.name);
-      localStorage.setItem("email", profileData.email);
-      localStorage.setItem("phone", profileData.phone);
-      localStorage.setItem("password", profileData.password);
-      localStorage.setItem("dob", profileData.dob);
-      localStorage.setItem("userName", profileData.userName);
+      console.log(profileData);
+      localStorage.setItem('name', profileData.name);
+      localStorage.setItem('email', profileData.email);
+      localStorage.setItem('phone', profileData.phone);
+      localStorage.setItem('password', profileData.password);
+      localStorage.setItem('dob', profileData.dob);
+      localStorage.setItem('userName', profileData.userName);
+      localStorage.setItem('image', profileData.image);
+
     }
 
-    if (localStorage.getItem("name")) {
+
+    if (localStorage.getItem('name')) {
       setAllUserData({
-        name: localStorage.getItem("name"),
-        email: localStorage.getItem("email"),
-        phone: localStorage.getItem("phone"),
-        password: localStorage.getItem("password"),
-        dob: localStorage.getItem("dob"),
-        userName: localStorage.getItem("userName"),
-      });
+        name: localStorage.getItem('name'),
+        email: localStorage.getItem('email'),
+        phone: localStorage.getItem('phone'),
+        password: localStorage.getItem('password'),
+        dob: localStorage.getItem('dob'),
+        userName: localStorage.getItem('userName'),
+        image: localStorage.getItem('image')
+      })
+
     }
-  }, [profileData]);
+
+
+
+  }, [profileData])
 
   // End Of Profile
+  //////////////////////////////////////////////////
+
+
+
+
 
   // payment 
-  const PayArr = useMemo(()=> [
+  const PayArr = useMemo(() => [
     { name: "City Maintenance Bills", fees: "10000 EGP" },
     { name: "El-Rehab club subscription", fees: "2000 EGP" },
     { name: "Water Bills", fees: "900 EGP" },
     { name: "Car Washing subscription", fees: "200 EGP" },
-  ],[]);
+  ], []);
 
   //transportation feedback
-const [transfeedback,setTransfeedback] = useState(null)
+  const [transfeedback, setTransfeedback] = useState(null)
 
   //Search Bar management
-const [All,setAll] =useState ({})
-const [categoryNames,setCategoryNames] =useState ([])
-const [AllName,setAllName] =useState ([])
-const [AllIDs,setAllIDs] =useState ([])
-const [AllIDsNames,setAllIDsNames] =useState ([])
+  const [All, setAll] = useState({})
+  const [categoryNames, setCategoryNames] = useState([])
+  const [AllName, setAllName] = useState([])
+  const [AllIDs, setAllIDs] = useState([])
+  const [AllIDsNames, setAllIDsNames] = useState([])
 
-  useEffect(()=>{
+  useEffect(() => {
     axios.get('http://localhost:3005/db')
-    .then((res)=>{
-      setAll(res.data)
-    })
-  },[])
+      .then((res) => {
+        setAll(res.data)
+      })
+  }, [])
 
-useEffect(()=>{
-  let NamesArr = []
-  let IDsArr =[]
-  let NamesIDsArr =[]
-  setCategoryNames([...Object.keys(All)])
-  for (let category of Object.values(All)){
-    for(let ele of category){
-      NamesArr.push(ele.name)
-      IDsArr.push(ele.id)
-      NamesIDsArr.push({id:ele.id,name:ele.name})
+  useEffect(() => {
+    let NamesArr = []
+    let IDsArr = []
+    let NamesIDsArr = []
+    setCategoryNames([...Object.keys(All)])
+    for (let category of Object.values(All)) {
+      for (let ele of category) {
+        NamesArr.push(ele.name)
+        IDsArr.push(ele.id)
+        NamesIDsArr.push({ id: ele.id, name: ele.name })
+      }
     }
-}
-  setAllName(NamesArr)
-  setAllIDs(IDsArr)
-  setAllIDsNames(NamesIDsArr)
-},[All])
+    setAllName(NamesArr)
+    setAllIDs(IDsArr)
+    setAllIDsNames(NamesIDsArr)
+  }, [All])
 
   const ExchangedData = {
     All,

@@ -42,6 +42,7 @@ import { I18nextProvider } from 'react-i18next';
 // import i18n from './i18n';
 import Details from "./Components/Details/Details";
 import ProtectedRoutedb from "./Components/ProtectedRoute/ProtectedRoutedb.jsx";
+import FeedBack from "./Components/FeedBack/FeedBack";
 
 
 function App() {
@@ -55,7 +56,7 @@ function App() {
         { path: "stripe", element: <Payment /> },
         { path: "completion", element: <Completion></Completion> },
         { path: "about", element: <About /> },
-        { path: "banks", element: <Banks />},
+        { path: "banks", element: <Banks /> },
         { path: "markets", element: <Markets /> },
         { path: "hospitals", element: <Hospitals /> },
         { path: "education", element: <Education /> },
@@ -88,6 +89,8 @@ function App() {
         { path: "contactus", element: <ContactUs /> },
         { path: "signin", element: <SignIn /> },
         { path: "signup", element: <SignUp /> },
+        { path: 'feedback', element: <FeedBack /> },
+
         {
           path: "dashboard",
           element: <DashboardLayout></DashboardLayout>,
@@ -97,7 +100,7 @@ function App() {
             { path: "updateform/:type/:id", element: <UpdateFormBanks></UpdateFormBanks> },
           ],
         },
-        {path:"details/:id", element:<Details></Details> },
+        { path: "details/:id", element: <Details></Details> },
         { path: "*", element: <NotFound /> },
       ],
     },
@@ -109,7 +112,7 @@ function App() {
   //   lng: 'en',
   //   resources: {
   //     en: {
-        
+
   //       translation: require('./locales/en.json')
   //     },
   //     ar: {
@@ -124,12 +127,12 @@ function App() {
     //     <RouterProvider router={routers}></RouterProvider>
     //   </Data>
     // </>
- <>
+    <>
       <Data>
         <RouterProvider router={routers}>
           {/* <I18nextProvider i18n={i18n}> */}
           {/* <div dir={language === 'ar' ? 'rtl' : 'ltr'}> */}
-            <Layout />
+          <Layout />
           {/* </div> */}
           {/* </I18nextProvider> */}
         </RouterProvider>

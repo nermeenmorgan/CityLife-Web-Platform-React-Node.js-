@@ -7,23 +7,34 @@ import { DataContext } from '../../Context/Data'
 
 
 export default function SignUp() {
-
+    const [image, setImage] = useState()
     const [isLoading, setisLoading] = useState(false)
     const [errorMsg, seterrorMsg] = useState('')
     const [userName, setUserName] = useState('')
     const [dob, setDob] = useState('')
-
+    const navigate = useNavigate()
 
     let { handleUserData } = useContext(DataContext)
 
 
-    useEffect(() => {
-        console.log(dob);
-        console.log(userName);
 
-    }, [dob, userName])
+    function handleProfileImage(e) {
+        // console.log(e.target.files[0])
+        const url = URL.createObjectURL(e.target.files[0])
+        // console.log(url);
+        setImage(url)
+    }
 
-    const navigate = useNavigate()
+
+
+
+
+    // useEffect(() => {
+    //     console.log(dob);
+    //     console.log(userName);
+
+    // }, [dob, userName])
+
 
     function handleRegister(values) {
         setisLoading(true)
@@ -39,6 +50,7 @@ export default function SignUp() {
                 seterrorMsg(err.response.data.message)
             })
     }
+
 
     let validationSchema = yup.object({
         name: yup.string().required('Name is required').min(5, "Name must be more than 5 characters").max(20, "Name must be less than 20 characters"),
@@ -59,6 +71,7 @@ export default function SignUp() {
         onSubmit: handleRegister,
         validationSchema,
     })
+
 
     return <>
         <div className="container">
@@ -119,6 +132,12 @@ export default function SignUp() {
                             </div>
 
 
+                            <div className='d-block w-100'>
+                                <label htmlFor='pImage' >Personal Image</label>
+                                <input className='form-control mb-2 form-input' type="file" name='pImage' id='pImage' accept='image/*' onChange={(e) => handleProfileImage(e)} />
+                            </div>
+
+
 
 
 
@@ -145,7 +164,7 @@ export default function SignUp() {
                                 {formik.errors.rePassword && formik.touched.rePassword ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.rePassword}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
 
-                            {isLoading ? <button type='button' className='btn btn-success w-100 mt-3'><i className='fas fa-spinner fa-spin'></i></button> : <button onClick={() => handleUserData(formik.values, dob, userName)} disabled={!(formik.isValid && formik.dirty)} type="submit" className="btn btn-success w-100 mt-3">Submit</button>}
+                            {isLoading ? <button type='button' className='btn btn-success w-100 mt-3'><i className='fas fa-spinner fa-spin'></i></button> : <button onClick={() => handleUserData(formik.values, dob, userName, image)} disabled={!(formik.isValid && formik.dirty)} type="submit" className="btn btn-success w-100 mt-3">Submit</button>}
                         </form>
                     </div>
                     <div className="col-sm-12 col-md-6">

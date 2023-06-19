@@ -2,7 +2,8 @@ import React, { useCallback, useContext, useState } from "react";
 import { DataContext } from "../../Context/Data";
 import "./transportation.css";
 import Slider from "react-slick";
-
+import FeedBack from '../FeedBack/FeedBack'
+import i18next, { t } from 'i18next'
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -14,6 +15,7 @@ function SampleNextArrow(props) {
   );
 }
 
+
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -23,7 +25,16 @@ function SamplePrevArrow(props) {
 
 export default function Transportation() {
   const { buses } = useContext(DataContext);
+  const [showModal, setShowModal] = useState(false);
+  const [message, setMessage] = useState('')
 
+  const handleShowModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
   // handle lines select options
   const [selectedLineObj, setSelectedLineObj] = useState({});
   const handleChange = useCallback((event, busID) => {
@@ -288,6 +299,9 @@ export default function Transportation() {
                 </div>
                 <div className="d-flex justify-content-center">
                   <button
+                    onClick={() => {
+                      setMessage('buses')
+                    }}
                     className="btn btn-success mt-5 px-5"
                     data-bs-target="#exampleModalToggle"
                     data-bs-toggle="modal"
@@ -296,72 +310,31 @@ export default function Transportation() {
                   </button>
                 </div>
 
+
+
                 {/* Feedback Popup */}
-                <div
-                  className="modal fade"
-                  id="exampleModalToggle"
-                  aria-hidden="true"
-                  aria-labelledby="exampleModalToggleLabel"
-                  tabIndex="-1"
-                >
+
+
+
+
+                <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
                   <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
                       <div className="modal-header">
                         <h1 className="modal-title fs-5" id="exampleModalLabel">
-                          Your feedback
+                          {t("Leave your message")}
                         </h1>
-                        <button
-                          type="button"
-                          className="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></button>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
                       </div>
                       <div className="modal-body">
-                        <form onSubmit={handleSubmit}>
-                          <div className="mb-3">
-                            <label htmlFor="Name" className="col-form-label">
-                              Name:
-                            </label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              id="Name"
-                              value={feedbackName}
-                              onChange={handlefeedbackName}
-                            />
-                          </div>
-                          <div className="mb-3">
-                            <label
-                              htmlFor="message-text"
-                              className="col-form-label"
-                            >
-                              Message:
-                            </label>
-                            <textarea
-                              className="form-control"
-                              id="message-text"
-                              value={feedbackMessage}
-                              onChange={handlefeedbackMessage}
-                            ></textarea>
-                          </div>
-                          <div className="d-flex justify-content-center">
-                            <button
-                              className="btn btn-success w-50"
-                              data-bs-target="#exampleModalToggle2"
-                              data-bs-toggle="modal"
-                              disabled={
-                                feedbackName && feedbackMessage ? false : true
-                              }
-                            >
-                              Send
-                            </button>
-                          </div>
-                        </form>
+
+                        <FeedBack message={message} ></FeedBack>
                       </div>
                     </div>
                   </div>
                 </div>
+
+
 
                 <div
                   className="modal fade"
