@@ -1,25 +1,38 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
+
 
 // Component for rendering the item section
 const ItemSection = ({ selectedItem, itemType, addButtonLabel, data, handleDelete }) => {
+  const { t, i18n } = useTranslation();
+
   return (
     <>
-    <div className='w-50 mx-auto mt-4 text-center'>
+    <div className='mx-auto mt-4 text-center my-3'
+            style={{
+              width:"70%",
+              direction: i18n.language === "ar" ? "rtl" : "ltr",
+            }}
+    >
       {selectedItem === itemType && (
         <>
           <Link to={`addform/${selectedItem}`}>
-            <button className='btn btn-success'>Add {addButtonLabel}</button>
+            <button className='btn btn-success'>{t("Add")} {t(addButtonLabel)}</button>
           </Link>
           {data.map((res, index) => (
-            <div key={res.id} className='rounded-2 shadow my-4 text-center'>
-              <h5>Name: {res.name}</h5>
+            <div key={res.id} className='rounded-2 p-0 text-center p-4 d-flex justify-content-between'>
+              <span className='fs-5 fw-semibold'>{t("Name")} {t(res.name)}</span>
+              <div className='d-flex '>
               <Link to={`updateform/${selectedItem}/${res.id}`}>
-                <button className='btn btn-primary mx-5'>update</button>
+                <button className='btn btn-primary mx-3'>{t("update")}</button>
               </Link>
-              <button className='btn btn-danger mx-5' onClick={() => { handleDelete(res.id) }}>
-                delete
+              <Link>
+              <button className='btn btn-danger mx-3' onClick={() => { handleDelete(res.id) }}>
+                {t("delete")}
               </button>
+              </Link>
+              </div>
             </div>
           ))}
         </>

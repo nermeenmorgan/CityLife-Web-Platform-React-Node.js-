@@ -1,8 +1,11 @@
 import React, { useCallback, useContext, useState } from "react";
 import { DataContext } from "../../Context/Data";
 import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 
 export default function AddForm() {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate()
   const { type } = useParams();
   const { ...ExchangedData } = useContext(DataContext);
@@ -176,11 +179,11 @@ export default function AddForm() {
   if (type === "Transportation") {
     return (
       <>
-        <h2 className="text-center my-5">AddForm {type}</h2>
+        <h2 className="text-center my-5">{t("Add Form for")} {t(type)}</h2>
         <form className="" onSubmit={handleSubmit}>
           <div className="w-50 mx-auto my-3">
             <label htmlFor="name" className="form-label">
-              Name:
+              {t("Name")}:
             </label>
             <input
               type="text"
@@ -334,7 +337,7 @@ export default function AddForm() {
   } else if (type === "Cinema") {
     return (
       <>
-        <h2 className="text-center my-5">AddForm {type}</h2>
+        <h2 className="text-center my-5">Add Form for {type}</h2>
         <form className="" onSubmit={handleSubmit}>
           <div className="w-50 mx-auto my-3">
             <label htmlFor="name" className="form-label">
@@ -514,7 +517,7 @@ export default function AddForm() {
   } else {
     return (
       <>
-        <h2 className="text-center my-5">AddForm {type}</h2>
+        <h2 className="text-center my-5">Add Form for {type}</h2>
         <form className="" onSubmit={handleSubmit}>
           <div className="w-50 mx-auto my-3">
             <label htmlFor="name" className="form-label">

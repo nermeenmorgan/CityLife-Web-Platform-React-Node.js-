@@ -1,9 +1,19 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { DataContext } from '../../Context/Data'
 import { Link } from 'react-router-dom'
-
+import FeedBack from '../FeedBack/FeedBack'
+import i18next, { t } from 'i18next'
 export default function Banks() {
+    const [showModal, setShowModal] = useState(false);
+    const [message, setMessage] = useState('')
 
+    const handleShowModal = () => {
+        setShowModal(!showModal);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
     const { maintenance } = useContext(DataContext)
 
     return <>
@@ -30,6 +40,24 @@ export default function Banks() {
                                 <Link to={ele.location} className='ms-2'><i class="fa-solid fa-location-dot"> </i></Link>
                             </div>
                         </div>
+
+                        <button data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+
+                            onClick={() => {
+                                handleShowModal()
+                                setMessage(ele.name)
+                            }}
+                            data-whatever="@mdo"
+                            className={i18next.language === 'en' ? "btn btn-success text-center" : "btn btn-success me-4 ms-5 text-center"}
+                            style={{
+                                borderRadius: "10px",
+                                boxShadow: "0px 2px 2px 2px rgba(0, 0, 0, 0.3)",
+                            }}
+                        >
+                            {t("Feedback")}
+                        </button>
+
+
                     </div>
 
                     <div className='col-md-6 mt-5'>
@@ -40,7 +68,22 @@ export default function Banks() {
 
 
 
+                <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h1 className="modal-title fs-5" id="exampleModalLabel">
+                                    {t("Leave your message")}
+                                </h1>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+                            </div>
+                            <div className="modal-body">
 
+                                <FeedBack message={message} ></FeedBack>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>

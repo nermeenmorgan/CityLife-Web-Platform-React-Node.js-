@@ -1,98 +1,94 @@
-// import React, { useContext } from 'react'
-// import { DataContext } from '../../Context/Data';
-// import styles from './fashion.module.css'
-// import { Link } from 'react-router-dom';
-// export default function Fashion() {
-
-//     let { fashion } = useContext(DataContext)
-//     // console.log(fashion);
-//     return <>
-//         <section className='row m-0 '>
-//             {/* {fashion.map((fashion) =>
-//                 <div key={fashion.id} className='p-sm-5 col-md-6 col-lg-4 mx-auto my-4'>
-//                     <div className=' bg-dark  text-white p-sm-5'>
-//                         <div className='w-100 text-center mb-4'>
-//                             <img className='w-25 ' src={fashion.logo} alt='' />
-//                         </div>
-//                         <div className='images text-center'>
-//                             <h5>{fashion.name}</h5>
-//                             <img src={fashion.img1} className={`${styles.fashionImages} rounded rounded-4 p-2 `} alt=''></img>
-//                             <img src={fashion.img2} className={`${styles.fashionImages} rounded rounded-4 p-2 `} alt=''></img>
-//                             <img src={fashion.img3} className={`${styles.fashionImages} rounded rounded-4 p-2 `} alt=''></img>
-//                                                   <h5> phone:{fashion.number}</h5>
-
-//                         </div>
-//                     </div>
-//                 </div>)} */}
-//             {fashion.map((e) =>
-//                 <div className="row p-4 shadow  m-2 bg-white rounded w-75 mx-auto">
-//                     <div className="col-md-9 ">
-//                         <img className={`${styles.fashionLogo} shadow `} src={e.logo} alt=''></img>
-//                         <h3  className='text-center'> overview</h3>
-//                         <p className={`${styles.backgroundStyle}`}>{e.overview}</p>
-//                             <h6> Name : {e.name}</h6>
-//                             <h6> Location :  <Link to={e.location} style={{ textDecoration: 'none' }}>  {e.address}
-//                               <i className="fa-solid fa-location-dot m-2"></i>
-//                             </Link></h6>
-//                            <h6> website : <Link to={e.website} style={{ textDecoration: 'none' }}>  Visit website </Link></h6> 
-//                            <h6 > Rating : {e.Rating} <i class="fa-solid fa-star"></i></h6>    
-//                     </div>
-//                     <div className="col-md-3 m-auto" >
-//                         <img className={`${styles.fashionImages}`} src={e.img1} alt=''></img>
-//                     </div>
-//                 </div>
-//             )}
-//         </section>
-//     </>
-// }
-//////////////////////////////////////////////////////
-
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { DataContext } from '../../Context/Data'
 import { Link } from 'react-router-dom'
 import { useTranslation } from "react-i18next";
-
+import FeedBack from '../FeedBack/FeedBack'
+import i18next, { t } from 'i18next'
 export default function Banks() {
 
     const { fashion } = useContext(DataContext)
-    const { t,i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const [showModal, setShowModal] = useState(false);
+    const [message, setMessage] = useState('')
+
+    const handleShowModal = () => {
+        setShowModal(!showModal);
+    };
+
 
     return <>
         <div className="container mt-3">
             <div className="row">
-                {fashion.map((ele) => <div key={ele.id} className='d-flex flex-row justify-content-between border shadow rounded-4 my-3 p-4' 
-                style={{
-                  direction: i18n.language === "ar" ? "rtl" : "",
-                  textAlign: i18n.language === "ar" ? "right" : "",
-              
-                }}
+                {fashion.map((ele) => <div key={ele.id} className='d-flex flex-row justify-content-between border shadow rounded-4 my-3 p-4'
+                    style={{
+                        direction: i18n.language === "ar" ? "rtl" : "",
+                        textAlign: i18n.language === "ar" ? "right" : "",
+
+                    }}
                 >
 
                     <div className='col-md-6'>
 
                         <div className='d-flex align-items-center mb-3'>
-                        <img src={ele.logo} alt={ele.name}
-                        className='rounded-circle shadow'
-                        style={{ width: "80px", height: "80px" }} 
-                         />
-                        <h2 className={i18n.language==='en'?'ms-5':"me-5"} >{t(ele.name)}</h2>
+                            <img src={ele.logo} alt={ele.name}
+                                className='rounded-circle shadow'
+                                style={{ width: "80px", height: "80px" }}
+                            />
+                            <h2 className={i18n.language === 'en' ? 'ms-5' : "me-5"} >{t(ele.name)}</h2>
                         </div>
                         <p className='opacity-75'>{t(ele.overview)}</p>
                         <p> {t("Call Center:")} <span className=' fw-bold'>{ele.number}</span></p>
-                      <h6>{t("website :")} <Link to={ele.website} style={{ textDecoration: 'none' }}>  {t("Visit website")} </Link></h6> 
+                        <h6>{t("website :")} <Link to={ele.website} style={{ textDecoration: 'none' }}>  {t("Visit website")} </Link></h6>
                         <div className='d-sm-block d-md-flex justify-content-between'>
                             <div className='d-flex'>
                                 <p>{t(ele.address)}</p>
-                            <Link to={t(ele.location)} className='ms-2'><i class="fa-solid fa-location-dot"> </i></Link>
+                                <Link to={t(ele.location)} className='ms-2'><i class="fa-solid fa-location-dot"> </i></Link>
                             </div>
                         </div>
+                        <button data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+
+                            onClick={() => {
+                                handleShowModal()
+                                setMessage(ele.name)
+                            }}
+                            data-whatever="@mdo"
+                            className={i18next.language === 'en' ? "btn btn-success text-center" : "btn btn-success me-4 ms-5 text-center"}
+                            style={{
+                                borderRadius: "10px",
+                                boxShadow: "0px 2px 2px 2px rgba(0, 0, 0, 0.3)",
+                            }}
+                        >
+                            {t("Feedback")}
+                        </button>
                     </div>
 
                     <div className='col-md-6 mt-5'>
-                        <img src={ele.img2} alt="" className='w-75 rounded-4 float-end d-none d-md-block' />
+                        <img src={ele.img2} alt="" style={{ height: "300px" }} className='w-75 rounded-4 float-end d-none d-md-block' />
                     </div>
 
                 </div>)}
+
+
+
+                <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h1 className="modal-title fs-5" id="exampleModalLabel">
+                                    {t("Leave your message")}
+                                </h1>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+                            </div>
+                            <div className="modal-body">
+
+                                <FeedBack message={message} ></FeedBack>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
             </div>
         </div>
     </>

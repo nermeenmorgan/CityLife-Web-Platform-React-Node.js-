@@ -1,7 +1,7 @@
 
 
   .itStyle:hover {
-    transform: scale(1.5); /* Scale the element on hover */
+    transform: scale(1.3); /* Scale the element on hover */
   }
   /* .rtl {
     direction: rtl;

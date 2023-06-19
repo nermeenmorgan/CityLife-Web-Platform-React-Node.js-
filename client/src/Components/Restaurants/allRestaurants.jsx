@@ -1,12 +1,30 @@
-import React, { useContext, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { DataContext } from "../../Context/Data";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./AllRes.css";
 import { useTranslation } from "react-i18next";
+import FeedBack from "../FeedBack/FeedBack";
 
 export default function Restaurants() {
   const { AllRestaurants } = useContext(DataContext);
   const { t, i18n } = useTranslation();
+  const [feedbackName, setFeedbackName] = useState("");
+  const [feedbackMessage, setFeedbackMessage] = useState("");
+
+  const [message, setMessage] = useState('')
+
+  const handlefeedbackName = useCallback((event) => {
+    setFeedbackName(event.target.value);
+  }, []);
+  const handlefeedbackMessage = useCallback((event) => {
+    setFeedbackMessage(event.target.value);
+  }, []);
+
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault();
+    setFeedbackName("");
+    setFeedbackMessage("");
+  }, []);
 
 
   const [showModal, setShowModal] = useState(false);
@@ -26,13 +44,13 @@ export default function Restaurants() {
         style={{ color: "#09913C" }}
         className={
           i18n.language === "en"
-            ? "fs-2  fw-bold me-5 mb-5"
+            ? "fs-4  fw-bold me-5 mb-5 offset-1"
             : "fs-4  fw-bold  mb-5 offset-lg-9 offset-md-7"
         }
       >
         {t("All Restaurants")}
       </div>
-      <div className="d-flex flex-column  ">
+      <div className="d-flex flex-column offset-lg-1 offset-sm-1 " >
         {AllRestaurants ? (
           [...AllRestaurants].map((res) => (
             <div className="" key={res.id}>
@@ -57,27 +75,32 @@ export default function Restaurants() {
                   />
 
                   <div
-                    className="mt-3 d-flex flex-column  "
+                    className="mt-3 d-flex flex-column justify-content-center align-content-center align-items-center "
                     style={{ marginRight: i18n.language === "en" ? "" : "20%" }}
                   >
                     <div
                       className={
                         i18n.language === "en"
-                          ? " fw-bold mb-2 ms-5"
+                          ? " fw-bold mb-2 "
                           : " fw-bold mb-2 "
                       }
                       style={{ fontSize: 16 }}
                     >
                       {t(res.name)}
                     </div>
-                    <div className="d-flex justify-content-center">
-                      {[...Array(parseInt(res.Rating))].map((_, index) => (
-                        <i
-                          style={{ color: "#ffc107" }}
-                          key={index}
-                          className="fa-solid fa-star fa-1x"
-                        ></i>
-                      ))}
+                    <div className="d-flex align-items-center">
+                      <div style={{ marginRight: "10px" }} >4.0</div>
+                      <div className="d-flex justify-content-center align-content-center">
+                        {[...Array(parseInt(res.Rating))].map((_, index) => (
+                          <i
+                            style={{ color: "#ffc107" }}
+                            key={index}
+                            className="fa-solid fa-star fa-1x"
+                          ></i>
+                        ))}
+                      </div>
+
+
                     </div>
                   </div>
                 </div>
@@ -109,7 +132,7 @@ export default function Restaurants() {
                 {t(res.overview)}
               </div>
 
-<div className="d-flex flex-wrap justify-content-evenly mx-sm-0">
+              <div className="d-flex flex-wrap justify-content-evenly mx-sm-0">
                 <img
                   className="my-2 mx-3  itStyle"
                   style={{
@@ -160,10 +183,9 @@ export default function Restaurants() {
                 <button
                   className="btn btn-success me-2 "
                   style={{
-                    width: "20%",
                     borderRadius: "10px",
                     boxShadow: "0px 2px 2px 2px rgba(0, 0, 0, 0.3)",
-                
+
 
                   }}
                   onClick={() => {
@@ -174,21 +196,42 @@ export default function Restaurants() {
                   {t("Contact restaurant")}
                 </button>
 
+
+
+
+
+
+
+
                 <button
-                  data-toggle="modal"
-                  data-target="#exampleModal"
-                  onClick={handleShowModal}
+
+                  data-bs-target="#exampleModalToggle"
+                  data-bs-toggle="modal"
+
+
+                  onClick={() => {
+                    handleShowModal()
+                    setMessage(res.name)
+                  }}
                   data-whatever="@mdo"
-                  className= {i18n.language==='en'? "btn btn-success me-2 ms-5 text-center":  "btn btn-success me-4 ms-5 text-center"}
+                  className={i18n.language === 'en' ? "btn btn-success me-2 ms-5 text-center" : "btn btn-success me-4 ms-5 text-center"}
                   style={{
                     // fontSize:15,
                     // fontWeight:"bold",
                     borderRadius: "10px",
-                    width: "20%",
                     boxShadow: "0px 2px 2px 2px rgba(0, 0, 0, 0.3)",
                   }}
                 >
                   {t("Feedback")}
+
+
+
+
+
+
+
+
+
                 </button>
                 <div>
                   <div></div>
@@ -215,74 +258,67 @@ export default function Restaurants() {
         )}
       </div>
 
-      {showModal && (
-        <div
-          className="modal fade show"
-          tabIndex="-1"
-          role="dialog"
-          style={{ display: "block", boxShadow: "0 0 10px rgba(0,0,0,0.5)" }}
-        >
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">
-                  {t("New message")}
-                </h5>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                  onClick={handleCloseModal}
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                <form>
-                  <div className="form-group">
-                    <label htmlFor="recipient-name" className="col-form-label">
-                      {t("Email:")}
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="recipient-name"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="message-text" className="col-form-label">
-                      {t("Complaint:")}
-                    </label>
-                    <textarea
-                      className="form-control"
-                      id="message-text"
-                    ></textarea>
-                  </div>
-                </form>
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  style={{ backgroundColor: "black", color: "white" }}
-                  className="btn "
-                  data-dismiss="modal"
-                  onClick={handleCloseModal}
-                >
-                  {t("Close")}
-                </button>
-                <button
-                  type="button"
-                  style={{ backgroundColor: "green", color: "white" }}
-                  className="btn "
-                >
-                  {t("Submit Feedback")}
-                </button>
-              </div>
+      <div
+        className="modal fade"
+        id="exampleModalToggle"
+        aria-hidden="true"
+        aria-labelledby="exampleModalToggleLabel"
+        tabIndex="-1"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">
+                {t("Leave your message")}
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+
+              <FeedBack message={message} ></FeedBack>
+
+
+
             </div>
           </div>
         </div>
-      )}
+      </div>
+      {/* 
+      <div
+        className="modal fade"
+        id="exampleModalToggle2"
+        aria-hidden="true"
+        aria-labelledby="exampleModalToggleLabel2"
+        tabIndex="-1"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body d-flex flex-column align-items-center">
+              <i
+                className="fa-sharp fa-regular fa-circle-check text-center"
+                style={{ color: "#14992a", fontSize: 80 }}
+              ></i>
+              <p className="my-2 fs-4 fw-bolder">
+                {t("Thanks, We received your feedback!")}
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div> */}
     </>
   );
 }

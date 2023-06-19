@@ -2,11 +2,11 @@ import React, { useCallback, useContext, useState } from "react";
 import { DataContext } from "../../Context/Data";
 import Slider from "react-slick";
 import { useTranslation } from "react-i18next";
-
+import FeedBack from '../FeedBack/FeedBack'
 export default function Sports() {
   const { gyms, userData } = useContext(DataContext);
   const { t, i18n } = useTranslation();
-
+  const [message, setMessage] = useState('')
   const [feedbackName, setFeedbackName] = useState("");
   const [feedbackMessage, setFeedbackMessage] = useState("");
 
@@ -71,9 +71,8 @@ export default function Sports() {
                     />
 
                     <div
-                      className={`d-flex flex-column justify-content-center align-items-center offset-1 ${
-                        i18n.language === "ar" && "me-5"
-                      }`}
+                      className={`d-flex flex-column justify-content-center align-items-center offset-1 ${i18n.language === "ar" && "me-5"
+                        }`}
                     >
                       <div className="fs-4 fw-bold mb-1">{t(res.name)}</div>
                       {res.Rating >= 1 && res.Rating <= 5 && (
@@ -111,9 +110,8 @@ export default function Sports() {
                     <div className="fs-5 ">{t(res.address)}</div>
                     <div className="d-flex align-items-center mt-5">
                       <div
-                        className={`row align-items-center d-flex-column align-items-center ${
-                          i18n.language === "ar" && "ms-5"
-                        }`}
+                        className={`row align-items-center d-flex-column align-items-center ${i18n.language === "ar" && "ms-5"
+                          }`}
                       >
                         <div
                           className="d-flex flex-column align-items-center"
@@ -148,8 +146,9 @@ export default function Sports() {
                           className="btn fs-6 btn-success "
                           data-bs-target="#exampleModalToggle"
                           data-bs-toggle="modal"
-                          //   style={{ borderRadius: "10px" ,backgroundColor:"green" }}
-                          //   onClick={handleShowModal}
+                          onClick={() => {
+                            setMessage(res.name)
+                          }}
                           disabled={userData ? false : true}
                         >
                           {t("Feedback")}
@@ -196,7 +195,7 @@ export default function Sports() {
             </div>
           )}
           {/*Feedback */}
-          <div
+          {/* <div
             className="modal fade"
             id="exampleModalToggle"
             aria-hidden="true"
@@ -206,9 +205,8 @@ export default function Sports() {
             <div className="modal-dialog modal-dialog-centered">
               <div className="modal-content">
                 <div
-                  className={`modal-header ${
-                    i18n.language === "ar" && "d-flex justify-content-between"
-                  }`}
+                  className={`modal-header ${i18n.language === "ar" && "d-flex justify-content-between"
+                    }`}
                 >
                   <h1 className="modal-title fs-5" id="exampleModalLabel">
                     {t("Your feedback")}
@@ -236,7 +234,6 @@ export default function Sports() {
                     </div>
                     <div className="mb-3">
                       <label htmlFor="message-text" className="col-form-label">
-                        {/* {t("Message:")} */}
                         {t("Your feedback")}:
                       </label>
                       <textarea
@@ -262,45 +259,28 @@ export default function Sports() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <div
-            className="modal fade"
-            id="exampleModalToggle2"
-            aria-hidden="true"
-            aria-labelledby="exampleModalToggleLabel2"
-            tabIndex="-1"
-          >
+
+
+
+          <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
             <div className="modal-dialog modal-dialog-centered">
               <div className="modal-content">
-                <div
-                  className={`modal-header ${
-                    i18n.language === "ar" && "d-flex justify-content-end"
-                  }`}
-                >
-                  {/* <h1 className="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1> */}
-                  <button
-                    type="button"
-                    className={`btn-close ${i18n.language === "ar" && "ms-0"}`}
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
+                <div className="modal-header">
+                  <h1 className="modal-title fs-5" id="exampleModalLabel">
+                    {t("Leave your message")}
+                  </h1>
+                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
                 </div>
-                <div className="modal-body d-flex flex-column align-items-center">
-                  <i
-                    className="fa-sharp fa-regular fa-circle-check text-center"
-                    style={{ color: "#14992a", fontSize: 80 }}
-                  ></i>
-                  <p className="my-2 fs-4 fw-bolder">
-                    {t("We received your feedback, Thanks.")}
-                  </p>
+                <div className="modal-body">
+
+                  <FeedBack message={message} ></FeedBack>
                 </div>
-                {/* <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
-      </div> */}
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </>

@@ -9,7 +9,7 @@ export default function ProtectedRoutedb({children}) {
     if (userData !== null && userData.id === "648a002ac64b570033765c4b"){
         return children
     }else{
-        alert("you should sign in as Admin")
+        // alert("you should sign in as Admin")
         return <Navigate to="/signin"/>
     }
 

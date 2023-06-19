@@ -1,13 +1,26 @@
-import React, { useCallback, useContext } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { DataContext } from "../../Context/Data";
 import styles from "./Markets.module.css";
 import { Link } from "react-router-dom";
+import FeedBack from '../FeedBack/FeedBack'
+import i18next, { t } from 'i18next'
 export default function Markets() {
   let { markets } = useContext(DataContext);
 
-  const handleCall = useCallback ((number) => {
+  const [showModal, setShowModal] = useState(false);
+  const [message, setMessage] = useState('')
+
+  const handleShowModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleCall = useCallback((number) => {
     window.location.href = `tel:${number}`;
-  },[]);
+  }, []);
   return (
     <>
       {markets.map((market) => (
@@ -55,7 +68,7 @@ export default function Markets() {
                   Visit Our Website
                 </Link>
               </p>
-              <div className="offset-4" style={{cursor:'pointer'}}  onClick={() => handleCall(market.number)}>
+              <div className="offset-4" style={{ cursor: 'pointer' }} onClick={() => handleCall(market.number)}>
                 <i
                   className="fa-solid fa-phone fa-lg mainColor"
                 ></i> : {market.number}
@@ -65,8 +78,31 @@ export default function Markets() {
               <p>
                 <span className="h6">Overview: </span> {market.overview}
               </p>
+
+
+
+              <button data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+
+                onClick={() => {
+                  handleShowModal()
+                  setMessage(market.name)
+                }}
+                data-whatever="@mdo"
+                className={i18next.language === 'en' ? "btn btn-success text-center" : "btn btn-success me-4 ms-5 text-center"}
+                style={{
+                  borderRadius: "10px",
+                  boxShadow: "0px 2px 2px 2px rgba(0, 0, 0, 0.3)",
+                }}
+              >
+                {t("Feedback")}
+              </button>
+
             </div>
           </div>
+
+
+
+
           <div className="col-md-4">
             <div className="">
               <img
@@ -76,7 +112,25 @@ export default function Markets() {
               ></img>
             </div>
           </div>
+          <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
+            <div className="modal-dialog modal-dialog-centered">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h1 className="modal-title fs-5" id="exampleModalLabel">
+                    {t("Leave your message")}
+                  </h1>
+                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+                </div>
+                <div className="modal-body">
+
+                  <FeedBack message={message} ></FeedBack>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
+
+
       ))}
     </>
   );

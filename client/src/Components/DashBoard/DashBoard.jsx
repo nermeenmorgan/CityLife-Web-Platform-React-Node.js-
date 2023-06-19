@@ -101,7 +101,7 @@ export default function DashBoard() {
           value={selectedItem}
         >
           <option value="" disabled>
-            choose...
+            {t("Choose")}...
           </option>
           <option value="Banks">{t("Banks")}</option>
           <option value="Markets">{t("Markets")}</option>

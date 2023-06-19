@@ -2,9 +2,10 @@ import React, { useCallback, useContext, useState } from "react";
 import { DataContext } from "../../Context/Data";
 import "./transportation.css";
 import Slider from "react-slick";
+import FeedBack from "../FeedBack/FeedBack";
+import i18next, { t } from "i18next";
 import { useTranslation } from "react-i18next";
 import { toFormData } from "axios";
-
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -27,7 +28,16 @@ function SamplePrevArrow(props) {
 export default function Transportation() {
   const { t, i18n } = useTranslation();
   const { buses } = useContext(DataContext);
+  const [showModal, setShowModal] = useState(false);
+  const [message, setMessage] = useState("");
 
+  const handleShowModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
   // handle lines select options
   const [selectedLineObj, setSelectedLineObj] = useState({});
   const handleChange = useCallback((event, busID) => {
@@ -87,11 +97,12 @@ export default function Transportation() {
   return (
     <>
       <div className="container">
-        <div className="row"
-                            style={{
-                              direction: i18n.language === "ar" ? "rtl" : "",
-                              // textAlign: i18n.language === "ar" ? "right" : "",
-                            }}
+        <div
+          className="row"
+          style={{
+            direction: i18n.language === "ar" ? "rtl" : "ltr",
+            // textAlign: i18n.language === "ar" ? "right" : "",
+          }}
         >
           {/* Title and silder */}
           <div className="d-flex flex-column mb-2">
@@ -159,7 +170,7 @@ export default function Transportation() {
                           <option value={bus.line2}>{t("Second line")}</option>
                         ) : null}
                         {bus.line3 ? (
-                          <option value={bus.line3}>{("Third line")}</option>
+                          <option value={bus.line3}>{t("Third line")}</option>
                         ) : null}
                         {bus.line4 ? (
                           <option value={bus.line4}>{t("Forth line")}</option>
@@ -179,7 +190,9 @@ export default function Transportation() {
                     </div>
                     <div className="cont">
                       <div className="d-flex flex-column align-items-center justify-content-center">
-                        <p className="fw-semibold">{t("for Schedule press here")}</p>
+                        <p className="fw-semibold">
+                          {t("for Schedule press here")}
+                        </p>
                         <button
                           className="btn btn-success px-5"
                           // style={{width:30}}
@@ -217,7 +230,7 @@ export default function Transportation() {
               )}
             </section>
             {/* side bar section*/}
-            <section className=" col-lg-4 shadow mt-4 ms-md-3 rounded-4 ms-0 h-100  ">
+            <section className={ `col-lg-4 shadow mt-4 ms-md-3 rounded-4 ms-0 h-100 ${i18n.language === "ar" ? "me-3":""}`}>
               <div
                 className=" px-4 mb-3 mt-4 d-flex flex-column justify-content-between"
                 style={{ height: "88%" }}
@@ -248,6 +261,9 @@ export default function Transportation() {
                 </div>
                 <div className="d-flex justify-content-center">
                   <button
+                    onClick={() => {
+                      setMessage("buses");
+                    }}
                     className="btn btn-success mt-5 px-5"
                     data-bs-target="#exampleModalToggle"
                     data-bs-toggle="modal"
@@ -257,6 +273,7 @@ export default function Transportation() {
                 </div>
 
                 {/* Feedback Popup */}
+
                 <div
                   className="modal fade"
                   id="exampleModalToggle"
@@ -268,6 +285,7 @@ export default function Transportation() {
                     <div className="modal-content">
                       <div className="modal-header">
                         <h1 className="modal-title fs-5" id="exampleModalLabel">
+                          {t("Leave your message")}
                           {t("Your feedback")}
                         </h1>
                         <button
@@ -278,6 +296,7 @@ export default function Transportation() {
                         ></button>
                       </div>
                       <div className="modal-body">
+                        <FeedBack message={message}></FeedBack>
                         <form onSubmit={handleSubmit}>
                           <div className="mb-3">
                             <label htmlFor="Name" className="col-form-label">

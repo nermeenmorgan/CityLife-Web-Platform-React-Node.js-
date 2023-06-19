@@ -30,7 +30,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="/about"
-                      className="nav-link p-0 text-muted"
+                      className={`nav-link p-0 text-muted ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -45,7 +45,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <a
                       href="https://www.talaatmoustafa.com/Default.aspx"
-                      className="nav-link p-0 text-muted"
+                      className={`nav-link p-0 text-muted ${styles.underLine}`}
                     >
                       {t("TMG")}
                     </a>
@@ -53,7 +53,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="#"
-                      className="nav-link p-0 text-muted"
+                      className={`nav-link p-0 text-muted ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -81,7 +81,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="banks"
-                      className="nav-link p-0 text-muted"
+                      className={`nav-link p-0 text-muted ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -96,7 +96,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="markets"
-                      className="nav-link p-0 text-muted"
+                      className={`nav-link p-0 text-muted ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -111,7 +111,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="hospitals"
-                      className="nav-link p-0 text-muted"
+                      className={`nav-link p-0 text-muted ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -126,7 +126,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="education"
-                      className="nav-link p-0 text-muted"
+                      className={`nav-link p-0 text-muted ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -141,7 +141,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="cinema"
-                      className="nav-link p-0 text-muted"
+                      className={`nav-link p-0 text-muted ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -156,7 +156,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="payment"
-                      className="nav-link p-0 text-muted"
+                      className={`nav-link p-0 text-muted ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -186,7 +186,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="restaurants"
-                      className="nav-link p-0 text-muted"
+                      className={`nav-link p-0 text-muted ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -201,7 +201,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="shopping"
-                      className="nav-link p-0 text-muted"
+                      className={`nav-link p-0 text-muted ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -216,7 +216,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="fashion"
-                      className="nav-link p-0 text-muted"
+                      className={`nav-link p-0 text-muted ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -231,7 +231,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="health"
-                      className="nav-link p-0 text-muted"
+                      className={`nav-link p-0 text-muted ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -246,7 +246,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="sports"
-                      className="nav-link p-0 text-muted"
+                      className={`nav-link p-0 text-muted ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -261,7 +261,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="maintenance"
-                      className="nav-link p-0 text-muted"
+                      className={`nav-link p-0 text-muted ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -276,7 +276,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="homeServices"
-                      className="nav-link p-0 text-muted"
+                      className={`nav-link p-0 text-muted ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -291,7 +291,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="transportation"
-                      className="nav-link p-0 text-muted"
+                      className={`nav-link p-0 text-muted ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,

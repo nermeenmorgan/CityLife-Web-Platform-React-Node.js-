@@ -3,9 +3,22 @@ import { DataContext } from "../../Context/Data";
 // import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import './hospitals.css';
-
+import FeedBack from '../FeedBack/FeedBack'
+import i18next, { t } from 'i18next'
 export default function Hospitals() {
   const { Centers } = useContext(DataContext);
+  const [showModal, setShowModal] = useState(false);
+  const [message, setMessage] = useState('')
+
+  const handleShowModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+
   //   console.log(Centers);
 
   const handleCall = useCallback((number) => {
@@ -93,16 +106,16 @@ export default function Hospitals() {
                     <div className="fs-5 fw-bold mt-3">Address</div>
                     <div className="fs-5 ">{res.address}</div>
                     <div className="d-flex flex-column flex-md-row align-items-md-center align-items-start mt-4">
-                        <div className="d-flex  align-items-center">
-                          <i
-                            style={{ cursor: "pointer" }}
-                            className="fa-solid fa-phone fa-2xl mainColor"
-                            onClick={() => handleCall(res.number)}
-                          ></i>
-                          <span className="fw-semibold ms-1 fs-5">
-                            : {res.number}
-                          </span>
-                          {/* <button
+                      <div className="d-flex  align-items-center">
+                        <i
+                          style={{ cursor: "pointer" }}
+                          className="fa-solid fa-phone fa-2xl mainColor"
+                          onClick={() => handleCall(res.number)}
+                        ></i>
+                        <span className="fw-semibold ms-1 fs-5">
+                          : {res.number}
+                        </span>
+                        {/* <button
                               className="fa-2x btn fs-6 fw-bold text-success"
                             //   onClick={() => handleCall(res.number)}
                             
@@ -119,20 +132,48 @@ export default function Hospitals() {
                         </a>
                       </div>
                       <div className="ms-md-5 ms-0">
-                        <button
-                          className="btn fs-6 btn-success "
-                          data-bs-target="#exampleModalToggle"
-                          data-bs-toggle="modal"
-                          //   style={{ borderRadius: "10px" ,backgroundColor:"green" }}
-                          onClick={() => {
-                            handleCenterName(res.name);
-                          }}
-                        >
-                          Book a clinic appointment
-                        </button>
+
+
+
+
+
+
+
+
                       </div>
                     </div>
                   </div>
+
+
+                  <button
+                    className="btn fs-6 btn-success me-3 "
+                    data-bs-target="#exampleModalToggle"
+                    data-bs-toggle="modal"
+                    //   style={{ borderRadius: "10px" ,backgroundColor:"green" }}
+                    onClick={() => {
+                      handleCenterName(res.name);
+                    }}
+                  >
+                    Book a clinic appointment
+                  </button>
+
+
+                  {/* FeedBack */}
+                  <button data-bs-target="#exampleModalToggle3" data-bs-toggle="modal"
+
+                    onClick={() => {
+                      handleShowModal()
+                      setMessage(res.name)
+                    }}
+                    data-whatever="@mdo"
+                    className={i18next.language === 'en' ? "btn btn-success text-center" : "btn btn-success me-4 ms-5 text-center"}
+                    style={{
+                      borderRadius: "10px",
+                      boxShadow: "0px 2px 2px 2px rgba(0, 0, 0, 0.3)",
+                    }}
+                  >
+                    {t("Feedback")}
+                  </button>
                 </div>
 
                 <div className="col-lg-6  col-12 mt-sm-3" style={{}}>
@@ -163,6 +204,9 @@ export default function Hospitals() {
                     </div>
                   </Slider>
                 </div>
+
+
+
                 {/** Popup */}
                 <div
                   className="modal fade"
@@ -254,8 +298,8 @@ export default function Hospitals() {
                             className="btn btn-success"
                             data-bs-target="#exampleModalToggle2"
                             data-bs-toggle="modal"
-                            //   disabled={selectedShowTime && selectedDay ? false : true}
-                            //   onClick={handleClickConfirmReser}
+                          //   disabled={selectedShowTime && selectedDay ? false : true}
+                          //   onClick={handleClickConfirmReser}
                           >
                             Confirm
                           </button>
@@ -320,6 +364,25 @@ export default function Hospitals() {
               <span className="visually-hidden">Loading...</span>
             </div>
           )}
+
+
+          {/* FeedBack */}
+          <div className="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
+            <div className="modal-dialog modal-dialog-centered">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h1 className="modal-title fs-5" id="exampleModalLabel">
+                    {t("Leave your message")}
+                  </h1>
+                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+                </div>
+                <div className="modal-body">
+
+                  <FeedBack message={message} ></FeedBack>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
