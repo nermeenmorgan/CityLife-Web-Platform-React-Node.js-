@@ -70,6 +70,9 @@ export default function Navbar() {
               src="/images/logo-no-background.svg"
               style={{ width: 60 }}
               alt="Logo"
+              onClick={() => {
+                window.scroll({ top: 0, left: 0, behavior: "smooth" });
+              }}
             />
           </Link>
           <button
@@ -118,7 +121,11 @@ export default function Navbar() {
                 >
                   {t("Services")}
                 </Link>
-                <ul className="dropdown-menu">
+                <ul className="dropdown-menu"
+                style={{
+                  textAlign: i18n.language === "ar" ? "right" : "left",
+                }}
+                >
                   <li>
                     <Link
                       className="dropdown-item"
@@ -197,7 +204,11 @@ export default function Navbar() {
                 >
                   {t("Categories")}
                 </Link>
-                <ul className="dropdown-menu">
+                <ul className="dropdown-menu"
+                 style={{
+                  textAlign: i18n.language === "ar" ? "right" : "left",
+                }}
+                >
                   <li>
                     <Link
                       className="dropdown-item"
@@ -346,7 +357,7 @@ export default function Navbar() {
                       className="form-control rounded-0 border-2 border-grey  shadow-none"
                       list="searchList"
                       id="exampleDataList"
-                      placeholder="Type to search..."
+                      placeholder={t("Type to search...")}
                       autoComplete="off"
                     />
                   </div>

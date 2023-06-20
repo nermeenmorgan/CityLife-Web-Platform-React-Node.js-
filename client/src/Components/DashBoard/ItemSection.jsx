@@ -11,7 +11,7 @@ const ItemSection = ({ selectedItem, itemType, addButtonLabel, data, handleDelet
     <>
     <div className='mx-auto mt-4 text-center my-3'
             style={{
-              width:"70%",
+              width:"60%",
               direction: i18n.language === "ar" ? "rtl" : "ltr",
             }}
     >
@@ -21,9 +21,9 @@ const ItemSection = ({ selectedItem, itemType, addButtonLabel, data, handleDelet
             <button className='btn btn-success'>{t("Add")} {t(addButtonLabel)}</button>
           </Link>
           {data.map((res, index) => (
-            <div key={res.id} className='rounded-2 p-0 text-center p-4 d-flex justify-content-between'>
+            <div key={res.id} className='rounded-2 p-0 text-center p-4 d-flex flex-md-row justify-content-md-between flex-column '>
               <span className='fs-5 fw-semibold'>{t("Name")} {t(res.name)}</span>
-              <div className='d-flex '>
+              <div className='d-flex justify-content-center'>
               <Link to={`updateform/${selectedItem}/${res.id}`}>
                 <button className='btn btn-primary mx-3'>{t("update")}</button>
               </Link>

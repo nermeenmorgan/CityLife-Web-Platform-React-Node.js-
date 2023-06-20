@@ -96,6 +96,39 @@ export default function Transportation() {
 
   return (
     <>
+      <div
+        style={{ overflowX: "hidden", overflowY: "hidden" , 
+      }}
+        className="position-relative "
+      >
+        <div className={`headerLayer p-1 `}></div>
+        <div
+          style={{
+            backgroundImage: `url(${buses && buses[0].img1})`,
+            backgroundSize: "100% 100%",
+            height: "90vh",
+            width: "100%",
+            direction: i18n.language === "ar" ? "rtl" : "ltr",
+            textAlign: i18n.language === "ar" ? "right" : "",
+          }}
+          className={`headerImg`}
+        >
+          <h1
+            className="position-absolute ms-3 mt-2 text-white"
+            style={{
+              zIndex: 22,
+              top: "60vh",
+              marginLeft: `${i18n.language === "ar" ? "" : "200px"}`,
+              marginRight: `${i18n.language === "ar" ? "100px" : ""}`,
+
+              // letterSpacing: "5px",
+              fontSize: 50,
+            }}
+          >
+            {t("Transportation (Inside and Outside City)")}
+          </h1>
+        </div>
+      </div>
       <div className="container">
         <div
           className="row"
@@ -105,7 +138,7 @@ export default function Transportation() {
           }}
         >
           {/* Title and silder */}
-          <div className="d-flex flex-column mb-2">
+          {/* <div className="d-flex flex-column mb-2">
             <div>
               <h1 className="my-4 text-center">
                 {t("Transportation (Inside and Outside City)")}
@@ -129,7 +162,7 @@ export default function Transportation() {
                 />
               </div>
             </Slider>
-          </div>
+          </div> */}
           <div className="d-flex flex-md-row justify-content-md-between flex-column px-2 ">
             {/* lines section*/}
             <section className="col-lg-8 mt-4 d-flex flex-column justify-content-between h-100">
@@ -230,7 +263,11 @@ export default function Transportation() {
               )}
             </section>
             {/* side bar section*/}
-            <section className={ `col-lg-4 shadow mt-4 ms-md-3 rounded-4 ms-0 h-100 ${i18n.language === "ar" ? "me-3":""}`}>
+            <section
+              className={`col-lg-4 shadow mt-4 ms-md-3 rounded-4 ms-0 h-100 ${
+                i18n.language === "ar" ? "me-3" : ""
+              }`}
+            >
               <div
                 className=" px-4 mb-3 mt-4 d-flex flex-column justify-content-between"
                 style={{ height: "88%" }}

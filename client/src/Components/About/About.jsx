@@ -83,11 +83,6 @@ export default function About() {
          >
               About us
             </h1>
-        {/* <img
-        className={`w-100`}
-        src="https://www.talaatmoustafa.com/Upload/43alrehab%201%20850%20x%20350%20px.jpg"
-        alt="EL-Rehab phot"
-      /> */}
       </div>
       </div>
       <div

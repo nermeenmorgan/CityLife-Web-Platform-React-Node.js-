@@ -120,17 +120,18 @@
   "The old commercial market, shop No. 51": "السوق التجاري القديم، محل رقم 51",
 
   "Every half hour all buses move": "كل نصف ساعة تتحرك جميع الحافلات",
-  "Buses Outside the City (Saraya El-Koba and Nasr City)": "الحافلات خارج المدينة (سرايا الكوبة ومدينة نصر)",
+  "Buses Outside the City (Saraya El-Koba and Nasr City)": "الحافلات خارج المدينة (سرايا القبة ومدينة نصر)",
   "The main station, Gate 20 - Gate 15, the club - Exit from Gate 1 and pass through the city gates from the outside (Gate 5, 6, 9, 12, 13 and 14) - Al-Rehab Bridge - Suez Road - Al-Ahly Club Bridge - Makram Ebeid - Al-Sa'a Square - St. Al-Nuzha - Al-Mirghani St. - Al-Thawra Tunnel - Korba - Roxy - Gesr Al-Suez - Saray Al-Qobba": "المحطة الرئيسية، البوابة 20 - البوابة 15، النادي - الخروج من البوابة 1 والمرور من خلال بوابات المدينة من الخارج (البوابة 5، 6، 9، 12، 13 و 14) - جسر الرحاب - طريق السويس - جسر نادي الأهلي - مكرم عبيد - ميدان الساعة - شارع النزهة - شارع الميرغني - نفق الثورة - الكوربة - روكسي - جسر جسر السويس - سراي القبة",
   "Gate 20, passing through gates 19 - 17 - 16 - 14 - 13 - 12 Suez Road - above the Marshal Abu Ghazaleh Bridge - Al Ahly Club - City Stars Station - above Al Ahly Club Bridge - the first Makram Ebeid - turning from the bottom of the Bridge of the Clock Square.": "البوابة 20، مرورًا بالبوابات 19 - 17 - 16 - 14 - 13 - 12 طريق السويس - فوق جسر المشير أبو غزالة - نادي الأهلي - محطة سيتي ستارز - فوق جسر نادي الأهلي - أول مكرم عبيد - الانعطاف من أسفل جسر ميدان الساعة.",
   "Buses Inside the City": "الحافلات داخل المدينة",
-  "First Stage": "الفترة الأولى",
-  "Second Stage": "الفترة الثانية",
-  "Third and Forth Stage": "الفترة الثالثة والرابعة",
-  "Fifth and Sixth Stages": "الفترة الخامسة والسادسة",
-  "Seventh and Eighth Stages": "الفترة السابعة والثامنة",
-  "Ninth and Tenth Stages": "الفترة التاسعة والعاشرة",
-
+  "First Stage": "المرحلة الأولى",
+  "Second Stage": "المرحلة الثانية",
+  "Third and Forth Stage": "المرحلة الثالثة والرابعة",
+  "Fifth and Sixth Stages": "المرحلة الخامسة والسادسة",
+  "Seventh and Eighth Stages": "المرحلة السابعة والثامنة",
+  "Ninth and Tenth Stages": "المرحلة التاسعة والعاشرة",
+  "Saray Al-Qobba: The main station, Gate 20 - Gate 15, the club - Exit from Gate 1 and pass through the city gates from the outside (Gate 5, 6, 9, 12, 13 and 14) - Al-Rehab Bridge - Suez Road - Al-Ahly Club Bridge - Makram Ebeid - Al-Sa'a Square - St. Al-Nuzha - Al-Mirghani St. - Al-Thawra Tunnel - Korba - Roxy - Gesr Al-Suez - Saray Al-Qobba":"سراي القبة: المحطة الرئيسية بوابة 20 - بوابة 15 النادي - الخروج من البوابة 1 والمرور بوابات المدينة من الخارج (بوابة 5 و 6 و 9 و 12 و 13 و 14) - الرحاب كوبري - طريق السويس - كوبري النادي الأهلي - مكرم عبيد - ميدان الساعة - ش النزهة - شارع الميرغني - نفق الثورة - الكوربة - روكسي - جسر السويس - سراي - القبة",
+  "Nasr City: Gate 20, passing through gates 19 - 17 - 16 - 14 - 13 - 12 Suez Road - above the Marshal Abu Ghazaleh Bridge - Al Ahly Club - City Stars Station - above Al Ahly Club Bridge - the first Makram Ebeid - turning from the bottom of the Bridge of the Clock Square.":"مدينة نصر: بوابة 20 مرورا بالبوابات 19 - 17 - 16 - 14 - 13 - 12 طريق السويس - فوق جسر المشير ابو غزاله - النادي الاهلي - محطة سيتي ستارز - فوق كوبري النادي الاهلي - اول مكرم عبيد - استدارة من أسفل جسر ساحة الساعة.",
   "National Bank of Egypt (NBE)": "البنك الأهلي المصري",
   "NBE is the oldest commercial bank in Egypt. It was established on June 25, 1898 with a capital of £ 1 million. Throughout its long history, NBE's functions and roles have continually developed to square with the different economic and political stages in Egypt.": "البنك الأهلي المصري هو أقدم بنك تجاري في مصر. تأسس في 25 يونيو 1898 برأسمال قدره مليون جنيه إسترليني. طوال تاريخه الطويل، تطورت وظائف وأدوار البنك الأهلي المصري باستمرار لمواءمة المراحل الاقتصادية والسياسية المختلفة في مصر.",
   "Talaat Mostafa St. - Administrative Zone": "شارع طلعت مصطفى - المنطقة الإدارية",
@@ -148,7 +149,7 @@
   "Avenue Mall": "مركز تجاري أفينيو",
   "for Schedule press here":"لمعرفة المواعيد، اضغط هنا",
   "Email:":":البريد الإلكتروني",
-  "Phone:":":الهاتف",
+  "Phone":"الهاتف",
   "show":"عرض",
   "Buses Inside the City":"حافلات داخل المدينة",
 "Email":"البريد الإلكتروني",
@@ -196,6 +197,7 @@
 "The health centers in Rehab City are equipped with modern medical facilities and staffed by experienced healthcare professionals. These centers offer a wide range of services, including general medical consultations, specialized clinics, diagnostic tests, vaccinations, and more. Whether you're seeking routine check-ups, treatment for a specific condition, or emergency care, the health centers in Rehab City are committed to providing high-quality healthcare services to ensure your well-being.":"تتميز مراكز الرعاية الصحية في مدينة الرحاب بتجهيزات طبية حديثة وتعمل بوجود كوادر صحية مؤهلة وذوي خبرة. تقدم هذه المراكز مجموعة واسعة من الخدمات، بما في ذلك استشارات طبية عامة، وعيادات متخصصة، واختبارات تشخيصية، وتطعيمات، وغيرها. سواء كنت تبحث عن فحوصات دورية، أو علاج لحالة محددة، أو رعاية طارئة، فإن مراكز الرعاية الصحية في مدينة الرحاب ملتزمة بتقديم خدمات رعاية صحية عالية الجودة لضمان رفاهيتك.",
 "Centers":"المستشفيات",
 "Pharmacies":"الصيدليات",
+"Telephone":"التليفون",
 
   "Action  Crime  Mystery  Thriller": "أكشن - جريمة - غموض - إثارة",
   "The vengeful son of drug kingpin Hernan Reyes targets Dom Toretto and his entire family, and they must face their new enemy.": "ابن مخبر المخدرات هرنان رييس المنتقم يستهدف دوم توريتو وعائلته بأكملها، وعليهم مواجهة عدوهم الجديد.",
@@ -283,5 +285,7 @@
  "Feedback in Al Rehab, Cairo, Egypt":"نهتم بك وبكل تعليقاتك",
  "Add":"أضف",
 "update":"تعديل",
-"delete":"مسح"
+"delete":"مسح",
+"Type to search...":"بحث..."
+
 }
