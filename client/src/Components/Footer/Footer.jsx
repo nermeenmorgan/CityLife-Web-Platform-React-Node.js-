@@ -9,16 +9,16 @@ export default function Footer() {
   return (
     <>
       <footer
-        className="text-center text-lg-start bg-main-light text-muted mt-5"
+        className="text-center text-lg-start bg-main-light text-white mt-5 text-white"
         style={{
           direction: i18n.language === "ar" ? "rtl" : "ltr",
         }}
       >
-        <section className="pt-2">
+        <section className="pt-2 text-white">
           <div className="container text-center text-md-start mt-5">
-            <div className="row mt-3">
+            <div className="row mt-3 ">
               <div
-                className= {`${i18n.language === "ar"&& styles.myComponent} col-md-2 col-lg-2 col-xl-2 mx-auto mb-4`}
+                className={`${i18n.language === "ar" && styles.myComponent}  col-md-2 col-lg-2 col-xl-2 mx-auto mb-4`}
               >
                 <h6 className="text-uppercase fw-bold mb-2">{t("About")}</h6>
                 <ul
@@ -30,7 +30,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="/about"
-                      className={`nav-link p-0 text-muted ${styles.underLine}`}
+                      className={`nav-link p-0 text-white ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -45,7 +45,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <a
                       href="https://www.talaatmoustafa.com/Default.aspx"
-                      className={`nav-link p-0 text-muted ${styles.underLine}`}
+                      className={`nav-link p-0 text-white ${styles.underLine}`}
                     >
                       {t("TMG")}
                     </a>
@@ -53,7 +53,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="#"
-                      className={`nav-link p-0 text-muted ${styles.underLine}`}
+                      className={`nav-link p-0 text-white ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -68,7 +68,7 @@ export default function Footer() {
                 </ul>
               </div>
               <div
-                className={`${i18n.language === "ar"&& styles.myComponent} col-md-2 col-lg-2 col-xl-2 mx-auto mb-4`}
+                className={`${i18n.language === "ar" && styles.myComponent} col-md-2 col-lg-2 col-xl-2 mx-auto mb-4`}
 
               >
                 <h6 className="text-uppercase fw-bold mb-2">{t("Services")}</h6>
@@ -81,7 +81,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="banks"
-                      className={`nav-link p-0 text-muted ${styles.underLine}`}
+                      className={`nav-link p-0 text-white ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -96,7 +96,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="markets"
-                      className={`nav-link p-0 text-muted ${styles.underLine}`}
+                      className={`nav-link p-0 text-white ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -111,7 +111,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="hospitals"
-                      className={`nav-link p-0 text-muted ${styles.underLine}`}
+                      className={`nav-link p-0 text-white ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -126,7 +126,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="education"
-                      className={`nav-link p-0 text-muted ${styles.underLine}`}
+                      className={`nav-link p-0 text-white ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -141,7 +141,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="cinema"
-                      className={`nav-link p-0 text-muted ${styles.underLine}`}
+                      className={`nav-link p-0 text-white ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -156,7 +156,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="payment"
-                      className={`nav-link p-0 text-muted ${styles.underLine}`}
+                      className={`nav-link p-0 text-white ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -172,7 +172,7 @@ export default function Footer() {
               </div>
 
               <div
-                className={`${i18n.language === "ar"&& styles.myComponent} col-md-3 col-lg-2 col-xl-2 mx-auto mb-4`}
+                className={`${i18n.language === "ar" && styles.myComponent} col-md-3 col-lg-2 col-xl-2 mx-auto mb-4`}
               >
                 <h6 className="text-uppercase fw-bold mb-2">
                   {t("Categories")}
@@ -186,7 +186,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="restaurants"
-                      className={`nav-link p-0 text-muted ${styles.underLine}`}
+                      className={`nav-link p-0 text-white ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -201,7 +201,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="shopping"
-                      className={`nav-link p-0 text-muted ${styles.underLine}`}
+                      className={`nav-link p-0 text-white ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -216,7 +216,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="fashion"
-                      className={`nav-link p-0 text-muted ${styles.underLine}`}
+                      className={`nav-link p-0 text-white ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -231,7 +231,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="health"
-                      className={`nav-link p-0 text-muted ${styles.underLine}`}
+                      className={`nav-link p-0 text-white ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -246,7 +246,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="sports"
-                      className={`nav-link p-0 text-muted ${styles.underLine}`}
+                      className={`nav-link p-0 text-white ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -261,7 +261,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="maintenance"
-                      className={`nav-link p-0 text-muted ${styles.underLine}`}
+                      className={`nav-link p-0 text-white ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -276,7 +276,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="homeServices"
-                      className={`nav-link p-0 text-muted ${styles.underLine}`}
+                      className={`nav-link p-0 text-white ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -291,7 +291,7 @@ export default function Footer() {
                   <li className="nav-item mb-2">
                     <Link
                       to="transportation"
-                      className={`nav-link p-0 text-muted ${styles.underLine}`}
+                      className={`nav-link p-0 text-white ${styles.underLine}`}
                       onClick={() => {
                         window.scroll({
                           top: 0,
@@ -306,7 +306,7 @@ export default function Footer() {
                 </ul>
               </div>
               <div
-                className={`${i18n.language === "ar"&& styles.myComponent} col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4`}
+                className={`${i18n.language === "ar" && styles.myComponent} col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4`}
               >
                 <h6 className="fw-bold mb-2">{t("FOLLOW US")}</h6>
                 <div className="mb-4">
@@ -370,7 +370,7 @@ export default function Footer() {
           </div>
         </section>
         <div
-          className="text-center p-4"
+          className="text-center p-4 text-secondary"
           style={{ backgroundColor: "rgba (0, 0, 0, 0.05)" }}
         >
           <p className="text-reset ">

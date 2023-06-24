@@ -6,6 +6,7 @@ import "./slider.css"; // Import the CSS file
 import { useTranslation } from "react-i18next";
 import styles from "./About.module.css";
 
+// Functions
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -23,6 +24,7 @@ function SamplePrevArrow(props) {
 }
 
 export default function About() {
+  // States
   const { ImgsArr } = useContext(DataContext);
   const { t, i18n } = useTranslation();
 
@@ -62,28 +64,29 @@ export default function About() {
 
   return (
     <>
-    <div style={{ overflowX: "hidden",overflowY: "hidden" }} className="position-relative ">
-    <div className={`${styles.layer} p-1 `}></div>
-      <div
-        style={{
-          backgroundImage: `url("https://www.talaatmoustafa.com/Upload/43alrehab%201%20850%20x%20350%20px.jpg")`,
-          backgroundSize: "100% 100%",
-          height: "90vh",
-        }}
-        className={`${styles.asd}`}
-      >
-         <h1 className="position-absolute ms-3 mt-2 text-white"
-         style={{
-          zIndex:22,
-          top:"60vh",
-          left:"14vh",
-          letterSpacing: "5px",
-          fontSize:50
-        }}
-         >
-              About us
-            </h1>
-      </div>
+      <div style={{ overflowX: "hidden", overflowY: "hidden" }} className="position-relative ">
+        <div className={`${styles.layer} p-1 `}></div>
+        <div
+          style={{
+            backgroundImage: `url("https://www.talaatmoustafa.com/Upload/43alrehab%201%20850%20x%20350%20px.jpg")`,
+            backgroundSize: "100% 100%",
+            height: "90vh",
+          }}
+          className={`${styles.asd}`}
+        >
+          <h1 className="position-absolute ms-3 mt-2 text-white"
+            style={{
+              zIndex: 22,
+              top: "60vh",
+              left: "14vh",
+              letterSpacing: "5px",
+              fontSize: 50
+            }}
+          >
+            {t("About us")}
+
+          </h1>
+        </div>
       </div>
       <div
         className="container mb-5 mt-3"
@@ -92,12 +95,7 @@ export default function About() {
         }}
       >
         <div className="row">
-          {/* <h1 className="mainColor ">{t("About")}</h1> */}
-          {/* <img
-            className="rounded-5"
-            src="https://www.talaatmoustafa.com/Upload/43alrehab%201%20850%20x%20350%20px.jpg"
-            alt="EL-Rehab phot"
-          /> */}
+
           <h2 className="my-3 mainColor">
             {t("A New Vision For Life In Egypt")}
           </h2>

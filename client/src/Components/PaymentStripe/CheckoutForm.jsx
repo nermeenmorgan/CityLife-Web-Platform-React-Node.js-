@@ -2,16 +2,17 @@ import { PaymentElement } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 import './paymentStripe.css';
-import { useNavigate } from "react-router-dom";
+
 
 export default function CheckoutForm() {
-  // const navigate = useNavigate()
+  // States
   const stripe = useStripe();
   const elements = useElements();
-
   const [message, setMessage] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
 
+
+  // Functions
   const handleSubmit = async (e) => {
     e.preventDefault();
 

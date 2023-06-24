@@ -5,15 +5,17 @@ import FeedBack from '../FeedBack/FeedBack'
 import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
 import i18next, { t } from 'i18next'
+import { Link } from "react-router-dom";
 const Kindergarten = () => {
+  // Stated
   const { Kindergarten, userData } = useContext(DataContext);
   const [feedbackName, setFeedbackName] = useState("");
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [message, setMessage] = useState('')
-
-
   const { t, i18n } = useTranslation();
+
+  // Functions
   const handlefeedbackName = useCallback((event) => {
     setFeedbackName(event.target.value);
   }, []);
@@ -31,190 +33,86 @@ const Kindergarten = () => {
     arrows: false,
   };
 
-  const handlefeedbackMessage = useCallback((event) => {
-    setFeedbackMessage(event.target.value);
-  }, []);
-
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-    setFeedbackName("");
-    setFeedbackMessage("");
-  }, []);
   const handleShowModal = () => {
     setShowModal(!showModal);
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
   return (
     <>
-      <div className="container">
-        <div className="row">
-          {Kindergarten ? (
-            Kindergarten.map((res) => (
-              <div
-                style={{
-                  direction: i18n.language === "ar" ? "rtl" : "ltr",
-                  textAlign: i18n.language === "ar" ? "right" : "left",
-                }}
-                className="row  mx-md-3  mx-0 shadow my-5 custom-style mb-5 p-2 p-md-4 w-10 rounded-4"
-                key={res.id}
-              >
-                <div className="col-lg-6  col-12">
-                  <div className="d-flex align-items-center flex-wrap">
-                    <img
-                      className="rounded-circle me-3 mb-3 mb-md-0 shadow"
-                      style={{ maxWidth: "100px", height: "auto" }}
-                      src={res.logo}
-                      alt={res.name}
-                    />
+      {/* New */}
 
-                    <div className="d-flex flex-column justify-content-center align-items-center offset-1">
-                      <div className={i18n.language === 'en' ? "fs-4 fw-bold mb-1" : "fs-4 fw-bold mb-1 me-3"}>{t(res.name)}</div>
-                      {res.Rating >= 1 && res.Rating <= 5 && (
-                        <div className="d-flex align-items-center">
-
-                          <i
-                            className="fa-solid fa-star"
-                            style={{ color: "#f5e324" }}
-                          ></i>
-                          <i
-                            className="fa-solid fa-star"
-                            style={{ color: "#f5e324" }}
-                          ></i>
-                          <i
-                            className="fa-solid fa-star"
-                            style={{ color: "#f5e324" }}
-                          ></i>
-                          <i
-                            className="fa-solid fa-star"
-                            style={{ color: "#f5e324" }}
-                          ></i>
-                          <i
-                            className="fa-solid fa-star-half-stroke"
-                            style={{ color: "#f5e324" }}
-                          ></i>
-                          <span className="fw-bold ms-2">{res.Rating}</span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  <div className="row justify-content-center align-items-center ms-1 mb-3">
-
-                    <div className="fs-5 fw-bold mt-3">{t("Address")}</div>
-                    <div className="fs-5 ">{t(res.address)}</div>
-                    <div className="fs-5 fw-bold mt-3">{t("Overview")}</div>
-                    <div className="fs-5 ">{t(res.overview)}</div>
-                    <div className="d-flex align-items-center mt-5">
-                      <div className="row align-items-center d-flex-column align-items-center">
-                        <div className="d-flex flex-column align-items-center">
-                          <i
-                            className="fa-solid fa-phone fa-2xl mainColor"
-                            onClick={() => {
-                              const whatsappURL = `https://wa.me/${res.number}`;
-                              window.location.href = whatsappURL;
-                            }}
-                          ></i>
-                        </div>
+      <div className='container-fluid pt-3'>
+        <h2 className="lightGreenColor text-center m-0">
+          {t("Kindergartens")}
+        </h2>
+      </div>
 
 
-                      </div>
+      <div className='row gy-4 p-0 m-0 w-75 mx-auto'>
+        {Kindergarten.map((res) =>
+          <div key={res.id} className='col-md-5 mx-auto px-0'>
+            <div className='shadow-sm'>
+              <div className='position-relative'>
+                <div className='layer rounded-top-3'></div>
+                <img src={res.img1} alt="" style={{ width: '100%', height: '300px' }} className='rounded-top-3' />
+              </div>
 
-                      <div className={i18n.language === 'en' ? "d-flex justify-content-center ms-5" : "d-flex justify-content-center mx-2"}>
-                        <a href={res.location} className="">
-                          <i className="fa-solid fa-location-dot fa-2xl mainColor"></i>
 
-                        </a>
-                      </div>
-
-                      <div className="ms-5">
-                        <button
-                          onClick={() => {
-                            setMessage(res.name)
-                          }}
-                          className="btn fs-6 btn-success "
-                          data-bs-target="#exampleModalToggle"
-                          data-bs-toggle="modal"
-
-                          disabled={userData ? false : true}
-                        >
-                          {t("Feedback")}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+              <div className=''>
+                <div className='container pt-3'>
+                  <h4 className='text-center mainColor' >{res.name}</h4>
+                  <p className='text-center'>{res.overview}</p>
                 </div>
+                <div className='lightGreenBackgroudColor text-white  rounded-bottom-3'>
+                  <div className='d-flex justify-content-around align-items-center py-3 container'>
+                    <p className='m-0'> {res.Rating} <i className="fa-solid fa-star" style={{ color: '#C3801B' }}></i> </p>
+                    <p className='m-0'><Link to={res.location} className='text-decoration-none text-white'> {t("Location")} </Link></p>
+                    <Link to={res.website} className="text-decoration-none text-white"> Website </Link>
+                    <p className='m-0' onClick={() => { const whatsappURL = `https://wa.me/${res.number}`; window.location.href = whatsappURL; }} > <Link className="text-decoration-none text-white" >Phone</Link> </p>
 
-
-
-
-
-
-                <div className="col-lg-6  col-12 mt-sm-3" style={{}}>
-
-                  <Slider {...settings}>
-                    <div className="my-3 px-1">
-                      <img
-                        height={230}
-                        className="w-100 rounded-4"
-                        src={res.img1}
-                        alt="Photos galley"
-                      />
-                    </div>
-                    <div className="my-3 px-1">
-                      <img
-                        height={230}
-                        className="w-100 rounded-4"
-                        src={res.img2}
-                        alt="Photos galley"
-                      />
-                    </div>
-                    <div className="my-3 px-1">
-                      <img
-                        height={230}
-                        className="w-100 rounded-4"
-                        src={res.img3}
-                        alt="Photos galley"
-                      />
-                    </div>
-                  </Slider>
+                  </div>
+                  <div className='text-center pb-3 '>
+                    <button data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+                      onClick={() => {
+                        handleShowModal()
+                        setMessage(res.name)
+                      }}
+                      data-whatever="@mdo"
+                      className={i18next.language === 'en' ? "btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor" : " btn-mainColor btn lightGreyBg lightGreenColor  text-center "}
+                    >
+                      {t("Feedback")}
+                    </button>
+                  </div>
                 </div>
               </div>
-            ))
-          ) : (
-            <div className="spinner-border text-success" role="status">
-              <span className="visually-hidden">{t("Loading...")}</span>
             </div>
-          )}
+          </div>)}
+      </div>
 
+      {/* Modal */}
+      <div className="modal fade " id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header lightGreenBackgroudColor text-white text-center">
+              <h1 className="modal-title fs-5 w-100" id="exampleModalLabel">
+                {t("Leave your message")}
+              </h1>
+              <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" ></button>
+            </div>
+            <div className="modal-body">
 
-
-          <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
-            <div className="modal-dialog modal-dialog-centered">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h1 className="modal-title fs-5" id="exampleModalLabel">
-                    {t("Leave your message")}
-                  </h1>
-                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
-                </div>
-                <div className="modal-body">
-
-                  <FeedBack message={message} ></FeedBack>
-                </div>
-              </div>
+              <FeedBack message={message} ></FeedBack>
             </div>
           </div>
-
-
-
-
         </div>
       </div>
+
+
+
+
     </>
   );
 };
 
 export default Kindergarten;
+

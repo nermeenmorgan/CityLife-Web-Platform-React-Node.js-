@@ -1,12 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import  {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 export default function RestaurantsNavbar() {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   return (
     <div>
-     <nav className="navbar navbar-expand-lg navbar-light d-flex justify-content-lg-between  mx-lg-5 mt-lg-0 align-items-center align-content-center">
-  <ul className="navbar-nav w-100 d-flex justify-content-between justify-content-sm-evenly flex-row mx-2 ">
+      <nav className="navbar navbar-expand-lg navbar-light d-flex justify-content-lg-between  mx-lg-5 mt-lg-0 align-items-center align-content-center">
+        <ul className="navbar-nav w-100 d-flex justify-content-between justify-content-sm-evenly flex-row mx-2 ">
           <li className="nav-item">
             <NavLink
               className="nav-link"
@@ -26,7 +26,7 @@ export default function RestaurantsNavbar() {
                   src="/images/alldishes.png"
                   alt="All Restaurants"
                 />
-                <div style={{fontSize:12}} className="fw-bold  ">{t("All Restaurants")}</div>
+                <div style={{ fontSize: 12 }} className="fw-bold  ">{t("All Restaurants")}</div>
               </div>
             </NavLink>
           </li>
@@ -48,7 +48,7 @@ export default function RestaurantsNavbar() {
                   src="/images/seafood.png"
                   alt="Seafood"
                 />
-                <div style={{fontSize:12}} className="fw-bold ">{t("Seafood")}</div>
+                <div style={{ fontSize: 12 }} className="fw-bold ">{t("Seafood")}</div>
               </div>
             </NavLink>
           </li>
@@ -70,7 +70,7 @@ export default function RestaurantsNavbar() {
                   src="/images/fastfood.png"
                   alt="Fast Food"
                 />
-                <div style={{fontSize:12}} className="fw-bold ">{t("Fast Food")}</div>
+                <div style={{ fontSize: 12 }} className="fw-bold ">{t("Fast Food")}</div>
               </div>
             </NavLink>
           </li>
@@ -92,7 +92,7 @@ export default function RestaurantsNavbar() {
                   src="/images/fired.png"
                   alt="Fried Chicken"
                 />
-                <div style={{fontSize:12}} className="fw-bold ">{t("Fried Chicken")}</div>
+                <div style={{ fontSize: 12 }} className="fw-bold ">{t("Fried Chicken")}</div>
               </div>
             </NavLink>
           </li>
@@ -114,7 +114,7 @@ export default function RestaurantsNavbar() {
                   src="/images/shawarma.png"
                   alt="Shawarma"
                 />
-                <div style={{fontSize:12}} className="fw-bold ">{t("Shawarma")}</div>
+                <div style={{ fontSize: 12 }} className="fw-bold ">{t("Shawarma")}</div>
               </div>
             </NavLink>
           </li>
@@ -136,13 +136,12 @@ export default function RestaurantsNavbar() {
                   src="/images/oriental.png"
                   alt="Oriental Food"
                 />
-                <div style={{fontSize:12}} className="fw-bold ">{t("Oriental Food")}</div>
+                <div style={{ fontSize: 12 }} className="fw-bold ">{t("Oriental Food")}</div>
               </div>
             </NavLink>
           </li>
         </ul>
       </nav>
-      <hr className="border border-success w-100" />
     </div>
   );
 }

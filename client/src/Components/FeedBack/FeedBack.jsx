@@ -1,24 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import * as yup from "yup"
 import { useFormik } from 'formik'
 import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom'
 import styles from './FeedBack.module.css'
-import style from '../../App.css'
-
+import i18next, { t } from "i18next";
+import '../../App.css'
 
 
 
 
 const FeedBack = ({ message }) => {
-
-
-
-    console.log(message)
+    // Stated
     const [isLoading, setisLoading] = useState(false)
     const [errorMsg, seterrorMsg] = useState('')
-    const navigate = useNavigate()
 
+    // Functions
     function handleRegister(values) {
         axios.post(`http://localhost:3005/feedback`, { ...values, feedBackTo: message })
             .then((res) => console.log(res))
@@ -26,7 +22,7 @@ const FeedBack = ({ message }) => {
     }
 
 
-
+    // Validation
     let validationSchema = yup.object({
         name: yup.string().required('Name is required').min(5, "Name must be more than 5 characters").max(20, "Name must be less than 20 characters"),
         email: yup.string().required('Email is required').email('Example: exa@gmail.com'),
@@ -36,6 +32,7 @@ const FeedBack = ({ message }) => {
     })
 
 
+    // Formik
     let formik = useFormik({
         initialValues: {
             name: "",
@@ -60,12 +57,16 @@ const FeedBack = ({ message }) => {
                     <div className=' d-flex align-items-center  mx-auto'>
                         <form onSubmit={formik.handleSubmit} className='d-flex flex-wrap'>
 
+                            {/* Error */}
                             <div className='d-block w-100'>
                                 {errorMsg ? <div className="alert p-2 alert-danger text-center">{errorMsg}</div> : null}
                             </div>
 
 
-                            <input defaultValue={message} className='mb-4 form-control form-input lightGreenBackgroudColor' disabled></input>
+                            {/* Feed Back TO */}
+                            <label htmlFor='feedBackTo'>Feedback to</label>
+                            <input defaultValue={message} className='mb-4 form-control form-input lightGreenBackgroudColor ' id='feedBackTo' disabled></input>
+
 
                             {/* Name */}
                             <div className='d-block w-100'>
@@ -106,14 +107,54 @@ const FeedBack = ({ message }) => {
 
 
 
-                            {isLoading ? <button type='button' className='btn btn-success w-100 mt-3'><i className='fas fa-spinner fa-spin'></i></button> : <button disabled={!(formik.isValid && formik.dirty)} type="submit" className="btn btn-success w-100 mt-3">Submit</button>}
+                            {isLoading ? <button type='button' className='btn dark-btn w-100 mt-3'><i className='fas fa-spinner fa-spin'></i></button> :
+                                <button className=" btn dark-btn w-100 mt-3" data-bs-dismiss="modal" aria-label="Close" disabled={!(formik.isValid && formik.dirty)} type="submit">Submit</button>}
                         </form>
                     </div>
 
 
                 </div>
             </div>
-        </div >
+
+
+
+
+
+
+
+            {/* Success Popup */}
+            {/* <div
+                className="modal fade"
+                id="exampleModalToggle2"
+                aria-hidden="true"
+                aria-labelledby="exampleModalToggleLabel2"
+                tabIndex="-1"
+            >
+                <div className="modal-dialog modal-dialog-centered">
+                    <div className="modal-content">
+                        <div className="modal-header">
+
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+                        </div>
+                        <div className="modal-body d-flex flex-column align-items-center">
+                            <i
+                                className="fa-sharp fa-regular fa-circle-check text-center"
+                                style={{ color: "#14992a", fontSize: 80 }}
+                            ></i>
+                            <p className="my-2 fs-4 fw-bolder">
+                                {t("We received your feedback, Thanks.")}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div> */}
+
+
+
+
+
+
+        </div>
     );
 }
 

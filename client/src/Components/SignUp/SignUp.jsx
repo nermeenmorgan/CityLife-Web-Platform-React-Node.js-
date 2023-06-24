@@ -7,33 +7,23 @@ import { DataContext } from '../../Context/Data'
 
 
 export default function SignUp() {
+    // States
     const [image, setImage] = useState()
     const [isLoading, setisLoading] = useState(false)
     const [errorMsg, seterrorMsg] = useState('')
     const [userName, setUserName] = useState('')
     const [dob, setDob] = useState('')
     const navigate = useNavigate()
-
     let { handleUserData } = useContext(DataContext)
 
 
+    // Functions
 
     function handleProfileImage(e) {
-        // console.log(e.target.files[0])
         const url = URL.createObjectURL(e.target.files[0])
-        // console.log(url);
         setImage(url)
     }
 
-
-
-
-
-    // useEffect(() => {
-    //     console.log(dob);
-    //     console.log(userName);
-
-    // }, [dob, userName])
 
 
     function handleRegister(values) {
@@ -118,21 +108,20 @@ export default function SignUp() {
 
 
 
-                            <div className='d-block w-100'>
+                            <div className='d-block w-100 pb-4'>
                                 <label htmlFor='dob' >Date Of Birth</label>
-                                <input className='form-control mb-2 form-input' type="date" name='dob' id='dob' onChange={(e) => setDob(e.target.value)} />
+                                <input className='form-control mb-2  form-input' type="date" name='dob' id='dob' onChange={(e) => setDob(e.target.value)} />
                             </div>
 
 
 
-
-                            <div className='d-block w-100'>
+                            <div className='d-block w-100 pb-4'>
                                 <label htmlFor='userName' >User Name</label>
                                 <input className='form-control mb-2 form-input' type="text" name='userName' id='userName' onChange={(e) => setUserName(e.target.value)} />
                             </div>
 
 
-                            <div className='d-block w-100'>
+                            <div className='d-block w-100 pb-4'>
                                 <label htmlFor='pImage' >Personal Image</label>
                                 <input className='form-control mb-2 form-input' type="file" name='pImage' id='pImage' accept='image/*' onChange={(e) => handleProfileImage(e)} />
                             </div>
@@ -164,11 +153,11 @@ export default function SignUp() {
                                 {formik.errors.rePassword && formik.touched.rePassword ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.rePassword}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
 
-                            {isLoading ? <button type='button' className='btn btn-success w-100 mt-3'><i className='fas fa-spinner fa-spin'></i></button> : <button onClick={() => handleUserData(formik.values, dob, userName, image)} disabled={!(formik.isValid && formik.dirty)} type="submit" className="btn btn-success w-100 mt-3">Submit</button>}
+                            {isLoading ? <button type='button' className='btn dark-btn w-100 mt-3'><i className='fas fa-spinner fa-spin'></i></button> : <button onClick={() => handleUserData(formik.values, dob, userName, image)} disabled={!(formik.isValid && formik.dirty)} type="submit" className="btn dark-btn w-100 mt-3">Submit</button>}
                         </form>
                     </div>
-                    <div className="col-sm-12 col-md-6">
-                        <img className="w-100" src="images/Register.jpg" alt="" />
+                    <div className="col-sm-12 col-md-6 d-flex justify-content-center align-items-center">
+                        <img className="w-100" src="/images/signupblue.jpeg" alt="" />
                     </div>
 
                 </div>

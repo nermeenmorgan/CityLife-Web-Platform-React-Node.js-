@@ -5,13 +5,16 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 
 function Payment() {
+  // States
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
 
+      
+    // Functions
   useEffect(() => {
     axios.get("http://localhost:5253/config")
     .then((res)=>{
-      // console.log(res.data.publishableKey)
+
       setStripePromise(loadStripe(res.data.publishableKey));
     })
   }, []);
@@ -19,14 +22,14 @@ function Payment() {
   useEffect(() => {
     axios.post("http://localhost:5253/create-payment-intent",JSON.stringify({}))
     .then((res)=>{
-      // console.log(res.data.clientSecret)
+
       setClientSecret(res.data.clientSecret)
     })
   }, []);
 
   return (
     <>
-      {/* <h3>Payment</h3> */}
+
       {clientSecret && stripePromise && (
         <Elements stripe={stripePromise} options={{ clientSecret }}>
           <CheckoutForm />

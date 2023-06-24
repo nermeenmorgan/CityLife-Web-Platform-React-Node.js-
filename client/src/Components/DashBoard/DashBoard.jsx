@@ -1,17 +1,15 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { DataContext } from "../../Context/Data";
-// import { useNavigate } from 'react-router-dom'
+
 import ItemSection from "./ItemSection";
 import { useTranslation } from "react-i18next";
 
 
 export default function DashBoard() {
-  // const navigate = useNavigate
+
   const { ...ExchangedData } = useContext(DataContext);
   const [selectedItem, setSelectedItem] = useState("");
   const { t, i18n } = useTranslation();
-
-  // console.log(ExchangedData)
 
   const handleChange = useCallback((e) => {
     setSelectedItem(e.target.value);
@@ -87,11 +85,51 @@ export default function DashBoard() {
 
   return (
     <>
+
+
+
+      {/*  Feedback */}
+      <div className="w-75 mx-auto my-4 ">
+        <table className="table table-hover table-bordered ">
+          <thead>
+            <tr className="text-center">
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">FeedBack To</th>
+              <th scope="col">Message</th>
+            </tr>
+          </thead>
+          <tbody className="text-center">
+
+            {ExchangedData.dashBoardFeedback && ExchangedData.dashBoardFeedback.map((ele) =>
+              <tr key={ele.id}>
+                <th scope="row">{ele.id}</th>
+                <td>{ele.name}</td>
+                <td>{ele.email}</td>
+                <td>{ele.phone}</td>
+                <td>{ele.feedBackTo}</td>
+                <td>{ele.message}</td>
+              </tr>)}
+
+
+          </tbody>
+        </table>
+
+      </div>
+
+
+
+
+
+
+
       <div className="w-50 mx-auto mt-5"
-                          style={{
-                            direction: i18n.language === "ar" ? "rtl" : "",
-                            // textAlign: i18n.language === "ar" ? "right" : "",
-                          }}
+        style={{
+          direction: i18n.language === "ar" ? "rtl" : "",
+
+        }}
       >
         <span className="fw-bold fs-5">{t("Choose Service or Category")}: </span>
         <select

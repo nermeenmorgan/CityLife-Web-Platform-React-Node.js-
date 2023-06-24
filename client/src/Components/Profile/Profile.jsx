@@ -2,18 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { DataContext } from '../../Context/Data';
 import styles from './Profile.module.css'
 const Profile = () => {
-    let { allUserData } = useContext(DataContext)
+    // States
+    const { allUserData } = useContext(DataContext)
 
-
+    // Functions
     function handleImage(e) {
         e.target.src = 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
     }
-
-
-
-
-
-
 
     return (<>
         <section>

@@ -5,86 +5,73 @@ import FeedBack from '../FeedBack/FeedBack'
 import i18next, { t } from 'i18next'
 
 export default function Banks() {
-
+    // States
     const { bank } = useContext(DataContext)
     const [showModal, setShowModal] = useState(false);
+    const [message, setMessage] = useState('')
 
+    // Functions
     const handleShowModal = () => {
         setShowModal(!showModal);
     };
 
-    const handleCloseModal = () => {
-        setShowModal(false);
-    };
 
-    const [message, setMessage] = useState('')
+
     return <>
-        <div className="container mt-3">
-            <div className="row">
-                {bank.map((ele) => <div key={ele.id} className='d-flex flex-row justify-content-between border shadow rounded-4 my-3 p-4'>
+        {/* New  Design */}
 
-                    <div className='col-sm-12 col-lg-6'>
-
-                        <div className='d-flex align-items-center mb-3'>
-                            <img src={ele.logo} alt={ele.name}
-                                className='rounded-circle shadow'
-                                style={{ width: "80px", height: "80px" }}
-                            />
-                            <h2 className='ms-5' >{ele.name}</h2>
+        {/* Header */}
+        <div className='container-fluid lightGreyBg py-3'>
+            <h2 className='lightGreenColor text-center m-0'>Banks</h2>
+        </div>
+        <div className='row gy-4 p-0 m-0 w-75 mx-auto'>
+            {bank.map((ele) =>
+                <div key={ele.id} className='col-md-5 mx-auto px-0'>
+                    <div className='shadow-sm'>
+                        <div className='position-relative'>
+                            <div className='layer rounded-top-3'></div>
+                            <img src={ele.img1} alt="" style={{ width: '100%', height: '300px' }} className='rounded-top-3' />
                         </div>
-                        <p className='opacity-75'>{ele.overview}</p>
-                        <p> Call Center: <span className=' fw-bold'>{ele.number}</span></p>
-                        <p> Website: <Link to={ele.website} target='_blank'>{ele.website}</Link></p>
-                        <div className='d-sm-block d-md-flex justify-content-between'>
-                            <div className='d-flex'>
-                                <p>{ele.address}</p>
-                                <Link to={ele.location} target='_blank' className='ms-2'><i className="fa-solid fa-location-dot"></i></Link>
+                        {/* Data */}
+                        <div className=''>
+                            <div className='container pt-3'>
+                                <h4 className='text-center mainColor' >{ele.name}</h4>
+                                <p className='text-center'>{ele.overview}</p>
                             </div>
-                            <p className='pe-4'> Working hours: {ele.workinghours}</p>
+                            <div className='lightGreenBackgroudColor text-white  rounded-bottom-3'>
+                                <div className='d-flex justify-content-around align-items-center py-3 container'>
+                                    <p className='m-0'> {ele.Rating} <i className="fa-solid fa-star" style={{ color: '#C3801B' }}></i> </p>
+                                    <p className='m-0'><Link to={ele.location} className='text-decoration-none text-white'> Location </Link></p>
+
+                                    <Link to={ele.website} className='text-white text-decoration-none'>Website</Link>
+                                    <Link className="text-decoration-none text-white" onClick={() => { const whatsappURL = `https://wa.me/${ele.number}`; window.location.href = whatsappURL; }} ><p className='m-0'> Phone </p></Link>
+                                </div>
+                                <div className='text-center pb-3 '>
+                                    <button data-bs-target="#exampleModalToggle" data-bs-toggle="modal" onClick={() => {
+                                        handleShowModal()
+                                        setMessage(ele.name)
+                                    }}
+                                        data-whatever="@mdo"
+                                        className={i18next.language === 'en' ? "btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor" : " btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor "}
+                                    >
+                                        {t("Feedback")}
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-
-
-
-                        <button data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
-
-
-                            onClick={() => {
-                                handleShowModal()
-                                setMessage(ele.name)
-                            }}
-
-                            data-whatever="@mdo"
-                            className={i18next.language === 'en' ? "btn btn-success text-center" : "btn btn-success me-4 ms-5 text-center"}
-                            style={{
-
-                                borderRadius: "10px",
-                                boxShadow: "0px 2px 2px 2px rgba(0, 0, 0, 0.3)",
-                            }}
-                        >
-                            {t("Feedback")}
-                        </button>
-
-
-
-
                     </div>
-
-                    <div className='col-sm-12 col-lg-6 mt-5'>
-                        <img src={ele.img1} alt="" className='w-75 rounded-4 float-end d-none d-md-block' />
-                    </div>
-
                 </div>)}
-            </div>
         </div>
 
+        {/* Modal */}
         <div className="modal fade " id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">
-                    <div className="modal-header">
-                        <h1 className="modal-title fs-5" id="exampleModalLabel">
+                    <div className="modal-header lightGreenBackgroudColor text-white text-center">
+                        <h1 className="modal-title fs-5 w-100" id="exampleModalLabel">
                             {t("Leave your message")}
                         </h1>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+                        <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" ></button>
                     </div>
                     <div className="modal-body">
 
@@ -95,4 +82,3 @@ export default function Banks() {
         </div>
     </>
 }
-

@@ -895,6 +895,37 @@ export default function Data(props) {
     setAllIDsNames(NamesIDsArr)
   }, [All])
 
+
+
+
+
+
+
+
+
+  // Dashboard [ Feed Back ]
+
+  const [dashBoardFeedback, setDashBoardFeedback] = useState(null)
+  useEffect(() => {
+    axios.get('http://localhost:3005/feedback')
+      .then((res) => setDashBoardFeedback(res.data))
+      .catch((err) => console.log(err))
+  }, [])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const ExchangedData = {
     All,
     categoryNames,
@@ -1002,6 +1033,9 @@ export default function Data(props) {
     deleteBuses,
     addBuses,
     updateBuses,
+
+    // Dashboard
+    dashBoardFeedback
   };
 
   return (

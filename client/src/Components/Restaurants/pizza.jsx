@@ -202,8 +202,7 @@ const Pizza = () => {
                   data-whatever="@mdo"
                   className= {i18n.language==='en'? "btn btn-success me-2 ms-5 text-center":  "btn btn-success me-4 ms-5 text-center"}
                   style={{
-                    // fontSize:15,
-                    // fontWeight:"bold",
+
                     borderRadius: "10px",
                     boxShadow: "0px 2px 2px 2px rgba(0, 0, 0, 0.3)",
                   }}

@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import { DataContext } from "../../Context/Data";
 
 export default function Completion() {
+  // States
   const { userData } = useContext(DataContext);
-  console.log(userData);
+
   return (
     <>
       {userData === null ? (

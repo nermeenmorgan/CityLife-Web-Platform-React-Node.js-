@@ -4,19 +4,15 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
-// import myImage from '../../assets/MicrosoftTeams-image.png';
+import '../../App.css'
 
 export default function ContactUs() {
-
+    // Stated
     const [showModal, setShowModal] = useState(false);
     const { t, i18n } = useTranslation();
+    const navigate = useNavigate();
 
-    // function handleSubmit() {
 
-    // };
-
-    let navigate = useNavigate();
 
     // Form Validation
     let validationSchema = Yup.object({
@@ -42,63 +38,56 @@ export default function ContactUs() {
 
     return (
         <>
-            <div 
-    style={{
-        direction: i18n.language === "ar" ? "rtl" : "ltr",
-        textAlign: i18n.language === "ar" ? "right" : "left",
-      }}
- className='row container mx-auto my-5 '>
-                <section
-    style={{
-        direction: i18n.language === "ar" ? "rtl" : "ltr",
-        textAlign: i18n.language === "ar" ? "right" : "left",
-      }}
- className='col-lg-8 px-5'>
+            <div style={{ direction: i18n.language === "ar" ? "rtl" : "ltr", textAlign: i18n.language === "ar" ? "right" : "left", }}
+                className='row container mx-auto my-5 '>
+                <section style={{ direction: i18n.language === "ar" ? "rtl" : "ltr", textAlign: i18n.language === "ar" ? "right" : "left", }} className='col-lg-8 px-5 shadow-sm '>
                     <div className='container'>
                         <div className='my-3'>
-                            <h3 
-    style={{
-        direction: i18n.language === "ar" ? "rtl" : "ltr",
-        textAlign: i18n.language === "ar" ? "right" : "left",
-      }}
-> {t("Get in touch")}</h3>
+                            <h3 style={{ direction: i18n.language === "ar" ? "rtl" : "ltr", textAlign: i18n.language === "ar" ? "right" : "left", }} > {t("Get in touch")}</h3>
                             <h5 className={`${styles.lightFont}`}>{t("We will answer your questions and problems")}</h5>
                         </div>
                         <div>
-                            <form onSubmit={formik.handleSubmit}>
+                            <form onSubmit={formik.handleSubmit} >
+
                                 {/* Name */}
                                 <div className="form-group my-0">
                                     <label htmlFor="name" className='mb-2'>{t("Name")}</label>
-                                    <input onBlur={formik.handleBlur} autoComplete="off" placeholder={t("Enter your name")} className={`form-control mb-2  ${styles.input} ${formik.touched.name && formik.errors.name ? styles.alert : styles.input}`} onChange={formik.handleChange} value={formik.values.name} type='text' name='name' id='name' />
+                                    <input onBlur={formik.handleBlur} autoComplete="off" placeholder={t("Enter your name")} className={`form-control  mb-2   ${formik.touched.name && formik.errors.name ? styles.alert : styles.input}`} onChange={formik.handleChange} value={formik.values.name} type='text' name='name' id='name' />
                                     {formik.errors.name && formik.touched.name ? <span className=' opacity-100 text-danger ps-3'> {formik.errors.name}</span> : <span className=' opacity-0'> lorem </span>}
                                 </div>
+
                                 {/* Email */}
                                 <div className="form-group my-0">
                                     <label htmlFor="email" className='mb-2'>{t("Email")}</label>
                                     <input onBlur={formik.handleBlur} autoComplete="off" placeholder={t("Enter your email")} className={`form-control mb-2  ${styles.input} ${formik.touched.email && formik.errors.email ? styles.alert : styles.input}`} onChange={formik.handleChange} value={formik.values.email} type='email' name='email' id='email'></input>
                                     {formik.errors.email && formik.touched.email ? <span className=' opacity-100 text-danger ps-3'> {formik.errors.email}</span> : <span className=' opacity-0'> lorem </span>}
                                 </div>
+
                                 {/* Phone */}
                                 <div className="form-group my-0">
                                     <label htmlFor="phone" className='mb-2'>{t("Phone")}</label>
                                     <input onBlur={formik.handleBlur} autoComplete="off" placeholder={t("Enter your phone number")} className={`form-control mb-2  ${styles.input} ${formik.touched.phone && formik.errors.phone ? styles.alert : styles.input}`} onChange={formik.handleChange} value={formik.values.phone} type='tel' name='phone' id='phone'></input>
                                     {formik.errors.phone && formik.touched.phone ? <span className=' opacity-100 text-danger ps-3'> {formik.errors.phone}</span> : <span className=' opacity-0'> lorem </span>}
                                 </div>
+
                                 {/* Message */}
                                 <div className="form-group my-0">
                                     <label htmlFor="message" className='mb-2'>{t("Message")}</label>
                                     <textarea onBlur={formik.handleBlur} autoComplete="off" placeholder={t("Leave your message")} className={`form-control mb-2  ${styles.input} ${styles.textArea_noResize} ${formik.touched.message && formik.errors.message ? styles.alert : styles.input}`} rows={10} onChange={formik.handleChange} value={formik.values.message} type='text' name='message' id='message'></textarea>
                                     {formik.errors.message && formik.touched.message ? <span className=' opacity-100 text-danger ps-3'> {formik.errors.message}</span> : <span className=' opacity-0'> lorem </span>}
                                 </div>
+
                                 {/* Submit */}
-                                <button disabled={!(formik.isValid && formik.dirty)} type='submit' data-bs-toggle="modal" data-bs-target="#exampleModal" className="btn btn-mainColor rounded rounded-2 danger w-50 d-block mx-auto py-2 my-5">{t("Submit")}</button>
+                                <button disabled={!(formik.isValid && formik.dirty)} type='submit' data-bs-toggle="modal" data-bs-target="#exampleModal" className="btn btn-mainColor rounded rounded-2 danger w-50 d-block mx-auto py-2  my-3">{t("Submit")}</button>
                             </form>
                         </div>
                     </div>
                 </section>
 
-                <section className={`${styles.contacts_section} col-lg-4 px-3 rounded rounded-4`}>
-                    <div className={`${styles.contact_us_shadow} container my-3`}>
+
+                {/* Right Section */}
+                <section className={`col-lg-4 px-3 rounded rounded-4`}>
+                    <div className='container my-3 shadow-sm py-4'>
                         <h4 className='text-center'>{t("Contact us")}</h4>
 
                         {/* Email */}

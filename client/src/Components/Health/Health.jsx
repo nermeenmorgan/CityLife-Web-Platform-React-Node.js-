@@ -5,49 +5,52 @@ import Centers from "./Centers";
 import { useTranslation } from "react-i18next";
 
 export default function Health() {
+  // Stated
   const [TopNav, setTopNav] = useState("Pharmacies");
   const { t, i18n } = useTranslation();
 
+  // Functions
   const handleClickTopNav = (val) => {
     setTopNav(val);
   };
 
   return (
     <>
-      <div className="container my-5">
+      <div className='container-fluid lightGreyBg py-3'>
+        <h2 className="lightGreenColor text-center m-0">
+          {t("Pharmacies")}
+        </h2>
+      </div>
+
+
+
+      <div className="w-50 mx-auto my-2">
         <div className="row justify-content-center">
-          <div className="col-md-8">
-            <h2 className="fw-bold mb-4 text-center">
-              {t("Promoting Health and Wellness in Rehab")}
-            </h2>
+          <div className="col-md-12">
+
             <p className="fs-5 text-muted mb-4">
-              {t(
-                "Experience a comprehensive approach to health and wellness in Rehab City, Egypt. Our community is dedicated to providing top-notch healthcare services and facilities to residents. Whether you're in need of medical care, preventive services, or specialized treatments, you'll find a range of options to meet your healthcare needs."
-              )}
+              {t("Discover the best schools in Rehab Egypt and give your child the gift of quality education. Our featured schools are dedicated to providing exceptional learning experiences.  The campuses of the schools in Al Rehab City are well-designed and spacious, with modern facilities.")}
             </p>
-            <div className="d-flex justify-content-center">
-              <button
-                type="button"
-                onClick={() => handleClickTopNav("Centers")}
-                className={`btn btn-lg btn-success me-3 ${
-                  TopNav === "Centers" ? "active" : ""
-                }`}
-              >
+
+
+            {/* Buttons */}
+            <div className="text-center">
+              <button type="button" onClick={() => handleClickTopNav("Centers")} className="btn dark-btn rounded-1 w-25 mx-2 " >
                 {t("Centers")}
               </button>
-              <button
-                type="button"
-                onClick={() => handleClickTopNav("Pharmacies")}
-                className={`btn btn-lg btn-success ${
-                  TopNav === "Pharmacies" ? "active" : ""
-                }`}
-              >
+              <button type="button" onClick={() => handleClickTopNav("Pharmacies")} className="btn dark-btn w-25 rounded-1 mx-2 " >
                 {t("Pharmacies")}
               </button>
             </div>
+
+
+
+
           </div>
         </div>
       </div>
+
+
       {TopNav === "Pharmacies" ? (
         <Pharmacies key={uuid()}></Pharmacies>
       ) : TopNav === "Centers" ? (

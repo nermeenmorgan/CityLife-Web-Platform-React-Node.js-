@@ -8,15 +8,15 @@ export default function RestaurantLayout() {
     <>
       <RestaurantsNavbar />
       {/* <div className='d-flex '> */}
-      <div className="container">
-        <div className="row ">
-          <div className="d-flex flex-row">
-            <div className="col-md-10 col-12">
+      <div className="">
+        <div className=" ">
+          <div className="">
+            <div className=" ">
               <Outlet></Outlet>
             </div>
-            <div className="col-lg-2 d-lg-block d-none">
-              <Offers></Offers>
-            </div>
+            {/* <div className="col-lg-2 d-lg-block d-none"> */}
+              {/* <Offers></Offers> */}
+            {/* </div> */}
           </div>
         </div>
       </div>

@@ -3,26 +3,19 @@ import { DataContext } from "../../Context/Data";
 import Slider from "react-slick";
 import { useTranslation } from "react-i18next";
 import FeedBack from '../FeedBack/FeedBack'
+import { Link } from "react-router-dom";
+import i18next, { t } from 'i18next'
 export default function Sports() {
-  const { gyms, userData } = useContext(DataContext);
+  // States
+  const { gyms } = useContext(DataContext);
   const { t, i18n } = useTranslation();
   const [message, setMessage] = useState('')
-  const [feedbackName, setFeedbackName] = useState("");
-  const [feedbackMessage, setFeedbackMessage] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  // Functions
+  const handleShowModal = () => {
+    setShowModal(!showModal);
+  };
 
-  const handlefeedbackName = useCallback((event) => {
-    setFeedbackName(event.target.value);
-  }, []);
-
-  const handlefeedbackMessage = useCallback((event) => {
-    setFeedbackMessage(event.target.value);
-  }, []);
-
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-    setFeedbackName("");
-    setFeedbackMessage("");
-  }, []);
 
   const handleCall = useCallback((number) => {
     window.location.href = `tel:${number}`;
@@ -44,245 +37,90 @@ export default function Sports() {
 
   return (
     <>
-      <div className="container">
-        <div
-          className="row"
-          style={{
-            direction: i18n.language === "ar" ? "rtl" : "",
-            // textAlign: i18n.language === "ar" ? "right" : "",
-          }}
-        >
-          <h1 className="text-center fw-bold mt-4">
-            {t("Gyms in El-Rehab City")}
-          </h1>
-          {gyms ? (
-            gyms.map((res) => (
-              <div
-                className="row  mx-md-3  mx-0 shadow my-5 custom-style mb-5 p-2 p-md-4 w-10 rounded-4"
-                key={res.id}
-              >
-                <div className="col-lg-6  col-12">
-                  <div className="d-flex align-items-center flex-wrap">
-                    <img
-                      className="rounded-circle me-3 mb-3 mb-md-0 shadow"
-                      style={{ maxWidth: "100px", height: "auto" }}
-                      src={res.logo}
-                      alt={res.name}
-                    />
 
-                    <div
-                      className={`d-flex flex-column justify-content-center align-items-center offset-1 ${i18n.language === "ar" && "me-5"
-                        }`}
+      {/* New  Design */}
+      {/* Page Title */}
+      <div className='container-fluid lightGreyBg py-3'>
+        <h2 className='lightGreenColor text-center m-0'>Sports</h2>
+      </div>
+
+      <div className='row gy-4 p-0 m-0 w-75 mx-auto'>
+
+
+
+        {/* Card */}
+        {gyms ? gyms.map((ele) =>
+          <div key={ele.id} className='col-md-5 mx-auto px-0'>
+            <div className='shadow-sm'>
+              <div className="rounded-top-3 p-0 m-0 position-relative w-100 " style={{ height: 300 }}>
+                <div className='layer rounded-top-3 '></div>
+                <Slider  {...settings}>
+                  <div className=" rounded-top-3 ">
+                    <img height={300} className="w-100 rounded-top-3 " src={ele.img1} alt="Photos galley" />
+                  </div>
+                  <div className="rounded-top-3">
+                    <img height={300} className="w-100 rounded-top-3" src={ele.img2} alt="Photos galley" />
+                  </div>
+                  <div className="rounded-top-3">
+                    <img height={300} className="w-100 rounded-top-3" src={ele.img3} alt="Photos galley" />
+                  </div>
+                </Slider>
+              </div>
+              <div className=''>
+                <div className='container pt-3'>
+                  <h4 className='text-center mainColor' >{ele.name}</h4>
+                  <p className='text-center'>{ele.overview}</p>
+                </div>
+                <div className='lightGreenBackgroudColor text-white  rounded-bottom-3'>
+                  <div className='d-flex justify-content-around align-items-center py-3 container'>
+                    <p className='m-0'> {ele.Rating} <i className="fa-solid fa-star" style={{ color: '#C3801B' }}></i> </p>
+                    <p className='m-0'><Link to={ele.location} className='text-decoration-none text-white'> Location </Link></p>
+                    {/* <span> Phone: {ele.number}</span> */}
+                    <Link to={ele.website} className="text-decoration-none text-white" target='_blank'>Website </Link>
+                    <Link className="text-decoration-none text-white" onClick={() => { const whatsappURL = `https://wa.me/${ele.number}`; window.location.href = whatsappURL; }} ><p className='m-0'> Phone </p></Link>
+
+                  </div>
+                  <div className='text-center pb-3 '>
+                    <button data-bs-target="#exampleModalToggle3" data-bs-toggle="modal"
+                      onClick={() => {
+                        handleShowModal()
+                        setMessage(ele.name)
+                      }}
+                      data-whatever="@mdo"
+                      className={i18next.language === 'en' ? "btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor" : " btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor"}
                     >
-                      <div className="fs-4 fw-bold mb-1">{t(res.name)}</div>
-                      {res.Rating >= 1 && res.Rating <= 5 && (
-                        <div className="d-flex align-items-center">
-                          {/* <span className="fw-bold me-2">Rating:</span> */}
-                          <i
-                            className="fa-solid fa-star"
-                            style={{ color: "#f5e324" }}
-                          ></i>
-                          <i
-                            className="fa-solid fa-star"
-                            style={{ color: "#f5e324" }}
-                          ></i>
-                          <i
-                            className="fa-solid fa-star"
-                            style={{ color: "#f5e324" }}
-                          ></i>
-                          <i
-                            className="fa-solid fa-star"
-                            style={{ color: "#f5e324" }}
-                          ></i>
-                          <i
-                            className="fa-solid fa-star-half-stroke"
-                            style={{ color: "#f5e324" }}
-                          ></i>
-                          <span className="fw-bold ms-2">{res.Rating}</span>
-                        </div>
-                      )}
-                    </div>
+                      {t("Feedback")}
+
+                    </button>
+
                   </div>
-                  <div className="row justify-content-center align-items-center ms-1 mb-3">
-                    {/* <div className="fs-5 fw-bold">Overview</div>
-                    <div className="fs-5 my-4">{res.overview}</div> */}
-                    <div className="fs-5 fw-bold mt-3">{t("Address")}</div>
-                    <div className="fs-5 ">{t(res.address)}</div>
-                    <div className="d-flex align-items-center mt-5">
-                      <div
-                        className={`row align-items-center d-flex-column align-items-center ${i18n.language === "ar" && "ms-5"
-                          }`}
-                      >
-                        <div
-                          className="d-flex flex-column align-items-center"
-                          style={{
-                            cursor: "pointer",
-                          }}
-                        >
-                          <i
-                            className="fa-solid fa-phone fa-2xl mainColor"
-                            onClick={() => handleCall(res.number)}
-                          ></i>
-                          {/* <button
-                              className="fa-2x btn fs-6 fw-bold text-success"
-                            //   onClick={() => handleCall(res.number)}
-                            >
-                              Call
-                            </button> */}
-                        </div>
-                      </div>
-
-                      <div className="d-flex justify-content-center ms-5">
-                        <a href={res.location} className="">
-                          <i className="fa-solid fa-location-dot fa-2xl mainColor"></i>
-                          {/* <div className=" fs-6 fw-bold text-success">
-                            Location
-                          </div> */}
-                        </a>
-                      </div>
-
-                      <div className="ms-5">
-                        <button
-                          className="btn fs-6 btn-success "
-                          data-bs-target="#exampleModalToggle"
-                          data-bs-toggle="modal"
-                          onClick={() => {
-                            setMessage(res.name)
-                          }}
-                          disabled={userData ? false : true}
-                        >
-                          {t("Feedback")}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-lg-6  col-12 mt-sm-3" style={{}}>
-                  {/*Slider */}
-                  <Slider {...settings}>
-                    <div className="my-3 px-1">
-                      <img
-                        height={230}
-                        className="w-100 rounded-4"
-                        src={res.img1}
-                        alt="Photos galley"
-                      />
-                    </div>
-                    <div className="my-3 px-1">
-                      <img
-                        height={230}
-                        className="w-100 rounded-4"
-                        src={res.img2}
-                        alt="Photos galley"
-                      />
-                    </div>
-                    <div className="my-3 px-1">
-                      <img
-                        height={230}
-                        className="w-100 rounded-4"
-                        src={res.img3}
-                        alt="Photos galley"
-                      />
-                    </div>
-                  </Slider>
-                </div>
-              </div>
-            ))
-          ) : (
-            <div className="spinner-border text-success" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
-          )}
-          {/*Feedback */}
-          {/* <div
-            className="modal fade"
-            id="exampleModalToggle"
-            aria-hidden="true"
-            aria-labelledby="exampleModalToggleLabel"
-            tabIndex="-1"
-          >
-            <div className="modal-dialog modal-dialog-centered">
-              <div className="modal-content">
-                <div
-                  className={`modal-header ${i18n.language === "ar" && "d-flex justify-content-between"
-                    }`}
-                >
-                  <h1 className="modal-title fs-5" id="exampleModalLabel">
-                    {t("Your feedback")}
-                  </h1>
-                  <button
-                    type="button"
-                    className={`btn-close ${i18n.language === "ar" && "ms-0"}`}
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div className="modal-body">
-                  <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                      <label htmlFor="Name" className="col-form-label">
-                        {t("Name")}
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="Name"
-                        value={feedbackName}
-                        onChange={handlefeedbackName}
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="message-text" className="col-form-label">
-                        {t("Your feedback")}:
-                      </label>
-                      <textarea
-                        className="form-control"
-                        id="message-text"
-                        value={feedbackMessage}
-                        onChange={handlefeedbackMessage}
-                      ></textarea>
-                    </div>
-                    <div className="d-flex justify-content-center">
-                      <button
-                        className="btn btn-success w-50"
-                        data-bs-target="#exampleModalToggle2"
-                        data-bs-toggle="modal"
-                        disabled={
-                          feedbackName && feedbackMessage ? false : true
-                        }
-                      >
-                        {t("Send")}
-                      </button>
-                    </div>
-                  </form>
                 </div>
               </div>
             </div>
-          </div> */}
+          </div>) : <h4>Loading ...</h4>}
 
 
 
 
-          <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
-            <div className="modal-dialog modal-dialog-centered">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h1 className="modal-title fs-5" id="exampleModalLabel">
-                    {t("Leave your message")}
-                  </h1>
-                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
-                </div>
-                <div className="modal-body">
+        {/* FeedBack */}
+        <div className="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h1 className="modal-title fs-5" id="exampleModalLabel">
+                  {t("Leave your message")}
+                </h1>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+              </div>
+              <div className="modal-body">
 
-                  <FeedBack message={message} ></FeedBack>
-                </div>
+                <FeedBack message={message} ></FeedBack>
               </div>
             </div>
           </div>
-
         </div>
       </div>
+
     </>
   );
 }

@@ -6,15 +6,13 @@ import * as yup from "yup"
 import { DataContext } from '../../Context/Data'
 
 export default function SignIn() {
-
+    // States
     const { saveUserData } = useContext(DataContext)
-
     const [isLoading, setisLoading] = useState(false)
     const [errorMsg, seterrorMsg] = useState('')
-
     const navigate = useNavigate()
-    // const history = useHistory();
 
+    // Functions
     function handleLogin(values) {
         setisLoading(true)
         axios.post("https://route-ecommerce.onrender.com/api/v1/auth/signin", values)
@@ -23,7 +21,7 @@ export default function SignIn() {
                     setisLoading(false)
                     localStorage.setItem("userToken", res.data.token)
                     saveUserData()
-                    navigate(-1)
+                    navigate('/')
                 }
             })
             .catch((err) => {
@@ -68,19 +66,16 @@ export default function SignIn() {
                                 {formik.errors.password && formik.touched.password ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.password}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
 
-                            {isLoading ? <button type='button' className='btn bg-main w-100 mt-3'><i className='fas fa-spinner fa-spin'></i></button> : <button disabled={!(formik.isValid && formik.dirty)} type="submit" className="btn bg-main text-white w-100 mt-3">Submit</button>}
-                            <div className='mx-auto mt-3'>
-                                <Link to='/signup'>
-                                    <p>
-                                        Create new account?
-                                    </p>
-                                </Link>
+                            {isLoading ? <button type='button' className='btn dark-btn w-100 mt-3'><i className='fas fa-spinner fa-spin'></i></button> : <button disabled={!(formik.isValid && formik.dirty)} type="submit" className="btn dark-btn text-white w-100 mt-3">Submit</button>}
+                            <div className='mx-auto mt-3 d-flex'>
+                                <p> Don't have an account? </p>
+                                <Link to='/signup' className='text-decoration-none mx-2'> Sign up </Link>
                             </div>
                         </form>
 
                     </div>
                     <div className='col-sm-12 col-md-6'>
-                        <img src="/images/login.jpg" alt="" className='w-100' />
+                        <img src="/images/signinblue.jpeg" alt="" className='w-100' />
                     </div>
 
                 </div>

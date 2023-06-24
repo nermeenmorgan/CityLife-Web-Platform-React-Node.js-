@@ -13,7 +13,7 @@ export default function MaintenancePayment() {
   //   { name: "Car Washing subscription", fees: "200 EGP" },
   // ],[]);
 
-  const { userData,PayArr } = useContext(DataContext);
+  const { userData, PayArr } = useContext(DataContext);
 
   // handle payment and bills
   const [selectedName, setSelectedName] = useState("");
@@ -24,10 +24,10 @@ export default function MaintenancePayment() {
     setSelectedFees(fees);
   }
 
- // handle complain form
-  const [errors,setErrors]= useState({
+  // handle complain form
+  const [errors, setErrors] = useState({
     nameError: "",
-    phoneError:"",
+    phoneError: "",
     placeError: "",
     messageError: "",
     uploadedImgError: "",
@@ -36,21 +36,21 @@ export default function MaintenancePayment() {
   const [newFeedBack, setNewFeedback] = useState({
     // id: "",
     name: "",
-    phone:"",
+    phone: "",
     place: "",
     message: "",
     uploadedImg: "",
   });
 
   const handleChange = useCallback((e) => {
-    const {name,value} = e.target;
+    const { name, value } = e.target;
     setNewFeedback({ ...newFeedBack, [name]: value });
-    if (newFeedBack.name=== "") {
-        setErrors({...errors,nameError:"Title is required"})
-      }else{
-        setErrors({...errors,nameError:""})
-      }
-  },[newFeedBack,errors]);
+    if (newFeedBack.name === "") {
+      setErrors({ ...errors, nameError: "Title is required" })
+    } else {
+      setErrors({ ...errors, nameError: "" })
+    }
+  }, [newFeedBack, errors]);
 
   const handleImageUpload = useCallback((e) => {
     // console.log(e.target.files);
@@ -60,107 +60,105 @@ export default function MaintenancePayment() {
     fileReader.onloadend = () => {
       setNewFeedback({ ...newFeedBack, uploadedImg: fileReader.result });
     };
-  },[newFeedBack]);
+  }, [newFeedBack]);
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
-   setNewFeedback({
-    name: "",
-    phone:"",
-    place: "",
-    message: "",
-    uploadedImg: "",
-   })
+    setNewFeedback({
+      name: "",
+      phone: "",
+      place: "",
+      message: "",
+      uploadedImg: "",
+    })
   }, []);
 
   return (
     <>
+      <div className='container-fluid lightGreyBg py-3'>
+        <h2 className='lightGreenColor text-center m-0'> PAYMENT</h2>
+      </div>
       <div className="container">
         <div className="row mt-5">
           <h2 className="text-center mb-4 fw-bold">
             One place for your all bills and subscriptions
           </h2>
-          {PayArr && PayArr.map((type,index) => (
-              <div key={uuid()} className="col-lg-6 col-12">
-                <div
-                  className="d-flex flex-column shadow rounded-5 w-100 my-3 p-4"
-                  style={{ height: 250 }}
-                  key={uuid()} 
-                >
-                  <div>
-                    <h3 className="text-center fw-bold">{type.name}</h3>
-                  </div>
-                  <div className="mx-auto">
-                    {(() => {
-                      switch (type.name) {
-                        case "City Maintenance Bills":
-                          return (
-                            <i
-                              className="fa-solid fa-screwdriver-wrench mainColor my-3"
-                              style={{ fontSize: 70 }}
-                              key={uuid()} 
-                            ></i>
-                          );
-                        case "El-Rehab club subscription":
-                          return (
-                            <i
-                              className="fa-solid fa-futbol mainColor my-3"
-                              style={{ fontSize: 70 }}
-                              key={uuid()} 
-                            ></i>
-                          );
-                        case "Water Bills":
-                          return (
-                            <i
-                              className="fa-solid fa-droplet mainColor my-3"
-                              style={{ fontSize: 70 }}
-                              key={uuid()} 
-                            ></i>
-                          );
-                        case "Car Washing subscription":
-                          return (
-                            <i
-                              className="fa-solid fa-car mainColor my-3"
-                              style={{ fontSize: 70 }}
-                              key={uuid()} 
-                            ></i>
-                          );
-                        default:
-                          return null;
-                      }
-                    })()}
-                  </div>
-                  <div key={uuid()} className="d-flex justify-content-evenly mt-auto">
-                    <button
-                    key={uuid()} 
-                      className="btn btn-success w-50 mx-4 p-2"
-                      data-bs-target= "#exampleModalToggleBills"
-                      data-bs-toggle="modal"
-                      onClick={() => {
-                        openModelPay(type.name, type.fees);
-                      }}
-                    >
-                      Check Bills
-                    </button>
-                    <button
-                    key={uuid()} 
-                      className="btn btn-success w-50 mx-4 p-2"
-                      data-bs-target="#exampleModalTogglePay"
-                      data-bs-toggle="modal"
-                      onClick={() => {
-                        openModelPay(type.name, type.fees);
-                      }}
-                    >
-                      Pay
-                    </button>
-                  </div>
+
+          {PayArr && PayArr.map((type, index) => (
+            <div key={uuid()} className="col-lg-6 col-12">
+              <div
+                className="d-flex flex-column shadow-sm rounded-3 w-100 my-3 p-4" style={{ height: 250 }} key={uuid()}  >
+                <div>
+                  <h3 className="text-center fw-bold">{type.name}</h3>
+                </div>
+                <div className="mx-auto">
+                  {(() => {
+                    switch (type.name) {
+                      case "City Maintenance Bills":
+                        return (
+                          <i className="fa-solid fa-screwdriver-wrench mainColor my-3" style={{ fontSize: 70 }} key={uuid()}  ></i>);
+                      case "El-Rehab club subscription":
+                        return (
+                          <i className="fa-solid fa-futbol mainColor my-3" style={{ fontSize: 70 }} key={uuid()}  ></i>
+                        );
+
+
+                      case "Water Bills":
+                        return (
+                          <i className="fa-solid fa-droplet mainColor my-3" style={{ fontSize: 70 }} key={uuid()}  ></i>
+                        );
+
+
+                      case "Car Washing subscription":
+                        return (
+                          <i className="fa-solid fa-car mainColor my-3" style={{ fontSize: 70 }} key={uuid()}  ></i>
+                        );
+                      default:
+                        return null;
+                    }
+                  })()}
                 </div>
 
 
 
-             {/** Bills Popup */}
+
+
+
+
+
+
+
+                <div key={uuid()} className="d-flex justify-content-evenly mt-auto">
+                  <button
+                    key={uuid()}
+                    className="btn dark-btn  w-50 mx-4 p-2"
+                    data-bs-target="#exampleModalToggleBills"
+                    data-bs-toggle="modal"
+                    onClick={() => {
+                      openModelPay(type.name, type.fees);
+                    }}
+                  >
+                    Check Bills
+                  </button>
+                  <button
+                    key={uuid()}
+                    className="btn dark-btn w-50 mx-4 p-2"
+                    data-bs-target="#exampleModalTogglePay"
+                    data-bs-toggle="modal"
+                    onClick={() => {
+                      openModelPay(type.name, type.fees);
+                    }}
+                  >
+                    Pay
+                  </button>
+                </div>
+              </div>
+
+
+
+              {/** Bills Popup */}
               <div
-                key={uuid()} 
+                key={uuid()}
                 className="modal fade"
                 id="exampleModalToggleBills"
                 aria-hidden="true"
@@ -179,8 +177,8 @@ export default function MaintenancePayment() {
                     </div>
                     <div className="modal-body d-flex flex-column align-items-center">
                       <p className="fw-bold fs-5 text-center">
-                        {userData ===null ? null : userData.name}, Your {selectedName !== "" && selectedName.toLocaleLowerCase()}
-                        amount is {selectedFees !== "" &&  selectedFees}
+                        {userData === null ? null : userData.name}, Your {selectedName !== "" && selectedName.toLocaleLowerCase()}
+                        amount is {selectedFees !== "" && selectedFees}
                       </p>
                     </div>
                     <div className="modal-footer">
@@ -207,7 +205,7 @@ export default function MaintenancePayment() {
 
               {/** Payment Popup */}
               <div
-                key={uuid()} 
+                key={uuid()}
                 className="modal fade"
                 id="exampleModalTogglePay"
                 aria-hidden="true"
@@ -236,24 +234,28 @@ export default function MaintenancePayment() {
                   </div>
                 </div>
               </div>
-              </div>    
+            </div>
           ))}
-         
+
 
           {/*Feedback */}
           <div className="d-flex flex-column align-items-center mt-5">
             <h3 className="text-center">
-              If you have any inquiry, feedback or complain, we are glad to hear
-              it
+              If you have any inquiry, feedback or complain, we are glad to hear it
             </h3>
             <button
-              className="btn btn-success w-25 p-2 mt-4"
+              className="btn dark-btn w-25 p-2 mt-4"
               data-bs-target="#exampleModalToggle"
               data-bs-toggle="modal"
             >
               Feedback
             </button>
           </div>
+
+
+
+
+          {/* Mocal */}
           <div
             className="modal fade"
             id="exampleModalToggle"
@@ -288,7 +290,7 @@ export default function MaintenancePayment() {
                         value={newFeedBack.name}
                         onChange={handleChange}
                       />
-                      {errors.nameError? <span>{errors.nameError}</span> :null}
+                      {errors.nameError ? <span>{errors.nameError}</span> : null}
                     </div>
                     <div className="mb-3">
                       <label htmlFor="Phone" className="col-form-label">
@@ -329,12 +331,12 @@ export default function MaintenancePayment() {
                       ></textarea>
                     </div>
                     <div className="mb-3">
-                    <label htmlFor="Photo" className="col-form-label">
-                        Upload Photo: 
+                      <label htmlFor="Photo" className="col-form-label">
+                        Upload Photo:
                       </label>
-                    <input
+                      <input
                         accept="image/*"
-                        style={{  }}
+                        style={{}}
                         id="Photo"
                         multiple
                         type="file"
@@ -343,15 +345,16 @@ export default function MaintenancePayment() {
                       />
                     </div>
 
+                    {/* Send FeedBack */}
                     <div className="d-flex justify-content-center">
                       <button
-                        className="btn btn-success w-50"
+                        className="btn dark-btn w-50"
                         data-bs-target="#exampleModalToggle2"
                         data-bs-toggle="modal"
                         disabled={
                           newFeedBack.name &&
-                          newFeedBack.place &&
-                          newFeedBack.message
+                            newFeedBack.place &&
+                            newFeedBack.message
                             ? false
                             : true
                         }
@@ -365,6 +368,9 @@ export default function MaintenancePayment() {
             </div>
           </div>
 
+
+
+          {/* Success Modal */}
           <div
             className="modal fade"
             id="exampleModalToggle2"
@@ -392,7 +398,7 @@ export default function MaintenancePayment() {
                     We received your feedback, Thanks.
                   </p>
                 </div>
-               
+
               </div>
             </div>
           </div>
