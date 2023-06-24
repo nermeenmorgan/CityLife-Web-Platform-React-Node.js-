@@ -64,14 +64,16 @@ const FeedBack = ({ message }) => {
 
 
                             {/* Feed Back TO */}
-                            <label htmlFor='feedBackTo'>Feedback to</label>
-                            <input defaultValue={message} className='mb-4 form-control form-input lightGreenBackgroudColor ' id='feedBackTo' disabled></input>
+                            <div className='w-100 '>
+                                <label htmlFor='feedBackTo'>Feedback to</label>
+                                <input defaultValue={message} className='text-center w-100 mb-4 form-control form-input lightGreenBackgroudColor ' id='feedBackTo' disabled></input>
 
+                            </div>
 
                             {/* Name */}
-                            <div className='d-block w-100'>
+                            <div className='w-100'>
                                 <label htmlFor='name'>Name</label>
-                                <input className='form-control mb-2 form-input' type="name" name='name' id='name' value={formik.name} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                                <input className=' w-100 form-control mb-2 form-input' type="name" name='name' id='name' value={formik.name} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.name && formik.touched.name ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.name}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
 
@@ -79,9 +81,9 @@ const FeedBack = ({ message }) => {
 
 
                             {/* Email */}
-                            <div className='d-block w-100'>
+                            <div className='w-100'>
                                 <label htmlFor='name'>Email</label>
-                                <input className='form-control mb-2 form-input' type="email" name='email' id='email' value={formik.email} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                                <input className=' w-100 form-control mb-2 form-input' type="email" name='email' id='email' value={formik.email} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.email && formik.touched.email ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.email}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
 
@@ -89,9 +91,9 @@ const FeedBack = ({ message }) => {
 
 
                             {/* Phone */}
-                            <div className='d-block w-100'>
+                            <div className='w-100'>
                                 <label htmlFor='name'>Phone</label>
-                                <input className='form-control mb-2 form-input' type="tel" name='phone' id='phone' value={formik.phone} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                                <input className=' w-100 form-control mb-2 form-input' type="tel" name='phone' id='phone' value={formik.phone} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.phone && formik.touched.phone ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.phone}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
 
@@ -99,7 +101,7 @@ const FeedBack = ({ message }) => {
 
 
                             {/* Messsage */}
-                            <div className='d-block w-100'>
+                            <div className='w-100'>
                                 <label htmlFor='message'>Message</label>
                                 <textarea rows={'10'} className={`${styles.resize} form-control mb-2 form-input`} type="text" name='message' id='message' value={formik.password} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.message && formik.touched.message ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.message}</span> : <span className=' opacity-0'> lorem </span>}
