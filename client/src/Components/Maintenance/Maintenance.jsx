@@ -48,7 +48,7 @@ export default function Banks() {
                                 <div className='text-center pb-3 '>
                                     <button data-bs-target="#exampleModalToggle" data-bs-toggle="modal" onClick={() => {
                                         handleShowModal()
-                                        setMessage(ele.name)
+                                        setMessage(ele.name)  
                                     }}
                                         data-whatever="@mdo"
                                         className={i18next.language === 'en' ? "btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor" : " btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor"}
