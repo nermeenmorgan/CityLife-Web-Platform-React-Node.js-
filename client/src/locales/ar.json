@@ -82,11 +82,11 @@
     "homeServices": "خدمات المنزل",
     "transportation": "النقل",
 "banks":"البنوك",
+"About us":"عن المدينة",
+"Commercial International Bank":"البنك التجاري الدولي",
 
-
-
-
-"Discover the best schools in Rehab Egypt and give your child the gift of quality education. Our featured schools are dedicated to providing exceptional learning experiences.  The campuses of the schools in Al Rehab City are well-designed and spacious, with modern facilities.":"اكتشف أفضل المدارس في رحاب مصر وامنح طفلك هدية التعليم الجيد. مدارسنا المميزة مكرسة لتقديم تجارب تعليمية استثنائية. حرم المدارس في مدينة الرحاب مصمم بشكل جيد وواسع ، مع مرافق حديثة.",
+ "offering a broad range of financial products and services to its customers, which include more than 500 of Egypt's largest corporations, enterprises of all sizes, institutions, and households":"تقدم مجموعة واسعة من المنتجات والخدمات المالية لعملائها ، والتي تشمل أكثر من 500 من أكبر الشركات والشركات من جميع الأحجام والمؤسسات في مصر",
+ "Discover the best schools in Rehab Egypt and give your child the gift of quality education. Our featured schools are dedicated to providing exceptional learning experiences.  The campuses of the schools in Al Rehab City are well-designed and spacious, with modern facilities.":"اكتشف أفضل المدارس في رحاب مصر وامنح طفلك هدية التعليم الجيد. مدارسنا المميزة مكرسة لتقديم تجارب تعليمية استثنائية. حرم المدارس في مدينة الرحاب مصمم بشكل جيد وواسع ، مع مرافق حديثة.",
 "The British School - Al Rehab": "مدرسة البريطانية - الرحاب",
 "Founded in 2001, GEMS British School Al Rehab, Cairo (GEMS TBS) is one of the oldest, most established British schools in Egypt located in the heart of the beautiful city of Rehab.": "تأسست مدرسة جيمس البريطانية بالرحاب بالقاهرة (جيمس تي بي إس) في عام 2001، وهي واحدة من أقدم وأكثر المدارس البريطانية المُعترف بها في مصر، وتقع في قلب مدينة الرحاب الجميلة.",
 "El-Rehab 1, beside Mall 1": "الرحاب 1، بجوار مول 1",
@@ -141,8 +141,8 @@
   "9 AM - 3 PM": "9 صباحًا - 3 مساءً",
   "Commercial International Bank (CIB)": "البنك التجاري الدولي (CIB)",
   "CIB is the leading private-sector bank in Egypt, offering a broad range of financial products and services to its customers, which include more than 500 of Egypt's largest corporations, enterprises of all sizes, institutions, and households.": "البنك التجاري الدولي (CIB) هو البنك الرائد في القطاع الخاص في مصر، ويقدم مجموعة واسعة من المنتجات والخدمات المالية لعملائه، بما في ذلك أكثر من 500 من أكبر الشركات في مصر، والمؤسسات والأسر والمؤسسات بجميع أحجامها.",
-  "QNB ALAHLI": "القناة الأهلي",
-  "QNB ALAHLI is one of the leading financial institutions in Egypt established in April 1978 and ranked as the second largest private bank in Egypt. QNB ALAHLI provides its services for more than 1,673,184 clients served by 7,199 banking professionals with a network of 232 branches, along with 900 ATMs & 56,321 Point-of-Sale to serve clients nationwide.": "القناة الأهلي هو أحد المؤسسات المالية الرائدة في مصر، تأسس في أبريل 1978 ويحتل المرتبة الثانية كأكبر بنك خاص في مصر. يقدم القناة الأهلي خدماته لأكثر من 1،673،184 عميل يتم خدمتهم بواسطة 7،199 محتر فًا في البنوك، بشبكة من 232 فرعًا، إلى جانب 900 صرافًا آليًا و 56،321 نقطة بيع لخدمة العملاء على مستوى البلاد.",
+  "QNB ALAHLI": "البنك الأهلي",
+  "QNB ALAHLI is one of the leading financial institutions in Egypt established in April1978 and ranked as the second largest private bank in Egypt. QNB ALAHLI provides its services for more than 1,673,184 clients served by 7,199 banking professionals with a network of 232 branches, along with 900 ATMs & 56,321 Point-of-Sale to serve clients nationwide.": "القناة الأهلي هو أحد المؤسسات المالية الرائدة في مصر، تأسس في أبريل 1978 ويحتل المرتبة الثانية كأكبر بنك خاص في مصر. يقدم القناة الأهلي خدماته لأكثر من 1،673،184 عميل يتم خدمتهم بواسطة 7،199 محتر فًا في البنوك، بشبكة من 232 فرعًا، إلى جانب 900 صرافًا آليًا و 56،321 نقطة بيع لخدمة العملاء على مستوى البلاد.",
   "Banque Misr": "بنك مصر",
   "Banque Misr (BM) was established in 1920 by the pioneer economist and financial expert Mohamed Talaat Harb Pasha, who spearheaded the concept of investing in national savings and directing them toward economic and social development. Thus, Banque Misr was established as the first wholly Egyptian-owned bank.": "تأسس بنك مصر (BM) في عام 1920 على يد الاقتصادي والخبير المالي محمد طلعت حرب باشا، الذي قاد فكرة الاستثمار في التوفيرات الوطنية وتوجيهها نحو التنمية الاقتصادية والاجتماعية. وهكذا، تأسس بنك مصر كأول بنك مملوك بالكامل للمصريين.",
   "Mall 1": "مركز تجاري 1",
@@ -289,6 +289,16 @@
  "Add":"أضف",
 "update":"تعديل",
 "delete":"مسح",
-"Type to search...":"بحث..."
-
+"Type to search...":"بحث...",
+"Book a clinic":"احجز عيادتك",
+"Loading":"تحميل",
+"In our medical centers, you will find all specialties":" توجد كافه التخصصات داخل مراكزنا الطبيه  ",
+"Website":"الموقع إلكتروني",
+"Location":"العنوان",
+"Panda Market":"أسواق الباندا",
+"The Fathallah Group of Companies started its commercial activity in 1948 under the name of Massaad Fathallah & Brothers Company to sell wholesale spices, grains, coffee, and tea in the Mansheya markets in Alexandria. types, and then began importing from abroad until it became one of the largest importers Spices and tea nationwide, as well as one of the largest importers, traders and distributors of foodstuffs and canned food in Egypt.":"بدأت مجموعة شركات فتح الله نشاطها التجاري في عام 1948 تحت اسم شركة مسعد فتح الله وإخوانه لبيع التوابل والحبوب والقهوة والشاي بالجملة في أسواق المنشية بالإسكندرية. ثم بدأت في الاستيراد من الخارج حتى أصبحت من أكبر مستوردي التوابل والشاي على مستوى الجمهورية وكذلك من أكبر مستوردي وتجار وموزعي المواد الغذائية والأغذية المعلبة في مصر",
+"Carrefour Market":"كارفور ماركت",
+"Submit":"إرسال",
+"Don't have an account?":"ليس لديك حساب ؟",
+"Password":"كلمة المرور"
 }

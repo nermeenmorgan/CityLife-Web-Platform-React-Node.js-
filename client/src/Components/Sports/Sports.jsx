@@ -41,7 +41,7 @@ export default function Sports() {
       {/* New  Design */}
       {/* Page Title */}
       <div className='container-fluid lightGreyBg py-3'>
-        <h2 className='lightGreenColor text-center m-0'>Sports</h2>
+        <h2 className='lightGreenColor text-center m-0'>{t("Sports")}</h2>
       </div>
 
       <div className='row gy-4 p-0 m-0 w-75 mx-auto'>
@@ -68,16 +68,16 @@ export default function Sports() {
               </div>
               <div className=''>
                 <div className='container pt-3'>
-                  <h4 className='text-center mainColor' >{ele.name}</h4>
-                  <p className='text-center'>{ele.overview}</p>
+                  <h4 className='text-center mainColor' >{t(ele.name)}</h4>
+                  <p className='text-center'>{t(ele.overview)}</p>
                 </div>
                 <div className='lightGreenBackgroudColor text-white  rounded-bottom-3'>
                   <div className='d-flex justify-content-around align-items-center py-3 container'>
                     <p className='m-0'> {ele.Rating} <i className="fa-solid fa-star" style={{ color: '#C3801B' }}></i> </p>
-                    <p className='m-0'><Link to={ele.location} className='text-decoration-none text-white'> Location </Link></p>
+                    <p className='m-0'><Link to={ele.location} className='text-decoration-none text-white'> {t("Location")} </Link></p>
                     {/* <span> Phone: {ele.number}</span> */}
-                    <Link to={ele.website} className="text-decoration-none text-white" target='_blank'>Website </Link>
-                    <Link className="text-decoration-none text-white" onClick={() => { const whatsappURL = `https://wa.me/${ele.number}`; window.location.href = whatsappURL; }} ><p className='m-0'> Phone </p></Link>
+                    <Link to={ele.website} className="text-decoration-none text-white" target='_blank'>{t("Website")} </Link>
+                    <Link className="text-decoration-none text-white" onClick={() => { const whatsappURL = `https://wa.me/${ele.number}`; window.location.href = whatsappURL; }} ><p className='m-0'> {t("Phone")} </p></Link>
 
                   </div>
                   <div className='text-center pb-3 '>

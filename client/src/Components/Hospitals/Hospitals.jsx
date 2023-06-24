@@ -5,10 +5,14 @@ import Slider from "react-slick";
 import './hospitals.css';
 import FeedBack from '../FeedBack/FeedBack'
 import i18next, { t } from 'i18next'
+import { useTranslation } from 'react-i18next';
+
+
 export default function Hospitals() {
   const { Centers } = useContext(DataContext);
   const [showModal, setShowModal] = useState(false);
   const [message, setMessage] = useState('')
+  const { t, i18n } = useTranslation();
 
   const handleShowModal = () => {
     setShowModal(!showModal);
@@ -72,14 +76,14 @@ export default function Hospitals() {
 
       {/* Page Title */}
       <div className='container-fluid lightGreyBg py-3'>
-        <h2 className='lightGreenColor text-center m-0'>Hospitals</h2>
+        <h2 className='lightGreenColor text-center m-0'>{t("Hospitals")}</h2>
       </div>
 
 
 
 
       <div className='row gy-4 p-0 m-0 w-75 mx-auto'>
-        <h3 className="mt-5 text-center "> In our medical centers, you will find all specialties</h3>
+        <h3 className="mt-5 text-center "> {t("In our medical centers, you will find all specialties")}</h3>
 
 
         {/* Card */}
@@ -102,16 +106,16 @@ export default function Hospitals() {
               </div>
               <div className=''>
                 <div className='container pt-3'>
-                  <h4 className='text-center mainColor' >{ele.name}</h4>
-                  <p className='text-center'>{ele.overview}</p>
+                  <h4 className='text-center mainColor' >{t(ele.name)}</h4>
+                  <p className='text-center'>{t(ele.overview)}</p>
                 </div>
                 <div className='lightGreenBackgroudColor text-white  rounded-bottom-3'>
                   <div className='d-flex justify-content-around align-items-center py-3 container'>
-                    <p className='m-0'> {ele.Rating} <i className="fa-solid fa-star" style={{ color: '#C3801B' }}></i> </p>
-                    <p className='m-0'><Link to={ele.location} className='text-decoration-none text-white'> Location </Link></p>
+                    <p className='m-0'> {t(ele.Rating)} <i className="fa-solid fa-star" style={{ color: '#C3801B' }}></i> </p>
+                    <p className='m-0'><Link to={ele.location} className='text-decoration-none text-white'> {t('Location')} </Link></p>
                     {/* <span> Phone: {ele.number}</span> */}
-                    <Link to={ele.website} className="text-decoration-none text-white" target='_blank'>Website </Link>
-                    <Link className="text-decoration-none text-white" onClick={() => { const whatsappURL = `https://wa.me/${ele.number}`; window.location.href = whatsappURL; }} ><p className='m-0'> Phone </p></Link>
+                    <Link to={ele.website} className="text-decoration-none text-white" target='_blank'>{t("Website")} </Link>
+                    <Link className="text-decoration-none text-white" onClick={() => { const whatsappURL = `https://wa.me/${ele.number}`; window.location.href = whatsappURL; }} ><p className='m-0'> {t("Phone")} </p></Link>
 
                   </div>
                   <div className='text-center pb-3 '>
@@ -127,12 +131,12 @@ export default function Hospitals() {
 
                     </button>
                     <button className="btn my-2 lightGreyBg lightGreenColor d-block mx-auto w-50 btn-mainColor " data-bs-target="#exampleModalToggle" data-bs-toggle="modal" onClick={() => { handleCenterName(ele.name); }} >
-                      Book a clinic </button>
+                      {t("Book a clinic")} </button>
                   </div>
                 </div>
               </div>
             </div>
-          </div>) : <h4>Loading ...</h4>}
+          </div>) : <h4>{t("Loading ...")}</h4>}
 
 
 
@@ -151,13 +155,13 @@ export default function Hospitals() {
                 {appointDetails ? (
                   <>
                     <p className=" fs-5 text-center">
-                      Name: {appointDetails.name}
+                      Name: {t(appointDetails.name)}
                     </p>
                     <p className=" fs-5 text-center">
-                      Date: {appointDetails.date}
+                      Date: {t(appointDetails.date)}
                     </p>
                     <p className=" fs-5 text-center">
-                      Time: {appointDetails.time}
+                      Time: {t(appointDetails.time)}
                     </p>
                     <p className=" fs-5 text-center">
                       Specialty: {appointDetails.specialty}

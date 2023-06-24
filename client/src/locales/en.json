@@ -126,8 +126,7 @@
   "Talaat Mostafa St. - Administrative Zone": "Talaat Mostafa St. - Administrative Zone",
   "9 AM - 2 PM": "9 AM - 2 PM",
   "QNB ALAHLI": "QNB ALAHLI",
-  "QNB ALAHLI is one of the leading financial institutions in Egypt established in April 1978 and ranked as the second largest private bank in Egypt. QNB ALAHLI provides its services for more than 1,673,184 clients served by 7,199 banking professionals with a network of 232 branches, along with 900 ATMs & 56,321 Point-of-Sale to serve clients nationwide.": "QNB ALAHLI is one of the leading financial institutions in Egypt established in April 1978 and ranked as the second largest private bank in Egypt. QNB ALAHLI provides its services for more than 1,673,184 clients served by 7,199 banking professionals with a network of 232 branches, along with 900 ATMs & 56,321 Point-of-Sale to serve clients nationwide.",
-  "Talaat Mostafa St. - Administrative Zone": "Talaat Mostafa St. - Administrative Zone",
+"QNB ALAHLI is one of the leading financial institutions in Egypt established in April1978 and ranked as the second largest private bank in Egypt. QNB ALAHLI provides its services for more than 1,673,184 clients served by 7,199 banking professionals with a network of 232 branches, along with 900 ATMs & 56,321 Point-of-Sale to serve clients nationwide.":"QNB ALAHLI is one of the leading financial institutions in Egypt established in April1978 and ranked as the second largest private bank in Egypt. QNB ALAHLI provides its services for more than 1,673,184 clients served by 7,199 banking professionals with a network of 232 branches, along with 900 ATMs & 56,321 Point-of-Sale to serve clients nationwide.",
   "9 AM - 4 PM": "9 AM - 4 PM",
   "Banque Misr": "",
   "Banque Misr (BM) was established in 1920 by the pioneer economist and financial expert Mohamed Talaat Harb Pasha, who spearheaded the concept of investing in national savings and directing them toward economic and social development. Thus, Banque Misr was established as the first wholly Egyptian-owned bank.": "Banque Misr (BM) was established in 1920 by the pioneer economist and financial expert Mohamed Talaat Harb Pasha, who spearheaded the concept of investing in national savings and directing them toward economic and social development. Thus, Banque Misr was established as the first wholly Egyptian-owned bank.",
@@ -175,6 +174,7 @@
   "The vengeful son of drug kingpin Hernan Reyes targets Dom Toretto and his entire family, and they must face their new enemy.": "The vengeful son of drug kingpin Hernan Reyes targets Dom Toretto and his entire family, and they must face their new enemy.",
   "English": "English",
   "US": "US",
+  "About us":"About us",
   "Vin Diesel - Charlize Theron": "Vin Diesel - Charlize Theron",
   "Sugar Daddy": "Sugar Daddy",
   "A comedy that tells the story of a man going through a midlife crisis who has an affair with a belly dancer, which turns his life and that of his family upside down.": "Acomedy that tells the story of a man going through a midlife crisis who has an affair with a belly dancer, which turns his life and that of his family upside down.",
@@ -310,7 +310,19 @@
 "Add":"Add",
 "update":"update",
 "delete":"delete",
-"Type to search...":"Type to search..."
+"Type to search...":"Type to search...",
 
+"Commercial International Bank":"Commercial International Bank",
+"Location":"Location",
+"Website":"Website",
+"Book a clinic":"Book a clinic",
+"Loading":"Loading",
+"In our medical centers, you will find all specialties":"In our medical centers, you will find all specialties",
+"Panda Market":"Panda Market",
+"The Fathallah Group of Companies started its commercial activity in 1948 under the name of Massaad Fathallah & Brothers Company to sell wholesale spices, grains, coffee, and tea in the Mansheya markets in Alexandria. types, and then began importing from abroad until it became one of the largest importers Spices and tea nationwide, as well as one of the largest importers, traders and distributors of foodstuffs and canned food in Egypt.":"The Fathallah Group of Companies started its commercial activity in 1948 under the name of Massaad Fathallah & Brothers Company to sell wholesale spices, grains, coffee, and tea in the Mansheya markets in Alexandria. types, and then began importing from abroad until it became one of the largest importers Spices and tea nationwide, as well as one of the largest importers, traders and distributors of foodstuffs and canned food in Egypt.",
+"Carrefour Market":"Carrefour Market",
+"Submit":"Submit",
+"Don't have an account?":"Don't have an account?",
+"Password":"Password"
 
 }
