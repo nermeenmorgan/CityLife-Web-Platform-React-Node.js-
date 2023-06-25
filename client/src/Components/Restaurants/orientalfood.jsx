@@ -30,7 +30,7 @@ const Orientalfood = () => {
           <div key={res.id} className='shadow-sm col-md-5 mx-auto px-0 overflow-auto rounded-top-3'>
             <div className=' text-center '>
               {/* Images */}
-              <div className="d-flex ">
+              <div className="d-flex overflow-hidden">
                 <img className=" d-block w-100 rounded-top-3" style={{ height: "200px" }} src={res.img1} alt="img 1" />
                 <img className=" d-block w-100 rounded-top-3" style={{ height: "200px" }} src={res.img3} alt="img 3" />
               </div>

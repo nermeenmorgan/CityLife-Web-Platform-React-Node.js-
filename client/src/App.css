@@ -56,6 +56,9 @@ body {
 .mainColor {
   color: var(--mainColor);
 }
+.mainColorBg {
+  background-color: var(--mainColor);
+}
 .lightGreenColor {
   color: var(--lightGreenColor);
 }

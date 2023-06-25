@@ -1,16 +1,16 @@
 @media screen and (min-width: 1000px) {
-  .resizeImg {
+  /* .resizeImg {
     width: 60% !important;
-  }
+  } */
   h4 {
     font-size: 20px !important;
   }
 }
 
 @media screen and (max-width: 999px) {
-  .resizeImg {
-    width: 60% !important;
-  }
+  /* .resizeImg {
+    width: 80% !important;
+  } */
   h4 {
     font-size: 15px !important;
   }
@@ -18,3 +18,15 @@
     font-size: 16px;
   }
 }
+
+.imgCard {
+  border-top-left-radius: 60px !important;
+  /* border-bottom-left-radius: 40px !important; */
+  
+  background-color: #dddd !important;
+}
+
+.roundedBottomRight {
+  border-bottom-right-radius: 60px !important;
+}
+
