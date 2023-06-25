@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
 import { Link } from "react-router-dom";
 import i18next, { t } from 'i18next'
+import FeedBackPopSuccess from "../FeedBack/FeedBackPopSuccess";
 const Schools = () => {
   // States
   const { Schools, userData } = useContext(DataContext);
@@ -101,6 +102,8 @@ const Schools = () => {
           </div>
         </div>
       </div>
+      <FeedBackPopSuccess></FeedBackPopSuccess>
+
     </>
   );
 };

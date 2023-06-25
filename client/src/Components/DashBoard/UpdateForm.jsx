@@ -560,7 +560,7 @@ export default function UpdateForm() {
                   type="radio"
                   className="form-check-input"
                   name="adults"
-                  value="true"
+                  value={updateObj.adults}
                   checked={updateObj.adults === 'true'}
                   onChange={handleChange}
                 />
@@ -573,7 +573,7 @@ export default function UpdateForm() {
                   className="form-check-input"
                   name="adults"
                   id="false"
-                  value="true"
+                  value={updateObj.adults}
                   checked={updateObj.adults === 'false'}
                   onChange={handleChange}
                 />
@@ -591,7 +591,7 @@ export default function UpdateForm() {
                   type="radio"
                   className="form-check-input"
                   name="soon"
-                  value="true"
+                  value={updateObj.soon}
                   checked={updateObj.soon === 'true'}
                   onChange={handleChange}
                 />
@@ -604,7 +604,7 @@ export default function UpdateForm() {
                   className="form-check-input"
                   name="soon"
                   id="false"
-                  value="true"
+                  value={updateObj.soon}
                   checked={updateObj.soon === 'false'}
                   onChange={handleChange}
                 />

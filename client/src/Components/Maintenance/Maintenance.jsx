@@ -3,6 +3,7 @@ import { DataContext } from '../../Context/Data'
 import { Link } from 'react-router-dom'
 import FeedBack from '../FeedBack/FeedBack'
 import i18next, { t } from 'i18next'
+import FeedBackPopSuccess from '../FeedBack/FeedBackPopSuccess'
 export default function Banks() {
     // States
     const [showModal, setShowModal] = useState(false);
@@ -76,5 +77,8 @@ export default function Banks() {
                 </div>
             </div>
         </div>
+
+        <FeedBackPopSuccess></FeedBackPopSuccess>
+
     </>
 }

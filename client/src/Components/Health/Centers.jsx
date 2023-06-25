@@ -6,6 +6,7 @@ import i18next, { t } from 'i18next'
 import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
 import { Link } from "react-router-dom";
+import FeedBackPopSuccess from "../FeedBack/FeedBackPopSuccess";
 
 const Centers = () => {
   // States
@@ -102,6 +103,8 @@ const Centers = () => {
           </div>
         </div>
       </div>
+      <FeedBackPopSuccess></FeedBackPopSuccess>
+
     </>
   );
 };

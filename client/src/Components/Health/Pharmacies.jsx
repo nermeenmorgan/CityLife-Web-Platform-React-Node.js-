@@ -5,6 +5,7 @@ import { useCallback } from "react";
 import { Link } from "react-router-dom";
 import i18next from "i18next";
 import FeedBack from "../FeedBack/FeedBack";
+import FeedBackPopSuccess from "../FeedBack/FeedBackPopSuccess";
 
 const Pharmacies = () => {
   // Stated
@@ -109,6 +110,9 @@ const Pharmacies = () => {
           </div>
         </div>
       </div>
+
+      <FeedBackPopSuccess></FeedBackPopSuccess>
+
     </>
   );
 }

@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import FeedBack from "../FeedBack/FeedBack";
 import "./AllRes.css";
+import FeedBackPopSuccess from "../FeedBack/FeedBackPopSuccess";
 
 const Fried = () => {
   // States
@@ -80,9 +81,11 @@ const Fried = () => {
           </div>
         </div>
       </div>
+      <FeedBackPopSuccess></FeedBackPopSuccess>
+
 
       {/* Modal Submit FeedBack */}
-      <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex="-1" >
+      {/* <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex="-1" >
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
@@ -97,7 +100,7 @@ const Fried = () => {
 
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

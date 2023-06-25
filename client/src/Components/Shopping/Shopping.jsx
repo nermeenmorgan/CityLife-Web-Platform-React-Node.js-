@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import FeedBack from '../FeedBack/FeedBack'
 import i18next from 'i18next'
+import FeedBackPopSuccess from "../FeedBack/FeedBackPopSuccess";
 export default function Banks() {
   // States
   const { shopping } = useContext(DataContext);
@@ -87,6 +88,7 @@ export default function Banks() {
           </div>
         </div>
       </div>
+      <FeedBackPopSuccess></FeedBackPopSuccess>
 
 
     </>

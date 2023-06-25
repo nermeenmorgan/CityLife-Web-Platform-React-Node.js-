@@ -23,7 +23,7 @@ export default function MovieCard({ movie }) {
         <div className="card-body">
           <div className="d-flex justify-content-between align-items-center">
             <h5 className="card-title fw-bolder">{t(movie.name)}</h5>
-            <p className='m-0'> {movie.Rating} <i class="fa-solid fa-star" style={{ color: '#C3801B' }}></i> </p>
+            <p className='m-0'> {movie.Rating} <i className="fa-solid fa-star" style={{ color: '#C3801B' }}></i> </p>
           </div>
           <p className="card-text line-clamp-3">
             {t(movie.overview)}

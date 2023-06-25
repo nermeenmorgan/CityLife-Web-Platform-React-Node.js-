@@ -2,6 +2,7 @@ import React, { createContext, useCallback, useEffect, useMemo } from "react";
 import { useState } from "react";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
+import {v4 as uuid} from 'uuid'
 export const DataContext = createContext();
 
 export default function Data(props) {
@@ -855,10 +856,10 @@ export default function Data(props) {
 
   // payment 
   const PayArr = useMemo(() => [
-    { name: "City Maintenance Bills", fees: "10000 EGP" },
-    { name: "El-Rehab club subscription", fees: "2000 EGP" },
-    { name: "Water Bills", fees: "900 EGP" },
-    { name: "Car Washing subscription", fees: "200 EGP" },
+    { name: "City Maintenance Bills", fees: "10000" },
+    { name: "El-Rehab club subscription", fees: "2000" },
+    { name: "Water Bills", fees: "900" },
+    { name: "Car Washing subscription", fees: "200" },
   ], []);
 
   //transportation feedback
@@ -903,7 +904,7 @@ export default function Data(props) {
 
 
 
-  // Dashboard [ Feed Back ]
+  // Dashboard [ Feed Back , Complain ]
 
   const [dashBoardFeedback, setDashBoardFeedback] = useState(null)
   useEffect(() => {
@@ -913,9 +914,40 @@ export default function Data(props) {
   }, [])
 
 
+  const addFeedback = useCallback(
+    (AddedObj,message) => {
+      let ID = uuid().slice(0,4)
+      axios.post("http://localhost:3005/feedback", {...AddedObj,id: ID ,place: message, type:"FeedBack"});
+      setDashBoardFeedback([...dashBoardFeedback, {...AddedObj,id: ID,place: message, type:"FeedBack"}]);
+    },
+    [dashBoardFeedback]
+  );
 
+  const addComplain = useCallback(
+    (AddedObj,photo) => {
+      let ID = uuid().slice(0,4)
+      axios.post("http://localhost:3005/feedback", {...AddedObj,id: ID,photo: photo ,type:"Complain"});
+      setDashBoardFeedback([...dashBoardFeedback, {...AddedObj,id: ID, photo: photo,type:"Complain"}]);
+    },
+    [dashBoardFeedback]
+  );
 
+  const addContact = useCallback(
+    (AddedObj) => {
+      let ID = uuid().slice(0,4)
+      axios.post("http://localhost:3005/feedback", {...AddedObj,id: ID ,type:"Contact us"});
+      setDashBoardFeedback([...dashBoardFeedback, {...AddedObj,id: ID, type:"Contact us"}]);
+    },
+    [dashBoardFeedback]
+  );
 
+  const deleteFeed = useCallback(
+    (ID) => {
+      axios.delete(`http://localhost:3005/feedback/${ID}`);
+      setDashBoardFeedback(dashBoardFeedback.filter((ele) => ele.id !== ID));
+    },
+    [dashBoardFeedback]
+  );
 
 
 
@@ -1035,7 +1067,11 @@ export default function Data(props) {
     updateBuses,
 
     // Dashboard
-    dashBoardFeedback
+    dashBoardFeedback,
+    addFeedback,
+    addComplain,
+    deleteFeed,
+    addContact
   };
 
   return (

@@ -3,6 +3,7 @@ import { DataContext } from "../../Context/Data";
 import { Link } from "react-router-dom";
 import FeedBack from '../FeedBack/FeedBack'
 import i18next, { t } from 'i18next'
+import FeedBackPopSuccess from "../FeedBack/FeedBackPopSuccess";
 export default function Markets() {
 
   // States
@@ -89,6 +90,7 @@ export default function Markets() {
         </div>
       </div>
 
+      <FeedBackPopSuccess></FeedBackPopSuccess>
 
     </>
   );

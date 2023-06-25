@@ -1,6 +1,6 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { DataContext } from "../../Context/Data";
-
+import { v4 as uuid } from 'uuid';
 import ItemSection from "./ItemSection";
 import { useTranslation } from "react-i18next";
 
@@ -10,6 +10,7 @@ export default function DashBoard() {
   const { ...ExchangedData } = useContext(DataContext);
   const [selectedItem, setSelectedItem] = useState("");
   const { t, i18n } = useTranslation();
+  const [showData,setShowData] = useState("feedback")
 
   const handleChange = useCallback((e) => {
     setSelectedItem(e.target.value);
@@ -83,48 +84,55 @@ export default function DashBoard() {
     [ExchangedData, selectedItem]
   );
 
+  const handleDeleteFeed = useCallback((ID)=>{
+    ExchangedData.deleteFeed(ID)
+  },[ExchangedData])
   return (
     <>
-
-
-
+     <div className="d-flex justify-content-center w-50 mx-auto mt-4">
+     <button className="btn btn-primary w-50 mx-3" onClick={()=> setShowData("feedback")}>FeedBacks and complains</button>
+     <button className="btn btn-primary w-50 mx-3" onClick={()=> setShowData("data")}>Edit website data</button>
+     </div>
       {/*  Feedback */}
-      <div className="w-75 mx-auto my-4 ">
-        <table className="table table-hover table-bordered ">
+      {showData === "feedback" && <div className="w-100 my-4 mx-auto " style={{overflowX:"auto"}}>
+        <h2>FeedBacks and Complains:</h2>
+        <table className="table table-hover table-bordered mx-auto">
           <thead>
             <tr className="text-center">
               <th scope="col">ID</th>
               <th scope="col">Name</th>
               <th scope="col">Email</th>
               <th scope="col">Phone</th>
-              <th scope="col">FeedBack To</th>
+              <th scope="col">Place</th>
               <th scope="col">Message</th>
+              <th scope="col">Photo</th>
+              <th scope="col">type</th>
+              <th scope="col">Delete</th>
             </tr>
           </thead>
           <tbody className="text-center">
 
             {ExchangedData.dashBoardFeedback && ExchangedData.dashBoardFeedback.map((ele) =>
-              <tr key={ele.id}>
+              <tr key={uuid()}>
                 <th scope="row">{ele.id}</th>
-                <td>{ele.name}</td>
+                <td>{ele.Name}</td>
                 <td>{ele.email}</td>
                 <td>{ele.phone}</td>
-                <td>{ele.feedBackTo}</td>
+                <td>{ele.place}</td>
                 <td>{ele.message}</td>
+                <td>{ele.photo && <img src={ele.photo} alt="complain img" width={100} height={100}></img>}</td>
+                <td style={{backgroundColor: ele.type === "FeedBack" ? "lightgreen" : ele.type === "Complain"? "lightpink" :"lightyellow" }}>{ele.type}</td>
+                <td><button className="btn btn-danger" onClick={()=>handleDeleteFeed(ele.id)}>Delete</button></td>
               </tr>)}
-
-
           </tbody>
         </table>
 
-      </div>
+      </div>}
 
 
 
 
-
-
-
+      {showData === "data" && <>
       <div className="w-50 mx-auto mt-5"
         style={{
           direction: i18n.language === "ar" ? "rtl" : "",
@@ -143,24 +151,24 @@ export default function DashBoard() {
           </option>
           <option value="Banks">{t("Banks")}</option>
           <option value="Markets">{t("Markets")}</option>
-          <option value="Medical_Centers">Medical Centers</option>
+          <option value="Medical_Centers">{t("Medical Centers")}</option>
           <option value="Pharmacies">{t("Pharmacies")}</option>
           <option value="Schools">{t("Schools")}</option>
           <option value="Kindergartens">{t("Kindergartens")}</option>
           <option value="Cinema">{t("Cinema")}</option>
-          <optgroup label="Restaurants">
+          <optgroup label={t("Restaurants")}>
             <option value="shawarma">{t("Shawarma")}</option>
             <option value="fried">{t("Fried")}</option>
             <option value="pizza">{t("Pizza")}</option>
             <option value="seafood">{t("Seafood")}</option>
-            <option value="fastfood">Fast Food</option>
-            <option value="orientalfood">Oriental Food</option>
+            <option value="fastfood">{t("Fast Food")}</option>
+            <option value="orientalfood">{t("Oriental Food")}</option>
           </optgroup>
           <option value="Shopping">{t("Shopping")}</option>
           <option value="Fashion">{t("Fashion")}</option>
           <option value="Sports">{t("Sports")}</option>
           <option value="Maintenance">{t("Maintenance")}</option>
-          <option value="Home_Services">Home_Services</option>
+          <option value="Home_Services">{t("Home Services")}</option>
           <option value="Transportation">{t("Transportation")}</option>
         </select>
       </div>
@@ -313,7 +321,7 @@ export default function DashBoard() {
         addButtonLabel="Transportation Line"
         data={ExchangedData?.buses}
         handleDelete={handleDelete}
-      />
+      /> </>}
     </>
   );
 }

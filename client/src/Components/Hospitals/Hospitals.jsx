@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import './hospitals.css';
 import FeedBack from '../FeedBack/FeedBack'
 import i18next, { t } from 'i18next'
+import FeedBackPopSuccess from "../FeedBack/FeedBackPopSuccess";
 export default function Hospitals() {
   const { Centers } = useContext(DataContext);
   const [showModal, setShowModal] = useState(false);
@@ -115,7 +116,7 @@ export default function Hospitals() {
 
                   </div>
                   <div className='text-center pb-3 '>
-                    <button data-bs-target="#exampleModalToggle3" data-bs-toggle="modal"
+                    <button data-bs-target="#exampleModalToggle4" data-bs-toggle="modal"
                       onClick={() => {
                         handleShowModal()
                         setMessage(ele.name)
@@ -226,7 +227,7 @@ export default function Hospitals() {
 
 
         {/* FeedBack */}
-        <div className="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
+        <div className="modal fade" id="exampleModalToggle4" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
@@ -244,7 +245,34 @@ export default function Hospitals() {
         </div>
       </div>
 
+      <FeedBackPopSuccess></FeedBackPopSuccess>
 
+
+      {/* <div
+           className="modal fade"
+           id="exampleModalToggle3"
+           aria-hidden="true"
+           aria-labelledby="exampleModalToggleLabel3"
+           tabIndex="-1"
+       >
+           <div className="modal-dialog modal-dialog-centered">
+               <div className="modal-content">
+                   <div className="modal-header">
+
+                       <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+                   </div>
+                   <div className="modal-body d-flex flex-column align-items-center">
+                       <i
+                           className="fa-sharp fa-regular fa-circle-check text-center"
+                           style={{ color: "#14992a", fontSize: 80 }}
+                       ></i>
+                       <p className="my-2 fs-4 fw-bolder">
+                           {t("We received your feedback, Thanks.")}
+                       </p>
+                   </div>
+               </div>
+           </div>
+       </div> */}
 
     </>
 

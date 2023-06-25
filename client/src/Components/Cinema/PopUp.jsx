@@ -1,10 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import { v4 as uuid } from "uuid";
 import Payment from '../PaymentStripe/Payment';
+import { useTranslation } from "react-i18next";
+
 
 
 export default function PopUp() {
   // States
+  const { t, i18n } = useTranslation();
   const [selectedDay, setSelectedDay] = useState("");
   const [selectedShowTime, setSelectedShowTime] = useState("");
 
@@ -34,7 +37,7 @@ export default function PopUp() {
           <div className="modal-content">
             <div className="modal-header text-center lightGreenBackgroudColor text-white ">
               <h1 className="modal-title fs-5 w-100" id="exampleModalToggleLabel" >
-                Ticket Reservation
+                {t("Ticket Reservation")}
               </h1>
               <button
                 type="button"
@@ -44,7 +47,7 @@ export default function PopUp() {
               ></button>
             </div>
             <div className="modal-body">
-              <p>Choose Day: </p>
+              <p>{t("Choose Day")}: </p>
               <select
                 className="form-select form-select-md mb-3"
                 aria-label="Default select example"
@@ -52,15 +55,15 @@ export default function PopUp() {
                 value={selectedDay}
               >
                 {/* <option disabled>Choose Day...</option> */}
-                <option value="Sunday">Sunday</option>
-                <option value="Monday">Monday</option>
-                <option value="Tuesday">Tuesday</option>
-                <option value="Wednesday">Wednesday</option>
-                <option value="Thursday">Thursday</option>
-                <option value="Friday">Friday</option>
-                <option value="Saturday">Saturday</option>
+                <option value="Sunday">{t("Sunday")}</option>
+                <option value="Monday">{t("Monday")}</option>
+                <option value="Tuesday">{t("Tuesday")}</option>
+                <option value="Wednesday">{t("Wednesday")}</option>
+                <option value="Thursday">{t("Thursday")}</option>
+                <option value="Friday">{t("Friday")}</option>
+                <option value="Saturday">{t("Saturday")}</option>
               </select>
-              <p>Choose Show Time: </p>
+              <p>{t("Choose Show Time")}: </p>
               <select
                 className="form-select"
                 aria-label="Default select example"
@@ -68,12 +71,12 @@ export default function PopUp() {
                 value={selectedShowTime}
               >
                 {/* <option disabled selected>Choose ShowTime...</option> */}
-                <option value="10:30 am">10:30 am</option>
-                <option value="1:15 pm">1:15 pm</option>
-                <option value="4:00 pm">4:00 pm</option>
-                <option value="6:30 pm">6:30 pm</option>
-                <option value="9:00 pm">9:00 pm</option>
-                <option value="12:15 pm">12:15 pm</option>
+                <option value="10:30 am">{t("10:30 am")}</option>
+                <option value="1:15 pm">{t("1:15 pm")}</option>
+                <option value="4:00 pm">{t("4:00 pm")}</option>
+                <option value="6:30 pm">{t("6:30 pm")}</option>
+                <option value="9:00 pm">{t("9:00 pm")}</option>
+                <option value="12:15 pm">{t("12:15 pm")}</option>
               </select>
             </div>
             <div className="modal-footer ">
@@ -84,7 +87,7 @@ export default function PopUp() {
                 disabled={selectedShowTime && selectedDay ? false : true}
                 onClick={handleClickConfirmReser}
               >
-                Confirm
+                {t("Confirm")}
               </button>
             </div>
           </div>
@@ -108,7 +111,7 @@ export default function PopUp() {
                 className="modal-title fs-5"
                 id="exampleModalToggleLabel2"
               >
-                Pay for your ticket (100 EGP)
+                {t("Pay for your ticket")} 100 {t("EGP")}
               </h1>
             </div>
             <div className="modal-body d-flex flex-column align-items-center">

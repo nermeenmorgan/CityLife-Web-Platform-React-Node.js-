@@ -751,6 +751,24 @@
     }
   ],
   "feedback": [
-   
+    {
+      "Name": "amgad",
+      "email": "Akram@gmail.com",
+      "phone": "01112590070",
+      "message": "kjkllgjllllllll",
+      "id": "253f",
+      "place": "Medical Center 1",
+      "type": "FeedBack"
+    },
+    {
+      "Name": "Amr ",
+      "email": "Amhhdd",
+      "phone": "9954664",
+      "place": "Gsggsgs",
+      "message": "Gssggsgs",
+      "photo": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FCityLife-MobileApp-0de46d16-3beb-4c79-9328-085a7eac62b1/Camera/9504c208-7445-412e-b320-11cabd42bab6.jpg",
+      "id": "6edd",
+      "type": "Complain"
+    }
   ]
 }

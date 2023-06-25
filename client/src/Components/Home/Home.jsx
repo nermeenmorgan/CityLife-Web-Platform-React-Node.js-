@@ -22,35 +22,35 @@ export default function Home() {
   }, [])
 
   // Slider Setting
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    autoplay: true,
-    autoplaySpeed: 2500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-          centerMode: true,
-          centerPadding: 0,
-        },
-      },
-    ],
-    pauseOnHover: false,
-    arrows: false,
-  };
+  // const settings = {
+  //   dots: false,
+  //   infinite: true,
+  //   speed: 500,
+  //   autoplay: true,
+  //   autoplaySpeed: 2500,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  //   responsive: [
+  //     {
+  //       breakpoint: 768,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //         arrows: false,
+  //         centerMode: true,
+  //         centerPadding: 0,
+  //       },
+  //     },
+  //   ],
+  //   pauseOnHover: false,
+  //   arrows: false,
+  // };
 
   return (
     <>
       {/* Slider */}
-      <div style={{ overflowX: "hidden", overflowY: "hidden" }} className="position-relative vh-100">
-        <div className={`${styles.layer} `}></div>
+      <div style={{ overflowX: "hidden", overflowY: "hidden" }} className="position-relative ">
+        <div className={`${styles.layer} p-3 mb-2`}></div>
 
         <div className="home ">
           <video autoPlay muted loop width={"100%"}>
@@ -59,7 +59,7 @@ export default function Home() {
         </div>
 
         <section className={`${styles.sliderText} w-100`} >
-          <div className=""
+          <div className="position-relative"
             style={{
               direction: i18n.language === "ar" ? "rtl" : "ltr",
               marginRight: i18n.language === "ar" ? "80px" : null
@@ -89,7 +89,11 @@ export default function Home() {
         className="lightGreenColor ">
         <h5 className="text-center  fw-bold fs-2 py-3 lightGreyBg">{t("Services")}</h5>
         <div className="container">
-          <div className="row m-3">
+          <div className="row m-3"
+                    style={{
+                      direction: i18n.language === "ar" ? "rtl" : "ltr",
+                    }}
+          >
 
 
 
@@ -214,7 +218,7 @@ export default function Home() {
                 >
                   <div className={`${styles.layer}`}>
                     <Link
-                      className="p-3 text-white fs-3 position-absolute top-0 bottom-0 start-0 end-0  "
+                      className="p-3 text-white fs-3 position-absolute top-0 bottom-0 start-0 end-0 "
                       to="/cinema"
                       style={{ textDecoration: "none" }}
                       onClick={() => {
@@ -272,7 +276,11 @@ export default function Home() {
         className="">
         <h5 className="text-center fw-bold fs-2 py-3 lightGreenColor lightGreyBg ">{t("Categories")}</h5>
         <div className="container ">
-          <div className="row mt-5 gy-4 ">
+          <div className="row mt-5 gy-4"
+                    style={{
+                      direction: i18n.language === "ar" ? "rtl" : "ltr",
+                    }}
+          >
 
 
 
@@ -353,7 +361,7 @@ export default function Home() {
                 <Link className="  text-decoration-none p-5 w-100" to={"/maintenance"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
                   <div className={` mx-auto`}>
                     <i className={`fa-solid fa-wrench  fs-1 mainColor `} ></i>
-                    <div className="mainColor ">{t("maintenance")}</div>
+                    <div className="mainColor ">{t("Maintenance")}</div>
                   </div>
                 </Link>
               </div>
@@ -368,7 +376,7 @@ export default function Home() {
                 <Link className="  text-decoration-none p-5 w-100" to={"/homeServices"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
                   <div className={` mx-auto`}>
                     <i className={`fa-solid fa-house-laptop fs-1 mainColor `} ></i>
-                    <div className="mainColor ">{t("homeServices")}</div>
+                    <div className="mainColor ">{t("Home Services")}</div>
                   </div>
                 </Link>
               </div>
@@ -379,7 +387,7 @@ export default function Home() {
                 <Link className="  text-decoration-none p-5 w-100" to={"/transportation"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
                   <div className={` mx-auto`}>
                     <i className={`fa-solid fa-truck-plane  fs-1 mainColor `} ></i>
-                    <div className="mainColor ">{t("transportation")}</div>
+                    <div className="mainColor ">{t("Transportation")}</div>
                   </div>
                 </Link>
               </div>
@@ -391,7 +399,7 @@ export default function Home() {
                 <Link className="  text-decoration-none p-5 w-100" to={"/banks"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
                   <div className={` mx-auto`}>
                     <i className={`fa-solid fa-building-columns  fs-1 mainColor `} ></i>
-                    <div className="mainColor ">{t("banks")}</div>
+                    <div className="mainColor ">{t("Banks")}</div>
                   </div>
                 </Link>
               </div>

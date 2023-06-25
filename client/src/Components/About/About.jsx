@@ -71,16 +71,20 @@ export default function About() {
             backgroundImage: `url("https://www.talaatmoustafa.com/Upload/43alrehab%201%20850%20x%20350%20px.jpg")`,
             backgroundSize: "100% 100%",
             height: "90vh",
+            direction: i18n.language === "ar" ? "rtl" : "ltr",
+            textAlign: i18n.language === "ar" ? "right" : "",
           }}
           className={`${styles.asd}`}
         >
-          <h1 className="position-absolute ms-3 mt-2 text-white"
+          <h1 className="position-absolute mt-2 text-white"
             style={{
               zIndex: 22,
               top: "60vh",
-              left: "14vh",
-              letterSpacing: "5px",
-              fontSize: 50
+              // left: "14vh",
+              // letterSpacing: "5px",
+              fontSize: 50,
+              marginLeft: i18n.language === "ar" ? "" : "100px",
+              marginRight: i18n.language === "ar" ? "100px" : "",
             }}
           >
             {t("About us")}

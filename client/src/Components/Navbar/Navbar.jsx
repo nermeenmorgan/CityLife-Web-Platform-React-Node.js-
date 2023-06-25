@@ -178,7 +178,7 @@ export default function Navbar() {
               {userData !== null &&
                 userData.id === "648a002ac64b570033765c4b" && (
                   <li className="nav-item">
-                    <Link className="nav-link text-white " to="dashboard"> {t("DashBoard")} </Link>
+                    <Link className="nav-link text-white " to="dashboard" onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}> {t("DashBoard")} </Link>
                   </li>
                 )}
             </ul>

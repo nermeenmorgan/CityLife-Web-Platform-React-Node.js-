@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import * as yup from "yup"
 import { useFormik } from 'formik'
 import axios from 'axios'
 import styles from './FeedBack.module.css'
-import i18next, { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import '../../App.css'
+import { DataContext } from '../../Context/Data'
 
 
 
@@ -13,18 +14,18 @@ const FeedBack = ({ message }) => {
     // Stated
     const [isLoading, setisLoading] = useState(false)
     const [errorMsg, seterrorMsg] = useState('')
+    const {addFeedback} = useContext(DataContext)
+    const { t, i18n } = useTranslation();
 
-    // Functions
+
     function handleRegister(values) {
-        axios.post(`http://localhost:3005/feedback`, { ...values, feedBackTo: message })
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err))
+       addFeedback(values,message)
     }
 
 
     // Validation
     let validationSchema = yup.object({
-        name: yup.string().required('Name is required').min(5, "Name must be more than 5 characters").max(20, "Name must be less than 20 characters"),
+        Name: yup.string().required('Name is required').min(5, "Name must be more than 5 characters").max(20, "Name must be less than 20 characters"),
         email: yup.string().required('Email is required').email('Example: exa@gmail.com'),
         phone: yup.string().required('Phone number is required').matches(/^(010|011|012|015)[0-9]{8}$/, "Number must be Egyptian number"),
         message: yup.string().required('Message is required').min(10)
@@ -35,7 +36,7 @@ const FeedBack = ({ message }) => {
     // Formik
     let formik = useFormik({
         initialValues: {
-            name: "",
+            Name: "",
             email: "",
             phone: "",
             message: "",
@@ -47,7 +48,7 @@ const FeedBack = ({ message }) => {
 
 
     return (
-        <div>
+        <>
             <h1 className='text-center'>FeedBack</h1>
             <div className="row">
 
@@ -65,16 +66,16 @@ const FeedBack = ({ message }) => {
 
                             {/* Feed Back TO */}
                             <div className='w-100 '>
-                                <label htmlFor='feedBackTo'>Feedback to</label>
+                                <label htmlFor='feedBackTo'>Place</label>
                                 <input defaultValue={message} className='text-center w-100 mb-4 form-control form-input lightGreenBackgroudColor ' id='feedBackTo' disabled></input>
 
                             </div>
 
                             {/* Name */}
                             <div className='w-100'>
-                                <label htmlFor='name'>Name</label>
-                                <input className=' w-100 form-control mb-2 form-input' type="name" name='name' id='name' value={formik.name} onChange={formik.handleChange} onBlur={formik.handleBlur} />
-                                {formik.errors.name && formik.touched.name ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.name}</span> : <span className=' opacity-0'> lorem </span>}
+                                <label htmlFor='Name'>Name</label>
+                                <input className=' w-100 form-control mb-2 form-input' type="name" name='Name' id='Name' value={formik.Name} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                                {formik.errors.Name && formik.touched.Name ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.Name}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
 
 
@@ -110,7 +111,10 @@ const FeedBack = ({ message }) => {
 
 
                             {isLoading ? <button type='button' className='btn dark-btn w-100 mt-3'><i className='fas fa-spinner fa-spin'></i></button> :
-                                <button className=" btn dark-btn w-100 mt-3" data-bs-dismiss="modal" aria-label="Close" disabled={!(formik.isValid && formik.dirty)} type="submit">Submit</button>}
+                                <button className=" btn dark-btn w-100 mt-3" data-bs-dismiss="modal" aria-label="Close" disabled={!(formik.isValid && formik.dirty)} type="submit" 
+                                data-bs-target="#exampleModalToggle3"
+                                data-bs-toggle="modal"
+                                >Submit</button>}
                         </form>
                     </div>
 
@@ -122,14 +126,12 @@ const FeedBack = ({ message }) => {
 
 
 
-
-
             {/* Success Popup */}
             {/* <div
                 className="modal fade"
-                id="exampleModalToggle2"
+                id="exampleModalToggle3"
                 aria-hidden="true"
-                aria-labelledby="exampleModalToggleLabel2"
+                aria-labelledby="exampleModalToggleLabel3"
                 tabIndex="-1"
             >
                 <div className="modal-dialog modal-dialog-centered">
@@ -152,11 +154,7 @@ const FeedBack = ({ message }) => {
             </div> */}
 
 
-
-
-
-
-        </div>
+        </>
     );
 }
 

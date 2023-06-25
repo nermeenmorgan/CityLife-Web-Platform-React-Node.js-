@@ -1,22 +1,24 @@
-import React, { useState, useTransition } from 'react';
+import React, { useContext, useState, useTransition } from 'react';
 import styles from './ContactUs.module.css'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import '../../App.css'
+import { DataContext } from '../../Context/Data';
 
 export default function ContactUs() {
     // Stated
     const [showModal, setShowModal] = useState(false);
     const { t, i18n } = useTranslation();
     const navigate = useNavigate();
+    const {addContact} = useContext (DataContext)
 
 
 
     // Form Validation
     let validationSchema = Yup.object({
-        name: Yup.string().required().min(3, t("Name must be between 3 and 40 characters")).max(40),
+        Name: Yup.string().required().min(3, t("Name must be between 3 and 40 characters")).max(40),
         email: Yup.string().required().email(t("Example: example@gmail.com")),
         phone: Yup.string().required().matches(/^01[0125][0-9]{8}$/, t('Phone Must Be Egyptian Number')),
         message: Yup.string().required().min(5, t("Message must be between 5 and 500 characters")).max(500),
@@ -25,14 +27,15 @@ export default function ContactUs() {
     // Formik
     let formik = useFormik({
         initialValues: {
-            name: '',
+            Name: '',
             email: '',
             phone: '',
             message: '',
         },
         validationSchema,
-        onSubmit: () => {
+        onSubmit: (values) => {
             setShowModal(true);
+            addContact(values)
         }
     });
 
@@ -51,9 +54,9 @@ export default function ContactUs() {
 
                                 {/* Name */}
                                 <div className="form-group my-0">
-                                    <label htmlFor="name" className='mb-2'>{t("Name")}</label>
-                                    <input onBlur={formik.handleBlur} autoComplete="off" placeholder={t("Enter your name")} className={`form-control  mb-2   ${formik.touched.name && formik.errors.name ? styles.alert : styles.input}`} onChange={formik.handleChange} value={formik.values.name} type='text' name='name' id='name' />
-                                    {formik.errors.name && formik.touched.name ? <span className=' opacity-100 text-danger ps-3'> {formik.errors.name}</span> : <span className=' opacity-0'> lorem </span>}
+                                    <label htmlFor="Name" className='mb-2'>{t("Name")}</label>
+                                    <input onBlur={formik.handleBlur} autoComplete="off" placeholder={t("Enter your name")} className={`form-control  mb-2   ${formik.touched.Name && formik.errors.Name ? styles.alert : styles.input}`} onChange={formik.handleChange} value={formik.values.name} type='text' name='Name' id='Name' />
+                                    {formik.errors.Name && formik.touched.Name ? <span className=' opacity-100 text-danger ps-3'> {formik.errors.Name}</span> : <span className=' opacity-0'> lorem </span>}
                                 </div>
 
                                 {/* Email */}
