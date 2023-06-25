@@ -112,8 +112,13 @@ export default function MaintenancePayment() {
 
   return (
     <>
-      <div className="container-fluid lightGreyBg py-3">
-        <h2 className="lightGreenColor text-center m-0"> {t("PAYMENT")}</h2>
+          <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
+      <div className='container-fluid lightGreyBg py-3'>
+        <h2 className='lightGreenColor text-center m-0'> {t("PAYMENT")}</h2>
       </div>
       <div className="container">
         <div
@@ -232,10 +237,7 @@ export default function MaintenancePayment() {
                 </div>
                 <div className="modal-body d-flex flex-column align-items-center">
                   <p className="fw-bold fs-5 text-center">
-                    {userData === null ? null : userData.name}, {t("Your")}
-                    {selectedName !== "" && t(selectedName).toLocaleLowerCase()}
-                    {t("amount is")} {selectedFees !== "" && t(selectedFees)}
-                    {t("EGP")}
+                    {userData === null ? null : userData.name}, {t("Your")} {selectedName !== "" && t(selectedName).toLocaleLowerCase()} {t("amount is")} {selectedFees !== "" && t(selectedFees)} {t("EGP")}
                   </p>
                 </div>
                 <div className="modal-footer">
@@ -302,7 +304,7 @@ export default function MaintenancePayment() {
               data-bs-target="#exampleModalToggle"
               data-bs-toggle="modal"
             >
-              {t("Inquiry")}
+              {t("Complain")}
             </button>
           </div>
 
@@ -346,7 +348,7 @@ export default function MaintenancePayment() {
 
                           {/* Name */}
                           <div className="w-100">
-                            <label htmlFor="Name">Name</label>
+                            <label htmlFor="Name">{t("Name")}</label>
                             <input
                               className=" w-100 form-control mb-2 form-input"
                               type="name"
@@ -368,7 +370,7 @@ export default function MaintenancePayment() {
 
                           {/* Email */}
                           <div className="w-100">
-                            <label htmlFor="name">Email</label>
+                            <label htmlFor="name">{t("Email")}:</label>
                             <input
                               className=" w-100 form-control mb-2 form-input"
                               type="email"
@@ -390,7 +392,7 @@ export default function MaintenancePayment() {
 
                           {/* Phone */}
                           <div className="w-100">
-                            <label htmlFor="name">Phone</label>
+                            <label htmlFor="name">{t("Phone")}:</label>
                             <input
                               className=" w-100 form-control mb-2 form-input"
                               type="tel"
@@ -412,7 +414,7 @@ export default function MaintenancePayment() {
 
                           {/* Feed Back TO */}
                           <div className="w-100 ">
-                            <label htmlFor="place">Place of incident</label>
+                            <label htmlFor="place">{t("Place of incident")}:</label>
                             <input
                               className="w-100 mb-2 form-control form-input"
                               type="text"
@@ -434,7 +436,7 @@ export default function MaintenancePayment() {
 
                           {/* Messsage */}
                           <div className="w-100">
-                            <label htmlFor="message">Message</label>
+                            <label htmlFor="message">{t("Message")}:</label>
                             <textarea
                               rows={"5"}
                               className={` form-control mb-2 form-input`}
@@ -480,7 +482,7 @@ export default function MaintenancePayment() {
                             disabled={!(formik.isValid && formik.dirty)}
                             type="submit"
                           >
-                            Submit
+                            {t("Submit")}
                           </button>
                         </form>
                       </div>
@@ -523,6 +525,7 @@ export default function MaintenancePayment() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   );

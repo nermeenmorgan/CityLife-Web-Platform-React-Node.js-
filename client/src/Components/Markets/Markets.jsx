@@ -2,14 +2,16 @@ import React, { useContext, useState } from "react";
 import { DataContext } from "../../Context/Data";
 import { Link } from "react-router-dom";
 import FeedBack from '../FeedBack/FeedBack'
-import i18next, { t } from 'i18next'
 import FeedBackPopSuccess from "../FeedBack/FeedBackPopSuccess";
+import { useTranslation } from 'react-i18next';
+
 export default function Markets() {
 
   // States
   let { markets } = useContext(DataContext);
   const [showModal, setShowModal] = useState(false);
   const [message, setMessage] = useState('')
+  const { t, i18n } = useTranslation();
 
   // Functions
   const handleShowModal = () => {
@@ -18,9 +20,15 @@ export default function Markets() {
 
   return (
     <>
+    <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
+    
       {/* Page Title */}
       <div className='container-fluid lightGreyBg py-3'>
-        <h2 className='lightGreenColor text-center m-0'>Markets</h2>
+        <h2 className='lightGreenColor text-center m-0'>{t("Markets")}</h2>
       </div>
 
 
@@ -37,18 +45,21 @@ export default function Markets() {
               </div>
 
 
+
+
+
               <div className=''>
                 <div className='container pt-3'>
-                  <h4 className='text-center mainColor' >{ele.name}</h4>
-                  <p className='text-center'>{ele.overview}</p>
+                  <h4 className='text-center mainColor' >{t(ele.name)}</h4>
+                  <p className='text-center'>{t(ele.overview)}</p>
                 </div>
                 <div className='lightGreenBackgroudColor text-white  rounded-bottom-3'>
                   <div className='d-flex justify-content-around align-items-center py-3 container'>
                     <p className='m-0'> {ele.Rating} <i className="fa-solid fa-star" style={{ color: '#C3801B' }}></i> </p>
-                    <p className='m-0'><Link to={ele.location} className='text-decoration-none text-white'> Location </Link></p>
+                    <p className='m-0'><Link to={ele.location} className='text-decoration-none text-white'> {t("Location")} </Link></p>
                     {/* <span> Phone: {ele.number}</span> */}
-                    <p className='m-0'> Website <Link to={ele.website} target='_blank'></Link></p>
-                    <Link className="text-decoration-none text-white" onClick={() => { const whatsappURL = `https://wa.me/${ele.number}`; window.location.href = whatsappURL; }} ><p className='m-0'> Phone </p></Link>
+                    <p className='m-0'> {t("Website")} <Link to={ele.website} target='_blank'></Link></p>
+                    <Link className="text-decoration-none text-white" onClick={() => { const whatsappURL = `https://wa.me/${ele.number}`; window.location.href = whatsappURL; }} ><p className='m-0'> {t("Phone")} </p></Link>
 
                   </div>
                   <div className='text-center pb-3 '>
@@ -58,7 +69,7 @@ export default function Markets() {
                         setMessage(ele.name)
                       }}
                       data-whatever="@mdo"
-                      className={i18next.language === 'en' ? "btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor" : " btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor "}
+                      className={i18n.language === 'en' ? "btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor" : " btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor "}
                     >
                       {t("Feedback")}
                     </button>
@@ -91,6 +102,7 @@ export default function Markets() {
       </div>
 
       <FeedBackPopSuccess></FeedBackPopSuccess>
+      </div>
 
     </>
   );

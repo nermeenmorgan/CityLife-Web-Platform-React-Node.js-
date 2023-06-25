@@ -4,6 +4,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import * as yup from "yup"
 import { DataContext } from '../../Context/Data'
+import { useTranslation } from 'react-i18next';
+
 
 
 export default function SignUp() {
@@ -14,6 +16,8 @@ export default function SignUp() {
     const [userName, setUserName] = useState('')
     const [dob, setDob] = useState('')
     const navigate = useNavigate()
+    const { t, i18n } = useTranslation();
+
     let { handleUserData } = useContext(DataContext)
 
 
@@ -64,10 +68,15 @@ export default function SignUp() {
 
 
     return <>
+     <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
         <div className="container">
             <div className="row">
 
-                <h1 className='text-center mainColor mt-4 fw-bold'>Sign up</h1>
+                <h1 className='text-center mainColor mt-4 fw-bold'>{t("Sign up")}</h1>
                 <div className='d-flex flex-md-row flex-column-reverse'>
 
 
@@ -79,19 +88,19 @@ export default function SignUp() {
                             </div>
 
                             <div className='d-block w-100'>
-                                <label htmlFor='name'>Name</label>
+                                <label htmlFor='name'>{t("Name")}</label>
                                 <input className='form-control mb-2 form-input' type="name" name='name' id='name' value={formik.name} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.name && formik.touched.name ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.name}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
 
                             <div className='d-block w-100'>
-                                <label htmlFor='name'>Email</label>
+                                <label htmlFor='name'>{t("Email")}:</label>
                                 <input className='form-control mb-2 form-input' type="email" name='email' id='email' value={formik.email} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.email && formik.touched.email ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.email}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
 
                             <div className='d-block w-100'>
-                                <label htmlFor='name'>Phone</label>
+                                <label htmlFor='name'>{t("Phone")}:</label>
                                 <input className='form-control mb-2 form-input' type="tel" name='phone' id='phone' value={formik.phone} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.phone && formik.touched.phone ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.phone}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
@@ -109,20 +118,20 @@ export default function SignUp() {
 
 
                             <div className='d-block w-100 pb-4'>
-                                <label htmlFor='dob' >Date Of Birth</label>
+                                <label htmlFor='dob' >{t("Date Of Birth")}:</label>
                                 <input className='form-control mb-2  form-input' type="date" name='dob' id='dob' onChange={(e) => setDob(e.target.value)} />
                             </div>
 
 
 
                             <div className='d-block w-100 pb-4'>
-                                <label htmlFor='userName' >User Name</label>
+                                <label htmlFor='userName' >{t("User Name")}:</label>
                                 <input className='form-control mb-2 form-input' type="text" name='userName' id='userName' onChange={(e) => setUserName(e.target.value)} />
                             </div>
 
 
                             <div className='d-block w-100 pb-4'>
-                                <label htmlFor='pImage' >Personal Image</label>
+                                <label htmlFor='pImage' >{t("Personal Image")}:</label>
                                 <input className='form-control mb-2 form-input' type="file" name='pImage' id='pImage' accept='image/*' onChange={(e) => handleProfileImage(e)} />
                             </div>
 
@@ -142,18 +151,18 @@ export default function SignUp() {
 
 
                             <div className='d-block w-100'>
-                                <label htmlFor='name'>Password</label>
+                                <label htmlFor='name'>{t("Password")}:</label>
                                 <input className='form-control mb-2 form-input' type="password" name='password' id='password' value={formik.password} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.password && formik.touched.password ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.password}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
 
                             <div className='d-block w-100'>
-                                <label htmlFor='name'>Re Password</label>
+                                <label htmlFor='name'>{t("Re Password")}:</label>
                                 <input className='form-control mb-2 form-input' type="password" name='rePassword' id='rePassword' value={formik.rePassword} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.rePassword && formik.touched.rePassword ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.rePassword}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
 
-                            {isLoading ? <button type='button' className='btn dark-btn w-100 mt-3'><i className='fas fa-spinner fa-spin'></i></button> : <button onClick={() => handleUserData(formik.values, dob, userName, image)} disabled={!(formik.isValid && formik.dirty)} type="submit" className="btn dark-btn w-100 mt-3">Submit</button>}
+                            {isLoading ? <button type='button' className='btn dark-btn w-100 mt-3'><i className='fas fa-spinner fa-spin'></i></button> : <button onClick={() => handleUserData(formik.values, dob, userName, image)} disabled={!(formik.isValid && formik.dirty)} type="submit" className="btn dark-btn w-100 mt-3">{t("Submit")}</button>}
                         </form>
                     </div>
                     <div className="col-sm-12 col-md-6 d-flex justify-content-center align-items-center">
@@ -163,5 +172,7 @@ export default function SignUp() {
                 </div>
             </div>
         </div>
+        </div>
+
     </>
 }

@@ -4,11 +4,13 @@ import React, { useContext, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import * as yup from "yup"
 import { DataContext } from '../../Context/Data'
+import { useTranslation } from 'react-i18next';
 
 export default function SignIn() {
     // States
     const { saveUserData } = useContext(DataContext)
     const [isLoading, setisLoading] = useState(false)
+    const { t, i18n } = useTranslation();
     const [errorMsg, seterrorMsg] = useState('')
     const navigate = useNavigate()
 
@@ -43,9 +45,14 @@ export default function SignIn() {
     })
 
     return <>
+     <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
         <div className="container">
             <div className="row">
-                <h1 className='text-center mainColor mt-4 fw-bold'>Sign in</h1>
+                <h1 className='text-center mainColor mt-4 fw-bold'>{t("Sign in")}</h1>
                 <div className='d-flex flex-md-row flex-column-reverse'>
                     <div className='col-sm-12 col-md-6 d-flex align-items-center justify-content-center'>
                         <form onSubmit={formik.handleSubmit} className='d-flex flex-wrap'>
@@ -55,21 +62,21 @@ export default function SignIn() {
                             </div>
 
                             <div className='d-block w-100'>
-                                <label htmlFor='name'>Email</label>
+                                <label htmlFor='name'>{t("Email")}</label>
                                 <input className='form-control mb-2 form-input' type="email" name='email' id='email' value={formik.email} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.email && formik.touched.email ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.email}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
 
                             <div className='d-block w-100'>
-                                <label htmlFor='name'>Password</label>
+                                <label htmlFor='name'>{t("Password")}</label>
                                 <input className='form-control mb-2 form-input' type="password" name='password' id='password' value={formik.password} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.password && formik.touched.password ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.password}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
 
-                            {isLoading ? <button type='button' className='btn dark-btn w-100 mt-3'><i className='fas fa-spinner fa-spin'></i></button> : <button disabled={!(formik.isValid && formik.dirty)} type="submit" className="btn dark-btn text-white w-100 mt-3">Submit</button>}
+                            {isLoading ? <button type='button' className='btn dark-btn w-100 mt-3'><i className='fas fa-spinner fa-spin'></i></button> : <button disabled={!(formik.isValid && formik.dirty)} type="submit" className="btn dark-btn text-white w-100 mt-3">{t("Submit")}</button>}
                             <div className='mx-auto mt-3 d-flex'>
-                                <p> Don't have an account? </p>
-                                <Link to='/signup' className='text-decoration-none mx-2'> Sign up </Link>
+                                <p> {t("Don't have an account?")} </p>
+                                <Link to='/signup' className='text-decoration-none mx-2'> {t("Sign up")}</Link>
                             </div>
                         </form>
 
@@ -80,6 +87,7 @@ export default function SignIn() {
 
                 </div>
             </div >
+        </div>
         </div>
     </>
 }

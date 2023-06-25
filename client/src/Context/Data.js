@@ -994,6 +994,8 @@ export default function Data(props) {
     handleUserData,
     profileData,
     allUserData,
+    setAllUserData,
+
 
     deleteMovie,
     updateMovie,

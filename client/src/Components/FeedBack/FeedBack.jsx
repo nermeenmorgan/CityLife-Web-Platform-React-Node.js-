@@ -49,7 +49,7 @@ const FeedBack = ({ message }) => {
 
     return (
         <>
-            <h1 className='text-center'>FeedBack</h1>
+            <h1 className='text-center'>{t("FeedBack")}</h1>
             <div className="row">
 
                 <div className='d-flex flex-md-row flex-column-reverse'>
@@ -66,14 +66,14 @@ const FeedBack = ({ message }) => {
 
                             {/* Feed Back TO */}
                             <div className='w-100 '>
-                                <label htmlFor='feedBackTo'>Place</label>
+                                <label htmlFor='feedBackTo'>{t("Place")}:</label>
                                 <input defaultValue={message} className='text-center w-100 mb-4 form-control form-input lightGreenBackgroudColor ' id='feedBackTo' disabled></input>
 
                             </div>
 
                             {/* Name */}
                             <div className='w-100'>
-                                <label htmlFor='Name'>Name</label>
+                                <label htmlFor='Name'>{t("Name")}</label>
                                 <input className=' w-100 form-control mb-2 form-input' type="name" name='Name' id='Name' value={formik.Name} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.Name && formik.touched.Name ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.Name}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
@@ -83,7 +83,7 @@ const FeedBack = ({ message }) => {
 
                             {/* Email */}
                             <div className='w-100'>
-                                <label htmlFor='name'>Email</label>
+                                <label htmlFor='name'>{t("Email")}:</label>
                                 <input className=' w-100 form-control mb-2 form-input' type="email" name='email' id='email' value={formik.email} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.email && formik.touched.email ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.email}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
@@ -93,7 +93,7 @@ const FeedBack = ({ message }) => {
 
                             {/* Phone */}
                             <div className='w-100'>
-                                <label htmlFor='name'>Phone</label>
+                                <label htmlFor='name'>{t("Phone")}:</label>
                                 <input className=' w-100 form-control mb-2 form-input' type="tel" name='phone' id='phone' value={formik.phone} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.phone && formik.touched.phone ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.phone}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
@@ -103,7 +103,7 @@ const FeedBack = ({ message }) => {
 
                             {/* Messsage */}
                             <div className='w-100'>
-                                <label htmlFor='message'>Message</label>
+                                <label htmlFor='message'>{t("Message")}:</label>
                                 <textarea rows={'10'} className={`${styles.resize} form-control mb-2 form-input`} type="text" name='message' id='message' value={formik.password} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.message && formik.touched.message ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.message}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
@@ -114,7 +114,7 @@ const FeedBack = ({ message }) => {
                                 <button className=" btn dark-btn w-100 mt-3" data-bs-dismiss="modal" aria-label="Close" disabled={!(formik.isValid && formik.dirty)} type="submit" 
                                 data-bs-target="#exampleModalToggle3"
                                 data-bs-toggle="modal"
-                                >Submit</button>}
+                                >{t("Submit")}</button>}
                         </form>
                     </div>
 

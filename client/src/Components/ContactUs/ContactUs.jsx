@@ -41,6 +41,11 @@ export default function ContactUs() {
 
     return (
         <>
+                <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
             <div style={{ direction: i18n.language === "ar" ? "rtl" : "ltr", textAlign: i18n.language === "ar" ? "right" : "left", }}
                 className='row container mx-auto my-5 '>
                 <section style={{ direction: i18n.language === "ar" ? "rtl" : "ltr", textAlign: i18n.language === "ar" ? "right" : "left", }} className='col-lg-8 px-5 shadow-sm '>
@@ -62,21 +67,21 @@ export default function ContactUs() {
                                 {/* Email */}
                                 <div className="form-group my-0">
                                     <label htmlFor="email" className='mb-2'>{t("Email")}</label>
-                                    <input onBlur={formik.handleBlur} autoComplete="off" placeholder={t("Enter your email")} className={`form-control mb-2  ${styles.input} ${formik.touched.email && formik.errors.email ? styles.alert : styles.input}`} onChange={formik.handleChange} value={formik.values.email} type='email' name='email' id='email'></input>
+                                    <input onBlur={formik.handleBlur} autoComplete="off" placeholder={t("Enter your email")} className={`form-control mb-2 w-100 ${styles.input} ${formik.touched.email && formik.errors.email ? styles.alert : styles.input}`} onChange={formik.handleChange} value={formik.values.email} type='email' name='email' id='email'></input>
                                     {formik.errors.email && formik.touched.email ? <span className=' opacity-100 text-danger ps-3'> {formik.errors.email}</span> : <span className=' opacity-0'> lorem </span>}
                                 </div>
 
                                 {/* Phone */}
                                 <div className="form-group my-0">
                                     <label htmlFor="phone" className='mb-2'>{t("Phone")}</label>
-                                    <input onBlur={formik.handleBlur} autoComplete="off" placeholder={t("Enter your phone number")} className={`form-control mb-2  ${styles.input} ${formik.touched.phone && formik.errors.phone ? styles.alert : styles.input}`} onChange={formik.handleChange} value={formik.values.phone} type='tel' name='phone' id='phone'></input>
+                                    <input onBlur={formik.handleBlur} autoComplete="off" placeholder={t("Enter your phone number")} className={`form-control mb-2 w-100 ${styles.input} ${formik.touched.phone && formik.errors.phone ? styles.alert : styles.input}`} onChange={formik.handleChange} value={formik.values.phone} type='tel' name='phone' id='phone'></input>
                                     {formik.errors.phone && formik.touched.phone ? <span className=' opacity-100 text-danger ps-3'> {formik.errors.phone}</span> : <span className=' opacity-0'> lorem </span>}
                                 </div>
 
                                 {/* Message */}
                                 <div className="form-group my-0">
                                     <label htmlFor="message" className='mb-2'>{t("Message")}</label>
-                                    <textarea onBlur={formik.handleBlur} autoComplete="off" placeholder={t("Leave your message")} className={`form-control mb-2  ${styles.input} ${styles.textArea_noResize} ${formik.touched.message && formik.errors.message ? styles.alert : styles.input}`} rows={10} onChange={formik.handleChange} value={formik.values.message} type='text' name='message' id='message'></textarea>
+                                    <textarea onBlur={formik.handleBlur} autoComplete="off" placeholder={t("Leave your message")} className={`form-control mb-2 w-100 ${styles.input} ${styles.textArea_noResize} ${formik.touched.message && formik.errors.message ? styles.alert : styles.input}`} rows={10} onChange={formik.handleChange} value={formik.values.message} type='text' name='message' id='message'></textarea>
                                     {formik.errors.message && formik.touched.message ? <span className=' opacity-100 text-danger ps-3'> {formik.errors.message}</span> : <span className=' opacity-0'> lorem </span>}
                                 </div>
 
@@ -138,6 +143,7 @@ export default function ContactUs() {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </>
     )

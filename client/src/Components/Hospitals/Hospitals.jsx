@@ -4,12 +4,15 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import './hospitals.css';
 import FeedBack from '../FeedBack/FeedBack'
-import i18next, { t } from 'i18next'
 import FeedBackPopSuccess from "../FeedBack/FeedBackPopSuccess";
+import { useTranslation } from 'react-i18next';
+
+
 export default function Hospitals() {
   const { Centers } = useContext(DataContext);
   const [showModal, setShowModal] = useState(false);
   const [message, setMessage] = useState('')
+  const { t, i18n } = useTranslation();
 
   const handleShowModal = () => {
     setShowModal(!showModal);
@@ -68,19 +71,23 @@ export default function Hospitals() {
   return (
     <>
       {/* New Design */}
-
+      <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
 
 
       {/* Page Title */}
       <div className='container-fluid lightGreyBg py-3'>
-        <h2 className='lightGreenColor text-center m-0'>Hospitals</h2>
+        <h2 className='lightGreenColor text-center m-0'>{t("Hospitals")}</h2>
       </div>
 
 
 
 
       <div className='row gy-4 p-0 m-0 w-75 mx-auto'>
-        <h3 className="mt-5 text-center "> In our medical centers, you will find all specialties</h3>
+        <h3 className="mt-5 text-center "> {t("In our medical centers, you will find all specialties")}</h3>
 
 
         {/* Card */}
@@ -103,16 +110,16 @@ export default function Hospitals() {
               </div>
               <div className=''>
                 <div className='container pt-3'>
-                  <h4 className='text-center mainColor' >{ele.name}</h4>
-                  <p className='text-center'>{ele.overview}</p>
+                  <h4 className='text-center mainColor' >{t(ele.name)}</h4>
+                  <p className='text-center'>{t(ele.overview)}</p>
                 </div>
                 <div className='lightGreenBackgroudColor text-white  rounded-bottom-3'>
                   <div className='d-flex justify-content-around align-items-center py-3 container'>
-                    <p className='m-0'> {ele.Rating} <i className="fa-solid fa-star" style={{ color: '#C3801B' }}></i> </p>
-                    <p className='m-0'><Link to={ele.location} className='text-decoration-none text-white'> Location </Link></p>
+                    <p className='m-0'> {t(ele.Rating)} <i className="fa-solid fa-star" style={{ color: '#C3801B' }}></i> </p>
+                    <p className='m-0'><Link to={ele.location} className='text-decoration-none text-white'> {t('Location')} </Link></p>
                     {/* <span> Phone: {ele.number}</span> */}
-                    <Link to={ele.website} className="text-decoration-none text-white" target='_blank'>Website </Link>
-                    <Link className="text-decoration-none text-white" onClick={() => { const whatsappURL = `https://wa.me/${ele.number}`; window.location.href = whatsappURL; }} ><p className='m-0'> Phone </p></Link>
+                    <Link to={ele.website} className="text-decoration-none text-white" target='_blank'>{t("Website")} </Link>
+                    <Link className="text-decoration-none text-white" onClick={() => { const whatsappURL = `https://wa.me/${ele.number}`; window.location.href = whatsappURL; }} ><p className='m-0'> {t("Phone")} </p></Link>
 
                   </div>
                   <div className='text-center pb-3 '>
@@ -122,18 +129,18 @@ export default function Hospitals() {
                         setMessage(ele.name)
                       }}
                       data-whatever="@mdo"
-                      className={i18next.language === 'en' ? "btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor" : " btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor"}
+                      className={i18n.language === 'en' ? "btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor" : " btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor"}
                     >
                       {t("Feedback")}
 
                     </button>
                     <button className="btn my-2 lightGreyBg lightGreenColor d-block mx-auto w-50 btn-mainColor " data-bs-target="#exampleModalToggle" data-bs-toggle="modal" onClick={() => { handleCenterName(ele.name); }} >
-                      Book a clinic </button>
+                      {t("Book a clinic")} </button>
                   </div>
                 </div>
               </div>
             </div>
-          </div>) : <h4>Loading ...</h4>}
+          </div>) : <h4>{t("Loading ...")}</h4>}
 
 
 
@@ -143,7 +150,7 @@ export default function Hospitals() {
             <div className="modal-content">
               <div className="modal-header lightGreenBackgroudColor lightGreyBg ">
                 <h4 className="modal-title  lightGreenColor w-100  text-center" id="exampleModalToggleLabel2 "   >
-                  Your appointment details
+                  {t("Your appointment details")}
                 </h4>
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={handleClear} ></button>
               </div>
@@ -152,19 +159,19 @@ export default function Hospitals() {
                 {appointDetails ? (
                   <>
                     <p className=" fs-5 text-center">
-                      Name: {appointDetails.name}
+                      {t("Name")} {(appointDetails.name)}
                     </p>
                     <p className=" fs-5 text-center">
-                      Date: {appointDetails.date}
+                      {t("Date")}: {(appointDetails.date)}
                     </p>
                     <p className=" fs-5 text-center">
-                      Time: {appointDetails.time}
+                      {t("Time")}: {(appointDetails.time)}
                     </p>
                     <p className=" fs-5 text-center">
-                      Specialty: {appointDetails.specialty}
+                      {t("Specialty")}: {appointDetails.specialty}
                     </p>
                     <p className=" fs-5 text-center">
-                      in {appointDetails.centerName}
+                     {t("Place")}: {t(appointDetails.centerName)}
                     </p>
                   </>
                 ) : null}
@@ -182,34 +189,34 @@ export default function Hospitals() {
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header text-white lightGreenBackgroudColor ">
-                <h1 className="modal-title fs-5 w-100 text-center  " id="exampleModalToggleLabel" > Clinic appointment </h1>
+                <h1 className="modal-title fs-5 w-100 text-center  " id="exampleModalToggleLabel" > {t("Clinic appointment")} </h1>
                 <button type="button" className="btn-close btn-close-white " data-bs-dismiss="modal" aria-label="Close" style={{ color: 'white' }}></button>
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="modal-body">
-                  <label className="form-label" htmlFor="name"> Your Name: </label>
+                  <label className="form-label" htmlFor="name"> {t("Your Name")}: </label>
                   <input className="form-control" type="name" name="name" value={appointDetails.name} onChange={handleChange} id="name" ></input>
                   <label className="form-label" htmlFor="date">
-                    Choose Date:
+                    {t("Choose Date")}:
                   </label>
                   <input className="form-control" type="date" name="date" value={appointDetails.date} onChange={handleChange} id="date" ></input>
                   <label className="form-label" htmlFor="time">
-                    Choose time:
+                    {t("Choose time")}:
                   </label>
                   <input className="form-control" type="time" name="time" value={appointDetails.time} onChange={handleChange} id="time" step="1800" ></input>
                   <label htmlFor="exampleDataList" className="form-label" >
-                    Specialty:
+                    {t("Specialty")}:
                   </label>
-                  <input name="specialty" value={appointDetails.specialty} onChange={handleChange} className="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search..." />
+                  <input name="specialty" value={appointDetails.specialty} onChange={handleChange} className="form-control" list="datalistOptions" id="exampleDataList" placeholder={t("Type to search...")} autoComplete="off"/>
                   <datalist id="datalistOptions">
-                    <option value="Internal Medicine"></option>
-                    <option value="Gastroenterology"></option>
-                    <option value="Orthopedic"></option>
-                    <option value="Ear, nose and throat (ENT)"></option>
-                    <option value="Cardiology"></option>
-                    <option value="Ophthalmology"></option>
-                    <option value="Pediatrics"></option>
-                    <option value="Dentistry"></option>
+                    <option value={t("Internal Medicine")}></option>
+                    <option value={t("Gastroenterology")}></option>
+                    <option value={t("Orthopedic")}></option>
+                    <option value={t("Ear, nose and throat (ENT)")}></option>
+                    <option value={t("Cardiology")}></option>
+                    <option value={t("Ophthalmology")}></option>
+                    <option value={t("Pediatrics")}></option>
+                    <option value={t("Dentistry")}></option>
                   </datalist>
                 </div>
                 <div className="modal-footer w-100 ">
@@ -217,7 +224,7 @@ export default function Hospitals() {
                     className="btn dark-btn mx-auto text-center w-50 rounded-1 "
                     data-bs-target="#exampleModalToggle2"
                     data-bs-toggle="modal" >
-                    Confirm
+                    {t("Confirm")}
                   </button>
                 </div>
               </form>
@@ -274,6 +281,7 @@ export default function Hospitals() {
            </div>
        </div> */}
 
+</div>
     </>
 
   );

@@ -49,6 +49,11 @@ export default function Home() {
   return (
     <>
       {/* Slider */}
+      <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
       <div style={{ overflowX: "hidden", overflowY: "hidden" }} className="position-relative ">
         <div className={`${styles.layer} p-3 mb-2`}></div>
 
@@ -287,6 +292,7 @@ export default function Home() {
 
 
             {/* Restaurants */}
+
             <div className={`${styles.card} col-md-3 offset-1 mx-auto shadow-sm d-flex text-center align-items-center`}>
               <Link className="text-decoration-none p-5 w-100" to={"/restaurants"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
                 <div className={` mx-auto`}>
@@ -406,8 +412,96 @@ export default function Home() {
             </div>
 
           </div>
+
+
+
+
+          {/* Row 2 */}
+          {/* Health */}
+          <div className="row g-3 my-3">
+            <div className={`${styles.card} col-md-3 offset-1 mx-auto shadow-sm d-flex text-center align-items-center`}>
+              <Link className="  text-decoration-none p-5 w-100" to={"/health"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
+                <div className={` mx-auto`}>
+                  <i className={`fa-solid fa-heart-pulse  fs-1 mainColor `} ></i>
+                  <div className="mainColor ">{t("Health")}</div>
+                </div>
+              </Link>
+            </div>
+
+
+
+
+
+
+
+
+            {/* Sports */}
+            <div className={`${styles.card} col-md-3 offset-1 mx-auto  shadow-sm d-flex text-center align-items-center`}>
+              <Link className="  text-decoration-none p-5 w-100" to={"/Sports"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
+                <div className={` mx-auto`}>
+                  <i className={`fa-solid fa-table-tennis-paddle-ball  fs-1 mainColor `} ></i>
+                  <div className="mainColor ">{t("Sports")}</div>
+                </div>
+              </Link>
+            </div>
+
+
+
+
+
+            {/* Maintenance */}
+            <div className={`${styles.card} col-md-3 offset-1 mx-auto  shadow-sm d-flex text-center align-items-center`}>
+              <Link className="  text-decoration-none p-5 w-100" to={"/maintenance"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
+                <div className={` mx-auto`}>
+                  <i className={`fa-solid fa-wrench  fs-1 mainColor `} ></i>
+                  <div className="mainColor ">{t("maintenance")}</div>
+                </div>
+              </Link>
+            </div>
+          </div>
+
+
+
+          {/* Row 4 */}
+          {/* Home Services */}
+          <div className="row g-3 my-3">
+            <div className={`${styles.card} col-md-3 offset-1 mx-auto shadow-sm d-flex text-center align-items-center`}>
+              <Link className="  text-decoration-none p-5 w-100" to={"/homeServices"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
+                <div className={` mx-auto`}>
+                  <i className={`fa-solid fa-house-laptop fs-1 mainColor `} ></i>
+                  <div className="mainColor ">{t("homeServices")}</div>
+                </div>
+              </Link>
+            </div>
+
+
+            {/* Transportations */}
+            <div className={`${styles.card} col-md-3 offset-1 mx-auto shadow-sm d-flex text-center align-items-center`}>
+              <Link className="  text-decoration-none p-5 w-100" to={"/transportation"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
+                <div className={` mx-auto`}>
+                  <i className={`fa-solid fa-truck-plane  fs-1 mainColor `} ></i>
+                  <div className="mainColor ">{t("transportation")}</div>
+                </div>
+              </Link>
+            </div>
+
+
+
+            {/* Banks */}
+            <div className={`${styles.card} col-md-3 offset-1  mx-auto shadow-sm d-flex text-center align-items-center`}>
+              <Link className="  text-decoration-none p-5 w-100" to={"/banks"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
+                <div className={` mx-auto`}>
+                  <i className={`fa-solid fa-building-columns  fs-1 mainColor `} ></i>
+                  <div className="mainColor ">{t("banks")}</div>
+                </div>
+              </Link>
+            </div>
+          </div>
+
+
         </div>
       </section>
+      </div>
     </>
   );
 }

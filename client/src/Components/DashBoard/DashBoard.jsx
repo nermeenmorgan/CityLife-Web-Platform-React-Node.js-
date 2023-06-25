@@ -89,25 +89,29 @@ export default function DashBoard() {
   },[ExchangedData])
   return (
     <>
+    <div         style={{
+          direction: i18n.language === "ar" ? "rtl" : "",
+
+        }}>
      <div className="d-flex justify-content-center w-50 mx-auto mt-4">
-     <button className="btn btn-primary w-50 mx-3" onClick={()=> setShowData("feedback")}>FeedBacks and complains</button>
-     <button className="btn btn-primary w-50 mx-3" onClick={()=> setShowData("data")}>Edit website data</button>
+     <button className="btn btn-primary w-50 mx-3" onClick={()=> setShowData("feedback")}>{t("FeedBacks and Complains")}</button>
+     <button className="btn btn-primary w-50 mx-3" onClick={()=> setShowData("data")}>{t("Edit website data")}</button>
      </div>
       {/*  Feedback */}
-      {showData === "feedback" && <div className="w-100 my-4 mx-auto " style={{overflowX:"auto"}}>
-        <h2>FeedBacks and Complains:</h2>
+      {showData === "feedback" && <div className="my-4 mx-auto " style={{overflowX:"auto",width:"90%"}}>
+        <h2>{t("FeedBacks and Complains")}:</h2>
         <table className="table table-hover table-bordered mx-auto">
           <thead>
             <tr className="text-center">
-              <th scope="col">ID</th>
-              <th scope="col">Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Phone</th>
-              <th scope="col">Place</th>
-              <th scope="col">Message</th>
-              <th scope="col">Photo</th>
-              <th scope="col">type</th>
-              <th scope="col">Delete</th>
+              <th scope="col">{t("ID")}</th>
+              <th scope="col">{t("Name")}</th>
+              <th scope="col">{t("Email")}</th>
+              <th scope="col">{t("Phone")}</th>
+              <th scope="col">{t("Place")}</th>
+              <th scope="col">{t("Message")}</th>
+              <th scope="col">{t("Photo")}</th>
+              <th scope="col">{t("Type")}</th>
+              <th scope="col">{t("Delete")}</th>
             </tr>
           </thead>
           <tbody className="text-center">
@@ -122,7 +126,7 @@ export default function DashBoard() {
                 <td>{ele.message}</td>
                 <td>{ele.photo && <img src={ele.photo} alt="complain img" width={100} height={100}></img>}</td>
                 <td style={{backgroundColor: ele.type === "FeedBack" ? "lightgreen" : ele.type === "Complain"? "lightpink" :"lightyellow" }}>{ele.type}</td>
-                <td><button className="btn btn-danger" onClick={()=>handleDeleteFeed(ele.id)}>Delete</button></td>
+                <td><button className="btn btn-danger" onClick={()=>handleDeleteFeed(ele.id)}>{t("Delete")}</button></td>
               </tr>)}
           </tbody>
         </table>
@@ -134,10 +138,7 @@ export default function DashBoard() {
 
       {showData === "data" && <>
       <div className="w-50 mx-auto mt-5"
-        style={{
-          direction: i18n.language === "ar" ? "rtl" : "",
 
-        }}
       >
         <span className="fw-bold fs-5">{t("Choose Service or Category")}: </span>
         <select
@@ -322,6 +323,7 @@ export default function DashBoard() {
         data={ExchangedData?.buses}
         handleDelete={handleDelete}
       /> </>}
+      </div>
     </>
   );
 }
