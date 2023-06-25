@@ -71,7 +71,11 @@ export default function Hospitals() {
   return (
     <>
       {/* New Design */}
-
+      <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
 
 
       {/* Page Title */}
@@ -185,25 +189,25 @@ export default function Hospitals() {
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header text-white lightGreenBackgroudColor ">
-                <h1 className="modal-title fs-5 w-100 text-center  " id="exampleModalToggleLabel" > Clinic appointment </h1>
+                <h1 className="modal-title fs-5 w-100 text-center  " id="exampleModalToggleLabel" > {t("Clinic appointment")} </h1>
                 <button type="button" className="btn-close btn-close-white " data-bs-dismiss="modal" aria-label="Close" style={{ color: 'white' }}></button>
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="modal-body">
-                  <label className="form-label" htmlFor="name"> Your Name: </label>
+                  <label className="form-label" htmlFor="name"> {t("Your Name")}: </label>
                   <input className="form-control" type="name" name="name" value={appointDetails.name} onChange={handleChange} id="name" ></input>
                   <label className="form-label" htmlFor="date">
-                    Choose Date:
+                    {t("Choose Date")}:
                   </label>
                   <input className="form-control" type="date" name="date" value={appointDetails.date} onChange={handleChange} id="date" ></input>
                   <label className="form-label" htmlFor="time">
-                    Choose time:
+                    {t("Choose time")}:
                   </label>
                   <input className="form-control" type="time" name="time" value={appointDetails.time} onChange={handleChange} id="time" step="1800" ></input>
                   <label htmlFor="exampleDataList" className="form-label" >
-                    Specialty:
+                    {t("Specialty")}:
                   </label>
-                  <input name="specialty" value={appointDetails.specialty} onChange={handleChange} className="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search..." />
+                  <input name="specialty" value={appointDetails.specialty} onChange={handleChange} className="form-control" list="datalistOptions" id="exampleDataList" placeholder={t("Type to search...")} />
                   <datalist id="datalistOptions">
                     <option value="Internal Medicine"></option>
                     <option value="Gastroenterology"></option>
@@ -220,7 +224,7 @@ export default function Hospitals() {
                     className="btn dark-btn mx-auto text-center w-50 rounded-1 "
                     data-bs-target="#exampleModalToggle2"
                     data-bs-toggle="modal" >
-                    Confirm
+                    {t("Confirm")}
                   </button>
                 </div>
               </form>
@@ -249,7 +253,7 @@ export default function Hospitals() {
       </div>
 
 
-
+</div>
     </>
 
   );

@@ -19,11 +19,15 @@ export default function Banks() {
   return (
     <>
 
-
+<div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
       {/* New code */}
       {/* Header */}
       <div className='container-fluid lightGreyBg py-3'>
-        <h2 className='lightGreenColor text-center m-0'>Centers</h2>
+        <h2 className='lightGreenColor text-center m-0'>{t("Centers")}</h2>
       </div>
       {/* Card */}
       <div className='row gy-4 p-0 m-0 w-75 mx-auto'>
@@ -37,16 +41,16 @@ export default function Banks() {
               {/* Data */}
               <div className=''>
                 <div className='container pt-3'>
-                  <h4 className='text-center mainColor' >{ele.name}</h4>
-                  {/* <p className="text-center">{ele.overview}</p> */}
-                  <p className="text-center">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                  <h4 className='text-center mainColor' >{t(ele.name)}</h4>
+                  <p className="text-center">{t(ele.overview)}</p>
+                  <p className="text-center">{t("It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.")}</p>
                 </div>
                 <div className='lightGreenBackgroudColor text-white  rounded-bottom-3'>
                   <div className='d-flex justify-content-around align-items-center py-3 container'>
                     <p className='m-0'> {ele.Rating} <i className="fa-solid fa-star" style={{ color: '#C3801B' }}></i> </p>
-                    <p className='m-0'><Link to={ele.location} className='text-decoration-none text-white'> Location </Link></p>
-                    <Link to={ele.website} className='text-white text-decoration-none'>Website</Link>
-                    <Link className="text-decoration-none text-white" onClick={() => { const whatsappURL = `https://wa.me/${ele.number}`; window.location.href = whatsappURL; }} ><p className='m-0'> Phone </p></Link>
+                    <p className='m-0'><Link to={ele.location} className='text-decoration-none text-white'> {t("Location")} </Link></p>
+                    <Link to={ele.website} className='text-white text-decoration-none'>{t("Website")}</Link>
+                    <Link className="text-decoration-none text-white" onClick={() => { const whatsappURL = `https://wa.me/${ele.number}`; window.location.href = whatsappURL; }} ><p className='m-0'> {t("Phone")} </p></Link>
                   </div>
                   <div className='text-center pb-3 '>
                     <button data-bs-target="#exampleModalToggle" data-bs-toggle="modal" onClick={() => {
@@ -88,7 +92,7 @@ export default function Banks() {
         </div>
       </div>
 
-
+</div>
     </>
   );
 }

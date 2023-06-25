@@ -49,6 +49,11 @@ export default function Home() {
   return (
     <>
       {/* Slider */}
+      <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
       <div style={{ overflowX: "hidden", overflowY: "hidden" }} className="position-relative vh-100">
         <div className={`${styles.layer} `}></div>
 
@@ -404,6 +409,7 @@ export default function Home() {
 
         </div>
       </section>
+      </div>
     </>
   );
 }

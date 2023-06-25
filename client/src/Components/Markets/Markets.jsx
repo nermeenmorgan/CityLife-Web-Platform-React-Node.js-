@@ -20,7 +20,11 @@ export default function Markets() {
 
   return (
     <>
-
+    <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
     
       {/* Page Title */}
       <div className='container-fluid lightGreyBg py-3'>
@@ -96,7 +100,7 @@ export default function Markets() {
           </div>
         </div>
       </div>
-
+      </div>
 
     </>
   );

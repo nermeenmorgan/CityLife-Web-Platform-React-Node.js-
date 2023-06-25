@@ -5,6 +5,8 @@ import "./AllRes.css";
 import { useTranslation } from "react-i18next";
 import FeedBack from "../FeedBack/FeedBack";
 import { Link } from "react-router-dom";
+import i18next, { t } from 'i18next'
+
 
 export default function Restaurants() {
   // States
@@ -20,8 +22,13 @@ export default function Restaurants() {
 
   return (
     <>
+    <div
+        style={{
+          direction: i18next.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
       <div className='container-fluid lightGreyBg py-3'>
-        <h2 className='lightGreenColor text-center m-0'>All Restaurants</h2>
+        <h2 className='lightGreenColor text-center m-0'>{t("All Restaurants")}</h2>
       </div>
       <div className='row gy-4 p-0 m-0 w-75  mx-auto'>
         {/* Card */}
@@ -36,16 +43,16 @@ export default function Restaurants() {
               </div>
               {/* Header */}
               <div className='container pt-3'>
-                <h4 className='text-center mainColor' >{res.name}</h4>
-                <p className=''>{res.overview}</p>
+                <h4 className='text-center mainColor' >{t(res.name)}</h4>
+                <p className=''>{t(res.overview)}</p>
               </div>
               {/* Data */}
               <div className='lightGreenBackgroudColor text-white  rounded-bottom-3'>
                 <div className='d-flex justify-content-around align-items-center py-3 container'>
                   <p className='m-0'> {res.Rating} <i className="fa-solid fa-star" style={{ color: '#C3801B' }}></i> </p>
-                  <p className='m-0'><Link to={res.location} className='text-decoration-none text-white'> Location </Link></p>
-                  <Link to={res.website} className='text-white text-decoration-none'>Website</Link>
-                  <Link className="text-decoration-none text-white" onClick={() => { const whatsappURL = `https://wa.me/${res.number}`; window.location.href = whatsappURL; }} ><p className='m-0'> Phone </p></Link>
+                  <p className='m-0'><Link to={res.location} className='text-decoration-none text-white'> {t("Location")} </Link></p>
+                  <Link to={res.website} className='text-white text-decoration-none'>{t("Website")}</Link>
+                  <Link className="text-decoration-none text-white" onClick={() => { const whatsappURL = `https://wa.me/${res.number}`; window.location.href = whatsappURL; }} ><p className='m-0'> {t("Phone")} </p></Link>
                 </div>
                 <div className='text-center pb-3 '>
                   <button data-bs-target="#exampleModalToggle" data-bs-toggle="modal" onClick={() => {
@@ -95,6 +102,7 @@ export default function Restaurants() {
 
           </div>
         </div>
+      </div>
       </div>
     </>
   );

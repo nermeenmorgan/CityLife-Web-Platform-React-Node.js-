@@ -20,6 +20,12 @@ export default function Banks() {
     const { maintenance } = useContext(DataContext)
 
     return <>
+
+<div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
         {/* New  Design */}
         <div className='container-fluid lightGreyBg py-3'>
             <h2 className='lightGreenColor text-center m-0'>{t("Maintenance")}</h2>
@@ -78,6 +84,7 @@ export default function Banks() {
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </>
 }

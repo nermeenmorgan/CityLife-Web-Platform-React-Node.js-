@@ -16,6 +16,11 @@ export default function Health() {
 
   return (
     <>
+          <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
       <div className='container-fluid lightGreyBg py-3'>
         <h2 className="lightGreenColor text-center m-0">
           {t("Pharmacies")}
@@ -36,7 +41,7 @@ export default function Health() {
             {/* Buttons */}
             <div className="text-center">
               <button type="button" onClick={() => handleClickTopNav("Centers")} className="btn dark-btn rounded-1 w-25 mx-2 " >
-                {t("Centers")}
+                {t("Centerss")}
               </button>
               <button type="button" onClick={() => handleClickTopNav("Pharmacies")} className="btn dark-btn w-25 rounded-1 mx-2 " >
                 {t("Pharmacies")}
@@ -56,6 +61,7 @@ export default function Health() {
       ) : TopNav === "Centers" ? (
         <Centers key={uuid()}></Centers>
       ) : null}
+      </div>
     </>
   );
 }
