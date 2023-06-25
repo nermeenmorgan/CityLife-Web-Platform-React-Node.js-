@@ -28,7 +28,7 @@ export default function Banks() {
       {/* New code */}
       {/* Header */}
       <div className='container-fluid lightGreyBg py-3'>
-        <h2 className='lightGreenColor text-center m-0'>{t("Centers")}</h2>
+        <h2 className='lightGreenColor text-center m-0'>{t("Malls")}</h2>
       </div>
       {/* Card */}
       <div className='row gy-4 p-0 m-0 w-75 mx-auto'>
