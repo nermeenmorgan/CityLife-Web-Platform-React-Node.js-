@@ -23,7 +23,11 @@ export default function Banks() {
         {/* New  Design */}
 
         {/* Header */}
- 
+        <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
         <div className='container-fluid lightGreyBg py-3'>
             <h2 className='lightGreenColor text-center m-0'>{t('Banks')}</h2>
         </div>
@@ -82,6 +86,7 @@ export default function Banks() {
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </>
 }

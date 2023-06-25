@@ -20,6 +20,11 @@ export default function Cinema() {
 
   return (
     <>
+          <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
       {!movies ? (
         <div class="d-flex justify-content-center">
           <div class="spinner-border" role="status">
@@ -78,6 +83,7 @@ export default function Cinema() {
           </div>
         </div>
       )}
+      </div>
     </>
   );
 }

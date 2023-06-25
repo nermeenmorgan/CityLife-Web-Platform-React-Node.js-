@@ -335,6 +335,11 @@ export default function AddForm() {
   } else if (type === "Cinema") {
     return (
       <>
+              <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
         <h2 className="text-center my-5">Add Form for {type}</h2>
         <form className="" onSubmit={handleSubmit}>
           <div className="w-50 mx-auto my-3">
@@ -510,6 +515,7 @@ export default function AddForm() {
             </button>
           </div>
         </form>
+        </div>
       </>
     );
   } else {

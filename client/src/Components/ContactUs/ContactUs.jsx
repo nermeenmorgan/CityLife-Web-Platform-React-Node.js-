@@ -38,6 +38,11 @@ export default function ContactUs() {
 
     return (
         <>
+                <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
             <div style={{ direction: i18n.language === "ar" ? "rtl" : "ltr", textAlign: i18n.language === "ar" ? "right" : "left", }}
                 className='row container mx-auto my-5 '>
                 <section style={{ direction: i18n.language === "ar" ? "rtl" : "ltr", textAlign: i18n.language === "ar" ? "right" : "left", }} className='col-lg-8 px-5 shadow-sm '>
@@ -135,6 +140,7 @@ export default function ContactUs() {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </>
     )

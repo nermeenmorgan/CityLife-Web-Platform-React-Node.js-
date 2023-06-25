@@ -11,7 +11,7 @@ export default function Footer() {
       <footer
         className="text-center text-lg-start bg-main-light text-white mt-5 text-white"
         style={{
-          direction: i18n.language === "ar" ? "rtl" : "ltr",
+          // direction: i18n.language === "ar" ? "rtl" : "ltr",
         }}
       >
         <section className="pt-2 text-white">

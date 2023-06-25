@@ -10,6 +10,12 @@ export default function MovieCard({ movie }) {
   const { userData } = useContext(DataContext)
 
   return (
+
+    <div
+    style={{
+      direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+    }}
+  >
     <div className="col-lg-4 col-md-6 col-12 my-3" >
       <div className="card shadow-sm mx-auto "
 
@@ -50,6 +56,7 @@ export default function MovieCard({ movie }) {
           </button>
         </div>
       </div>
+    </div>
     </div>
   )
 }

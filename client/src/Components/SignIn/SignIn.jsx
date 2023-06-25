@@ -45,6 +45,11 @@ export default function SignIn() {
     })
 
     return <>
+     <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
         <div className="container">
             <div className="row">
                 <h1 className='text-center mainColor mt-4 fw-bold'>{t("Sign in")}</h1>
@@ -82,6 +87,7 @@ export default function SignIn() {
 
                 </div>
             </div >
+        </div>
         </div>
     </>
 }

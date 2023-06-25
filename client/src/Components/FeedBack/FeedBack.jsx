@@ -48,7 +48,7 @@ const FeedBack = ({ message }) => {
 
     return (
         <div>
-            <h1 className='text-center'>FeedBack</h1>
+            <h1 className='text-center'>{t("FeedBack")}</h1>
             <div className="row">
 
                 <div className='d-flex flex-md-row flex-column-reverse'>
@@ -65,14 +65,14 @@ const FeedBack = ({ message }) => {
 
                             {/* Feed Back TO */}
                             <div className='w-100 '>
-                                <label htmlFor='feedBackTo'>Feedback to</label>
+                                <label htmlFor='feedBackTo'>{t("Feedback to")}</label>
                                 <input defaultValue={message} className='text-center w-100 mb-4 form-control form-input lightGreenBackgroudColor ' id='feedBackTo' disabled></input>
 
                             </div>
 
                             {/* Name */}
                             <div className='w-100'>
-                                <label htmlFor='name'>Name</label>
+                                <label htmlFor='name'>{t("Name")}</label>
                                 <input className=' w-100 form-control mb-2 form-input' type="name" name='name' id='name' value={formik.name} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.name && formik.touched.name ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.name}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
@@ -82,7 +82,7 @@ const FeedBack = ({ message }) => {
 
                             {/* Email */}
                             <div className='w-100'>
-                                <label htmlFor='name'>Email</label>
+                                <label htmlFor='name'>{t("Email")}</label>
                                 <input className=' w-100 form-control mb-2 form-input' type="email" name='email' id='email' value={formik.email} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.email && formik.touched.email ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.email}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
@@ -92,7 +92,7 @@ const FeedBack = ({ message }) => {
 
                             {/* Phone */}
                             <div className='w-100'>
-                                <label htmlFor='name'>Phone</label>
+                                <label htmlFor='name'>{t("Phone")}</label>
                                 <input className=' w-100 form-control mb-2 form-input' type="tel" name='phone' id='phone' value={formik.phone} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.phone && formik.touched.phone ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.phone}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
@@ -102,7 +102,7 @@ const FeedBack = ({ message }) => {
 
                             {/* Messsage */}
                             <div className='w-100'>
-                                <label htmlFor='message'>Message</label>
+                                <label htmlFor='message'>{t("Message")}</label>
                                 <textarea rows={'10'} className={`${styles.resize} form-control mb-2 form-input`} type="text" name='message' id='message' value={formik.password} onChange={formik.handleChange} onBlur={formik.handleBlur} />
                                 {formik.errors.message && formik.touched.message ? <span className=' opacity-100 text-danger ps-1'> {formik.errors.message}</span> : <span className=' opacity-0'> lorem </span>}
                             </div>
@@ -110,7 +110,7 @@ const FeedBack = ({ message }) => {
 
 
                             {isLoading ? <button type='button' className='btn dark-btn w-100 mt-3'><i className='fas fa-spinner fa-spin'></i></button> :
-                                <button className=" btn dark-btn w-100 mt-3" data-bs-dismiss="modal" aria-label="Close" disabled={!(formik.isValid && formik.dirty)} type="submit">Submit</button>}
+                                <button className=" btn dark-btn w-100 mt-3" data-bs-dismiss="modal" aria-label="Close" disabled={!(formik.isValid && formik.dirty)} type="submit">{t("Submit")}</button>}
                         </form>
                     </div>
 

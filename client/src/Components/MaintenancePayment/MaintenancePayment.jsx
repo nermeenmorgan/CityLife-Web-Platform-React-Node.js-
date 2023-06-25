@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useMemo, useState } from "react";
 import { DataContext } from "../../Context/Data";
 import { v4 as uuid } from "uuid";
 import Payment from "../PaymentStripe/Payment";
+import { useTranslation } from "react-i18next";
 
 
 export default function MaintenancePayment() {
@@ -18,6 +19,7 @@ export default function MaintenancePayment() {
   // handle payment and bills
   const [selectedName, setSelectedName] = useState("");
   const [selectedFees, setSelectedFees] = useState("");
+  const { t, i18n } = useTranslation();
 
   const openModelPay = (name, fees) => {
     setSelectedName(name);
@@ -75,13 +77,18 @@ export default function MaintenancePayment() {
 
   return (
     <>
+          <div
+        style={{
+          direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
       <div className='container-fluid lightGreyBg py-3'>
-        <h2 className='lightGreenColor text-center m-0'> PAYMENT</h2>
+        <h2 className='lightGreenColor text-center m-0'> {t("PAYMENT")}</h2>
       </div>
       <div className="container">
         <div className="row mt-5">
           <h2 className="text-center mb-4 fw-bold">
-            One place for your all bills and subscriptions
+            {t("One place for your all bills and subscriptions")}
           </h2>
 
           {PayArr && PayArr.map((type, index) => (
@@ -89,7 +96,7 @@ export default function MaintenancePayment() {
               <div
                 className="d-flex flex-column shadow-sm rounded-3 w-100 my-3 p-4" style={{ height: 250 }} key={uuid()}  >
                 <div>
-                  <h3 className="text-center fw-bold">{type.name}</h3>
+                  <h3 className="text-center fw-bold">{t(type.name)}</h3>
                 </div>
                 <div className="mx-auto">
                   {(() => {
@@ -138,7 +145,7 @@ export default function MaintenancePayment() {
                       openModelPay(type.name, type.fees);
                     }}
                   >
-                    Check Bills
+                    {t("Check Bills")}
                   </button>
                   <button
                     key={uuid()}
@@ -149,7 +156,7 @@ export default function MaintenancePayment() {
                       openModelPay(type.name, type.fees);
                     }}
                   >
-                    Pay
+                    {t("Pay")}
                   </button>
                 </div>
               </div>
@@ -187,7 +194,7 @@ export default function MaintenancePayment() {
                         className="btn btn-secondary"
                         data-bs-dismiss="modal"
                       >
-                        Close
+                        {t("Close")}
                       </button>
                       <button
                         type="button"
@@ -195,7 +202,7 @@ export default function MaintenancePayment() {
                         data-bs-target="#exampleModalTogglePay"
                         data-bs-toggle="modal"
                       >
-                        pay
+                        {t("pay")}
                       </button>
                     </div>
                   </div>
@@ -241,14 +248,14 @@ export default function MaintenancePayment() {
           {/*Feedback */}
           <div className="d-flex flex-column align-items-center mt-5">
             <h3 className="text-center">
-              If you have any inquiry, feedback or complain, we are glad to hear it
+              {t("If you have any inquiry, feedback or complain, we are glad to hear it")}
             </h3>
             <button
               className="btn dark-btn w-25 p-2 mt-4"
               data-bs-target="#exampleModalToggle"
               data-bs-toggle="modal"
             >
-              Feedback
+              {t("Feedback")}
             </button>
           </div>
 
@@ -267,7 +274,7 @@ export default function MaintenancePayment() {
               <div className="modal-content">
                 <div className="modal-header">
                   <h1 className="modal-title fs-5" id="exampleModalLabel">
-                    Your feedback
+                    {t("Your feedback")}
                   </h1>
                   <button
                     type="button"
@@ -280,7 +287,7 @@ export default function MaintenancePayment() {
                   <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                       <label htmlFor="Name" className="col-form-label">
-                        Name:
+                        {t("Name:")}
                       </label>
                       <input
                         type="text"
@@ -294,7 +301,7 @@ export default function MaintenancePayment() {
                     </div>
                     <div className="mb-3">
                       <label htmlFor="Phone" className="col-form-label">
-                        Phone:
+                        {t("Phone:")}
                       </label>
                       <input
                         type="text"
@@ -307,7 +314,7 @@ export default function MaintenancePayment() {
                     </div>
                     <div className="mb-3">
                       <label htmlFor="Place" className="col-form-label">
-                        Place of incident:
+                        {t("Place of incident:")}
                       </label>
                       <input
                         type="text"
@@ -320,7 +327,7 @@ export default function MaintenancePayment() {
                     </div>
                     <div className="mb-3">
                       <label htmlFor="message-text" className="col-form-label">
-                        Message:
+                        {t("Message:")}
                       </label>
                       <textarea
                         className="form-control"
@@ -332,7 +339,7 @@ export default function MaintenancePayment() {
                     </div>
                     <div className="mb-3">
                       <label htmlFor="Photo" className="col-form-label">
-                        Upload Photo:
+                        {t("Upload Photo:")}
                       </label>
                       <input
                         accept="image/*"
@@ -359,7 +366,7 @@ export default function MaintenancePayment() {
                             : true
                         }
                       >
-                        Send
+                        {t("Send")}
                       </button>
                     </div>
                   </form>
@@ -395,7 +402,7 @@ export default function MaintenancePayment() {
                     style={{ color: "#14992a", fontSize: 80 }}
                   ></i>
                   <p className="my-2 fs-4 fw-bolder">
-                    We received your feedback, Thanks.
+                    {t("We received your feedback, Thanks.")}
                   </p>
                 </div>
 
@@ -403,6 +410,7 @@ export default function MaintenancePayment() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   );
