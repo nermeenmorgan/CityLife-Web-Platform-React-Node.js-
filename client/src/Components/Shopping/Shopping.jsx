@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import FeedBack from '../FeedBack/FeedBack'
 import i18next from 'i18next'
+import FeedBackPopSuccess from "../FeedBack/FeedBackPopSuccess";
 export default function Banks() {
   // States
   const { shopping } = useContext(DataContext);
@@ -27,7 +28,7 @@ export default function Banks() {
       {/* New code */}
       {/* Header */}
       <div className='container-fluid lightGreyBg py-3'>
-        <h2 className='lightGreenColor text-center m-0'>{t("Centers")}</h2>
+        <h2 className='lightGreenColor text-center m-0'>{t("Malls")}</h2>
       </div>
       {/* Card */}
       <div className='row gy-4 p-0 m-0 w-75 mx-auto'>
@@ -91,6 +92,7 @@ export default function Banks() {
           </div>
         </div>
       </div>
+      <FeedBackPopSuccess></FeedBackPopSuccess>
 
 </div>
     </>

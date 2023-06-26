@@ -5,7 +5,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from 'react-router-dom'
 import "./AllRes.css";
 import FeedBack from "../FeedBack/FeedBack";
-import i18next from "i18next";
+import FeedBackPopSuccess from "../FeedBack/FeedBackPopSuccess";
+import i18next, { t } from 'i18next'
 
 const Seafood = () => {
   // States
@@ -84,9 +85,10 @@ const Seafood = () => {
           </div>
         </div>
       </div>
+      <FeedBackPopSuccess></FeedBackPopSuccess>
 
       {/* Modal Submit FeedBack */}
-      <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex="-1" >
+      {/* <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex="-1" >
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
@@ -100,8 +102,7 @@ const Seafood = () => {
             </div>
 
           </div>
-        </div>
-      </div>
+                </div>*/}
       </div>
     </>
   );

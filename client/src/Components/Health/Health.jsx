@@ -23,7 +23,7 @@ export default function Health() {
       >
       <div className='container-fluid lightGreyBg py-3'>
         <h2 className="lightGreenColor text-center m-0">
-          {t("Pharmacies")}
+          {t("Health")}
         </h2>
       </div>
 

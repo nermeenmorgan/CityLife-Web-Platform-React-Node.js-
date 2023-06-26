@@ -6,6 +6,7 @@ import FeedBack from "../FeedBack/FeedBack";
 import i18next, { t } from "i18next";
 import { useTranslation } from "react-i18next";
 import { toFormData } from "axios";
+import FeedBackPopSuccess from "../FeedBack/FeedBackPopSuccess";
 
 
 
@@ -297,6 +298,9 @@ export default function Transportation() {
           </div>
         </div>
       </div>
+      <FeedBackPopSuccess></FeedBackPopSuccess>
+
+      
     </>
   );
 }

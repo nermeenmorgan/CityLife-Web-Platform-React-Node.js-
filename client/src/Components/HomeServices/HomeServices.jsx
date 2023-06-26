@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { DataContext } from '../../Context/Data'
 import { Link } from 'react-router-dom'
 import FeedBack from '../FeedBack/FeedBack'
-import i18next, { t } from 'i18next'
+import FeedBackPopSuccess from '../FeedBack/FeedBackPopSuccess'
 import { useTranslation } from 'react-i18next';
 
 export default function Banks() {
@@ -57,7 +57,7 @@ export default function Banks() {
                                         setMessage(ele.name)
                                     }}
                                         data-whatever="@mdo"
-                                        className={i18next.language === 'en' ? "btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor" : " btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor "}
+                                        className={i18n.language === 'en' ? "btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor" : " btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor "}
                                     >
                                         {t("Feedback")}
                                     </button>
@@ -85,6 +85,8 @@ export default function Banks() {
                 </div>
             </div>
         </div>
+      <FeedBackPopSuccess></FeedBackPopSuccess>
+
         </div>
     </>
 }

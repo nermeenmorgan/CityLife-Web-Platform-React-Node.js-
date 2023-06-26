@@ -5,6 +5,7 @@ import "./AllRes.css";
 import { useTranslation } from "react-i18next";
 import FeedBack from "../FeedBack/FeedBack";
 import { Link } from "react-router-dom";
+import FeedBackPopSuccess from "../FeedBack/FeedBackPopSuccess";
 import i18next, { t } from 'i18next'
 
 
@@ -85,9 +86,10 @@ export default function Restaurants() {
           </div>
         </div>
       </div>
+      <FeedBackPopSuccess></FeedBackPopSuccess>
 
       {/* Modal Submit FeedBack */}
-      <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex="-1" >
+      {/* <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex="-1" >
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
@@ -102,7 +104,7 @@ export default function Restaurants() {
 
           </div>
         </div>
-      </div>
+      </div> */}
       </div>
     </>
   );

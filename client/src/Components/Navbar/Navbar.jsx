@@ -16,20 +16,14 @@ export default function Navbar() {
 
 
 
-
-
-
-
-
-
   // Functions
   // search bar handling
   const handleChange = useCallback(
     (event) => {
       setIDitem(event.target.value);
-      console.log(itemID);
+      // console.log(itemID);
     },
-    [itemID]
+    []
   );
 
   const handleSubmit = useCallback(
@@ -37,6 +31,7 @@ export default function Navbar() {
       e.preventDefault();
       if (itemID) {
         navigate(`details/${itemID}`);
+        window.scroll({ top: 0, left: 0, behavior: "smooth" })
       }
       setIDitem("");
     },
@@ -178,13 +173,13 @@ export default function Navbar() {
               {userData !== null &&
                 userData.id === "648a002ac64b570033765c4b" && (
                   <li className="nav-item">
-                    <Link className="nav-link text-white " to="dashboard"> {t("DashBoard")} </Link>
+                    <Link className="nav-link text-white " to="dashboard" onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}> {t("DashBoard")} </Link>
                   </li>
                 )}
             </ul>
             <ul className={`d-flex m-0 p-0
              ${i18n.language === "ar" ? "me-lg-auto" : "ms-lg-auto"}`} >
-
+               {/* Search */}
               <form
                 className="d-flex align-items-center" onSubmit={handleSubmit} >
                 <div className={`input-group ${i18n.language === "ar" && "d-flex flex-lg-row-reverse "}`} >
@@ -211,7 +206,7 @@ export default function Navbar() {
 
               {userData === null ? (
                 <div className="mt-lg-0  ">
-                  <Link className=" nav-item btn text-white rounded-1 mx-lg-2 mx-0 btn-mainColor-nav" aria-current="page" to="signin" >
+                  <Link className=" nav-item btn text-white rounded-1 mx-lg-2 mx-0 btn-mainColor-nav" aria-current="page" to="signin" onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
                     {t("Sign in")}
                   </Link>
                 </div>

@@ -6,6 +6,7 @@ import i18next, { t } from 'i18next'
 import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
 import { Link } from "react-router-dom";
+import FeedBackPopSuccess from "../FeedBack/FeedBackPopSuccess";
 
 const Centers = () => {
   // States
@@ -52,7 +53,7 @@ const Centers = () => {
       {/* Card */}
       <div className='row gy-4 p-0 m-0 w-75 mx-auto'>
         {Centers.map((res) =>
-          <div className='col-md-5 mx-auto px-0'>
+          <div className='col-md-5 mx-auto px-0' key={res.id}>
             <div className='shadow-sm'>
               <div className='position-relative'>
                 <div className='layer rounded-top-3'></div>
@@ -67,7 +68,7 @@ const Centers = () => {
                 </div>
                 <div className='lightGreenBackgroudColor text-white  rounded-bottom-3'>
                   <div className='d-flex justify-content-around align-items-center py-3 container'>
-                    <p className='m-0'> {res.Rating} <i class="fa-solid fa-star" style={{ color: '#C3801B' }}></i> </p>
+                    <p className='m-0'> {res.Rating} <i className="fa-solid fa-star" style={{ color: '#C3801B' }}></i> </p>
                     <p className='m-0'><Link to={res.location} className='text-decoration-none text-white'> {t("Location")} </Link></p>
                     <Link to={res.website} className="text-decoration-none text-white"> {t("Website")} </Link>
                     <p className='m-0' onClick={() => { const whatsappURL = `https://wa.me/${res.number}`; window.location.href = whatsappURL; }} > <Link className="text-decoration-none text-white" >{t("Phone")}</Link> </p>
@@ -107,6 +108,7 @@ const Centers = () => {
           </div>
         </div>
       </div>
+      <FeedBackPopSuccess></FeedBackPopSuccess>
       </div>
     </>
   );

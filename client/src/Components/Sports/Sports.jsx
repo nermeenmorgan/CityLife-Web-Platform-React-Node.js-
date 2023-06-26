@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import { useTranslation } from "react-i18next";
 import FeedBack from '../FeedBack/FeedBack'
 import { Link } from "react-router-dom";
-import i18next, { t } from 'i18next'
+import FeedBackPopSuccess from "../FeedBack/FeedBackPopSuccess";
 export default function Sports() {
   // States
   const { gyms } = useContext(DataContext);
@@ -81,13 +81,12 @@ export default function Sports() {
 
                   </div>
                   <div className='text-center pb-3 '>
-                    <button data-bs-target="#exampleModalToggle3" data-bs-toggle="modal"
+                    <button  data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
                       onClick={() => {
                         handleShowModal()
                         setMessage(ele.name)
                       }}
-                      data-whatever="@mdo"
-                      className={i18next.language === 'en' ? "btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor" : " btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor"}
+                      className={i18n.language === 'en' ? "btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor" : " btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor"}
                     >
                       {t("Feedback")}
 
@@ -100,25 +99,27 @@ export default function Sports() {
           </div>) : <h4>Loading ...</h4>}
 
 
+      {/* Modal */}
+      <div className="modal fade " id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header lightGreenBackgroudColor text-white text-center">
+              <h1 className="modal-title fs-5 w-100" id="exampleModalLabel">
+                {t("Leave your message")}
+              </h1>
+              <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" ></button>
+            </div>
+            <div className="modal-body">
 
-
-        {/* FeedBack */}
-        <div className="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
-          <div className="modal-dialog modal-dialog-centered">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h1 className="modal-title fs-5" id="exampleModalLabel">
-                  {t("Leave your message")}
-                </h1>
-                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
-              </div>
-              <div className="modal-body">
-
-                <FeedBack message={message} ></FeedBack>
-              </div>
+              <FeedBack message={message} ></FeedBack>
             </div>
           </div>
         </div>
+      </div>
+
+      <FeedBackPopSuccess></FeedBackPopSuccess>
+
+      
       </div>
 
     </>

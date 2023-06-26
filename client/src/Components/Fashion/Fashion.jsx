@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from "react-i18next";
 import FeedBack from '../FeedBack/FeedBack'
 import i18next, { t } from 'i18next'
+import FeedBackPopSuccess from '../FeedBack/FeedBackPopSuccess';
 
 export default function Banks() {
     // Stated
@@ -18,7 +19,8 @@ export default function Banks() {
     };
 
 
-    return <>
+    return (
+    <>
 
         <div
             style={{
@@ -86,14 +88,18 @@ export default function Banks() {
                         </div>
                         <div className="modal-body">
 
-                            <FeedBack message={message} ></FeedBack>
-                        </div>
+                        <FeedBack message={message} ></FeedBack>
                     </div>
                 </div>
             </div>
-</div>
+            </div>
 
-        </>
+        </div>
+        <FeedBackPopSuccess></FeedBackPopSuccess>
+
+
+
+    </>)
 }
 
 

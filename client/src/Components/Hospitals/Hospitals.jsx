@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import './hospitals.css';
 import FeedBack from '../FeedBack/FeedBack'
-import i18next, { t } from 'i18next'
+import FeedBackPopSuccess from "../FeedBack/FeedBackPopSuccess";
 import { useTranslation } from 'react-i18next';
 
 
@@ -123,13 +123,13 @@ export default function Hospitals() {
 
                   </div>
                   <div className='text-center pb-3 '>
-                    <button data-bs-target="#exampleModalToggle3" data-bs-toggle="modal"
+                    <button data-bs-target="#exampleModalToggle4" data-bs-toggle="modal"
                       onClick={() => {
                         handleShowModal()
                         setMessage(ele.name)
                       }}
                       data-whatever="@mdo"
-                      className={i18next.language === 'en' ? "btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor" : " btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor"}
+                      className={i18n.language === 'en' ? "btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor" : " btn lightGreyBg lightGreenColor text-center w-50 rounded-1 btn-mainColor"}
                     >
                       {t("Feedback")}
 
@@ -150,7 +150,7 @@ export default function Hospitals() {
             <div className="modal-content">
               <div className="modal-header lightGreenBackgroudColor lightGreyBg ">
                 <h4 className="modal-title  lightGreenColor w-100  text-center" id="exampleModalToggleLabel2 "   >
-                  Your appointment details
+                  {t("Your appointment details")}
                 </h4>
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={handleClear} ></button>
               </div>
@@ -159,19 +159,19 @@ export default function Hospitals() {
                 {appointDetails ? (
                   <>
                     <p className=" fs-5 text-center">
-                      Name: {t(appointDetails.name)}
+                      {t("Name")} {(appointDetails.name)}
                     </p>
                     <p className=" fs-5 text-center">
-                      Date: {t(appointDetails.date)}
+                      {t("Date")}: {(appointDetails.date)}
                     </p>
                     <p className=" fs-5 text-center">
-                      Time: {t(appointDetails.time)}
+                      {t("Time")}: {(appointDetails.time)}
                     </p>
                     <p className=" fs-5 text-center">
-                      Specialty: {appointDetails.specialty}
+                      {t("Specialty")}: {appointDetails.specialty}
                     </p>
                     <p className=" fs-5 text-center">
-                      in {appointDetails.centerName}
+                     {t("Place")}: {t(appointDetails.centerName)}
                     </p>
                   </>
                 ) : null}
@@ -207,16 +207,16 @@ export default function Hospitals() {
                   <label htmlFor="exampleDataList" className="form-label" >
                     {t("Specialty")}:
                   </label>
-                  <input name="specialty" value={appointDetails.specialty} onChange={handleChange} className="form-control" list="datalistOptions" id="exampleDataList" placeholder={t("Type to search...")} />
+                  <input name="specialty" value={appointDetails.specialty} onChange={handleChange} className="form-control" list="datalistOptions" id="exampleDataList" placeholder={t("Type to search...")} autoComplete="off"/>
                   <datalist id="datalistOptions">
-                    <option value="Internal Medicine"></option>
-                    <option value="Gastroenterology"></option>
-                    <option value="Orthopedic"></option>
-                    <option value="Ear, nose and throat (ENT)"></option>
-                    <option value="Cardiology"></option>
-                    <option value="Ophthalmology"></option>
-                    <option value="Pediatrics"></option>
-                    <option value="Dentistry"></option>
+                    <option value={t("Internal Medicine")}></option>
+                    <option value={t("Gastroenterology")}></option>
+                    <option value={t("Orthopedic")}></option>
+                    <option value={t("Ear, nose and throat (ENT)")}></option>
+                    <option value={t("Cardiology")}></option>
+                    <option value={t("Ophthalmology")}></option>
+                    <option value={t("Pediatrics")}></option>
+                    <option value={t("Dentistry")}></option>
                   </datalist>
                 </div>
                 <div className="modal-footer w-100 ">
@@ -234,7 +234,7 @@ export default function Hospitals() {
 
 
         {/* FeedBack */}
-        <div className="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
+        <div className="modal fade" id="exampleModalToggle4" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" >
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
@@ -252,6 +252,34 @@ export default function Hospitals() {
         </div>
       </div>
 
+      <FeedBackPopSuccess></FeedBackPopSuccess>
+
+
+      {/* <div
+           className="modal fade"
+           id="exampleModalToggle3"
+           aria-hidden="true"
+           aria-labelledby="exampleModalToggleLabel3"
+           tabIndex="-1"
+       >
+           <div className="modal-dialog modal-dialog-centered">
+               <div className="modal-content">
+                   <div className="modal-header">
+
+                       <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+                   </div>
+                   <div className="modal-body d-flex flex-column align-items-center">
+                       <i
+                           className="fa-sharp fa-regular fa-circle-check text-center"
+                           style={{ color: "#14992a", fontSize: 80 }}
+                       ></i>
+                       <p className="my-2 fs-4 fw-bolder">
+                           {t("We received your feedback, Thanks.")}
+                       </p>
+                   </div>
+               </div>
+           </div>
+       </div> */}
 
 </div>
     </>

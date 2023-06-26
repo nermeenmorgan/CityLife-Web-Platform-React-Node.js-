@@ -46,9 +46,9 @@ export default function Cinema() {
               </Link>
 
               {/* Buttons */}
-              <div className="d-flex mx-auto ">
-
-                <div className="col-md-4   ">
+           
+<div className="d-flex mx-auto justify-content-center">
+              <div className="col-md-3 me-2">
                   <div className="">
                     <button
                       type="button" onClick={() => handleClickTopNav("All")} className="btn dark-btn rounded-0 w-100" >
@@ -57,13 +57,13 @@ export default function Cinema() {
                   </div>
                 </div>
 
-                <div className="col-md-4">
+                <div className="col-md-3 me-2">
                   <button type="button" onClick={() => handleClickTopNav("ThisWeek")} className="btn dark-btn rounded-0 w-100" >
                     {t("This Week")}
                   </button>
                 </div>
 
-                <div className="col-md-4">
+                <div className="col-md-3 me-2">
                   <button type="button" onClick={() => handleClickTopNav("NextWeek")} className="btn dark-btn rounded-0 w-100" >
                     {t("Coming Soon")}
                   </button>

@@ -22,29 +22,29 @@ export default function Home() {
   }, [])
 
   // Slider Setting
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    autoplay: true,
-    autoplaySpeed: 2500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-          centerMode: true,
-          centerPadding: 0,
-        },
-      },
-    ],
-    pauseOnHover: false,
-    arrows: false,
-  };
+  // const settings = {
+  //   dots: false,
+  //   infinite: true,
+  //   speed: 500,
+  //   autoplay: true,
+  //   autoplaySpeed: 2500,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  //   responsive: [
+  //     {
+  //       breakpoint: 768,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //         arrows: false,
+  //         centerMode: true,
+  //         centerPadding: 0,
+  //       },
+  //     },
+  //   ],
+  //   pauseOnHover: false,
+  //   arrows: false,
+  // };
 
   return (
     <>
@@ -54,361 +54,363 @@ export default function Home() {
           direction: i18n.language === 'ar' ? 'rtl' : 'ltr',
         }}
       >
-      <div style={{ overflowX: "hidden", overflowY: "hidden" }} className="position-relative vh-100">
-        <div className={`${styles.layer} `}></div>
+        <div style={{ overflowX: "hidden", overflowY: "hidden" }} className="position-relative ">
+          <div className={`${styles.layer} p-3 mb-2`}></div>
 
-        <div className="home ">
-          <video autoPlay muted loop width={"100%"}>
-            <source src="/videos/video1.mp4" type="video/mp4" />
-          </video>
+          <div className="home ">
+            <video autoPlay muted loop width={"100%"}>
+              <source src="/videos/video1.mp4" type="video/mp4" />
+            </video>
+          </div>
+
+          <section className={`${styles.sliderText} w-100`} >
+            <div className="position-relative"
+              style={{
+                direction: i18n.language === "ar" ? "rtl" : "ltr",
+                marginRight: i18n.language === "ar" ? "80px" : null
+              }}
+            >
+              <h3 className={`position-absolute ms-3 mt-2 text-white ${i18n.language === "ar" && "me-4"}`}>
+                {t("Leave Your Fingerprint")}
+              </h3>
+              <div className={`${styles.bar} `}> </div>
+              <h3 className={`position-absolute ms-3 mt-2 text-white ${i18n.language === "ar" && "me-4"}`}>
+                {t("Explore New Places and Discover")}
+              </h3>
+              <div className={`${styles.bar} `}> </div>
+              <h3 className={`position-absolute ms-3 mt-2 text-white ${i18n.language === "ar" && "me-4"}`}>
+                {t("Feedback in Al Rehab, Cairo, Egypt")}
+              </h3>
+              <div className={`${styles.bar} `}> </div>
+            </div>
+          </section>
         </div>
 
-        <section className={`${styles.sliderText} w-100`} >
-          <div className=""
-            style={{
-              direction: i18n.language === "ar" ? "rtl" : "ltr",
-              marginRight: i18n.language === "ar" ? "80px" : null
-            }}
-          >
-            <h3 className={`position-absolute ms-3 mt-2 text-white ${i18n.language === "ar" && "me-4"}`}>
-              {t("Leave Your Fingerprint")}
-            </h3>
-            <div className={`${styles.bar} `}> </div>
-            <h3 className={`position-absolute ms-3 mt-2 text-white ${i18n.language === "ar" && "me-4"}`}>
-              {t("Explore New Places and Discover")}
-            </h3>
-            <div className={`${styles.bar} `}> </div>
-            <h3 className={`position-absolute ms-3 mt-2 text-white ${i18n.language === "ar" && "me-4"}`}>
-              {t("Feedback in Al Rehab, Cairo, Egypt")}
-            </h3>
-            <div className={`${styles.bar} `}> </div>
+
+        {/* Services */}
+        <section
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          className="lightGreenColor ">
+          <h5 className="text-center  fw-bold fs-2 py-3 lightGreyBg">{t("Services")}</h5>
+          <div className="container">
+            <div className="row m-3"
+              style={{
+                direction: i18n.language === "ar" ? "rtl" : "ltr",
+              }}
+            >
+
+
+
+
+              {/* Banks */}
+              <div className={` col-md-6 col-lg col-md-6 col-lg-4 `}>
+                <div className="p-3 scale" >
+                  <div className={`${styles.dFlex} ${styles.font} ${styles.catOP}  position-relative `} style={{ backgroundImage: `url(${img2})`, backgroundSize: "100% 100%", height: "200px" }} >
+                    <div className={`${styles.layer} rounded-3 `}>
+                      <Link
+                        className="p-3 rounded-0 text-white fs-3 position-absolute top-0 bottom-0 start-0 end-0  "
+                        to="/banks"
+                        style={{ textDecoration: "none" }}
+                        onClick={() => {
+                          window.scroll({ top: 0, left: 0, behavior: "smooth" });
+                        }} >
+                        <h4 className="position-absolute top-50 mt-5">{t("Banks")}</h4>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              {/* Markets */}
+              <div className="col-md-6 col-lg-4 ">
+                <div className="p-3  ">
+
+                  <div className={`${styles.dFlex} ${styles.font} ${styles.catOP} position-relative`} style={{ backgroundImage: `url(${img4})`, backgroundSize: "100% 100%", height: "200px", }} >
+
+                    <div className={`${styles.layer} rounded-3`}>
+                      <Link
+
+                        className="p-3 text-white fs-3 position-absolute top-0 bottom-0 start-0 end-0 markets "
+                        to="/markets" style={{ textDecoration: "none" }}
+                        onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }} >
+                        <h4 className="position-absolute top-50 mt-5">{t("Markets")}</h4>
+                      </Link>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+              {/* Hospitals */}
+              <div className="col-md-6 col-lg-4">
+                <div className="p-3 ">
+                  <div
+                    className={`${styles.dFlex} ${styles.font} ${styles.catOP} position-relative`}
+                    style={{
+                      backgroundImage: `url(${img3})`,
+                      backgroundSize: "100% 100%",
+                      height: "200px",
+                    }}
+                  >
+
+                    <div className={`${styles.layer} rounded-3`}>
+                      <Link
+                        className="p-3 text-white fs-3 position-absolute top-0 bottom-0 start-0 end-0  "
+                        to="/hospitals"
+                        style={{ textDecoration: "none" }}
+                        onClick={() => {
+                          window.scroll({ top: 0, left: 0, behavior: "smooth" });
+                        }}
+                      >
+                        <h4 className="position-absolute top-50 mt-5">{t("Hospitals")}</h4>
+                      </Link>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+
+              {/* Education */}
+              <div className="col-md-6 col-lg-4">
+                <div className="p-3 ">
+                  <div
+                    className={`${styles.dFlex} ${styles.font} ${styles.catOP} position-relative`}
+                    style={{
+                      backgroundImage: `url(${img5})`,
+                      backgroundSize: "100% 100%",
+                      height: "200px",
+                    }}
+                  >
+                    <div className={`${styles.layer} rounded-3`}>
+                      <Link
+                        className="p-3 text-white fs-3 position-absolute top-0 bottom-0 start-0 end-0  "
+                        to="/Education"
+                        style={{ textDecoration: "none" }}
+                        onClick={() => {
+                          window.scroll({ top: 0, left: 0, behavior: "smooth" });
+                        }}
+                      >
+                        <h4 className="position-absolute top-50 mt-5">{t("Education")}</h4>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+              {/* Cinema */}
+              <div className="col-md-6 col-lg-4">
+                <div className="p-3">
+                  <div
+                    className={`${styles.dFlex} ${styles.font} ${styles.catOP} position-relative`}
+                    style={{
+                      backgroundImage: `url(${img1})`,
+                      backgroundSize: "100% 100%",
+                      height: "200px",
+                    }}
+                  >
+                    <div className={`${styles.layer} rounded-3`}>
+                      <Link
+                        className="p-3 text-white fs-3 position-absolute top-0 bottom-0 start-0 end-0 "
+                        to="/cinema"
+                        style={{ textDecoration: "none" }}
+                        onClick={() => {
+                          window.scroll({ top: 0, left: 0, behavior: "smooth" });
+                        }}
+                      >
+                        <h4 className="position-absolute top-50 mt-5">{t("Cinema")}</h4>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+              {/* Payment */}
+              <div className="col-md-6 col-lg-4">
+                <div className="p-3 ">
+                  <div
+                    className={`${styles.dFlex} ${styles.font} ${styles.catOP} position-relative`}
+                    style={{
+                      backgroundImage: `url(${img6})`,
+                      backgroundSize: "100% 100%",
+                      height: "200px",
+                    }}
+                  >
+                    <div className={`${styles.layer} rounded-3`}>
+                      <Link
+                        className="p-3 text-white fs-3 position-absolute top-0 bottom-0 start-0 end-0  "
+                        to="/payment"
+                        style={{ textDecoration: "none" }}
+                        onClick={() => {
+                          window.scroll({ top: 0, left: 0, behavior: "smooth" });
+                        }}
+                      >
+                        <h4 className="position-absolute top-50 mt-5">
+                          {t("Payment & Complain")}
+                        </h4>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
-      </div>
+
+        {/* /////////////////////////////////////////////////////////////////// */}
+        {/* Categories */}
+        <section
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          className="">
+          <h5 className="text-center fw-bold fs-2 py-3 lightGreenColor lightGreyBg ">{t("Categories")}</h5>
+          <div className="container ">
+            <div className="row g-3"
+              style={{
+                direction: i18n.language === "ar" ? "rtl" : "ltr",
+              }}
+            >
 
 
-      {/* Services */}
-      <section
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        className="lightGreenColor ">
-        <h5 className="text-center  fw-bold fs-2 py-3 lightGreyBg">{t("Services")}</h5>
-        <div className="container">
-          <div className="row m-3">
 
 
 
+              {/* Restaurants */}
 
-            {/* Banks */}
-            <div className={` col-md-6 col-lg col-md-6 col-lg-4 `}>
-              <div className="p-3 scale" >
-                <div className={`${styles.dFlex} ${styles.font} ${styles.catOP}  position-relative `} style={{ backgroundImage: `url(${img2})`, backgroundSize: "100% 100%", height: "200px" }} >
-                  <div className={`${styles.layer}  `}>
-                    <Link
-                      className="p-3 text-white fs-3 position-absolute top-0 bottom-0 start-0 end-0  "
-                      to="/banks"
-                      style={{ textDecoration: "none" }}
-                      onClick={() => {
-                        window.scroll({ top: 0, left: 0, behavior: "smooth" });
-                      }} >
-                      <h4 className="position-absolute top-50 mt-5">{t("Banks")}</h4>
-                    </Link>
+              <div className={`${styles.card} col-md-3 offset-1  mx-auto shadow-sm d-flex text-center align-items-center p-5`}>
+                <Link className="text-decoration-none  w-100" to={"/restaurants"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
+                  <div className={` mx-auto text-center`}>
+                    <i className={`fa-solid fa-utensils fs-1 mainColor `} ></i>
+                    <div className="mainColor ">{t("Restaurants")}</div>
                   </div>
-                </div>
+                </Link>
               </div>
 
+
+              {/* Shopping */}
+              <div className={`${styles.card} col-md-3 offset-1 mx-auto shadow-sm d-flex text-center align-items-center p-5`}>
+                <Link className="  text-decoration-none  w-100" to={"/shopping"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
+                  <div className={` mx-auto`}>
+                    <i className={`fa-solid fa-cart-shopping fs-1 mainColor `} ></i>
+                    <div className="mainColor ">{t("Shopping")}</div>
+                  </div>
+                </Link>
+              </div>
+
+
+              {/* Fashion */}
+              <div className={`${styles.card} col-md-3 offset-1 mx-auto shadow-sm d-flex text-center align-items-center p-5`}>
+                <Link className="  text-decoration-none  w-100" to={"/fashion"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
+                  <div className={` mx-auto`}>
+                    <i className={`fa-solid fa-shirt  fs-1 mainColor `} ></i>
+                    <div className="mainColor ">{t("Fashion")}</div>
+                  </div>
+                </Link>
+              </div>
 
             </div>
 
 
 
-            {/* Markets */}
-            <div className="col-md-6 col-lg-4 ">
-              <div className="p-3  ">
 
-                <div className={`${styles.dFlex} ${styles.font} ${styles.catOP} position-relative`} style={{ backgroundImage: `url(${img4})`, backgroundSize: "100% 100%", height: "200px", }} >
-
-                  <div className={`${styles.layer}`}>
-                    <Link
-
-                      className="p-3 text-white fs-3 position-absolute top-0 bottom-0 start-0 end-0 markets "
-                      to="/markets" style={{ textDecoration: "none" }}
-                      onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }} >
-                      <h4 className="position-absolute top-50 mt-5">{t("Markets")}</h4>
-                    </Link>
+            {/* Row 2 */}
+            {/* Health */}
+            <div className="row g-3 py-4">
+              <div className={`${styles.card} col-md-3 offset-1 mx-auto shadow-sm d-flex text-center align-items-center p-5`}>
+                <Link className="  text-decoration-none  w-100" to={"/health"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
+                  <div className={` mx-auto`}>
+                    <i className={`fa-solid fa-heart-pulse  fs-1 mainColor `} ></i>
+                    <div className="mainColor ">{t("Health")}</div>
                   </div>
-
-                </div>
+                </Link>
               </div>
-            </div>
 
 
 
 
 
-            {/* Hospitals */}
-            <div className="col-md-6 col-lg-4">
-              <div className="p-3 ">
-                <div
-                  className={`${styles.dFlex} ${styles.font} ${styles.catOP} position-relative`}
-                  style={{
-                    backgroundImage: `url(${img3})`,
-                    backgroundSize: "100% 100%",
-                    height: "200px",
-                  }}
-                >
 
-                  <div className={`${styles.layer}`}>
-                    <Link
-                      className="p-3 text-white fs-3 position-absolute top-0 bottom-0 start-0 end-0  "
-                      to="/hospitals"
-                      style={{ textDecoration: "none" }}
-                      onClick={() => {
-                        window.scroll({ top: 0, left: 0, behavior: "smooth" });
-                      }}
-                    >
-                      <h4 className="position-absolute top-50 mt-5">{t("Hospitals")}</h4>
-                    </Link>
+
+
+              {/* Sports */}
+              <div className={`${styles.card} col-md-3 offset-1 mx-auto  shadow-sm d-flex text-center align-items-center p-5`}>
+                <Link className="  text-decoration-none  w-100" to={"/Sports"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
+                  <div className={` mx-auto`}>
+                    <i className={`fa-solid fa-table-tennis-paddle-ball  fs-1 mainColor `} ></i>
+                    <div className="mainColor ">{t("Sports")}</div>
                   </div>
-
-                </div>
+                </Link>
               </div>
-            </div>
 
 
-            {/* Education */}
-            <div className="col-md-6 col-lg-4">
-              <div className="p-3 ">
-                <div
-                  className={`${styles.dFlex} ${styles.font} ${styles.catOP} position-relative`}
-                  style={{
-                    backgroundImage: `url(${img5})`,
-                    backgroundSize: "100% 100%",
-                    height: "200px",
-                  }}
-                >
-                  <div className={`${styles.layer}`}>
-                    <Link
-                      className="p-3 text-white fs-3 position-absolute top-0 bottom-0 start-0 end-0  "
-                      to="/Education"
-                      style={{ textDecoration: "none" }}
-                      onClick={() => {
-                        window.scroll({ top: 0, left: 0, behavior: "smooth" });
-                      }}
-                    >
-                      <h4 className="position-absolute top-50 mt-5">{t("Education")}</h4>
-                    </Link>
+
+
+
+              {/* Maintenance */}
+              <div className={`${styles.card} col-md-3 offset-1 mx-auto  shadow-sm d-flex text-center align-items-center p-5`}>
+                <Link className="  text-decoration-none  w-100" to={"/maintenance"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
+                  <div className={` mx-auto w-100`}>
+                    <i className={`fa-solid fa-wrench fs-1 mainColor `} ></i>
+                    <div className="mainColor ">{t("Maintenance")}</div>
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
 
 
 
-
-            {/* Cinema */}
-            <div className="col-md-6 col-lg-4">
-              <div className="p-3">
-                <div
-                  className={`${styles.dFlex} ${styles.font} ${styles.catOP} position-relative`}
-                  style={{
-                    backgroundImage: `url(${img1})`,
-                    backgroundSize: "100% 100%",
-                    height: "200px",
-                  }}
-                >
-                  <div className={`${styles.layer}`}>
-                    <Link
-                      className="p-3 text-white fs-3 position-absolute top-0 bottom-0 start-0 end-0  "
-                      to="/cinema"
-                      style={{ textDecoration: "none" }}
-                      onClick={() => {
-                        window.scroll({ top: 0, left: 0, behavior: "smooth" });
-                      }}
-                    >
-                      <h4 className="position-absolute top-50 mt-5">{t("Cinema")}</h4>
-                    </Link>
+            {/* Row 4 */}
+            {/* Home Services */}
+            <div className="row g-3">
+              <div className={`${styles.card} col-md-3 offset-1 mx-auto shadow-sm d-flex text-center align-items-center p-5`}>
+                <Link className="  text-decoration-none  w-100" to={"/homeServices"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
+                  <div className={` mx-auto`}>
+                    <i className={`fa-solid fa-house-laptop fs-1 mainColor `} ></i>
+                    <div className="mainColor ">{t("Home Services")}</div>
                   </div>
-                </div>
+                </Link>
               </div>
-            </div>
 
 
-
-
-
-            {/* Payment */}
-            <div className="col-md-6 col-lg-4">
-              <div className="p-3 ">
-                <div
-                  className={`${styles.dFlex} ${styles.font} ${styles.catOP} position-relative`}
-                  style={{
-                    backgroundImage: `url(${img6})`,
-                    backgroundSize: "100% 100%",
-                    height: "200px",
-                  }}
-                >
-                  <div className={`${styles.layer}`}>
-                    <Link
-                      className="p-3 text-white fs-3 position-absolute top-0 bottom-0 start-0 end-0  "
-                      to="/payment"
-                      style={{ textDecoration: "none" }}
-                      onClick={() => {
-                        window.scroll({ top: 0, left: 0, behavior: "smooth" });
-                      }}
-                    >
-                      <h4 className="position-absolute top-50 mt-5">
-                        {t("Payment & Complain")}
-                      </h4>
-                    </Link>
+              {/* Transportations */}
+              <div className={`${styles.card} col-md-3 offset-1 mx-auto shadow-sm d-flex text-center align-items-center p-5`}>
+                <Link className="  text-decoration-none  w-100" to={"/transportation"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
+                  <div className={` mx-auto`}>
+                    <i className={`fa-solid fa-truck-plane  fs-1 mainColor `} ></i>
+                    <div className="mainColor ">{t("Transportation")}</div>
                   </div>
-                </div>
+                </Link>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* /////////////////////////////////////////////////////////////////// */}
-      {/* Categories */}
-      <section
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        className="">
-        <h5 className="text-center fw-bold fs-2 py-3 lightGreenColor lightGreyBg ">{t("Categories")}</h5>
-        <div className="container  ">
 
 
 
-          <div className="row g-3 my-3">
-
-
-
-
-
-            {/* Restaurants */}
-
-            <div className={`${styles.card} col-md-3 offset-1 mx-auto shadow-sm d-flex text-center align-items-center`}>
-              <Link className="text-decoration-none p-5 w-100" to={"/restaurants"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
-                <div className={` mx-auto`}>
-                  <i className={`fa-solid fa-utensils fs-1 mainColor `} ></i>
-                  <div className="mainColor ">{t("Restaurants")}</div>
-                </div>
-              </Link>
-            </div>
-
-
-            {/* Shopping */}
-            <div className={`${styles.card} col-md-3 offset-1 mx-auto shadow-sm d-flex text-center align-items-center`}>
-              <Link className="  text-decoration-none p-5 w-100" to={"/shopping"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
-                <div className={` mx-auto`}>
-                  <i className={`fa-solid fa-cart-shopping fs-1 mainColor `} ></i>
-                  <div className="mainColor ">{t("Shopping")}</div>
-                </div>
-              </Link>
-            </div>
-
-
-            {/* Fashion */}
-            <div className={`${styles.card} col-md-3 offset-1 mx-auto shadow-sm d-flex text-center align-items-center`}>
-              <Link className="  text-decoration-none p-5 w-100" to={"/fashion"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
-                <div className={` mx-auto`}>
-                  <i className={`fa-solid fa-shirt  fs-1 mainColor `} ></i>
-                  <div className="mainColor ">{t("Fashion")}</div>
-                </div>
-              </Link>
+              {/* Banks */}
+              <div className={`${styles.card} col-md-3 offset-1  mx-auto shadow-sm d-flex text-center align-items-center p-5`}>
+                <Link className="  text-decoration-none  w-100" to={"/banks"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
+                  <div className={` mx-auto`}>
+                    <i className={`fa-solid fa-building-columns  fs-1 mainColor `} ></i>
+                    <div className="mainColor ">{t("Banks")}</div>
+                  </div>
+                </Link>
+              </div>
             </div>
 
           </div>
-
-
-
-
-          {/* Row 2 */}
-          {/* Health */}
-          <div className="row g-3 my-3">
-            <div className={`${styles.card} col-md-3 offset-1 mx-auto shadow-sm d-flex text-center align-items-center`}>
-              <Link className="  text-decoration-none p-5 w-100" to={"/health"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
-                <div className={` mx-auto`}>
-                  <i className={`fa-solid fa-heart-pulse  fs-1 mainColor `} ></i>
-                  <div className="mainColor ">{t("Health")}</div>
-                </div>
-              </Link>
-            </div>
-
-
-
-
-
-
-
-
-            {/* Sports */}
-            <div className={`${styles.card} col-md-3 offset-1 mx-auto  shadow-sm d-flex text-center align-items-center`}>
-              <Link className="  text-decoration-none p-5 w-100" to={"/Sports"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
-                <div className={` mx-auto`}>
-                  <i className={`fa-solid fa-table-tennis-paddle-ball  fs-1 mainColor `} ></i>
-                  <div className="mainColor ">{t("Sports")}</div>
-                </div>
-              </Link>
-            </div>
-
-
-
-
-
-            {/* Maintenance */}
-            <div className={`${styles.card} col-md-3 offset-1 mx-auto  shadow-sm d-flex text-center align-items-center`}>
-              <Link className="  text-decoration-none p-5 w-100" to={"/maintenance"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
-                <div className={` mx-auto`}>
-                  <i className={`fa-solid fa-wrench  fs-1 mainColor `} ></i>
-                  <div className="mainColor ">{t("maintenance")}</div>
-                </div>
-              </Link>
-            </div>
-          </div>
-
-
-
-          {/* Row 4 */}
-          {/* Home Services */}
-          <div className="row g-3 my-3">
-            <div className={`${styles.card} col-md-3 offset-1 mx-auto shadow-sm d-flex text-center align-items-center`}>
-              <Link className="  text-decoration-none p-5 w-100" to={"/homeServices"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
-                <div className={` mx-auto`}>
-                  <i className={`fa-solid fa-house-laptop fs-1 mainColor `} ></i>
-                  <div className="mainColor ">{t("homeServices")}</div>
-                </div>
-              </Link>
-            </div>
-
-
-            {/* Transportations */}
-            <div className={`${styles.card} col-md-3 offset-1 mx-auto shadow-sm d-flex text-center align-items-center`}>
-              <Link className="  text-decoration-none p-5 w-100" to={"/transportation"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
-                <div className={` mx-auto`}>
-                  <i className={`fa-solid fa-truck-plane  fs-1 mainColor `} ></i>
-                  <div className="mainColor ">{t("transportation")}</div>
-                </div>
-              </Link>
-            </div>
-
-
-
-            {/* Banks */}
-            <div className={`${styles.card} col-md-3 offset-1  mx-auto shadow-sm d-flex text-center align-items-center`}>
-              <Link className="  text-decoration-none p-5 w-100" to={"/banks"} onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }}>
-                <div className={` mx-auto`}>
-                  <i className={`fa-solid fa-building-columns  fs-1 mainColor `} ></i>
-                  <div className="mainColor ">{t("banks")}</div>
-                </div>
-              </Link>
-            </div>
-          </div>
-
-
-        </div>
-      </section>
+        </section>
       </div>
     </>
   );

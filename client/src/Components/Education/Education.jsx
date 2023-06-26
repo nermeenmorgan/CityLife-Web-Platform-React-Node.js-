@@ -43,10 +43,10 @@ export default function Education() {
 
               {/* Buttons */}
               <div className="text-center">
-                <button type="button" onClick={() => handleClickTopNav("Schools")} className={`btn dark-btn text-center rounded-1 w-50  ${TopNav === "Centers" ? "active" : ""}`} >
+                <button type="button" onClick={() => handleClickTopNav("Schools")} className={`btn dark-btn text-center rounded-1 w-25 mx-2  ${TopNav === "Centers" ? "active" : ""}`} >
                   {t("Schools")}
                 </button>
-                <button type="button" onClick={() => handleClickTopNav("Kindergartens")} className={`btn dark-btn text-center rounded-1 w-50  ${TopNav === "Centers" ? "active" : ""}`} >
+                <button type="button" onClick={() => handleClickTopNav("Kindergartens")} className={`btn dark-btn text-center rounded-1 w-25  mx-2 ${TopNav === "Centers" ? "active" : ""}`} >
                   {t("Kindergartens")}
                 </button>
               </div>
