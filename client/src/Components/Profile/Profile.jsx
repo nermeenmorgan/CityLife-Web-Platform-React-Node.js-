@@ -48,7 +48,7 @@ const Profile = () => {
     }
 
     function handleImage(e) {
-        e.target.src = 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+        e.target.src = 'https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg'
     }
 
     return (<>
@@ -67,7 +67,7 @@ const Profile = () => {
                                     <div className='row  shadow-sm mx-auto w-75'>
                                         {console.log(updateDone)}
 
-                                        <h1 className=' text-center mainColor mt-4 fw-bold  '>{t(allUserData.name)}'s Profile</h1>
+                                        <h2 className=' text-center mainColor mt-4 fw-bold  '>{t(allUserData.name)}'s Profile</h2>
                                         <div className={i18n.language === "en" ? 'col-md-6 col-xxl-4 d-flex flex-column justify-content-center ms-auto' : 'col-md-6 col-xxl-4 d-flex flex-column justify-content-center me-auto'}>
                                             <img src={allUserData.image} className={`${styles.resizeImg} w-100 d-block mx-auto`} alt='Img'
                                                 onError={(e) => handleImage(e)} >
@@ -97,7 +97,7 @@ const Profile = () => {
 
 
                                     <div className='row shadow-sm mx-auto w-75'>
-                                        <h3 className=' my-3 ms-3 text-center mainColor'>{allUserData.name}'s Profile</h3>
+                                        <h2 className=' text-center mainColor mt-4 fw-bold '>{allUserData.name}'s Profile</h2>
                                         {console.log(updateDone)}
                                         <div className={i18n.language === "en" ? 'col-md-6 col-xxl-4 d-flex flex-column justify-content-center ms-auto' : 'col-md-6 col-xxl-4 d-flex flex-column justify-content-center me-auto'}>
                                             <img src={allUserData.image} className={`${styles.resizeImg} w-100 d-block mx-auto rounded-2`} alt='Img'

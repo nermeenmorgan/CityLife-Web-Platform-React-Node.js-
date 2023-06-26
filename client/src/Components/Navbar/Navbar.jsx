@@ -39,7 +39,7 @@ export default function Navbar() {
   );
 
   useEffect(() => {
-    i18n.language === "ar" ? setLang("En") : setLang("Ar");
+    i18n.language === "ar" ? setLang("English") : setLang("عربي");
   }, [i18n.language]);
 
   const ToggleLang = () => {
@@ -58,7 +58,6 @@ export default function Navbar() {
 
         <div className="container ">
 
-
           <Link className="navbar-brand" to="">
             <img src="/images/logo-citylife.png" style={{ width: 55 }} className="navLogo" alt="Logo"
               onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }); }} />
@@ -66,8 +65,11 @@ export default function Navbar() {
           <button className="navbar-toggler rounded-1" style={{ backgroundColor: 'white' }} type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" >
             <span className="navbar-toggler-icon  "></span>
           </button>
+
+
+
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul className="navbar-nav ">
+            <ul className="navbar-nav d-flex ">
               <li className={`nav-item `}>
                 <Link className="nav-link text-white" aria-current="page" to="/" onClick={() => { window.scroll({ top: 0, left: 0, behavior: "smooth" }) }} >
                   {t("Home")}
@@ -177,13 +179,14 @@ export default function Navbar() {
                   </li>
                 )}
             </ul>
-            <ul className={`d-flex m-0 p-0
+            <ul className={`d-flex m-0 p-0  justify-content-center
              ${i18n.language === "ar" ? "me-lg-auto" : "ms-lg-auto"}`} >
-               {/* Search */}
+
+              {/* Search */}
               <form
-                className="d-flex align-items-center" onSubmit={handleSubmit} >
-                <div className={`input-group ${i18n.language === "ar" && "d-flex flex-lg-row-reverse "}`} >
-                  <div className="form-outline input-search">
+                className="d-flex align-items-center p-0  p-lg-0 " onSubmit={handleSubmit} >
+                <div className={`input-group mx-2 mx-lg-2 ${i18n.language === "ar" && "d-flex  flex-row-reverse "}`} >
+                  <div className={`form-outline input-search`}>
                     <input type="text" value={itemID} onChange={handleChange} className=" form-control rounded-0  " list="searchList" id="exampleDataList" placeholder={t("Type to search...")} autoComplete="off" />
                   </div>
                   <button type="submit" className="btn btn-secondary border-0">
@@ -199,7 +202,7 @@ export default function Navbar() {
 
 
                 {/* Language */}
-                <div className="d-flex flex-column justify-content-center fw-semibold">
+                <div className="d-flex flex-column justify-content-center  fw-semibold">
                   <button className="btn btn-mainColor-nav " onClick={ToggleLang} >{lang}</button>
                 </div>
               </form>
@@ -211,8 +214,12 @@ export default function Navbar() {
                   </Link>
                 </div>
               ) : (
-                <div className="mt-lg-0 d-flex justify-content-center align-items-center ">
-                  <button className="nav-item text-white btn rounded-1 mx-0 btn btn-mainColor-nav" onClick={() => { DeleteUserData(); navigate('/') }} >
+
+
+
+
+                <div className="mt-lg-0 d-flex justify-content-center align-items-center p-0 p-md-2 p-lg-0 ">
+                  <button className="nav-item text-white btn rounded-1 btn btn-mainColor-nav mx-2 mx-lg-2" onClick={() => { DeleteUserData(); navigate('/') }} >
                     {t("Sign out")}
                   </button>
                   <button className="btn btn-mainColor-nav">

@@ -9,5 +9,6 @@
 } 
 .underLine:hover {
   text-decoration: underline;
+  color: rgb(72, 182, 246) !important;
 } 
 
