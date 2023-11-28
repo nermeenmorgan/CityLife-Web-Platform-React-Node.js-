@@ -44,9 +44,9 @@ const Centers = () => {
         }}
       >
       {/* Header */}
-      <div className='container-fluid pt-3'>
-        <h2 className="lightGreenColor text-center m-0">
-          {t("Centerss")}
+      <div className='container-fluid pt-3 '>
+        <h2 className="lightGreenColor text-center m-0" >
+          {t("Centers")}
         </h2>
       </div>
 

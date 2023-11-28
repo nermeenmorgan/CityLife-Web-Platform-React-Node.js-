@@ -37,22 +37,22 @@ export default function Data(props) {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3005/cinema").then((res) => {
+    axios.get("https://bvbbcbvv.onrender.com/cinema").then((res) => {
       setMovies(res.data);
     });
   }, []);
 
   const deleteMovie = useCallback((ID) => {
-    axios.delete(`http://localhost:3005/cinema/${ID}`);
+    axios.delete(`https://bvbbcbvv.onrender.com/cinema/${ID}`);
     setMovies(movies.filter((movie) => +movie.id !== +ID));
   }, [movies]);
 
   const addMovie = useCallback((AddedObj) => {
-    axios.post("http://localhost:3005/cinema", AddedObj);
+    axios.post("https://bvbbcbvv.onrender.com/cinema", AddedObj);
     setMovies([...movies, AddedObj]);
   }, [movies]);
   const updateMovie = useCallback((ID, updatedObj) => {
-    axios.patch(`http://localhost:3005/cinema/${ID}`, updatedObj);
+    axios.patch(`https://bvbbcbvv.onrender.com/cinema/${ID}`, updatedObj);
     setMovies(
       movies.map((movie) => {
         if (+movie.id === +ID) {
@@ -94,23 +94,23 @@ export default function Data(props) {
   const [FastFoodRes, setFastFoodRes] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3005/shawarma").then((res) => {
+    axios.get("https://bvbbcbvv.onrender.com/shawarma").then((res) => {
       setShawarmaRes(res.data);
     });
-    axios.get("http://localhost:3005/fried").then((res) => {
+    axios.get("https://bvbbcbvv.onrender.com/fried").then((res) => {
       setFriedRes(res.data);
     });
-    axios.get("http://localhost:3005/pizza").then((res) => {
+    axios.get("https://bvbbcbvv.onrender.com/pizza").then((res) => {
       setPizzaRes(res.data);
     });
-    axios.get("http://localhost:3005/seafood").then((res) => {
+    axios.get("https://bvbbcbvv.onrender.com/seafood").then((res) => {
       setSeaFoodRes(res.data);
     });
-    axios.get("http://localhost:3005/fastfood").then((res) => {
+    axios.get("https://bvbbcbvv.onrender.com/fastfood").then((res) => {
       setFastFoodRes(res.data);
     });
     axios
-      .get("http://localhost:3005/orientalfood")
+      .get("https://bvbbcbvv.onrender.com/orientalfood")
       .then((res) => {
         setOrientalFoodRes(res.data);
       })
@@ -131,7 +131,7 @@ export default function Data(props) {
 
   const deleteShawarmaRes = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/shawarma/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/shawarma/${ID}`);
       setShawarmaRes(ShawarmaRes.filter((ele) => +ele.id !== +ID));
     },
     [ShawarmaRes]
@@ -139,14 +139,14 @@ export default function Data(props) {
 
   const addShawarmaRes = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/shawarma", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/shawarma", AddedObj);
       setShawarmaRes([...ShawarmaRes, AddedObj]);
     },
     [ShawarmaRes]
   );
   const updateShawarmaRes = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/shawarma/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/shawarma/${ID}`, updatedObj);
       setShawarmaRes(
         ShawarmaRes.map((ele) => {
           if (+ele.id === +ID) {
@@ -162,7 +162,7 @@ export default function Data(props) {
 
   const deleteSeaFoodRes = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/fried/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/fried/${ID}`);
       setSeaFoodRes(SeaFoodRes.filter((movie) => +movie.id !== +ID));
     },
     [SeaFoodRes]
@@ -170,14 +170,14 @@ export default function Data(props) {
 
   const addSeaFoodRes = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/fried", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/fried", AddedObj);
       setSeaFoodRes([...SeaFoodRes, AddedObj]);
     },
     [SeaFoodRes]
   );
   const updateSeaFoodRes = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/fried/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/fried/${ID}`, updatedObj);
       setSeaFoodRes(
         SeaFoodRes.map((movie) => {
           if (+movie.id === +ID) {
@@ -193,7 +193,7 @@ export default function Data(props) {
 
   const deleteOrientalFoodRes = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/orientalfood/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/orientalfood/${ID}`);
       setOrientalFoodRes(OrientalFoodRes.filter((ele) => +ele.id !== +ID));
     },
     [OrientalFoodRes]
@@ -201,14 +201,14 @@ export default function Data(props) {
 
   const addOrientalFoodRes = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/orientalfood", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/orientalfood", AddedObj);
       setOrientalFoodRes([...OrientalFoodRes, AddedObj]);
     },
     [OrientalFoodRes]
   );
   const updateOrientalFoodRes = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/orientalfood/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/orientalfood/${ID}`, updatedObj);
       setOrientalFoodRes(
         OrientalFoodRes.map((ele) => {
           if (+ele.id === +ID) {
@@ -224,7 +224,7 @@ export default function Data(props) {
 
   const deletePizzaRes = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/pizza/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/pizza/${ID}`);
       setPizzaRes(PizzaRes.filter((ele) => +ele.id !== +ID));
     },
     [PizzaRes]
@@ -232,14 +232,14 @@ export default function Data(props) {
 
   const addPizzaRes = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/pizza", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/pizza", AddedObj);
       setPizzaRes([...PizzaRes, AddedObj]);
     },
     [PizzaRes]
   );
   const updatePizzaRes = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/pizza/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/pizza/${ID}`, updatedObj);
       setPizzaRes(
         PizzaRes.map((ele) => {
           if (+ele.id === +ID) {
@@ -255,7 +255,7 @@ export default function Data(props) {
 
   const deleteFriedRes = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/fried/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/fried/${ID}`);
       setFriedRes(FriedRes.filter((ele) => +ele.id !== +ID));
     },
     [FriedRes]
@@ -263,14 +263,14 @@ export default function Data(props) {
 
   const addFriedRes = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/fried", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/fried", AddedObj);
       setFriedRes([...FriedRes, AddedObj]);
     },
     [FriedRes]
   );
   const updateFriedRes = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/fried/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/fried/${ID}`, updatedObj);
       setFriedRes(
         FriedRes.map((ele) => {
           if (+ele.id === +ID) {
@@ -286,7 +286,7 @@ export default function Data(props) {
 
   const deleteFastFoodRes = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/fastfood/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/fastfood/${ID}`);
       setFastFoodRes(FastFoodRes.filter((ele) => +ele.id !== +ID));
     },
     [FastFoodRes]
@@ -294,14 +294,14 @@ export default function Data(props) {
 
   const addFastFoodRes = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/fastfood", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/fastfood", AddedObj);
       setFastFoodRes([...FastFoodRes, AddedObj]);
     },
     [FastFoodRes]
   );
   const updateFastFoodRes = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/fastfood/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/fastfood/${ID}`, updatedObj);
       setFastFoodRes(
         FastFoodRes.map((ele) => {
           if (+ele.id === +ID) {
@@ -319,14 +319,14 @@ export default function Data(props) {
   const [gyms, setGyms] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3005/sports").then((res) => {
+    axios.get("https://bvbbcbvv.onrender.com/sports").then((res) => {
       setGyms(res.data);
     });
   }, []);
 
   const deleteSports = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/sports/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/sports/${ID}`);
       setGyms(gyms.filter((ele) => +ele.id !== +ID));
     },
     [gyms]
@@ -334,14 +334,14 @@ export default function Data(props) {
 
   const addSports = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/sports", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/sports", AddedObj);
       setGyms([...gyms, AddedObj]);
     },
     [gyms]
   );
   const updateSports = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/sports/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/sports/${ID}`, updatedObj);
       setGyms(
         gyms.map((ele) => {
           if (+ele.id === +ID) {
@@ -359,14 +359,14 @@ export default function Data(props) {
   const [buses, setBuses] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:3005/transportation").then((res) => {
+    axios.get("https://bvbbcbvv.onrender.com/transportation").then((res) => {
       setBuses(res.data);
     });
   }, []);
 
   const deleteBuses = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/transportation/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/transportation/${ID}`);
       setBuses(buses.filter((ele) => +ele.id !== +ID));
     },
     [buses]
@@ -374,14 +374,14 @@ export default function Data(props) {
 
   const addBuses = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/transportation", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/transportation", AddedObj);
       setBuses([...buses, AddedObj]);
     },
     [buses]
   );
   const updateBuses = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/transportation/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/transportation/${ID}`, updatedObj);
       setBuses(
         buses.map((ele) => {
           if (+ele.id === +ID) {
@@ -398,7 +398,7 @@ export default function Data(props) {
   //Bank Data Management
   const [bank, setBank] = useState([]);
   function getBanks() {
-    axios.get("http://localhost:3005/banks").then((res) => setBank(res.data));
+    axios.get("https://bvbbcbvv.onrender.com/banks").then((res) => setBank(res.data));
   }
   useEffect(() => {
     getBanks();
@@ -406,21 +406,21 @@ export default function Data(props) {
 
   const deleteBank = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/banks/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/banks/${ID}`);
       setBank(bank.filter((bank) => +bank.id !== +ID));
     },
     [bank]
   );
   const addBank = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/banks", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/banks", AddedObj);
       setBank([...bank, AddedObj]);
     },
     [bank]
   );
   const updateBank = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/banks/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/banks/${ID}`, updatedObj);
       setBank(
         bank.map((bank) => {
           if (+bank.id === +ID) {
@@ -438,7 +438,7 @@ export default function Data(props) {
   const [shopping, setShopping] = useState([]);
   function getShopping() {
     axios
-      .get("http://localhost:3005/shopping")
+      .get("https://bvbbcbvv.onrender.com/shopping")
       .then((res) => setShopping(res.data));
   }
   useEffect(() => {
@@ -447,7 +447,7 @@ export default function Data(props) {
 
   const deleteShopping = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/shopping/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/shopping/${ID}`);
       setShopping(shopping.filter((mall) => +mall.id !== +ID));
     },
     [shopping]
@@ -455,14 +455,14 @@ export default function Data(props) {
 
   const addShopping = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/shopping", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/shopping", AddedObj);
       setShopping([...shopping, AddedObj]);
     },
     [shopping]
   );
   const updateShopping = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/shopping/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/shopping/${ID}`, updatedObj);
       setShopping(
         shopping.map((mall) => {
           if (+mall.id === +ID) {
@@ -479,14 +479,14 @@ export default function Data(props) {
   const [fashion, setfashion] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3005/fashion")
+      .get("https://bvbbcbvv.onrender.com/fashion")
       .then((response) => setfashion(response.data))
       .catch((err) => console.log(err));
   }, []);
 
   const deleteFashion = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/fashion/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/fashion/${ID}`);
       setfashion(fashion.filter((ele) => +ele.id !== +ID));
     },
     [fashion]
@@ -494,14 +494,14 @@ export default function Data(props) {
 
   const addFashion = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/fashion", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/fashion", AddedObj);
       setfashion([...fashion, AddedObj]);
     },
     [fashion]
   );
   const updateFashion = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/fashion/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/fashion/${ID}`, updatedObj);
       setfashion(
         fashion.map((ele) => {
           if (+ele.id === +ID) {
@@ -520,7 +520,7 @@ export default function Data(props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3005/markets")
+      .get("https://bvbbcbvv.onrender.com/markets")
       .then((res) => {
         setMarkets(res.data);
       })
@@ -528,21 +528,21 @@ export default function Data(props) {
   }, []);
   const deleteMarket = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/markets/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/markets/${ID}`);
       setMarkets(markets.filter((Market) => +Market.id !== +ID));
     },
     [markets]
   );
   const addMarket = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/markets", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/markets", AddedObj);
       setMarkets([...markets, AddedObj]);
     },
     [markets]
   );
   const updateMarket = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/markets/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/markets/${ID}`, updatedObj);
       setMarkets(
         markets.map((Market) => {
           if (+Market.id === +ID) {
@@ -562,7 +562,7 @@ export default function Data(props) {
   const [homeServices, setHomeServices] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3005/home_services")
+      .get("https://bvbbcbvv.onrender.com/home_services")
       .then((res) => {
         setHomeServices(res.data);
       })
@@ -571,7 +571,7 @@ export default function Data(props) {
 
   const deleteHome_services = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/home_services/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/home_services/${ID}`);
       setHomeServices(homeServices.filter((ele) => +ele.id !== +ID));
     },
     [homeServices]
@@ -579,14 +579,14 @@ export default function Data(props) {
 
   const addHome_services = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/home_services", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/home_services", AddedObj);
       setHomeServices([...homeServices, AddedObj]);
     },
     [homeServices]
   );
   const updateHome_services = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/home_services/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/home_services/${ID}`, updatedObj);
       setHomeServices(
         homeServices.map((ele) => {
           if (+ele.id === +ID) {
@@ -604,7 +604,7 @@ export default function Data(props) {
   const [maintenance, setMaintenance] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3005/maintenance")
+      .get("https://bvbbcbvv.onrender.com/maintenance")
       .then((res) => {
         setMaintenance(res.data);
       })
@@ -613,7 +613,7 @@ export default function Data(props) {
 
   const deleteMaintenance = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/maintenance/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/maintenance/${ID}`);
       setMaintenance(maintenance.filter((ele) => +ele.id !== +ID));
     },
     [maintenance]
@@ -621,14 +621,14 @@ export default function Data(props) {
 
   const addMaintenance = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/maintenance", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/maintenance", AddedObj);
       setMaintenance([...maintenance, AddedObj]);
     },
     [maintenance]
   );
   const updateMaintenance = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/maintenance/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/maintenance/${ID}`, updatedObj);
       setMaintenance(
         maintenance.map((ele) => {
           if (+ele.id === +ID) {
@@ -646,11 +646,11 @@ export default function Data(props) {
   const [Centers, setCenters] = useState([]);
   const [Pharmacies, setPharmacies] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:3005/centers").then((response) => {
+    axios.get("https://bvbbcbvv.onrender.com/centers").then((response) => {
       setCenters(response.data);
     });
     axios
-      .get("http://localhost:3005/pharmacy")
+      .get("https://bvbbcbvv.onrender.com/pharmacy")
       .then((response) => {
         setPharmacies(response.data);
       })
@@ -659,7 +659,7 @@ export default function Data(props) {
 
   const deleteCenters = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/centers/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/centers/${ID}`);
       setCenters(Centers.filter((ele) => +ele.id !== +ID));
     },
     [Centers]
@@ -667,14 +667,14 @@ export default function Data(props) {
 
   const addCenters = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/centers", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/centers", AddedObj);
       setCenters([...Centers, AddedObj]);
     },
     [Centers]
   );
   const updateCenters = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/centers/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/centers/${ID}`, updatedObj);
       setCenters(
         Centers.map((ele) => {
           if (+ele.id === +ID) {
@@ -690,7 +690,7 @@ export default function Data(props) {
 
   const deletePharmacies = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/pharmacy/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/pharmacy/${ID}`);
       setPharmacies(Pharmacies.filter((ele) => +ele.id !== +ID));
     },
     [Pharmacies]
@@ -698,14 +698,14 @@ export default function Data(props) {
 
   const addPharmacies = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/pharmacy", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/pharmacy", AddedObj);
       setPharmacies([...Pharmacies, AddedObj]);
     },
     [Pharmacies]
   );
   const updatePharmacies = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/pharmacy/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/pharmacy/${ID}`, updatedObj);
       setPharmacies(
         Pharmacies.map((ele) => {
           if (+ele.id === +ID) {
@@ -724,11 +724,11 @@ export default function Data(props) {
   const [Schools, setSchools] = useState([]);
   const [Kindergarten, setKindergarten] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:3005/schools").then((res) => {
+    axios.get("https://bvbbcbvv.onrender.com/schools").then((res) => {
       setSchools(res.data);
     });
     axios
-      .get("http://localhost:3005/kindergarten")
+      .get("https://bvbbcbvv.onrender.com/kindergarten")
       .then((res) => {
         setKindergarten(res.data);
       })
@@ -743,7 +743,7 @@ export default function Data(props) {
 
   const deleteSchool = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/schools/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/schools/${ID}`);
       setSchools(Schools.filter((ele) => +ele.id !== +ID));
     },
     [Schools]
@@ -751,14 +751,14 @@ export default function Data(props) {
 
   const addSchool = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/schools", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/schools", AddedObj);
       setSchools([...Schools, AddedObj]);
     },
     [Schools]
   );
   const updateSchool = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/schools/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/schools/${ID}`, updatedObj);
       setSchools(
         Schools.map((ele) => {
           if (+ele.id === +ID) {
@@ -774,7 +774,7 @@ export default function Data(props) {
 
   const deletekindergarten = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/kindergarten/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/kindergarten/${ID}`);
       setSchools(Kindergarten.filter((ele) => +ele.id !== +ID));
     },
     [Kindergarten]
@@ -782,14 +782,14 @@ export default function Data(props) {
 
   const addkindergarten = useCallback(
     (AddedObj) => {
-      axios.post("http://localhost:3005/kindergarten", AddedObj);
+      axios.post("https://bvbbcbvv.onrender.com/kindergarten", AddedObj);
       setKindergarten([...Kindergarten, AddedObj]);
     },
     [Kindergarten]
   );
   const updatekindergarten = useCallback(
     (ID, updatedObj) => {
-      axios.patch(`http://localhost:3005/kindergarten/${ID}`, updatedObj);
+      axios.patch(`https://bvbbcbvv.onrender.com/kindergarten/${ID}`, updatedObj);
       setKindergarten(
         Kindergarten.map((ele) => {
           if (+ele.id === +ID) {
@@ -873,7 +873,7 @@ export default function Data(props) {
   const [AllIDsNames, setAllIDsNames] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:3005/db')
+    axios.get('https://bvbbcbvv.onrender.com/db')
       .then((res) => {
         setAll(res.data)
       })
@@ -908,7 +908,7 @@ export default function Data(props) {
 
   const [dashBoardFeedback, setDashBoardFeedback] = useState(null)
   useEffect(() => {
-    axios.get('http://localhost:3005/feedback')
+    axios.get('https://bvbbcbvv.onrender.com/feedback')
       .then((res) => setDashBoardFeedback(res.data))
       .catch((err) => console.log(err))
   }, [])
@@ -917,7 +917,7 @@ export default function Data(props) {
   const addFeedback = useCallback(
     (AddedObj,message) => {
       let ID = uuid().slice(0,4)
-      axios.post("http://localhost:3005/feedback", {...AddedObj,id: ID ,place: message, type:"FeedBack"});
+      axios.post("https://bvbbcbvv.onrender.com/feedback", {...AddedObj,id: ID ,place: message, type:"FeedBack"});
       setDashBoardFeedback([...dashBoardFeedback, {...AddedObj,id: ID,place: message, type:"FeedBack"}]);
     },
     [dashBoardFeedback]
@@ -926,7 +926,7 @@ export default function Data(props) {
   const addComplain = useCallback(
     (AddedObj,photo) => {
       let ID = uuid().slice(0,4)
-      axios.post("http://localhost:3005/feedback", {...AddedObj,id: ID,photo: photo ,type:"Complain"});
+      axios.post("https://bvbbcbvv.onrender.com/feedback", {...AddedObj,id: ID,photo: photo ,type:"Complain"});
       setDashBoardFeedback([...dashBoardFeedback, {...AddedObj,id: ID, photo: photo,type:"Complain"}]);
     },
     [dashBoardFeedback]
@@ -935,7 +935,7 @@ export default function Data(props) {
   const addContact = useCallback(
     (AddedObj) => {
       let ID = uuid().slice(0,4)
-      axios.post("http://localhost:3005/feedback", {...AddedObj,id: ID ,type:"Contact us"});
+      axios.post("https://bvbbcbvv.onrender.com/feedback", {...AddedObj,id: ID ,type:"Contact us"});
       setDashBoardFeedback([...dashBoardFeedback, {...AddedObj,id: ID, type:"Contact us"}]);
     },
     [dashBoardFeedback]
@@ -943,7 +943,7 @@ export default function Data(props) {
 
   const deleteFeed = useCallback(
     (ID) => {
-      axios.delete(`http://localhost:3005/feedback/${ID}`);
+      axios.delete(`https://bvbbcbvv.onrender.com/feedback/${ID}`);
       setDashBoardFeedback(dashBoardFeedback.filter((ele) => ele.id !== ID));
     },
     [dashBoardFeedback]
